@@ -6,7 +6,7 @@ return [
     'siteLocatioin' => env('SITE_LOCATION', 'Dallas'),   // 1 - Dallas
     'defaultSEO' => [
         '1' => [    // Dallas
-            'SEOMetaTitle'                        => "Home Page --- Testing",
+            'SEOMetaTitle'                        => "Home Page - Testing",
             'SEOMetaDesc'                         =>  'Dallas Malayali Grocery shops, Restarunt and churches',
             'SEOMetaKeywords'                     =>  [
                                                          'keyword 1','keyword 2', 'keyword 3', 'keyword 4'

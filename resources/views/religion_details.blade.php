@@ -6,28 +6,14 @@
     <div class="col-md-12 paggination"><a href="list.html" class="subcontent2">Religions</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" class="title">Details</a></div>
     <div class="col-md-6 block2">
         <div class="topdetail slideshow-container">
-            <!-- @foreach ($photos as $key => $photo)
-                <div class="mySlides fade">
-                    <img src="{{ URL::to('/') }}/image/religion/{{$photo['photoName']}}" alt="{{ $religion['name'] }}" style="width:100%;height:100%" class="toparea">
-                </div>
-            @endforeach
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
             <ul id="lightSlider">
                 @foreach ($photos as $key => $photo)
                     <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
-                        <img src="{{ URL::to('/') }}/image/religion/{{$photo['photoName']}}" alt="{{ $religion['name'] }}" style="width:100%;height:100%" class="toparea">
+                        <img src="{{ URL::to('/') }}/image/religion/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $religion['name'] }}" style="width:100%;height:100%" class="toparea">
                     </li>
                 @endforeach
             </ul>            
         </div>
-
-        <!-- <div style="position:relative;top:-40px;text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span> 
-            <span class="dot" onclick="currentSlide(2)"></span> 
-            <span class="dot" onclick="currentSlide(3)"></span> 
-        </div>    -->
-
         <div class="gro_title">{{ $religion['name'] }}</div>
         <div class="content">
             <table class="fullWidth">
@@ -44,8 +30,14 @@
                     <td colspan="2" class="smallfont tdtoppadd1">Phone:</td>
                 </tr>
                 <tr>
-                    <td colspan="2">{{ $religion['phone1'] }}</td>
+                    <td colspan="2"><a href="tel:{{ $religion['phone1'] }}">{{ $religion['phone1'] }}</a></td>
                 </tr>
+                <tr>
+                    <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><a href="{{ $religion['website'] }}" target="_blank">{{ $religion['website'] }}</a></td>
+                </tr>                
                 <tr>
                     <td colspan="2" class="smallfont tdtoppadd1">Located In:</td>
                 </tr>
@@ -77,10 +69,10 @@
                                 @foreach ($wtMass as $massKey => $mass)
                                     @foreach ($mass as $massTimeKey => $massTime)
                                         @if ( $wtMassArrKey == $today )
-                                            <td class="activeweekdays">{{$massTime}}, </td>
+                                            <td class="activeweekdays">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
                                         @else
-                                            <td class="inactiveweekdays">{{$massTime}}, </td>
-                                        @endif                                                 
+                                            <td class="inactiveweekdays">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                        @endif                                              
                                     @endforeach
                                 @endforeach
                             </tr>
@@ -103,11 +95,10 @@
                                     @foreach ($wtConf as $confession)
                                         @foreach ($confession as $confessionTimeKey => $confessionTime)
                                             @if ( $wtConfArrKey == $today )
-                                                <td class="activeweekdays">{{$confessionTime}}, </td>
+                                                <td class="activeweekdays">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
                                             @else
-                                                <td class="inactiveweekdays">{{$confessionTime}}, </td>
+                                                <td class="inactiveweekdays">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
                                             @endif  
-                                                                                           
                                         @endforeach
                                     @endforeach
                                 </tr>
@@ -130,9 +121,9 @@
                                     @foreach ($wtAdo as $adoration)
                                         @foreach ($adoration as $adorationTimeKey => $adorationTime)
                                             @if ( $wtAdoArrKey == $today )
-                                                <td class="activeweekdays">{{$adorationTime}}, </td>
+                                                <td class="activeweekdays">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
                                             @else
-                                                <td class="inactiveweekdays">{{$adorationTime}}, </td>
+                                                <td class="inactiveweekdays">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
                                             @endif 
                                         @endforeach
                                     @endforeach
@@ -162,9 +153,11 @@
 </div>
 <div class="col-md-3 rightcontainer"></div>
   
-  
 <div class="row">
     <div class="col-md-12 footerh nopadding"></div>
+</div>
+<div class="col-md-9 leftcontainer" style="min-height:20px;">
+    <div class="row" id="related"></div>
 </div>
 <script>
     /*---------- Google Map ----------*/
@@ -201,6 +194,14 @@
     });
     
     /*---------- Image Slider End----------*/
+
+    $( document ).ready(function() {
+        $.get("<?php echo URL::to('/');?>/religion-related/<?php echo $religion['denominationName'];?>/<?php echo $religion['id'];?>", function(data, status){
+            if(status=="success"){
+                document.getElementById("related").innerHTML = data;
+            }
+        });
+    });
     
 </script>
 <script async defer

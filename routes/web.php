@@ -27,6 +27,8 @@ $this->get('/'.config('app.defaultBaseURL.dallas-malayali-church').'/{url}', 'Re
 $this->get('/'.config('app.defaultBaseURL.dallas-malayali-temple').'/{url}', 'ReligionController@getDetails')->name('religionDetails')->where('url', '[A-Za-z-+]+');
 $this->get('/'.config('app.defaultBaseURL.dallas-malayali-mosque').'/{url}', 'ReligionController@getDetails')->name('religionDetails')->where('url', '[A-Za-z-+]+');
 
+$this->get('/religion-related/{denomination}/{id}', 'ReligionController@getRelated')->name('religionDetails')->where('url', '[A-Za-z-+]+');
+
 $this->get('/dallas-malayali-restaurant', 'RestaurantController@index')->name('restaurant');
 $this->get('/dallas-malayali-restaurant/{url}', 'RestaurantController@getDetails')->name('restaurantDetails')->where('url', '[A-Za-z-+]+');
 

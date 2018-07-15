@@ -54,10 +54,11 @@ class CommonController extends Controller
                                                 'seo.OpenGraphUrl','seo.OpenGraphPropertyType',
                                                 'seo.OpenGraphPropertyLocale','seo.OpenGraphPropertyLocaleAlternate',
                                                 'seo.OpenGraph')
-                                                ->leftjoin('seo','seo.urlId', '=', 'url.id')
+                                                ->join('seo','seo.urlId', '=', 'url.id')
                                                 ->where('url.urlName', '=', $seoUrl)
                                                 ->get()->first();  
         if($seoRs){
+            
             $seo                            =   $seoRs->toArray();
             SEOMeta::setTitle($seo['SEOMetaTitle']);
             SEOMeta::setDescription($seo['SEOMetaDesc']);

@@ -79,6 +79,7 @@ class ReligionController extends Controller
         $siteId                         =   config('app.siteId');
         $religionRs                     =   Url::select('religion.id', 'religion.name', 
                                                 'religion.description', 'religion.workingTime',
+                                                'religion.website',
                                                 'address.address1', 'address.address2',
                                                 'address.city', 'address.state',
                                                 'address.zip', 'religion.shortDescription',
@@ -155,4 +156,56 @@ class ReligionController extends Controller
             return redirect()->back();
         }
     }
+
+    public function getRelated(Request $request, $denominationName,$id){
+        
+        $distance                       =   "";
+        $commonCtrl                     =   new CommonController;        
+
+        $siteId                         =   config('app.siteId');
+        $relatedRs                      =   Religion::select('religion.id', 'religion.name', 
+                                                'religion.shortDescription', 'religion.workingTime',
+                                                'address.address1', 'address.address2',
+                                                'address.city', 'address.state',
+                                                'address.zip', 'religion.shortDescription',
+                                                'address.city', 'address.state',
+                                                'address.phone1', 'address.latitude',
+                                                'address.longitude','religion_type.religionName',
+                                                'url.urlName', 'photo.photoName',
+                                                'denomination.denominationName')
+                                            ->leftjoin('religion_type','religion_type.id', '=', 'religion.religionTypeId')                                                
+                                            ->leftjoin('denomination','denomination.id', '=', 'religion.denominationId')                                                
+                                            ->leftjoin('url','url.religionId', '=', 'religion.id')
+                                            ->leftjoin('address','address.id', '=', 'religion.addressId')
+                                            ->leftjoin('site','site.siteId', '=', 'religion.siteId')
+                                            ->leftjoin('photo','photo.religionId', '=', 'religion.id')                                            
+                                            ->where('religion.is_deleted', '=', '0')
+                                            ->where('religion.is_disabled', '=', '0')
+                                            ->where('site.siteId', '=', $siteId)
+                                            //->where('religion.id', '!=', $id)
+                                            ->where('denomination.denominationName', '=', $denominationName)
+                                            ->where('photo.is_primary', '=', '1')
+                                            ->orderBy('religion.premium', 'desc')
+                                            ->orderBy('religion.order', 'asc')                                                    
+                                            ->take(5)->get();
+        
+        $related                        =   $relatedRs->toArray();  
+
+        if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
+            foreach($related as $key => $relatedRs) {    
+                $distance                       =   "";
+                $related[$key]["distance"]    =   "";
+                $lat                            =   ($relatedRs['latitude'])?$relatedRs['latitude']:'';
+                $long                           =   ($relatedRs['longitude'])?$relatedRs['longitude']:'';
+                if($lat && $long){
+                    $dist                       =   $commonCtrl->distance($lat, $long, "M");
+                    if($dist){
+                        $related[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
+                    }
+                }
+            }
+        }  
+                
+        return view('related',['related' => $related]);
+    }    
 }
