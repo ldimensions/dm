@@ -21,7 +21,6 @@ class HomeController extends Controller
         //$this->middleware('auth');
     }
 
-
     public function index(Request $request){
 
 
@@ -29,35 +28,47 @@ class HomeController extends Controller
 
         $siteId                         =   config('app.siteId');
         $religionRs                     =   Religion::select('religion.id', 'religion.name', 
-                                                'religion.shortDescription', 'religion.workingTime',
-                                                'address.address1', 'address.address2',
-                                                'address.city', 'address.state',
-                                                'address.zip', 'religion.shortDescription',
-                                                'address.city', 'address.state',
+                                                'religion.workingTime',
+                                                'address.address1',
+                                                'address.zip', 
+                                                'address.city',
                                                 'address.phone1', 'address.latitude',
                                                 'address.longitude','religion_type.religionName',
-                                                'url.urlName', 'photo.photoName',
+                                                'url.urlName',
                                                 'denomination.denominationName')
                                             ->leftjoin('religion_type','religion_type.id', '=', 'religion.religionTypeId')                                                
                                             ->leftjoin('denomination','denomination.id', '=', 'religion.denominationId')                                                
                                             ->leftjoin('url','url.religionId', '=', 'religion.id')
                                             ->leftjoin('address','address.id', '=', 'religion.addressId')
                                             ->leftjoin('site','site.siteId', '=', 'religion.siteId')
-                                            ->leftjoin('photo','photo.religionId', '=', 'religion.id')                                            
                                             ->where('religion.is_deleted', '=', '0')
                                             ->where('religion.is_disabled', '=', '0')
                                             ->where('site.siteId', '=', $siteId)
-                                            ->where('photo.is_primary', '=', '1')
                                             ->orderBy('religion.premium', 'desc')
                                             ->orderBy('religion.order', 'asc') 
                                             ->take(5)                                                                                                      
                                             ->get(); 
         
-        $religion                       =   $religionRs->toArray();  
+        $religions                      =   $religionRs->toArray();  
+
+        if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
+            foreach($religions as $key => $religion) {    
+                $distance                       =   "";
+                $religions[$key]["distance"]    =   "";
+                $lat                            =   ($religion['latitude'])?$religion['latitude']:'';
+                $long                           =   ($religion['longitude'])?$religion['longitude']:'';
+                if($lat && $long){
+                    $dist                       =   $commonCtrl->distance($lat, $long, "M");
+                    if($dist){
+                        $religions[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
+                    }
+                }
+            }
+        }       
         //print_r($religion);
 
         $commonCtrl->setMeta($request->path(),1);
         
-        return view('home',['religion' => $religion]);
+        return view('home',['religion' => $religions]);
     }
 }

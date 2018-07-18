@@ -23,7 +23,6 @@ class ReligionController extends Controller
         $religionRs                     =   Religion::select('religion.id', 'religion.name', 
                                                 'religion.shortDescription', 'religion.workingTime',
                                                 'address.address1', 'address.address2',
-                                                'address.city', 'address.state',
                                                 'address.zip', 'religion.shortDescription',
                                                 'address.city', 'address.state',
                                                 'address.phone1', 'address.latitude',
@@ -70,7 +69,6 @@ class ReligionController extends Controller
 
     public function getDetails(Request $request,$url){
 
-
         $distance                       =   "";
         $commonCtrl                     =   new CommonController;
 
@@ -81,7 +79,6 @@ class ReligionController extends Controller
                                                 'religion.description', 'religion.workingTime',
                                                 'religion.website',
                                                 'address.address1', 'address.address2',
-                                                'address.city', 'address.state',
                                                 'address.zip', 'religion.shortDescription',
                                                 'address.city', 'address.state',
                                                 'address.phone1', 'address.latitude',
@@ -95,6 +92,7 @@ class ReligionController extends Controller
                                             ->where('religion.is_disabled', '=', '0')
                                             ->where('url.urlName', '=', $url)
                                             ->get()->first(); 
+        
         if($religionRs){
 
             $lat                            =   ($religionRs['latitude'])?$religionRs['latitude']:'';
@@ -166,7 +164,6 @@ class ReligionController extends Controller
         $relatedRs                      =   Religion::select('religion.id', 'religion.name', 
                                                 'religion.shortDescription', 'religion.workingTime',
                                                 'address.address1', 'address.address2',
-                                                'address.city', 'address.state',
                                                 'address.zip', 'religion.shortDescription',
                                                 'address.city', 'address.state',
                                                 'address.phone1', 'address.latitude',
@@ -182,8 +179,8 @@ class ReligionController extends Controller
                                             ->where('religion.is_deleted', '=', '0')
                                             ->where('religion.is_disabled', '=', '0')
                                             ->where('site.siteId', '=', $siteId)
-                                            //->where('religion.id', '!=', $id)
-                                            ->where('denomination.denominationName', '=', $denominationName)
+                                            ->where('religion.id', '!=', $id)
+                                            //->where('denomination.denominationName', '=', $denominationName)
                                             ->where('photo.is_primary', '=', '1')
                                             ->orderBy('religion.premium', 'desc')
                                             ->orderBy('religion.order', 'asc')                                                    

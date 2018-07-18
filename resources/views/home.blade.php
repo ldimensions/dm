@@ -78,33 +78,30 @@
             </div>
 
             <div class="col-md-4 block3">
-                <div class="reli_block3">Top 3 Religions</div>
-                <div class="main_block">
-                    <a href="#" class="block_txtblock">University Presbyterian Church</a>
-                    <a href="#" class="mapicon1"><img src="image/map.svg" /></a>
-                    <div class="block_kmblock">
-                        <div class="reli_kmblock">11.0 KM</div>
-                        <div class="txtblock">Closed - Opens 7 AM</br>+1 901-896-3245</div>
+                <div class="reli_block3">Religions</div>
+                @foreach ($religion as $key => $rel)
+                    <div class="main_block">
+                        @if ($rel['religionName'] == 'Christianity')
+                            <a href="../{{config('app.defaultBaseURL.dallas-malayali-church')}}/{{ $rel['urlName'] }}" class="block_txtblock">{{ $rel['name'] }}</a>
+                        @elseif($rel['religionName'] == 'Hinduism')
+                            <a href="../{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="block_txtblock">{{ $rel['name'] }}</a>
+                        @elseif($rel['religionName'] == 'Judaism')
+                            <a href="../{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="block_txtblock">{{ $rel['name'] }}</a>
+                        @elseif($rel['religionName'] == 'Buddhism')
+                            <a href="../{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="block_txtblock">{{ $rel['name'] }}</a>
+                        @elseif($rel['religionName'] == 'Islam')
+                            <a href="../{{config('app.defaultBaseURL.dallas-malayali-mosque')}}/{{ $rel['urlName'] }}" class="block_txtblock">{{ $rel['name'] }}</a>                                                          
+                        @endif
+                        <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img {{$loop->index}}{{ $rel['name'] }} src="image/map.svg" /></a>
+                        <div class="block_kmblock">
+                            @if (isset($rel['distance']) && $rel['distance'])
+                                <div class="reli_kmblock">{{$rel['distance']}}</div>
+                            @endif   
+                            <div class="txtblock">{{$rel['city']}}, {{$rel['zip']}}</br>{{$rel['phone1']}}</div>
+                        </div>
+                        <div class="bottomborder"></div>
                     </div>
-                    <div class="bottomborder"></div>
-                </div>
-                <div class="main_block">
-                    <a href="#" class="block_txtblock">Bel Air Presbyterian Church</a>
-                    <a href="#" class="mapicon1"><img src="image/map.svg" /></a>
-                    <div class="block_kmblock">
-                        <div class="reli_kmblock">11.0 KM</div>
-                        <div class="txtblock">Closed - Opens 7 AM</br>+1 901-896-3245</div>
-                    </div>
-                    <div class="bottomborder"></div>
-                </div>
-                <div class="main_block">
-                    <a href="#" class="block_txtblock">Fellowship Church Grapevine Campus</a>
-                    <a href="#" class="mapicon1"><img src="image/map.svg" /></a>
-                    <div class="block_kmblock">
-                        <div class="reli_kmblock">11.0 KM</div>
-                        <div class="txtblock">Closed - Opens 7 AM</br>+1 901-896-3245</div>
-                    </div>
-                </div>
+                @endforeach
                 <div class="reli_block3bottom"></div>
             </div>
 

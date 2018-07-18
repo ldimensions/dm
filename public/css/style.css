@@ -664,3 +664,8 @@ input[type=text], select{
 	display: none;
 }
 /*---------- Image Slider End----------*/
+
+.relatedContent{
+	min-height:20px;
+	margin: 15px;
+}
