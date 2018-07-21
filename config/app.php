@@ -22,11 +22,15 @@ return [
         ]
     ],
 
-    defaultBaseURL => [
-        'dallas-malayali-grocery-store'         => 'dallas-malayali-grocery-store',
+    'defaultBaseURL' => [
         'dallas-malayali-church'                => 'dallas-malayali-church',
         'dallas-malayali-temple'                => 'dallas-malayali-temple',
-        'dallas-malayali-mosque'                => 'dallas-malayali-mosque'
+        'dallas-malayali-mosque'                => 'dallas-malayali-mosque',
+
+        'dallas-indian-grocery-store'           => 'dallas-indian-grocery-store',
+        'dallas-malayali-grocery-store'         => 'dallas-malayali-grocery-store',
+        'dallas-tamil-grocery-store'            => 'dallas-tamil-grocery-store',
+        
     ],
 
     
