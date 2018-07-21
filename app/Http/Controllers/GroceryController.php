@@ -36,7 +36,7 @@ class GroceryController extends Controller
                                             ->where('grocery.is_deleted', '=', '0')
                                             ->where('grocery.is_disabled', '=', '0')
                                             ->where('site.siteId', '=', $siteId)
-                                            //->where('photo.is_primary', '=', '1')
+                                            ->where('photo.is_primary', '=', '1')
                                             ->orderBy('grocery.premium', 'asc')
                                             ->orderBy('grocery.order', 'asc')                                                    
                                             ->get(); 
@@ -56,32 +56,33 @@ class GroceryController extends Controller
                     }
                 }
             }
-
-            $today                              =    date('l');
-            $workingTimes                       =   ($grocery['workingTime'])?json_decode($grocery['workingTime'], true):'';
-
-            if($workingTimes){
-                $now                            =   strtotime(date("Y-m-d h:i:s"));
-                //echo (date("Y-m-d h:i:s"))."----";
-                foreach($workingTimes['default'][0][$today] as $skey => $specificDayArr) {    
-                    foreach($specificDayArr as $sdArrkey => $specificDaySubArr) {    
-                        foreach($specificDaySubArr as $sdkey => $specificDay) { 
-                            $splitOldDateArr    =   explode(" ",$specificDay);
-                            $splitNewDate       =   date("Y-m-d")." ".$splitOldDateArr[1];
-                            $strtotime          =   strtotime($splitNewDate);
-                            $diff  = $now - $strtotime;
-                            //echo "----";
-
-                            $hours = floor($diff / (60 * 60));
-                            $minutes = $diff - $hours * (60 * 60);
-                            //echo $splitNewDate.' Remaining time: ' . $hours .  ' hours, ' . floor( $minutes / 60 ) . ' minutes<br/>';
-                        }
-                    }   
-                }
-            }
         }
+
+        //     $today                              =    date('l');
+        //     $workingTimes                       =   ($grocery['workingTime'])?json_decode($grocery['workingTime'], true):'';
+
+        //     if($workingTimes){
+        //         $now                            =   strtotime(date("Y-m-d h:i:s"));
+        //         //echo (date("Y-m-d h:i:s"))."----";
+        //         foreach($workingTimes['default'][0][$today] as $skey => $specificDayArr) {    
+        //             foreach($specificDayArr as $sdArrkey => $specificDaySubArr) {    
+        //                 foreach($specificDaySubArr as $sdkey => $specificDay) { 
+        //                     $splitOldDateArr    =   explode(" ",$specificDay);
+        //                     $splitNewDate       =   date("Y-m-d")." ".$splitOldDateArr[1];
+        //                     $strtotime          =   strtotime($splitNewDate);
+        //                     $diff  = $now - $strtotime;
+        //                     //echo "----";
+
+        //                     $hours = floor($diff / (60 * 60));
+        //                     $minutes = $diff - $hours * (60 * 60);
+        //                     //echo $splitNewDate.' Remaining time: ' . $hours .  ' hours, ' . floor( $minutes / 60 ) . ' minutes<br/>';
+        //                 }
+        //             }   
+        //         }
+        //     }
+        // }
         
-        //echo date('l');
+        // //echo date('l');
         
                         
         $commonCtrl->setMeta($request->path(),1);

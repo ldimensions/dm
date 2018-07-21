@@ -19,8 +19,9 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-$this->get('/dallas-malayali-grocery-store', 'GroceryController@index')->name('grocery');
-$this->get('/dallas-malayali-grocery-store/{url}', 'GroceryController@getDetails')->name('grocery_details')->where('url', '[A-Za-z-+]+');
+$this->get('/dallas-indian-grocery-store', 'GroceryController@index')->name('grocery');
+$this->get('/dallas-indian-grocery-store/{type}/{city}', 'GroceryController@index');
+$this->get('/dallas-indian-grocery-store/{url}', 'GroceryController@getDetails')->name('grocery_details')->where('url', '[A-Za-z-+]+');
 
 $this->get('/'.config('app.defaultBaseURL.dallas-malayali-church'), 'ReligionController@index')->name('religion');
 $this->get('/'.config('app.defaultBaseURL.dallas-malayali-church').'/{url}', 'ReligionController@getDetails')->name('religionDetails')->where('url', '[A-Za-z-+]+');
