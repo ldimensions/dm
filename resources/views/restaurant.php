@@ -19,7 +19,7 @@
                         @endforeach
                     </select>
                 <input type="text" id="Keywords" name="Keywords" placeholder="Keywords" class="text1">
-                <a href="JavaScript:void(0)" class="search" onclick="grocerySearch()">Search</a>
+                <a href="JavaScript:void(0)" class="search" onclick="restaurantSearch()">Search</a>
             </form>
         </div>
         <div class="col-md-12 paggination">
@@ -27,11 +27,11 @@
             <!-- <div class="pagecount">Page: 1 of 1</div> -->
             <div class="pagecount">&nbsp;</div>
         </div>
-        @foreach ($grocery as $key => $rel)
+        @foreach ($restaurant as $key => $rel)
         <div class="col-md-12 block1">
                 <div class="smallImage">
                 @if (isset($rel['photoName']) && $rel['photoName'])
-                    <img src="{{ URL::to('/') }}/image/grocery/{{$rel['id']}}/{{$rel['photoName']}}" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
+                    <img src="{{ URL::to('/') }}/image/restaurant/{{$rel['id']}}/{{$rel['photoName']}}" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
                 @else if
                     <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
                 @endif                 

@@ -128,24 +128,13 @@ class ReligionController extends Controller
             $photo                          =   $photoRs->toArray();  
 
             $commonCtrl->setMeta($request->path(),2);
-            // print_r($religionRs);
-
-            // $start = strtotime('2017-08-11 11:05:00');
-            // $end   = strtotime('2017-08-11 11:04:00');
-            // $diff  = $end - $start;
             
-            // $hours = floor($diff / (60 * 60));
-            // $minutes = $diff - $hours * (60 * 60);
-            // echo 'Remaining time: ' . $hours .  ' hours, ' . floor( $minutes / 60 ) . ' minutes';
-
-            //echo $currentDate =  date("H:i", strtotime('2018-06-22 18:04:00'));
             $now = strtotime("now");
             $yourTime   =   strtotime('2018-06-22 11:04:00');
             $diff  = $now - $yourTime;
 
             $hours = floor($diff / (60 * 60));
             $minutes = $diff - $hours * (60 * 60);
-            //echo 'Remaining time: ' . $hours .  ' hours, ' . floor( $minutes / 60 ) . ' minutes';
 
             $todaysDate =   date("l");     
             
@@ -182,6 +171,8 @@ class ReligionController extends Controller
                                             ->where('religion.id', '!=', $id)
                                             //->where('denomination.denominationName', '=', $denominationName)
                                             ->where('photo.is_primary', '=', '1')
+                                            ->where('religion.is_deleted', '=', '0')
+                                            ->where('religion.is_disabled', '=', '0')                                            
                                             ->orderBy('religion.premium', 'desc')
                                             ->orderBy('religion.order', 'asc')                                                    
                                             ->take(5)->get();

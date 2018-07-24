@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-md-9 leftcontainer">
-    <div class="col-md-12 paggination"><a href="list.html" class="subcontent2">Religions</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="#" class="title">Details</a></div>
+    <div class="col-md-12 paggination"><a href="../{{config('app.defaultBaseURL.dallas-malayali-church')}}" class="subcontent2">Religions</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Details</span></div>
     <div class="col-md-6 block2">
         <div class="topdetail slideshow-container">
             <ul id="lightSlider">
@@ -40,24 +40,28 @@
                 <tr>
                     <td colspan="2"><a href="tel:{{ $religion['phone1'] }}">{{ $religion['phone1'] }}</a></td>
                 </tr>
-                <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><a href="{{ $religion['website'] }}" target="_blank">{{ $religion['website'] }}</a></td>
-                </tr>                
+                @if (isset($religion['website']) && $religion['website'])
+                    <tr>
+                        <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><a href="{{ $religion['website'] }}" target="_blank">{{ $religion['website'] }}</a></td>
+                    </tr>   
+                @endif             
                 <tr>
                     <td colspan="2" class="smallfont tdtoppadd1">Located In:</td>
                 </tr>
                 <tr>
                     <td colspan="2">{{ $religion['city'] }}</td>
                 </tr>
+                @if (isset($distance) && $distance)
                     <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Distance:</td>
-                </tr>
-                <tr>
-                    <td colspan="2">{{ $distance }}</td>
-                </tr>
+                        <td colspan="2" class="smallfont tdtoppadd1">Distance:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">{{ $distance }}</td>
+                    </tr>
+                @endif
             </table>
             @if ($religion['religionName'] == 'Christianity')
             @foreach ($workingTimes as $wtKey => $wtArr)

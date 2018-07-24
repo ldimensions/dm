@@ -49,7 +49,7 @@
                     <div class="menu"> 
                         <a href="{{ url('/') }}" class="{{ (request()->is('/')) ? 'activemenu' : 'inactivemenu' }}">Home</a> 
                         <a href="{{ route('grocery') }}" class="{{ (request()->is('dallas-indian-grocery-store')) ? 'activemenu' : 'inactivemenu' }}">Groceries</a> 
-                        <a href="#" class="inactivemenu">Restaurants </a> 
+                        <a href="{{ route('restaurant') }}" class="{{ (request()->is('dallas-indian-restaurant')) ? 'activemenu' : 'inactivemenu' }}">Restaurants </a> 
                         <a href="{{ route('religion') }}" class="{{ (request()->is('dallas-malayali-church')) ? 'activemenu' : 'inactivemenu' }}">Religions </a> 
                         <a href="#" class="inactivemenu">Automotive </a> 
                     </div>

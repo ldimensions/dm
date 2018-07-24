@@ -28,9 +28,12 @@ return [
         'dallas-malayali-mosque'                => 'dallas-malayali-mosque',
 
         'dallas-indian-grocery-store'           => 'dallas-indian-grocery-store',
-        'dallas-malayali-grocery-store'         => 'dallas-malayali-grocery-store',
+        'dallas-kerala-grocery-store'           => 'dallas-kerala-grocery-store',
         'dallas-tamil-grocery-store'            => 'dallas-tamil-grocery-store',
+
+        'indian-grocery-store'                  => 'indian-grocery-store',
         
+        'grocery-store-details'                 => 'dallas-grocery-store' 
     ],
 
     
