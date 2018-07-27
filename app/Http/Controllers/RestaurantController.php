@@ -49,11 +49,14 @@ class RestaurantController extends Controller
                 if($lat && $long){
                     $dist                       =   $commonCtrl->distance($lat, $long, "M");
                     if($dist){
-                        $restaurant[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
+                        $restaurants[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
                     }
                 }
             }
         }
+
+        // echo "<pre>";
+        // print_r($restaurants);
 
         $cityRs                             =   City::select('city', 'value')
                                                 ->orderBy('city', 'asc')
@@ -63,9 +66,140 @@ class RestaurantController extends Controller
         // echo "<pre>";
         // print_r($cities);
         
-        return view('restaurant',['restaurant' => $restaurants, 'cities' => $cities]);    }
+        return view('restaurant',['restaurant' => $restaurants, 'cities' => $cities]);    
+    }
 
-    public function getDetails(){
-        echo "details";
+    public function getDetails(Request $request,$url){
+        
+        $distance                       =   "";
+        $commonCtrl                     =   new CommonController;
+
+        $seoUrl                         =   $commonCtrl->seoUrl($request->path(),2);        
+
+        $siteId                         =   config('app.siteId');
+        $restaurantRs                   =   Restaurant::select('restaurant.id', 'restaurant.name', 
+                                                    'restaurant.description', 'restaurant.workingTime',
+                                                    'address.address1', 'address.address2',
+                                                    'restaurant.website',                                                
+                                                    'city.city', 'address.state',
+                                                    'address.zip', 'address.county',
+                                                    'address.phone1', 'address.latitude',
+                                                    'address.longitude', 'ethnic.ethnicName',
+                                                    'ethnic.id as ethnicId')
+                                                    ->leftjoin('url','url.restaurantId', '=', 'restaurant.id')
+                                                    ->leftjoin('address','address.id', '=', 'restaurant.addressId')
+                                                    ->leftjoin('ethnic','ethnic.id', '=', 'restaurant.ethnicId')
+                                                    ->leftjoin('site','site.siteId', '=', 'restaurant.siteId')
+                                                    ->leftjoin('city','city.cityId', '=', 'address.city')                                                                                       
+                                                    ->where('site.siteId', '=', $siteId)
+                                                    ->where('url.urlName', '=', $url)
+                                                    ->where('restaurant.is_deleted', '=', '0')
+                                                    ->where('restaurant.is_disabled', '=', '0')
+                                                    ->get(); 
+
+        $restaurant                         =   $restaurantRs->toArray(); 
+        $restaurant                         =   $restaurant[0]; 
+
+        if($restaurant){
+
+            $restaurantId                   =   $restaurant['id'];
+            
+            $lat                            =   ($restaurant['latitude'])?$restaurant['latitude']:'';
+            $long                           =   ($restaurant['longitude'])?$restaurant['longitude']:'';
+    
+            if($lat && $long){
+                $distance                   =   number_format((float)$commonCtrl->distance($lat, $long, "M"), 1, '.', '')." Miles";
+            }
+
+            $workingTimes                   =   json_decode($restaurant['workingTime'], true);
+            foreach($workingTimes as $rootKey => $workingTime) {
+                foreach($workingTime as $subkey => $subWorkingTime) {
+                    foreach($subWorkingTime as $dayKey => $dayWorkingTime) {
+                        foreach($dayWorkingTime as $keys => $times) {
+                            foreach($times as $key => $time) {
+                                $workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'] = date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time']));
+                            }
+                        }
+                    }
+                }
+            }
+    
+            $photoRs                        =   Photo::select('photo.photoId', 'photo.photoName', 
+                                                    'photo.is_primary', 'photo.order')
+                                                ->where('photo.is_deleted', '=', '0')
+                                                ->where('photo.is_disabled', '=', '0')
+                                                ->where('photo.restaurantId', '=', $restaurantId)
+                                                ->orderBy('photo.order', 'asc') 
+                                                ->get();        
+            
+            $photo                          =   $photoRs->toArray();  
+
+            $commonCtrl->setMeta($request->path(),2);
+
+            // $now = strtotime("now");
+            // $yourTime   =   strtotime('2018-06-22 11:04:00');
+            // $diff  = $now - $yourTime;
+
+            // $hours = floor($diff / (60 * 60));
+            // $minutes = $diff - $hours * (60 * 60);
+
+            $todaysDate =   date("l");     
+            
+            return view('restaurant_details',['restaurant' => $restaurant, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate]);
+        }else{
+            return redirect()->back();
+        }
+    }
+
+    public function getRelated(Request $request,$ethnicId,$id){
+        
+        $distance                       =   "";
+        $commonCtrl                     =   new CommonController;        
+
+        $siteId                         =   config('app.siteId');
+
+        $relatedRs                      =   Grocery::select('grocery.id', 'grocery.name', 
+                                            'grocery.description', 'grocery.workingTime',
+                                            'address.address1', 'address.address2',
+                                            'grocery.website',                                                
+                                            'address.city', 'address.state',
+                                            'address.zip', 'address.county',
+                                            'address.city', 'address.state',
+                                            'address.phone1', 'address.latitude',
+                                            'address.longitude', 'ethnic.ethnicName',
+                                            'ethnic.id as ethnicId')
+                                                ->leftjoin('url','url.groceryId', '=', 'grocery.id')
+                                                ->leftjoin('address','address.id', '=', 'grocery.addressId')
+                                                ->leftjoin('ethnic','ethnic.id', '=', 'grocery.ethnicId')
+                                                ->leftjoin('site','site.siteId', '=', 'grocery.siteId')
+                                                ->leftjoin('photo','photo.photoId', '=', 'grocery.id')                                                                                    
+                                                ->where('site.siteId', '=', $siteId)
+                                                ->where('grocery.id', '!=', $id)
+                                                ->where('ethnic.id', '=', $ethnicId)                                        
+                                                ->where('grocery.is_deleted', '=', '0')
+                                                ->where('grocery.is_disabled', '=', '0')
+                                                ->where('photo.is_primary', '=', '1')
+                                                ->orderBy('grocery.premium', 'desc')
+                                                ->orderBy('grocery.order', 'asc')                                         
+                                                ->take(5)->get();                                          
+        
+        $related                     =   $relatedRs->toArray();  
+
+        if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
+            foreach($related as $key => $relatedRs) {    
+                $distance                       =   "";
+                $related[$key]["distance"]    =   "";
+                $lat                            =   ($relatedRs['latitude'])?$relatedRs['latitude']:'';
+                $long                           =   ($relatedRs['longitude'])?$relatedRs['longitude']:'';
+                if($lat && $long){
+                    $dist                       =   $commonCtrl->distance($lat, $long, "M");
+                    if($dist){
+                        $related[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
+                    }
+                }
+            }
+        }  
+                
+        return view('related',['related' => $related]);
     }
 }

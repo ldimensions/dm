@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\CommonController;
 use Illuminate\Http\Request;
 use App\Http\Models\Religion;
+use App\Http\Models\Restaurant;
+use App\Http\Models\Grocery;
 use App\Http\Models\Photo;
 use App\Http\Models\Url;
 
@@ -65,10 +67,89 @@ class HomeController extends Controller
                 }
             }
         }       
-        //print_r($religion);
 
+        // Top groceries
+        
+        $groceryRs                      =   Grocery::select('grocery.id', 'grocery.name', 
+                                                'grocery.description', 'grocery.workingTime',
+                                                'address.address1', 'address.address2',
+                                                'city.city', 'address.state',
+                                                'address.zip', 'address.county',
+                                                'address.phone1', 'address.latitude',
+                                                'address.longitude', 'ethnic.ethnicName',
+                                                'url.urlName')
+                                            ->leftjoin('url','url.groceryId', '=', 'grocery.id')
+                                            ->leftjoin('address','address.id', '=', 'grocery.addressId')
+                                            ->leftjoin('ethnic','ethnic.id', '=', 'grocery.ethnicId')
+                                            ->leftjoin('site','site.siteId', '=', 'grocery.siteId')
+                                            ->leftjoin('city','city.cityId', '=', 'address.city')                                           
+                                            ->where('grocery.is_deleted', '=', '0')
+                                            ->where('grocery.is_disabled', '=', '0')
+                                            ->where('site.siteId', '=', $siteId)
+                                            ->orderBy('grocery.premium', 'desc')
+                                            ->orderBy('grocery.order', 'asc') 
+                                            ->take(5)                                                                                                      
+                                            ->get(); 
+        
+        $grocerys                        =   $groceryRs->toArray();
+
+        foreach($grocerys as $key => $grocery) {    
+
+            if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
+                $distance                       =   "";
+                $lat                            =   ($grocery['latitude'])?$grocery['latitude']:'';
+                $long                           =   ($grocery['longitude'])?$grocery['longitude']:'';
+                if($lat && $long){
+                    $dist                       =   $commonCtrl->distance($lat, $long, "M");
+                    if($dist){
+                        $grocerys[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
+                    }
+                }
+            }
+        }
+
+        // Top restaurants
+
+        $restaurantRs                   =   Restaurant::select('restaurant.id', 'restaurant.name', 
+                                                    'restaurant.description', 'restaurant.workingTime',
+                                                    'address.address1', 'address.address2',
+                                                    'city.city', 'address.state',
+                                                    'address.zip', 'address.county',
+                                                    'address.phone1', 'address.latitude',
+                                                    'address.longitude', 'ethnic.ethnicName',
+                                                    'url.urlName')
+                                                ->leftjoin('url','url.restaurantId', '=', 'restaurant.id')
+                                                ->leftjoin('address','address.id', '=', 'restaurant.addressId')
+                                                ->leftjoin('ethnic','ethnic.id', '=', 'restaurant.ethnicId')
+                                                ->leftjoin('site','site.siteId', '=', 'restaurant.siteId')
+                                                ->leftjoin('city','city.cityId', '=', 'address.city')                                           
+                                                ->where('restaurant.is_deleted', '=', '0')
+                                                ->where('restaurant.is_disabled', '=', '0')
+                                                ->where('site.siteId', '=', $siteId)
+                                                ->orderBy('restaurant.premium', 'desc')
+                                                ->orderBy('restaurant.order', 'asc') 
+                                                ->take(5)                                                                                                      
+                                                ->get(); 
+        
+        $restaurants                     =   $restaurantRs->toArray();
+
+        foreach($restaurants as $key => $restaurant) {    
+
+            if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
+                $distance                       =   "";
+                $lat                            =   ($restaurant['latitude'])?$restaurant['latitude']:'';
+                $long                           =   ($restaurant['longitude'])?$restaurant['longitude']:'';
+                if($lat && $long){
+                    $dist                       =   $commonCtrl->distance($lat, $long, "M");
+                    if($dist){
+                        $restaurants[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
+                    }
+                }
+            }
+        }
+        
         $commonCtrl->setMeta($request->path(),1);
         
-        return view('home',['religion' => $religions]);
+        return view('home',['religion' => $religions, 'grocery' => $grocerys, 'restaurants' => $restaurants]);
     }
 }

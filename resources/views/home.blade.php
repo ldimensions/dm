@@ -16,64 +16,38 @@
             </form>
         </div>
         <div class="col-md-4 block3">
-            <div class="gro_block3">Top 3 Groceries</div>
-            <div class="main_block">
-                <a href="Details.html" class="block_txtblock">Whole Food Market</a>
-                <a href="Details.html" class="mapicon1"><img src="image/map.svg" /></a>
-                <div class="block_kmblock">
-                    <div class="gro_kmblock">11.0 KM</div>
-                        <div class="txtblock">Closed - Opens 7 AM</br>+1 901-896-3245</div>
+            <div class="gro_block3">Groceries</div>
+                @foreach ($grocery as $key => $rel)
+                    <div class="main_block">
+                        <a href="../{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" class="block_txtblock">{{ $rel['name'] }}</a>                                                          
+                        <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img {{$loop->index}}{{ $rel['name'] }} src="image/map.svg" /></a>
+                        <div class="block_kmblock">
+                            @if (isset($rel['distance']) && $rel['distance'])
+                                <div class="reli_kmblock">{{$rel['distance']}}</div>
+                            @endif   
+                            <div class="txtblock">{{$rel['city']}}, {{$rel['zip']}}</br>{{$rel['phone1']}}</div>
+                        </div>
+                        <div class="bottomborder"></div>
                     </div>
-                    <div class="bottomborder"></div>
-                </div>
-                <div class="main_block">
-                    <a href="#" class="block_txtblock">GIANT Food Stores</a>
-                    <a href="#" class="mapicon1"><img src="image/map.svg" /></a>
-                    <div class="block_kmblock">
-                        <div class="gro_kmblock">11.0 KM</div>
-                        <div class="txtblock">Closed - Opens 7 AM</br>+1 901-896-3245</div>
-                    </div>
-                    <div class="bottomborder"></div>
-                </div>
-                <div class="main_block">
-                    <a href="#" class="block_txtblock">Food Country USA</a>
-                    <a href="#" class="mapicon1"><img src="image/map.svg" /></a>
-                    <div class="block_kmblock">
-                        <div class="gro_kmblock">11.0 KM</div>
-                        <div class="txtblock">Closed - Opens 7 AM</br>+1 901-896-3245</div>
-                    </div>
-                </div>
+                @endforeach
                 <div class="gro_block3bottom"></div>
             </div>
 
             <div class="col-md-4 block3">
-                <div class="re_block3">Top 3 Restaurants</div>
-                <div class="main_block">
-                    <a href="#" class="block_txtblock">Branded Restaurants USA</a>
-                    <a href="#" class="mapicon1"><img src="image/map.svg" /></a>
-                    <div class="block_kmblock">
-                        <div class="re_kmblock">11.0 KM</div>
-                        <div class="txtblock">Closed - Opens 7 AM</br>+1 901-896-3245</div>
+                <div class="re_block3">Restaurants</div>
+                @foreach ($restaurants as $key => $rel)
+                    <div class="main_block">
+                        <a href="../{{config('app.defaultBaseURL.dallas-indian-restaurant')}}/{{ $rel['urlName'] }}" class="block_txtblock">{{ $rel['name'] }}</a>                                                          
+                        <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img {{$loop->index}}{{ $rel['name'] }} src="image/map.svg" /></a>
+                        <div class="block_kmblock">
+                            @if (isset($rel['distance']) && $rel['distance'])
+                                <div class="reli_kmblock">{{$rel['distance']}}</div>
+                            @endif   
+                            <div class="txtblock">{{$rel['city']}}, {{$rel['zip']}}</br>{{$rel['phone1']}}</div>
+                        </div>
+                        <div class="bottomborder"></div>
                     </div>
-                    <div class="bottomborder"></div>
-                </div>
-                <div class="main_block">
-                    <a href="#" class="block_txtblock">USA Family Restaurant</a>
-                    <a href="#" class="mapicon1"><img src="image/map.svg" /></a>
-                    <div class="block_kmblock">
-                        <div class="re_kmblock">11.0 KM</div>
-                        <div class="txtblock">Closed - Opens 7 AM</br>+1 901-896-3245</div>
-                    </div>
-                    <div class="bottomborder"></div>
-                </div>
-                <div class="main_block">
-                    <a href="#" class="block_txtblock">Quad Cities USA Family Restaurant</a>
-                    <a href="#" class="mapicon1"><img src="image/map.svg" /></a>
-                    <div class="block_kmblock">
-                        <div class="re_kmblock">11.0 KM</div>
-                        <div class="txtblock">Closed - Opens 7 AM</br>+1 901-896-3245</div>
-                    </div>
-                </div>
+                @endforeach                
                 <div class="re_block3bottom"></div>
             </div>
 
@@ -105,36 +79,6 @@
                 <div class="reli_block3bottom"></div>
             </div>
 
-            <div class="col-md-4 block3">
-                <div class="auto_block3">Top 3 Automotive</div>
-                <div class="main_block">
-                    <a href="#" class="block_txtblock">Automotive USA</a>
-                    <a href="#" class="mapicon1"><img src="image/map.svg" /></a>
-                    <div class="block_kmblock">
-                        <div class="auto_kmblock">11.0 KM</div>
-                        <div class="txtblock">Closed - Opens 7 AM</br>+1 901-896-3245</div>
-                    </div>
-                    <div class="bottomborder"></div>
-                </div>
-                <div class="main_block">
-                    <a href="#" class="block_txtblock">USA Automotive</a>
-                    <a href="#" class="mapicon1"><img src="image/map.svg" /></a>
-                    <div class="block_kmblock">
-                        <div class="auto_kmblock">11.0 KM</div>
-                        <div class="txtblock">Closed - Opens 7 AM</br>+1 901-896-3245</div>
-                    </div>
-                    <div class="bottomborder"></div>
-                </div>
-                <div class="main_block">
-                    <a href="#" class="block_txtblock">Eissmann Automotive NA Inc</a>
-                    <a href="#" class="mapicon1"><img src="image/map.svg" /></a>
-                    <div class="block_kmblock">
-                        <div class="auto_kmblock">11.0 KM</div>
-                        <div class="txtblock">Closed - Opens 7 AM</br>+1 901-896-3245</div>
-                    </div>
-                </div>
-                <div class="auto_block3bottom"></div>
-            </div>
 
         </div>
         <div class="col-md-3 rightcontainer"></div>

@@ -21,14 +21,15 @@ Route::get('/', 'HomeController@index')->name('home');
 
 $this->get('/dallas-indian-grocery-store', 'GroceryController@index')->name('grocery');
 //$this->get('/dallas-indian-grocery-store/{type}/{city}', 'GroceryController@index');
-$this->get('/dallas-indian-grocery-store/{city}', 'GroceryController@index')->name('indian_grocery')->where('city', '[A-Za-z-+]+');
-$this->get('/dallas-kerala-grocery-store/{city}', 'GroceryController@index')->name('kerala_grocery')->where('city', '[A-Za-z-+]+');
-$this->get('/dallas-tamil-grocery-store/{city}', 'GroceryController@index')->name('tamil_grocery')->where('city', '[A-Za-z-+]+');
-$this->get('/dallas-grocery-store/{url}', 'GroceryController@getDetails')->name('grocery_details')->where('url', '[A-Za-z-+]+');
-$this->get('/grocery-related/{ethnicId}/{id}', 'GroceryController@getRelated')->name('religionDetails')->where('id', '[0-9]+');
+$this->get('/dallas-indian-grocery-store/{city}', 'GroceryController@index')->name('indian_grocery')->where('city', '[A-Za-z-+0-9]+');
+$this->get('/dallas-kerala-grocery-store/{city}', 'GroceryController@index')->name('kerala_grocery')->where('city', '[A-Za-z-+0-9]+');
+$this->get('/dallas-tamil-grocery-store/{city}', 'GroceryController@index')->name('tamil_grocery')->where('city', '[A-Za-z-+0-9]+');
+$this->get('/dallas-grocery-store/{url}', 'GroceryController@getDetails')->name('grocery_details')->where('url', '[A-Za-z-+0-9]+');
+$this->get('/grocery-related/{ethnicId}/{id}', 'GroceryController@getRelated')->name('religionDetails')->where(['id' => '[0-9]+', 'ethnicId' => '[0-9]+']);
 
 
 $this->get('/dallas-indian-restaurant', 'RestaurantController@index')->name('restaurant');
+$this->get('/dallas-indian-restaurant/{url}', 'RestaurantController@getDetails')->name('restaurant_details')->where('url', '[A-Za-z-+0-9]+');
 
 
 $this->get('/'.config('app.defaultBaseURL.dallas-malayali-church'), 'ReligionController@index')->name('religion');
@@ -36,10 +37,10 @@ $this->get('/'.config('app.defaultBaseURL.dallas-malayali-church').'/{url}', 'Re
 $this->get('/'.config('app.defaultBaseURL.dallas-malayali-temple').'/{url}', 'ReligionController@getDetails')->name('religionDetails')->where('url', '[A-Za-z-+]+');
 $this->get('/'.config('app.defaultBaseURL.dallas-malayali-mosque').'/{url}', 'ReligionController@getDetails')->name('religionDetails')->where('url', '[A-Za-z-+]+');
 
-$this->get('/religion-related/{denomination}/{id}', 'ReligionController@getRelated')->name('religionDetails')->where('id', '[0-9]+');
+$this->get('/religion-related/{denomination}/{id}', 'ReligionController@getRelated')->name('religionDetails')->where(['denomination' => '[A-Za-z-+0-9]+', 'id' => '[0-9]+']);
 
-$this->get('/dallas-malayali-restaurant', 'RestaurantController@index')->name('restaurant');
-$this->get('/dallas-malayali-restaurant/{url}', 'RestaurantController@getDetails')->name('restaurantDetails')->where('url', '[A-Za-z-+]+');
+//$this->get('/dallas-malayali-restaurant', 'RestaurantController@index')->name('restaurant');
+//$this->get('/dallas-malayali-restaurant/{url}', 'RestaurantController@getDetails')->name('restaurantDetails')->where('url', '[A-Za-z-+]+');
 
 
 

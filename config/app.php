@@ -33,7 +33,11 @@ return [
 
         'indian-grocery-store'                  => 'indian-grocery-store',
         
-        'grocery-store-details'                 => 'dallas-grocery-store' 
+        'grocery-store-details'                 => 'dallas-grocery-store', 
+
+        'dallas-indian-restaurant'              => 'dallas-indian-restaurant',
+        'dallas-kerala-restaurant'              => 'dallas-kerala-restaurant',
+        'dallas-tamil-restaurant'               => 'dallas-tamil-restaurant',
     ],
 
     

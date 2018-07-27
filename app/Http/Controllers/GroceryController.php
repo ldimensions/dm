@@ -117,7 +117,7 @@ class GroceryController extends Controller
                 foreach($workingTime as $subkey => $subWorkingTime) {
                     foreach($subWorkingTime as $dayKey => $dayWorkingTime) {
                         foreach($dayWorkingTime as $key => $time) {
-                            $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'] = date("H:i  a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                            $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'] = date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
                         }
                     }
                 }
@@ -135,12 +135,12 @@ class GroceryController extends Controller
 
             $commonCtrl->setMeta($request->path(),2);
 
-            $now = strtotime("now");
-            $yourTime   =   strtotime('2018-06-22 11:04:00');
-            $diff  = $now - $yourTime;
+            // $now = strtotime("now");
+            // $yourTime   =   strtotime('2018-06-22 11:04:00');
+            // $diff  = $now - $yourTime;
 
-            $hours = floor($diff / (60 * 60));
-            $minutes = $diff - $hours * (60 * 60);
+            // $hours = floor($diff / (60 * 60));
+            // $minutes = $diff - $hours * (60 * 60);
 
             $todaysDate =   date("l");     
             
