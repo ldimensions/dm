@@ -28,27 +28,27 @@
             <div class="pagecount">&nbsp;</div>
         </div>
         @foreach ($grocery as $key => $rel)
-        <div class="col-md-12 block1">
-                <div class="smallImage">
-                @if (isset($rel['photoName']) && $rel['photoName'])
-                    <img src="{{ URL::to('/') }}/image/grocery/{{$rel['id']}}/{{$rel['photoName']}}" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
-                @else
-                    <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
-                @endif                 
-                <div class="content1"> 
-                    <a href="../{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>                                                           
-                </div>
-                <div class="content3"> <span class="subcontent1">Ethnicity:</span> <span class="subcontent2">{{ $rel['ethnicName'] }}</span> </div>
-                <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
-                <div class="content2"> <span class="subcontent1">Address:</span> <span class="subcontent2">{{ $rel['address1'] }} {{ $rel['address2'] }}, {{ $rel['city'] }}, {{ $rel['state'] }} {{ $rel['zip'] }}</span> </div>
-                <div class="content3"> <span class="subcontent1">Phone:</span> <span class="subcontent2"><a href="tel:{{ $rel['phone1'] }}">{{ $rel['phone1'] }}</a></span> </div>
-                <div class="content3"> <span class="subcontent1">Located In:</span> <span class="subcontent2">{{ $rel['city'] }}</span> </div>
-                @if (isset($rel['distance']) && $rel['distance'])
-                    <div class="gro_kmblock_list">Distance : {{ $rel['distance'] }}</div>
-                @endif                 
-                <div class="open_close">Closed - Open 7 AM----</div>
-        </div>
-    @endforeach
+            <div class="col-md-12 block1">
+                    <div class="smallImage">
+                    @if (isset($rel['photoName']) && $rel['photoName'])
+                        <img src="{{ URL::to('/') }}/image/grocery/{{$rel['id']}}/{{$rel['photoName']}}" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
+                    @else   
+                        <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
+                    @endif                 
+                    <div class="content1"> 
+                        <a href="../{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>                                                           
+                    </div>
+                    <div class="content3"> <span class="subcontent1">Ethnicity:</span> <span class="subcontent2">{{ $rel['ethnicName'] }}</span> </div>
+                    <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
+                    <div class="content2"> <span class="subcontent1">Address:</span> <span class="subcontent2">{{ $rel['address1'] }} {{ $rel['address2'] }}, {{ $rel['city'] }}, {{ $rel['state'] }} {{ $rel['zip'] }}</span> </div>
+                    <div class="content3"> <span class="subcontent1">Phone:</span> <span class="subcontent2"><a href="tel:{{ $rel['phone1'] }}">{{ $rel['phone1'] }}</a></span> </div>
+                    <div class="content3"> <span class="subcontent1">Located In:</span> <span class="subcontent2">{{ $rel['city'] }}</span> </div>
+                    @if (isset($rel['distance']) && $rel['distance'])
+                        <div class="gro_kmblock_list">Distance : {{ $rel['distance'] }}</div>
+                    @endif                 
+                    <div class="open_close">Closed - Open 7 AM----</div>
+            </div>
+        @endforeach
     </div>
     <div class="col-md-3 rightcontainer"></div>
     

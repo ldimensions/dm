@@ -20,6 +20,12 @@
                 <tr>
                     <td colspan="2" class="tdtoppadd">{{ $grocery['description'] }}</td>
                 </tr>
+                <tr>
+                    <td colspan="2" class="smallfont tdtoppadd1">Ethnicity:</td>
+                </tr> 
+                <tr>
+                    <td colspan="2">{{ $grocery['ethnicName'] }}</td>
+                </tr>                
                 @if ( !empty ( $distance ) )                    
                     <tr>
                         <td colspan="2" class="smallfont tdtoppadd1">Distance:</td>
