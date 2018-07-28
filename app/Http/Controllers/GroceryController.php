@@ -32,12 +32,15 @@ class GroceryController extends Controller
                                             ->leftjoin('address','address.id', '=', 'grocery.addressId')
                                             ->leftjoin('ethnic','ethnic.id', '=', 'grocery.ethnicId')
                                             ->leftjoin('site','site.siteId', '=', 'grocery.siteId')
-                                            ->leftjoin('photo','photo.groceryId', '=', 'grocery.id')    
+                                            ->leftJoin('photo', function($join){
+                                                    $join->on('photo.groceryId', '=', 'grocery.id')
+                                                        //->on('photo.is_primary','=',1);
+                                                        ->where('photo.is_primary','=',1);
+                                            })   
                                             ->leftjoin('city','city.cityId', '=', 'address.city')                                           
                                             ->where('grocery.is_deleted', '=', '0')
                                             ->where('grocery.is_disabled', '=', '0')
                                             ->where('site.siteId', '=', $siteId)
-                                            ->where('photo.is_primary', '=', '1')
                                             ->orderBy('grocery.premium', 'asc')
                                             ->orderBy('grocery.order', 'asc')                                                    
                                             ->get(); 
@@ -65,7 +68,7 @@ class GroceryController extends Controller
         $cities                             =   $cityRs->toArray();      
         $commonCtrl->setMeta($request->path(),1);
         // echo "<pre>";
-        // print_r($cities);
+        // print_r($grocerys);
         
         return view('grocery',['grocery' => $grocerys, 'cities' => $cities]);
     }
