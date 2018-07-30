@@ -48,7 +48,7 @@ class HomeController extends Controller
                                             ->where('site.siteId', '=', $siteId)
                                             ->orderBy('religion.premium', 'desc')
                                             ->orderBy('religion.order', 'asc') 
-                                            ->take(5)                                                                                                      
+                                            ->take(3)                                                                                                      
                                             ->get(); 
         
         $religions                      =   $religionRs->toArray();  
@@ -88,7 +88,7 @@ class HomeController extends Controller
                                             ->where('site.siteId', '=', $siteId)
                                             ->orderBy('grocery.premium', 'desc')
                                             ->orderBy('grocery.order', 'asc') 
-                                            ->take(5)                                                                                                      
+                                            ->take(3)                                                                                                      
                                             ->get(); 
         
         $grocerys                        =   $groceryRs->toArray();
@@ -128,7 +128,7 @@ class HomeController extends Controller
                                                 ->where('site.siteId', '=', $siteId)
                                                 ->orderBy('restaurant.premium', 'desc')
                                                 ->orderBy('restaurant.order', 'asc') 
-                                                ->take(5)                                                                                                      
+                                                ->take(3)                                                                                                      
                                                 ->get(); 
         
         $restaurants                     =   $restaurantRs->toArray();

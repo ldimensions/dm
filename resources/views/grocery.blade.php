@@ -7,18 +7,38 @@
             <form>
                 <input name="Location" type="text" class="text locationimage" id="Location" placeholder="Location" readonly="readonly" >
                 <select name="type" class="select" id="type">
-                    <option value="{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}">All</option>
-                    <option value="{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}">Indian</option>
-                    <option value="{{config('app.defaultBaseURL.dallas-kerala-grocery-store')}}">Kerala</option>
-                    <option value="{{config('app.defaultBaseURL.dallas-tamil-grocery-store')}}">Tamil</option>
+                    <option 
+                        value="{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}-2" 
+                        {{ config('app.defaultBaseURL.dallas-indian-grocery-store').'-2' == $type ? 'selected="selected"' : '' }}>
+                            All
+                    </option>
+                    <option 
+                        value="{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}-2"
+                        {{ config('app.defaultBaseURL.dallas-indian-grocery-store').'-2' == $type ? 'selected="selected"' : '' }}>
+                            Indian
+                    </option>
+                    <option 
+                        value="{{config('app.defaultBaseURL.dallas-kerala-grocery-store')}}-1"
+                        {{ config('app.defaultBaseURL.dallas-kerala-grocery-store').'-1' == $type ? 'selected="selected"' : '' }}>
+                            Kerala
+                    </option>
+                    <option 
+                        value="{{config('app.defaultBaseURL.dallas-tamil-grocery-store')}}-3"
+                        {{ config('app.defaultBaseURL.dallas-tamil-grocery-store').'-3' == $type ? 'selected="selected"' : '' }}>
+                            Tamil
+                    </option>
                 </select>
                 <select name="city" class="select" id="city">
-                    <option value="">All</option>
+                    <option value="all">All</option>
                         @foreach ($cities as $key => $city)
-                            <option value="{{$city['value']}}-{{config('app.defaultBaseURL.indian-grocery-store')}}">{{$city['city']}}</option>
+                            <option 
+                                value="{{$city['value']}}-{{$city['cityId']}}"
+                                {{$city['cityId'] == $cityVal ? 'selected="selected"' : '' }}>
+                                {{$city['city']}}
+                            </option>
                         @endforeach
                     </select>
-                <input type="text" id="Keywords" name="Keywords" placeholder="Keywords" class="text1">
+                <input type="text" id="keyword" value="{{$keyword}}" name="Keyword" placeholder="Keywords" class="text1" maxlength="50" pattern="(1[0-2]|0[1-9])\/(1[5-9]|2\d)">
                 <a href="JavaScript:void(0)" class="search" onclick="grocerySearch()">Search</a>
             </form>
         </div>
@@ -27,6 +47,13 @@
             <!-- <div class="pagecount">Page: 1 of 1</div> -->
             <div class="pagecount">&nbsp;</div>
         </div>
+        @if (count($grocery) == 0)
+            <div class="col-md-12 block1">
+            Suggestions for improving the results:<br/>
+            Try a different location.<br/>
+            Check the spelling or try alternate spellings.<br/>
+            </div>
+        @endif   
         @foreach ($grocery as $key => $rel)
             <div class="col-md-12 block1">
                     <div class="smallImage">
@@ -54,22 +81,34 @@
     
     <script>
         function grocerySearch() {
-            var type = document.getElementById("type").value;
-            var city = document.getElementById("city").value;
-            var urlParm = '';
-            //if(type != 'all'){
-            urlParm = "{{ URL::to('/') }}/"+type+"/"+city;
-            //}
-            if(city != 'all'){
-                if(urlParm){
-                    //urlParm = urlParm+"/"+city;
-                }else{
-                    //urlParm = "{{ URL::to('/') }}/"+city;
-                }
+            var type        =   document.getElementById("type").value;
+            var city        =   document.getElementById("city").value;
+            var keyword     =   document.getElementById("keyword").value;
+            var urlParm     =   '';
+            if(city && city != 'all'){
+                city        =   'grocery-store-'+city;
+            }else{
+                city        =   'all';
             }
+            urlParm = "{{ URL::to('/') }}/grocery-search/"+type+"/"+city+"/"+keyword;
             window.location.href = urlParm;
-        }    
-    </script>
 
+        } 
+
+        $(function(){
+            $('#keyword').keyup(function()
+            {
+                var yourInput = $(this).val();
+                re = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi;
+                var isSplChar = re.test(yourInput);
+                if(isSplChar)
+                {
+                    var no_spl_char = yourInput.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+                    $(this).val(no_spl_char);
+                }
+            });
+        
+        });
+    </script>
 
 @endsection

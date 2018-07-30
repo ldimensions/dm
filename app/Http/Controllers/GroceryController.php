@@ -15,7 +15,7 @@ class GroceryController extends Controller
 
     }
 
-    public function index(Request $request)
+    public function index_old(Request $request)
     {
         $siteId                         =   config('app.siteId');
         $commonCtrl                     =   new CommonController;
@@ -62,47 +62,73 @@ class GroceryController extends Controller
             }
         }
 
-        $cityRs                             =   City::select('city', 'value')
+        $cityRs                             =   City::select('cityId','city', 'value')
                                                 ->orderBy('city', 'asc')
                                                 ->get();  
         $cities                             =   $cityRs->toArray();      
         $commonCtrl->setMeta($request->path(),1);
         // echo "<pre>";
-        // print_r($grocerys);
+        // print_r($cities);
         
         return view('grocery',['grocery' => $grocerys, 'cities' => $cities]);
     }
 
-    public function search(Request $request)
+    public function index(Request $request,$type,$city=null,$keyword=null)
     {
+        $typeVal                        =   "";
+        $cityVal                        =   "";
+        $keywordVal                     =   "";
+
+        if($type){
+            $typeArr                    =   explode("-",$type);
+            $typeVal                    =   $typeArr[count($typeArr)-1];
+        }
+        if($city && $city !='all'){
+            $cityArr                    =   explode("-",$city);
+            $cityVal                    =   $cityArr[count($cityArr)-1];
+        } 
+        if($keyword){
+            $keywordVal                 =   $keyword;
+        }         
+        
         $siteId                         =   config('app.siteId');
         $commonCtrl                     =   new CommonController;
 
         $groceryRs                      =   Grocery::select('grocery.id', 'grocery.name', 
-                                                'grocery.description', 'grocery.workingTime',
-                                                'address.address1', 'address.address2',
-                                                'city.city', 'address.state',
-                                                'address.zip', 'address.county',
-                                                'address.phone1', 'address.latitude',
-                                                'address.longitude', 'ethnic.ethnicName',
-                                                'url.urlName', 'photo.photoName')
-                                            ->leftjoin('url','url.groceryId', '=', 'grocery.id')
-                                            ->leftjoin('address','address.id', '=', 'grocery.addressId')
-                                            ->leftjoin('ethnic','ethnic.id', '=', 'grocery.ethnicId')
-                                            ->leftjoin('site','site.siteId', '=', 'grocery.siteId')
-                                            ->leftJoin('photo', function($join){
+                                                    'grocery.description', 'grocery.workingTime',
+                                                    'address.address1', 'address.address2',
+                                                    'city.city', 'address.state',
+                                                    'address.zip', 'address.county',
+                                                    'address.phone1', 'address.latitude',
+                                                    'address.longitude', 'ethnic.ethnicName',
+                                                    'url.urlName', 'photo.photoName')
+                                                ->leftjoin('url','url.groceryId', '=', 'grocery.id')
+                                                ->leftjoin('address','address.id', '=', 'grocery.addressId')
+                                                ->leftjoin('ethnic','ethnic.id', '=', 'grocery.ethnicId')
+                                                ->leftjoin('site','site.siteId', '=', 'grocery.siteId')
+                                                ->leftJoin('photo', function($join){
                                                     $join->on('photo.groceryId', '=', 'grocery.id')
-                                                        //->on('photo.is_primary','=',1);
                                                         ->where('photo.is_primary','=',1);
-                                            })   
-                                            ->leftjoin('city','city.cityId', '=', 'address.city')                                           
-                                            ->where('grocery.is_deleted', '=', '0')
-                                            ->where('grocery.is_disabled', '=', '0')
-                                            ->where('site.siteId', '=', $siteId)
-                                            ->orderBy('grocery.premium', 'asc')
-                                            ->orderBy('grocery.order', 'asc')                                                    
-                                            ->get(); 
-        
+                                                })   
+                                                ->leftjoin('city','city.cityId', '=', 'address.city')                                           
+                                                ->where('grocery.is_deleted', '=', '0')
+                                                ->where('grocery.is_disabled', '=', '0')
+                                                ->where('site.siteId', '=', $siteId)
+                                                ->orderBy('grocery.premium', 'asc')
+                                                ->orderBy('grocery.order', 'asc');                                                  
+                                                
+
+        if($cityVal){
+            $groceryRs->where('city.cityId', '=', $cityVal);
+        }
+        if($type){
+            $groceryRs->where('ethnic.id', '=', $typeVal);
+        }      
+        if($keywordVal){
+            $groceryRs->where('grocery.name', 'like', '%'.$keywordVal.'%');
+        }           
+
+        $groceryRs                       =   $groceryRs->get();
         $grocerys                        =   $groceryRs->toArray();
 
         foreach($grocerys as $key => $grocery) {    
@@ -120,15 +146,15 @@ class GroceryController extends Controller
             }
         }
 
-        $cityRs                             =   City::select('city', 'value')
-                                                ->orderBy('city', 'asc')
-                                                ->get();  
+        $cityRs                             =   City::select('cityId','city', 'value')
+                                                    ->orderBy('city', 'asc')
+                                                    ->get();  
         $cities                             =   $cityRs->toArray();      
         $commonCtrl->setMeta($request->path(),1);
         // echo "<pre>";
         // print_r($grocerys);
         
-        return view('grocery',['grocery' => $grocerys, 'cities' => $cities]);
+        return view('grocery',['grocery' => $grocerys, 'cities' => $cities, 'type' => $type, 'cityVal' => $cityVal, 'keyword' => $keyword]);        
     }    
 
     public function getDetails(Request $request,$url){
@@ -237,7 +263,7 @@ class GroceryController extends Controller
                                                     })                                                                                   
                                                 ->where('site.siteId', '=', $siteId)
                                                 ->where('grocery.id', '!=', $id)
-                                                //->where('ethnic.id', '=', $ethnicId)                                        
+                                                ->where('ethnic.id', '=', $ethnicId)                                        
                                                 ->where('grocery.is_deleted', '=', '0')
                                                 ->where('grocery.is_disabled', '=', '0')
                                                 ->orderBy('grocery.premium', 'desc')

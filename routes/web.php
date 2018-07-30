@@ -21,9 +21,12 @@ Route::get('/', 'HomeController@index')->name('home');
 
 $this->get('/dallas-indian-grocery-store', 'GroceryController@index')->name('grocery');
 //$this->get('/dallas-indian-grocery-store/{type}/{city}', 'GroceryController@index');
-$this->get('/'.config('app.defaultBaseURL.dallas-indian-grocery-store').'/{city?}', 'GroceryController@search')->name('indian_grocery')->where('city', '[A-Za-z-+0-9]+');
-$this->get('/'.config('app.defaultBaseURL.dallas-kerala-grocery-store').'/{city?}', 'GroceryController@search')->name('indian_grocery')->where('city', '[A-Za-z-+0-9]+');
-$this->get('/'.config('app.defaultBaseURL.dallas-tamil-grocery-store').'/{city?}', 'GroceryController@search')->name('indian_grocery')->where('city', '[A-Za-z-+0-9]+');
+// $this->get('/'.config('app.defaultBaseURL.dallas-indian-grocery-store').'/{city?}', 'GroceryController@search')->name('indian_grocery')->where('city', '[A-Za-z-+0-9]+');
+// $this->get('/'.config('app.defaultBaseURL.dallas-kerala-grocery-store').'/{city?}', 'GroceryController@search')->name('indian_grocery')->where('city', '[A-Za-z-+0-9]+');
+// $this->get('/'.config('app.defaultBaseURL.dallas-tamil-grocery-store').'/{city?}', 'GroceryController@search')->name('indian_grocery')->where('city', '[A-Za-z-+0-9]+');
+
+$this->get('/grocery-search/{type?}/{city?}/{keyword?}', 'GroceryController@index')->where(['city' => '[A-Za-z-+0-9]+', 'type' => '[A-Za-z-+0-9]+']);
+
 
 // $this->get('/dallas-indian-grocery-store/{city}', 'GroceryController@search')->name('indian_grocery')->where('city', '[A-Za-z-+0-9]+');
 // $this->get('/dallas-kerala-grocery-store/{city}', 'GroceryController@search')->name('kerala_grocery')->where('city', '[A-Za-z-+0-9]+');
