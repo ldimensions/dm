@@ -1,3 +1,4 @@
+<?php use App\Http\Controllers\CommonController;?>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
@@ -47,10 +48,11 @@
                         <a href="#"  class="location"><img alt="{{config('app.siteId')}}" src="{{ URL::to('/') }}/image/location.svg" />Dallas</a> 
                     </div>
                     <div class="menu"> 
-                        <a href="{{ url('/') }}" class="{{ (request()->is('/')) ? 'activemenu' : 'inactivemenu' }}">Home</a> 
-                        <a href="{{ route('grocery') }}" class="{{ (request()->is('dallas-indian-grocery-store')) ? 'activemenu' : 'inactivemenu' }}">Groceries</a> 
-                        <a href="{{ route('restaurant') }}" class="{{ (request()->is('dallas-indian-restaurant')) ? 'activemenu' : 'inactivemenu' }}">Restaurants </a> 
-                        <a href="{{ route('religion') }}" class="{{ (request()->is('dallas-malayali-church')) ? 'activemenu' : 'inactivemenu' }}">Religions </a> 
+                        <a href="{{ url('/') }}" class="{{ (CommonController::activeMenu('home')) ? 'activemenu' : 'inactivemenu' }}">Home</a> 
+                        <!-- <a href="{{ route('grocery') }}" class="{{ (request()->is('dallas-indian-grocery-store')) ? 'activemenu' : 'inactivemenu' }}">Groceries</a>  -->
+                        <a href="{{ route('grocery') }}" class="{{ (CommonController::activeMenu('grocery')) ? 'activemenu' : 'inactivemenu' }}">Groceries</a>                         
+                        <a href="{{ route('restaurant') }}" class="{{ (CommonController::activeMenu('restaurant')) ? 'activemenu' : 'inactivemenu' }}">Restaurants </a> 
+                        <a href="{{ route('religion') }}" class="{{ (CommonController::activeMenu('religion')) ? 'activemenu' : 'inactivemenu' }}">Religions </a> 
                     </div>
                 </div>
             </div>

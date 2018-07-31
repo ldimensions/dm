@@ -234,5 +234,45 @@ class CommonController extends Controller
               'type' => 'audio/mpeg'
           ]);
 
+    }
+
+    public static function activeMenu($type){
+        $isActive           =   false;
+        $hostName           =   $_SERVER['PHP_SELF'];
+        $hostNameArr        =   explode("/",$hostName);
+        print_r($hostNameArr);
+
+        $groceryArr         =   array('dallas-indian-grocery-store','dallas-grocery-store');
+        $restaurantArr      =   array('dallas-indian-restaurant');
+        $religionArr        =   array('dallas-malayali-church');
+        switch($type){
+            case 'home':
+                if(count($hostNameArr)  ==  2){
+                    $isActive = true;
+                }
+                break;            
+            case 'grocery':
+                foreach($groceryArr as $grocery){
+                    if (in_array($grocery, $hostNameArr)){
+                        $isActive = true;
+                    }
+                }
+                break;
+            case 'restaurant':
+                foreach($restaurantArr as $restaurant){
+                    if (in_array($restaurant, $hostNameArr)){
+                        $isActive = true;
+                    }
+                }
+                break;
+            case 'religion':
+                foreach($religionArr as $religion){
+                    if (in_array($religion, $hostNameArr)){
+                        $isActive = true;
+                    }
+                }
+                break;
         }
+        return $isActive;
+    }
 }
