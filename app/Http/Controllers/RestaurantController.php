@@ -11,36 +11,63 @@ use App\Http\Models\City;
 
 class RestaurantController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request,$type,$city=null,$keyword=null)
     {
+
+        $typeVal                        =   "";
+        $cityVal                        =   "";
+        $keywordVal                     =   "";
+
+        if($type){
+            $typeArr                    =   explode("-",$type);
+            $typeVal                    =   $typeArr[count($typeArr)-1];
+        }
+        if($city && $city !='all'){
+            $cityArr                    =   explode("-",$city);
+            $cityVal                    =   $cityArr[count($cityArr)-1];
+        } 
+        if($keyword){
+            $keywordVal                 =   $keyword;
+        }         
+
         $siteId                         =   config('app.siteId');
         $commonCtrl                     =   new CommonController;
 
         $restaurantRs                   =   Restaurant::select('restaurant.id', 'restaurant.name', 
-                                                'restaurant.description', 'restaurant.workingTime',
-                                                'address.address1', 'address.address2',
-                                                'city.city', 'address.state',
-                                                'address.zip', 'address.county',
-                                                'address.phone1', 'address.latitude',
-                                                'address.longitude', 'ethnic.ethnicName',
-                                                'url.urlName', 'photo.photoName')
-                                            ->leftjoin('url','url.restaurantId', '=', 'restaurant.id')
-                                            ->leftjoin('address','address.id', '=', 'restaurant.addressId')
-                                            ->leftjoin('ethnic','ethnic.id', '=', 'restaurant.ethnicId')
-                                            ->leftjoin('site','site.siteId', '=', 'restaurant.siteId')
-                                            ->leftJoin('photo', function($join){
-                                                $join->on('photo.restaurantId', '=', 'restaurant.id')
-                                                    ->where('photo.is_primary','=',1);
-                                                })                                               
-                                            ->leftjoin('city','city.cityId', '=', 'address.city')                                           
-                                            ->where('restaurant.is_deleted', '=', '0')
-                                            ->where('restaurant.is_disabled', '=', '0')
-                                            ->where('site.siteId', '=', $siteId)
-                                            ->orderBy('restaurant.premium', 'asc')
-                                            ->orderBy('restaurant.order', 'asc')                                                    
-                                            ->get(); 
-        
-        $restaurants                     =   $restaurantRs->toArray();
+                                                    'restaurant.description', 'restaurant.workingTime',
+                                                    'address.address1', 'address.address2',
+                                                    'city.city', 'address.state',
+                                                    'address.zip', 'address.county',
+                                                    'address.phone1', 'address.latitude',
+                                                    'address.longitude', 'ethnic.ethnicName',
+                                                    'url.urlName', 'photo.photoName')
+                                                ->leftjoin('url','url.restaurantId', '=', 'restaurant.id')
+                                                ->leftjoin('address','address.id', '=', 'restaurant.addressId')
+                                                ->leftjoin('ethnic','ethnic.id', '=', 'restaurant.ethnicId')
+                                                ->leftjoin('site','site.siteId', '=', 'restaurant.siteId')
+                                                ->leftJoin('photo', function($join){
+                                                    $join->on('photo.restaurantId', '=', 'restaurant.id')
+                                                        ->where('photo.is_primary','=',1);
+                                                    })                                               
+                                                ->leftjoin('city','city.cityId', '=', 'address.city')                                           
+                                                ->where('restaurant.is_deleted', '=', '0')
+                                                ->where('restaurant.is_disabled', '=', '0')
+                                                ->where('site.siteId', '=', $siteId)
+                                                ->orderBy('restaurant.premium', 'asc')
+                                                ->orderBy('restaurant.order', 'asc');                                                   
+
+        if($cityVal){
+            $restaurantRs->where('city.cityId', '=', $cityVal);
+        }
+        if($type){
+            $restaurantRs->where('ethnic.id', '=', $typeVal);
+        }      
+        if($keywordVal){
+            $restaurantRs->where('restaurant.name', 'like', '%'.$keywordVal.'%');
+        }           
+
+        $restaurantRs                       =   $restaurantRs->get();                                                
+        $restaurants                        =   $restaurantRs->toArray();
 
         foreach($restaurants as $key => $restaurant) {    
 
@@ -60,7 +87,7 @@ class RestaurantController extends Controller
         // echo "<pre>";
         // print_r($restaurants);
 
-        $cityRs                             =   City::select('city', 'value')
+        $cityRs                             =   City::select('cityId','city', 'value')
                                                 ->orderBy('city', 'asc')
                                                 ->get();  
         $cities                             =   $cityRs->toArray();      
@@ -68,7 +95,7 @@ class RestaurantController extends Controller
         // echo "<pre>";
         // print_r($cities);
         
-        return view('restaurant',['restaurant' => $restaurants, 'cities' => $cities]);    
+        return view('restaurant',['restaurant' => $restaurants, 'cities' => $cities, 'type' => $type, 'cityVal' => $cityVal, 'keyword' => $keyword]); 
     }
 
     public function getDetails(Request $request,$url){

@@ -37,8 +37,8 @@ $this->get('/grocery-related/{ethnicId}/{id}', 'GroceryController@getRelated')->
 
 $this->get('/dallas-indian-restaurant', 'RestaurantController@index')->name('restaurant');
 $this->get('/dallas-indian-restaurant/{url}', 'RestaurantController@getDetails')->name('restaurant_details')->where('url', '[A-Za-z-+0-9]+');
-
 $this->get('/restaurant-related/{ethnicId}/{id}', 'RestaurantController@getRelated')->name('religionDetails')->where(['ethnicId' => '[A-Za-z-+0-9]+', 'id' => '[0-9]+']);
+$this->get('/restaurant-search/{type?}/{city?}/{keyword?}', 'RestaurantController@index')->where(['city' => '[A-Za-z-+0-9]+', 'type' => '[A-Za-z-+0-9]+']);
 
 
 $this->get('/'.config('app.defaultBaseURL.dallas-malayali-church'), 'ReligionController@index')->name('religion');
