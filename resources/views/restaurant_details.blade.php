@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-md-9 leftcontainer">
-    <div class="col-md-12 paggination"><a href="../{{config('app.defaultBaseURL.dallas-indian-restaurant')}}" class="subcontent2">Restaurant</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{ $restaurant['name'] }}</span></div>
+    <div class="col-md-12 paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-restaurant')}}" class="subcontent2">Restaurant</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{ $restaurant['name'] }}</span></div>
     <div class="col-md-6 block2">
         <div class="topdetail slideshow-container">
             <ul id="lightSlider">

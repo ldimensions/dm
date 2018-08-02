@@ -30,14 +30,14 @@
                 </select>
                 <select name="city" class="select" id="city">
                     <option value="all">All</option>
-                        @foreach ($cities as $key => $city)
-                            <option 
-                                value="{{$city['value']}}-{{$city['cityId']}}"
-                                {{$city['cityId'] == $cityVal ? 'selected="selected"' : '' }}>
-                                {{$city['city']}}
-                            </option>
-                        @endforeach
-                    </select>
+                    @foreach ($cities as $key => $city)
+                        <option 
+                            value="{{$city['value']}}-{{$city['cityId']}}"
+                            {{$city['cityId'] == $cityVal ? 'selected="selected"' : '' }}>
+                            {{$city['city']}}
+                        </option>
+                    @endforeach
+                </select>
                 <input type="text" id="keyword" value="{{$keyword}}" name="Keyword" placeholder="Keywords" class="text1" maxlength="50" pattern="(1[0-2]|0[1-9])\/(1[5-9]|2\d)">
                 <a href="JavaScript:void(0)" class="search" onclick="grocerySearch()">Search</a>
             </form>
@@ -63,7 +63,7 @@
                         <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
                     @endif                 
                     <div class="content1"> 
-                        <a href="../{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>                                                           
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>                                                           
                     </div>
                     <div class="content3"> <span class="subcontent1">Ethnicity:</span> <span class="subcontent2">{{ $rel['ethnicName'] }}</span> </div>
                     <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
@@ -90,7 +90,7 @@
             }else{
                 city        =   'all';
             }
-            urlParm = "{{ URL::to('/') }}/grocery-search/"+type+"/"+city+"/"+keyword;
+            urlParm = "{{ URL::to('/') }}/{{config('app.defaultBaseURL.grocery-search')}}/"+type+"/"+city+"/"+keyword;
             window.location.href = urlParm;
 
         } 

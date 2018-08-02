@@ -30,14 +30,16 @@ return [
         'dallas-indian-grocery-store'           => 'dallas-indian-grocery-store',
         'dallas-kerala-grocery-store'           => 'dallas-kerala-grocery-store',
         'dallas-tamil-grocery-store'            => 'dallas-tamil-grocery-store',
-
         'indian-grocery-store'                  => 'indian-grocery-store',
-        
         'grocery-store-details'                 => 'dallas-grocery-store', 
+        'grocery-search'                        => 'grocery-search',
+        'grocery-related'                       => 'grocery-related',
 
         'dallas-indian-restaurant'              => 'dallas-indian-restaurant',
         'dallas-kerala-restaurant'              => 'dallas-kerala-restaurant',
         'dallas-tamil-restaurant'               => 'dallas-tamil-restaurant',
+        'restaurant-related'                    => 'restaurant-related',
+        'restaurant-search'                     => 'restaurant-search'
     ],
 
     

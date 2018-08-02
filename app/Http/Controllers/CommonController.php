@@ -242,7 +242,7 @@ class CommonController extends Controller
         $hostNameArr        =   explode("/",$hostName);
         print_r($hostNameArr);
 
-        $groceryArr         =   array('dallas-indian-grocery-store','dallas-grocery-store');
+        $groceryArr         =   array('dallas-indian-grocery-store','dallas-grocery-store','grocery-search');
         $restaurantArr      =   array('dallas-indian-restaurant');
         $religionArr        =   array('dallas-malayali-church');
         switch($type){

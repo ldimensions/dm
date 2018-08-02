@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-md-9 leftcontainer">
-    <div class="col-md-12 paggination"><a href="../{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}" class="subcontent2">Grocery</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Details</span></div>
+    <div class="col-md-12 paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}" class="subcontent2">Grocery</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Details</span></div>
     <div class="col-md-6 block2">
         <div class="topdetail slideshow-container">
             <ul id="lightSlider">
@@ -150,6 +150,7 @@
     /*---------- Image Slider End----------*/
 
     $( document ).ready(function() {
+        alert(<?php echo config('app.defaultBaseURL.dallas-indian-restaurant')?>);
         $.get("<?php echo URL::to('/');?>/grocery-related/<?php echo $grocery['ethnicId'];?>/<?php echo $grocery['id'];?>", function(data, status){
             if(status=="success"){
                 document.getElementById("related").innerHTML = data;
@@ -162,4 +163,3 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQJp0CkLijcKXd44Pyn6QWX0Da0PwPKtc&callback=initMap">
 </script>
 @endsection
-
