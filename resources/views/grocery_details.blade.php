@@ -150,7 +150,6 @@
     /*---------- Image Slider End----------*/
 
     $( document ).ready(function() {
-        alert(<?php echo config('app.defaultBaseURL.dallas-indian-restaurant')?>);
         $.get("<?php echo URL::to('/');?>/grocery-related/<?php echo $grocery['ethnicId'];?>/<?php echo $grocery['id'];?>", function(data, status){
             if(status=="success"){
                 document.getElementById("related").innerHTML = data;
