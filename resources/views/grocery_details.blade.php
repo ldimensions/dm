@@ -12,10 +12,10 @@
                     <td colspan="2" class="tdtoppadd"><h4>{{ $grocery['description'] }}</h4></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1 topspace"><h2>Ethnicity:</h2></td>
+                    <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity:</td>
                 </tr> 
                 <tr>
-                    <td colspan="2">{{ $grocery['ethnicName'] }}</td>
+                    <td colspan="2"><h2>{{ $grocery['ethnicName'] }}</h2></td>
                 </tr>                
                 @if ( !empty ( $distance ) )                    
                     <tr>
@@ -26,10 +26,10 @@
                     </tr>
                 @endif                 
                 <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1"><h2>Address:</h2></td>
+                    <td colspan="2" class="smallfont tdtoppadd1">Address:</td>
                 </tr>
                 <tr>
-                    <td colspan="2">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</td>
+                    <td colspan="2"><h2>{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</h2></td>
                 </tr>
                 <tr>
                     <td colspan="2" class="smallfont tdtoppadd1">Phone:</td>
@@ -39,17 +39,17 @@
                 </tr>
                 @if (isset($grocery['website']) && $grocery['website'])
                   <tr>
-                      <td colspan="2" class="smallfont tdtoppadd1"><h3>Website:</h3></td>
+                      <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
                   </tr>
                   <tr>
-                      <td colspan="2"><a href="{{ $grocery['website'] }}" target="_blank">{{ $grocery['website'] }}</a></td>
+                      <td colspan="2"><h3><a href="{{ $grocery['website'] }}" target="_blank">{{ $grocery['website'] }}</a></h3></td>
                   </tr> 
                 @endif               
                 <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1"><h3>Located In:</h3></td>
+                    <td colspan="2" class="smallfont tdtoppadd1">Located In:</td>
                 </tr>
                 <tr>
-                    <td colspan="2">{{ $grocery['city'] }}</td>
+                    <td colspan="2"><h3>{{ $grocery['city'] }}</h3></td>
                 </tr>
                 @if (isset($distance) && $distance)
                   <tr>
@@ -64,7 +64,7 @@
                 @if($wtKey == "default")
                     <table>
                         <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1"><h3>Working Time:</h3></td>
+                            <td colspan="2" class="smallfont tdtoppadd1">Working Time:</td>
                         </tr>
                         @foreach ($wtArr[0] as $wtArrKey => $wtRs)
                             @if ( !empty ( $wtRs ) )
