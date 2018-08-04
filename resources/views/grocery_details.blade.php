@@ -5,14 +5,14 @@
 <div class="col-md-9 leftcontainer">
     <div class="col-md-12 paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}" class="subcontent2">Grocery</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Details</span></div>
     <div class="col-md-6 block2">
-        <div class="gro_title">{{ $grocery['name'] }}</div>
+        <div class="gro_title toparea space"><h1>{{ $grocery['name'] }}</h1></div>
         <div class="content">
             <table class="fullWidth">
                 <tr>
-                    <td colspan="2" class="tdtoppadd">{{ $grocery['description'] }}</td>
+                    <td colspan="2" class="tdtoppadd"><h4>{{ $grocery['description'] }}</h4></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Ethnicity:</td>
+                    <td colspan="2" class="smallfont tdtoppadd1 topspace"><h2>Ethnicity:</h2></td>
                 </tr> 
                 <tr>
                     <td colspan="2">{{ $grocery['ethnicName'] }}</td>
@@ -26,7 +26,7 @@
                     </tr>
                 @endif                 
                 <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Address:</td>
+                    <td colspan="2" class="smallfont tdtoppadd1"><h2>Address:</h2></td>
                 </tr>
                 <tr>
                     <td colspan="2">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</td>
@@ -39,14 +39,14 @@
                 </tr>
                 @if (isset($grocery['website']) && $grocery['website'])
                   <tr>
-                      <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
+                      <td colspan="2" class="smallfont tdtoppadd1"><h3>Website:</h3></td>
                   </tr>
                   <tr>
                       <td colspan="2"><a href="{{ $grocery['website'] }}" target="_blank">{{ $grocery['website'] }}</a></td>
                   </tr> 
                 @endif               
                 <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Located In:</td>
+                    <td colspan="2" class="smallfont tdtoppadd1"><h3>Located In:</h3></td>
                 </tr>
                 <tr>
                     <td colspan="2">{{ $grocery['city'] }}</td>
@@ -64,7 +64,7 @@
                 @if($wtKey == "default")
                     <table>
                         <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Mass:</td>
+                            <td colspan="2" class="smallfont tdtoppadd1"><h3>Working Time:</h3></td>
                         </tr>
                         @foreach ($wtArr[0] as $wtArrKey => $wtRs)
                             @if ( !empty ( $wtRs ) )
@@ -91,17 +91,21 @@
             @endforeach                                               
         </div>
     </div>
-    <a href="https://www.google.com/maps/dir/{{$grocery['latitude']}},{{$grocery['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $grocery['name'] }}"/></a>
-    <div class="col-md-6 block2">
-        <div class="white_title toparea">{{ $grocery['name'] }}</div>
+    <div class="col-md-6 block22">
+    <div class="white_t space"><h1 class="graycolor">{{ $grocery['name'] }} Location</h1></div>
+        <div class="white_map">    <a href="https://www.google.com/maps/dir/{{$grocery['latitude']}},{{$grocery['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $grocery['name'] }}"/></a>
+</div>
         <div id="map" class="map"></div>
     </div>
-    <div class="col-md-6 block2">
+    <div class="col-md-6 block23">
+    <div class="white_Photo space"><h1 class="graycolor">{{ $grocery['name'] }} Photos</h1></div>
+</div>
+    <div class="col-md-6 block23">
         <div class="topdetail slideshow-container">
             <ul id="lightSlider">
                 @foreach ($photos as $key => $photo)
                     <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
-                        <img src="{{ URL::to('/') }}/image/grocery/{{$grocery['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $grocery['name'] }}" style="width:100%;height:100%" class="toparea">
+                        <img src="{{ URL::to('/') }}/image/grocery/{{$grocery['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $grocery['name'] }}" style="width:100%;height:100%" class="bottomarea">
                     </li>
                 @endforeach
             </ul>            
