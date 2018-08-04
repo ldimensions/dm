@@ -8,6 +8,10 @@ body{
 	width:auto;
 }
 
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
 .headerh{
 	height:123px;
 	background-color:#FFFFFF;
@@ -212,6 +216,28 @@ table {
 	border-radius:5px;
 	margin-left:15px;
 	padding:0px !important;
+}
+.block22{
+	background-color:#FFF;
+	height:auto;
+	width:47.80%;
+	margin-left:15px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border:1px solid #e1e1e1;
+	padding:0px !important;
+}
+.block23{
+	background-color:#FFF;
+	height:auto;
+	width:47.80%;
+	margin-left:15px;
+	padding:0px !important;
+	border-left:1px solid #e1e1e1;
+	border-right:1px solid #e1e1e1;
+
 }
 .block3{
 	background-color:#FFF;
@@ -563,7 +589,7 @@ input[type=text], select{
 .mapicon{
 	float:right;
 	position:relative;
-	margin-top:15px;
+	margin-top:12px;
 }
 .mapicon1{
 	float:right;
@@ -592,23 +618,80 @@ input[type=text], select{
 	border-top-left-radius:5px;
 	border-top-right-radius:5px;
 }
+.bottomarea{
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+}
 .gro_title{
 	float:left;
-	line-height:50px;
 	background-color:#B20095;
 	width:100%;
+	padding-left:15px;
+}
+h1{
+	font-size:15px;
 	font-weight:bold;
 	color:#FFFFFF;
-	padding-left:15px;
+}
+h2{
+	font-size:13px;
+	font-weight:bold;
+	color:#323232;
+}
+h3{
+	font-size:13px;
+	font-weight:bold;
+	color:#323232;
+}
+h4{
+	font-size:14px;
+	color:#646464;
+	line-height: 18px;
+}
+.space{
+	padding-top:15px;
+	padding-bottom:15px;
+
+}
+.topspace{
+	margin-top:10px;
+}
+.bottomspace{
+	margin-bottom:10px;
 }
 .white_title{
 	float:left;
-	line-height:50px;
+	height:50px;
 	width:100%;
+	font-weight:bold;
+	color:#323232;
+}
+.white_t{
+	position: relative;
+	float: left;
+	width:300px;
+	padding-left:15px;
+}
+.graycolor{
+	color:#323232;
+	
+}
+.white_Photo{
+	position: relative;
+	float: left;
+	line-height:40px;
+	width:200px;
 	font-weight:bold;
 	color:#323232;
 	padding-left:15px;
 }
+.white_map{
+	position: relative;
+	float: right;
+	padding-right:15px;
+}
+
+
 .content{
 	float:left;
 	position:relative;
@@ -619,20 +702,21 @@ input[type=text], select{
 	margin-bottom:15px;
 }
 .tdtoppadd{
-	padding-top:10px;
+	padding-top:1px;
 }
 .tdtoppadd1{
-	padding-top:6px;
+	padding-top:10px;
 }
 .smallfont{
 	font-family:Arial, Helvetica, sans-serif;
 	color:#323232;
-	font-size:12px;
+	font-size:13px;
+	font-weight: bold;
 }
 .activeweekdays{
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:14px;
-	color:#323232;
+	color:#B20095;
 	font-weight:bold;
 	padding-top:3px;
 }
@@ -646,11 +730,9 @@ input[type=text], select{
 .map{
 	float:left;
 	position:relative;
-	height:500px;
+	height:200px;
 	background-color:#f9f9f9;
 	width:100%;
-	border-bottom-left-radius:5px;
-	border-bottom-right-radius:5px;
 }
 .fullWidth{
 	width: 100%;
