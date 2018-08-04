@@ -244,7 +244,7 @@ class CommonController extends Controller
 
         $groceryArr         =   array('dallas-indian-grocery-store','dallas-grocery-store','grocery-search');
         $restaurantArr      =   array('dallas-indian-restaurant');
-        $religionArr        =   array('dallas-malayali-church');
+        $religionArr        =   array('dallas-indian-religion','dallas-malayali-church');
         switch($type){
             case 'home':
                 if(count($hostNameArr)  ==  2){

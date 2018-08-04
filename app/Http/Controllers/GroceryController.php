@@ -247,14 +247,14 @@ class GroceryController extends Controller
                                             'grocery.description', 'grocery.workingTime',
                                             'address.address1', 'address.address2',
                                             'grocery.website',                                                
-                                            'address.city', 'address.state',
+                                            'city.city', 'address.state',
                                             'address.zip', 'address.county',
-                                            'address.city', 'address.state',
                                             'address.phone1', 'address.latitude',
                                             'address.longitude', 'ethnic.ethnicName',
                                             'ethnic.id as ethnicId', 'url.urlName')
                                                 ->leftjoin('url','url.groceryId', '=', 'grocery.id')
                                                 ->leftjoin('address','address.id', '=', 'grocery.addressId')
+                                                ->leftjoin('city','city.cityId', '=', 'address.city')                                                                                           
                                                 ->leftjoin('ethnic','ethnic.id', '=', 'grocery.ethnicId')
                                                 ->leftjoin('site','site.siteId', '=', 'grocery.siteId')
                                                 ->leftJoin('photo', function($join){

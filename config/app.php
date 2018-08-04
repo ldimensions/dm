@@ -39,7 +39,11 @@ return [
         'dallas-kerala-restaurant'              => 'dallas-kerala-restaurant',
         'dallas-tamil-restaurant'               => 'dallas-tamil-restaurant',
         'restaurant-related'                    => 'restaurant-related',
-        'restaurant-search'                     => 'restaurant-search'
+        'restaurant-search'                     => 'restaurant-search',
+
+        'dallas-indian-religion'                => 'dallas-indian-religion',
+        'religion-search'                       => 'religion-search',
+        
     ],
 
     

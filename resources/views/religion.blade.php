@@ -5,19 +5,40 @@
     <div class="col-md-12 searchbar hiddepadding"> <a href="#" class="selocation"></a>
         <form>
             <input name="Location" type="text" class="text locationimage" id="Location" placeholder="Location" readonly="readonly" >
-            <select name="Type" class="select" id="Type">
-                <option>All</option>
-                <option>Type 1</option>
+            <select name="type" class="select" id="type">
+                <option 
+                    value="{{config('app.defaultBaseURL.dallas-indian-religion')}}" 
+                    {{ config('app.defaultBaseURL.dallas-indian-religion') == $type ? 'selected="selected"' : '' }}>
+                        All
+                </option>
+                <option 
+                    value="{{config('app.defaultBaseURL.dallas-malayali-church')}}-1"
+                    {{ config('app.defaultBaseURL.dallas-malayali-church').'-1' == $type ? 'selected="selected"' : '' }}>
+                        Christianity
+                </option>
+                <option 
+                    value="{{config('app.defaultBaseURL.dallas-malayali-temple')}}-2"
+                    {{ config('app.defaultBaseURL.dallas-malayali-temple').'-2' == $type ? 'selected="selected"' : '' }}>
+                        Hinduism
+                </option>
+                <option 
+                    value="{{config('app.defaultBaseURL.dallas-malayali-mosque')}}-5"
+                    {{ config('app.defaultBaseURL.dallas-malayali-mosque').'-5' == $type ? 'selected="selected"' : '' }}>
+                        Islam
+                </option>
             </select>
-            <select name="Distance" class="select" id="Distance">
-                <option>All</option>
-                <option>25 KM</option>
-                <option>50 KM</option>
-                <option>75 KM</option>
-                <option>100 KM</option>
+            <select name="city" class="select" id="city">
+                <option value="all">All</option>
+                @foreach ($cities as $key => $city)
+                    <option 
+                        value="{{$city['value']}}-{{$city['cityId']}}"
+                        {{$city['cityId'] == $cityVal ? 'selected="selected"' : '' }}>
+                        {{$city['city']}}
+                    </option>
+                @endforeach
             </select>
-            <input type="text" id="Keywords" name="Keywords" placeholder="Keywords" class="text1">
-            <a href="#" class="search">Search</a>
+            <input type="text" id="keyword" value="{{$keyword}}" name="Keyword" placeholder="Keywords" class="text1" maxlength="50" pattern="(1[0-2]|0[1-9])\/(1[5-9]|2\d)">
+            <a href="JavaScript:void(0)" class="search" onclick="religionSearch()">Search</a>
         </form>
     </div>
     <div class="col-md-12 paggination">
@@ -60,4 +81,45 @@
 
 </div>
 <div class="col-md-3 rightcontainer"></div>
+
+<script>
+        function religionSearch() {
+            var type        =   document.getElementById("type").value;
+            var city        =   document.getElementById("city").value;
+            var keyword     =   document.getElementById("keyword").value;
+            var urlParm     =   '';
+            //if(city && city != 'all'){
+                if(type == "{{config('app.defaultBaseURL.dallas-malayali-church')}}-1"){
+                    city        =   'malayali-church-in-'+city;
+                }else if(type == "{{config('app.defaultBaseURL.dallas-malayali-temple')}}-2"){
+                    city        =   'malayali-temple-in-'+city;
+                }else if(type == "{{config('app.defaultBaseURL.dallas-malayali-mosque')}}-5"){
+                    city        =   'malayali-mosque-in-'+city;
+                }else{
+                    city        =   'dallas-indian-religion-all';
+                }
+            //}else{
+                //city        =   'all';
+            //}
+            urlParm = "{{ URL::to('/') }}/{{config('app.defaultBaseURL.religion-search')}}/"+type+"/"+city+"/"+keyword;
+            //window.location.href = urlParm;
+            console.log(urlParm);
+
+        } 
+
+        $(function(){
+            $('#keyword').keyup(function()
+            {
+                var yourInput = $(this).val();
+                re = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi;
+                var isSplChar = re.test(yourInput);
+                if(isSplChar)
+                {
+                    var no_spl_char = yourInput.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+                    $(this).val(no_spl_char);
+                }
+            });
+        
+        });
+    </script>
 @endsection

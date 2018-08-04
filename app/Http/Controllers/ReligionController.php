@@ -7,43 +7,68 @@ use Illuminate\Http\Request;
 use App\Http\Models\Religion;
 use App\Http\Models\Photo;
 use App\Http\Models\Url;
-
-use SEOMeta;
-use OpenGraph;
-use Twitter;
+use App\Http\Models\City;
 
 class ReligionController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request,$type,$city=null,$keyword=null){
+
+        $typeVal                        =   "";
+        $cityVal                        =   "";
+        $keywordVal                     =   "";
+
+        if($type){
+            $typeArr                    =   explode("-",$type);
+            $typeVal                    =   $typeArr[count($typeArr)-1];
+        }
+        if($city && $city !='all'){
+            $cityArr                    =   explode("-",$city);
+            $cityVal                    =   $cityArr[count($cityArr)-1];
+        } 
+        if($keyword){
+            $keywordVal                 =   $keyword;
+        }         
 
         $distance                       =   "";
         $commonCtrl                     =   new CommonController;
 
         $siteId                         =   config('app.siteId');
         $religionRs                     =   Religion::select('religion.id', 'religion.name', 
-                                                'religion.shortDescription', 'religion.workingTime',
-                                                'address.address1', 'address.address2',
-                                                'address.zip', 'religion.shortDescription',
-                                                'address.city', 'address.state',
-                                                'address.phone1', 'address.latitude',
-                                                'address.longitude','religion_type.religionName',
-                                                'url.urlName', 'photo.photoName',
-                                                'denomination.denominationName')
-                                            ->leftjoin('religion_type','religion_type.id', '=', 'religion.religionTypeId')                                                
-                                            ->leftjoin('denomination','denomination.id', '=', 'religion.denominationId')                                                
-                                            ->leftjoin('url','url.religionId', '=', 'religion.id')
-                                            ->leftjoin('address','address.id', '=', 'religion.addressId')
-                                            ->leftjoin('site','site.siteId', '=', 'religion.siteId')
-                                            ->leftjoin('photo','photo.religionId', '=', 'religion.id')                                            
-                                            ->where('religion.is_deleted', '=', '0')
-                                            ->where('religion.is_disabled', '=', '0')
-                                            ->where('site.siteId', '=', $siteId)
-                                            ->where('photo.is_primary', '=', '1')
-                                            ->orderBy('religion.premium', 'desc')
-                                            ->orderBy('religion.order', 'asc')                                                    
-                                            ->get(); 
-        
-        $religions                      =   $religionRs->toArray();  
+                                                    'religion.shortDescription', 'religion.workingTime',
+                                                    'address.address1', 'address.address2',
+                                                    'address.zip', 'religion.shortDescription',
+                                                    'address.city', 'address.state',
+                                                    'address.phone1', 'address.latitude',
+                                                    'address.longitude','religion_type.religionName',
+                                                    'url.urlName', 'photo.photoName',
+                                                    'denomination.denominationName')
+                                                ->leftjoin('religion_type','religion_type.id', '=', 'religion.religionTypeId')                                                
+                                                ->leftjoin('denomination','denomination.id', '=', 'religion.denominationId')                                                
+                                                ->leftjoin('url','url.religionId', '=', 'religion.id')
+                                                ->leftjoin('address','address.id', '=', 'religion.addressId')
+                                                ->leftjoin('site','site.siteId', '=', 'religion.siteId')
+                                                ->leftJoin('photo', function($join){
+                                                    $join->on('photo.religionId', '=', 'religion.id')
+                                                        ->where('photo.is_primary','=',1);
+                                                })   
+                                                ->where('religion.is_deleted', '=', '0')
+                                                ->where('religion.is_disabled', '=', '0')
+                                                ->where('site.siteId', '=', $siteId)
+                                                ->orderBy('religion.premium', 'desc')
+                                                ->orderBy('religion.order', 'asc');                                                    
+
+        if($cityVal){
+            $religionRs->where('city.cityId', '=', $cityVal);
+        }
+        if($type){
+            $religionRs->where('ethnic.id', '=', $typeVal);
+        }      
+        if($keywordVal){
+            $religionRs->where('religion.name', 'like', '%'.$keywordVal.'%');
+        }           
+
+        $religionRs                         =   $religionRs->get();
+        $religions                          =   $religionRs->toArray();  
 
         if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
             foreach($religions as $key => $religion) {    
@@ -58,13 +83,17 @@ class ReligionController extends Controller
                     }
                 }
             }
-        }  
+        } 
         
+        $cityRs                             =   City::select('cityId','city', 'value')
+        ->orderBy('city', 'asc')
+        ->get();  
+        $cities                             =   $cityRs->toArray();      
         //print_r($religions);
 
         $commonCtrl->setMeta($request->path(),1);
         
-        return view('religion',['religion' => $religions]);
+        return view('religion',['religion' => $religions, 'cities' => $cities, 'type' => $type, 'cityVal' => $cityVal, 'keyword' => $keyword]);
     }
 
     public function getDetails(Request $request,$url){

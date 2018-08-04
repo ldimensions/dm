@@ -5,6 +5,15 @@
 <div class="col-md-9 leftcontainer">
     <div class="col-md-12 paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}" class="subcontent2">Grocery</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Details</span></div>
     <div class="col-md-6 block2">
+        <div class="topdetail slideshow-container">
+            <ul id="lightSlider">
+                @foreach ($photos as $key => $photo)
+                    <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
+                        <img src="{{ URL::to('/') }}/image/grocery/{{$grocery['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $grocery['name'] }}" style="width:100%;height:100%" class="toparea">
+                    </li>
+                @endforeach
+            </ul>            
+        </div>
         <div class="gro_title">{{ $grocery['name'] }}</div>
         <div class="content">
             <table class="fullWidth">
@@ -91,21 +100,9 @@
             @endforeach                                               
         </div>
     </div>
-    <a href="https://www.google.com/maps/dir/{{$grocery['latitude']}},{{$grocery['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $grocery['name'] }}"/></a>
     <div class="col-md-6 block2">
         <div class="white_title toparea">{{ $grocery['name'] }}</div>
         <div id="map" class="map"></div>
-    </div>
-    <div class="col-md-6 block2">
-        <div class="topdetail slideshow-container">
-            <ul id="lightSlider">
-                @foreach ($photos as $key => $photo)
-                    <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
-                        <img src="{{ URL::to('/') }}/image/grocery/{{$grocery['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $grocery['name'] }}" style="width:100%;height:100%" class="toparea">
-                    </li>
-                @endforeach
-            </ul>            
-        </div>        
     </div>
 </div>
 <div class="col-md-3 rightcontainer"></div>
