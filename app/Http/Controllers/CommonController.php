@@ -240,11 +240,10 @@ class CommonController extends Controller
         $isActive           =   false;
         $hostName           =   $_SERVER['PHP_SELF'];
         $hostNameArr        =   explode("/",$hostName);
-        print_r($hostNameArr);
 
         $groceryArr         =   array('dallas-indian-grocery-store','dallas-grocery-store','grocery-search');
-        $restaurantArr      =   array('dallas-indian-restaurant');
-        $religionArr        =   array('dallas-indian-religion','dallas-malayali-church');
+        $restaurantArr      =   array('dallas-indian-restaurant','restaurant-search');
+        $religionArr        =   array('dallas-indian-religion','religion-search','dallas-malayali-church');
         switch($type){
             case 'home':
                 if(count($hostNameArr)  ==  2){

@@ -45,7 +45,7 @@
                         <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
                     </tr>
                     <tr>
-                        <td colspan="2"><a href="{{ $religion['website'] }}" target="_blank">{{ $religion['website'] }}</a></td>
+                        <td colspan="2"><a href="http://{{ $religion['website'] }}" target="_blank">{{ $religion['website'] }}</a></td>
                     </tr>   
                 @endif             
                 <tr>

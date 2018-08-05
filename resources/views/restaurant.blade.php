@@ -86,11 +86,21 @@
             var city        =   document.getElementById("city").value;
             var keyword     =   document.getElementById("keyword").value;
             var urlParm     =   '';
+
             if(city && city != 'all'){
-                city        =   'restaurant-in-'+city;
+                if(type == "{{config('app.defaultBaseURL.dallas-indian-restaurant')}}-2"){
+                    city        =   'indian-restaurant-in-'+city;
+                }else if(type == "{{config('app.defaultBaseURL.dallas-kerala-restaurant')}}-1"){
+                    city        =   'kerala-restaurant-in-'+city;
+                }else if(type == "{{config('app.defaultBaseURL.dallas-tamil-restaurant')}}-3"){
+                    city        =   'tamil-restaurant-in-'+city;
+                }else{
+                    city        =   'all';
+                }
             }else{
                 city        =   'all';
             }
+            
             urlParm = "{{ URL::to('/') }}/restaurant-search/"+type+"/"+city+"/"+keyword;
             window.location.href = urlParm;
 

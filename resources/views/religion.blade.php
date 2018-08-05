@@ -46,6 +46,13 @@
         <!-- <div class="pagecount">Page: 1 of 1</div> -->
         <div class="pagecount">&nbsp;</div>
     </div>
+    @if (count($religion) == 0)
+        <div class="col-md-12 block1">
+            Suggestions for improving the results:<br/>
+            Try a different location.<br/>
+            Check the spelling or try alternate spellings.<br/>
+        </div>
+    @endif    
     @foreach ($religion as $key => $rel)
         <div class="col-md-12 block1">
                 <div class="smallImage">
@@ -56,15 +63,15 @@
                 @endif                 
                 <div class="content1"> 
                     @if ($rel['religionName'] == 'Christianity')
-                        <a href="../{{config('app.defaultBaseURL.dallas-malayali-church')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-church')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
                     @elseif($rel['religionName'] == 'Hinduism')
-                        <a href="../{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
                     @elseif($rel['religionName'] == 'Judaism')
-                        <a href="../{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
                     @elseif($rel['religionName'] == 'Buddhism')
-                        <a href="../{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
                     @elseif($rel['religionName'] == 'Islam')
-                        <a href="../{{config('app.defaultBaseURL.dallas-malayali-mosque')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>                                                           
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-mosque')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>                                                           
                     @endif
                     <!-- <span>{{ str_limit($rel['shortDescription'], 100) }}</span>  -->
                 </div>
@@ -75,7 +82,7 @@
                 @if (isset($rel['distance']) && $rel['distance'])
                     <div class="gro_kmblock_list">Distance : {{ $rel['distance'] }}</div>
                 @endif                 
-                <div class="open_close">Closed - Open 7 AM----</div>
+                <!-- <div class="open_close">Closed - Open 7 AM----</div> -->
         </div>
     @endforeach
 
@@ -88,7 +95,7 @@
             var city        =   document.getElementById("city").value;
             var keyword     =   document.getElementById("keyword").value;
             var urlParm     =   '';
-            //if(city && city != 'all'){
+            if(city && city != 'all'){
                 if(type == "{{config('app.defaultBaseURL.dallas-malayali-church')}}-1"){
                     city        =   'malayali-church-in-'+city;
                 }else if(type == "{{config('app.defaultBaseURL.dallas-malayali-temple')}}-2"){
@@ -96,15 +103,13 @@
                 }else if(type == "{{config('app.defaultBaseURL.dallas-malayali-mosque')}}-5"){
                     city        =   'malayali-mosque-in-'+city;
                 }else{
-                    city        =   'dallas-indian-religion-all';
+                    city        =   'all';
                 }
-            //}else{
-                //city        =   'all';
-            //}
+            }else{
+                city        =   'all';
+            }
             urlParm = "{{ URL::to('/') }}/{{config('app.defaultBaseURL.religion-search')}}/"+type+"/"+city+"/"+keyword;
-            //window.location.href = urlParm;
-            console.log(urlParm);
-
+            window.location.href = urlParm;
         } 
 
         $(function(){

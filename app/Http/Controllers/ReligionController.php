@@ -20,6 +20,9 @@ class ReligionController extends Controller
         if($type){
             $typeArr                    =   explode("-",$type);
             $typeVal                    =   $typeArr[count($typeArr)-1];
+            if(!is_numeric($typeVal)){
+                $typeVal                =   "";
+            }
         }
         if($city && $city !='all'){
             $cityArr                    =   explode("-",$city);
@@ -37,7 +40,7 @@ class ReligionController extends Controller
                                                     'religion.shortDescription', 'religion.workingTime',
                                                     'address.address1', 'address.address2',
                                                     'address.zip', 'religion.shortDescription',
-                                                    'address.city', 'address.state',
+                                                    'city.city', 'address.state',
                                                     'address.phone1', 'address.latitude',
                                                     'address.longitude','religion_type.religionName',
                                                     'url.urlName', 'photo.photoName',
@@ -47,6 +50,7 @@ class ReligionController extends Controller
                                                 ->leftjoin('url','url.religionId', '=', 'religion.id')
                                                 ->leftjoin('address','address.id', '=', 'religion.addressId')
                                                 ->leftjoin('site','site.siteId', '=', 'religion.siteId')
+                                                ->leftjoin('city','city.cityId', '=', 'address.city')                                                                                                                                       
                                                 ->leftJoin('photo', function($join){
                                                     $join->on('photo.religionId', '=', 'religion.id')
                                                         ->where('photo.is_primary','=',1);
@@ -60,8 +64,8 @@ class ReligionController extends Controller
         if($cityVal){
             $religionRs->where('city.cityId', '=', $cityVal);
         }
-        if($type){
-            $religionRs->where('ethnic.id', '=', $typeVal);
+        if($typeVal){
+            $religionRs->where('religion_type.id', '=', $typeVal);
         }      
         if($keywordVal){
             $religionRs->where('religion.name', 'like', '%'.$keywordVal.'%');

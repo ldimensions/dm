@@ -73,7 +73,7 @@
                     @if (isset($rel['distance']) && $rel['distance'])
                         <div class="gro_kmblock_list">Distance : {{ $rel['distance'] }}</div>
                     @endif                 
-                    <div class="open_close">Closed - Open 7 AM----</div>
+                    <!-- <div class="open_close">Closed - Open 7 AM----</div> -->
             </div>
         @endforeach
     </div>
@@ -85,11 +85,21 @@
             var city        =   document.getElementById("city").value;
             var keyword     =   document.getElementById("keyword").value;
             var urlParm     =   '';
+        
             if(city && city != 'all'){
-                city        =   'grocery-store-'+city;
+                if(type == "{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}-2"){
+                    city        =   'indian-grocery-store-in-'+city;
+                }else if(type == "{{config('app.defaultBaseURL.dallas-kerala-grocery-store')}}-1"){
+                    city        =   'kerala-grocery-store-in-'+city;
+                }else if(type == "{{config('app.defaultBaseURL.dallas-tamil-grocery-store')}}-3"){
+                    city        =   'tamil-grocery-in-'+city;
+                }else{
+                    city        =   'all';
+                }
             }else{
                 city        =   'all';
             }
+
             urlParm = "{{ URL::to('/') }}/{{config('app.defaultBaseURL.grocery-search')}}/"+type+"/"+city+"/"+keyword;
             window.location.href = urlParm;
 

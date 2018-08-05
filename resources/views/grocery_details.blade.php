@@ -9,7 +9,7 @@
         <div class="content">
             <table class="fullWidth">
                 <tr>
-                    <td colspan="2" class="tdtoppadd"><h4>{{ $grocery['description'] }}</h4></td>
+                    <td colspan="2" class="tdtoppadd">{{ $grocery['description'] }}</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity:</td>
@@ -29,7 +29,7 @@
                     <td colspan="2" class="smallfont tdtoppadd1">Address:</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><h2>{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</h2></td>
+                    <td colspan="2">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="smallfont tdtoppadd1">Phone:</td>
@@ -42,7 +42,7 @@
                       <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
                   </tr>
                   <tr>
-                      <td colspan="2"><h3><a href="{{ $grocery['website'] }}" target="_blank">{{ $grocery['website'] }}</a></h3></td>
+                      <td colspan="2"><a href="http://{{ $grocery['website'] }}" target="_blank"><h2>{{ $grocery['website'] }}</h2></a></td>
                   </tr> 
                 @endif               
                 <tr>
@@ -88,29 +88,35 @@
                         @endforeach   
                     </table>   
                   @endif                   
-            @endforeach                                               
+            @endforeach   
+            <div style="text-align: right;">
+                <a href="#" style="text-align:right;">Suggest an edit</a>   
+            </div>                                         
         </div>
     </div>
     <div class="col-md-6 block22">
-    <div class="white_t space"><h1 class="graycolor">{{ $grocery['name'] }} Location</h1></div>
-        <div class="white_map">    <a href="https://www.google.com/maps/dir/{{$grocery['latitude']}},{{$grocery['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $grocery['name'] }}"/></a>
-</div>
+    <div class="white_t space"><h2 class="graycolor">{{ $grocery['name'] }} Location</h2></div>
+        <div class="white_map">   
+            <a href="https://www.google.com/maps/dir/{{$grocery['latitude']}},{{$grocery['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $grocery['name'] }}"/></a>
+        </div>
         <div id="map" class="map"></div>
     </div>
-    <div class="col-md-6 block23">
-    <div class="white_Photo space"><h1 class="graycolor">{{ $grocery['name'] }} Photos</h1></div>
-</div>
-    <div class="col-md-6 block23">
-        <div class="topdetail slideshow-container">
-            <ul id="lightSlider">
-                @foreach ($photos as $key => $photo)
-                    <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
-                        <img src="{{ URL::to('/') }}/image/grocery/{{$grocery['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $grocery['name'] }}" style="width:100%;height:100%" class="bottomarea">
-                    </li>
-                @endforeach
-            </ul>            
-        </div>        
-    </div>
+    @if($photos)
+        <div class="col-md-6 block23">
+            <div class="white_Photo space"><h2 class="graycolor">{{ $grocery['name'] }} Photos</h2></div>
+        </div>
+        <div class="col-md-6 block23">
+            <div class="topdetail slideshow-container">
+                <ul id="lightSlider">
+                    @foreach ($photos as $key => $photo)
+                        <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
+                            <img src="{{ URL::to('/') }}/image/grocery/{{$grocery['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $grocery['name'] }}" style="width:100%;height:100%" class="bottomarea">
+                        </li>
+                    @endforeach
+                </ul>            
+            </div>        
+        </div>
+    @endif
 </div>
 <div class="col-md-3 rightcontainer"></div>
   
