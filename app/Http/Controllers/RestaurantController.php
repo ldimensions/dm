@@ -69,9 +69,8 @@ class RestaurantController extends Controller
         $restaurantRs                       =   $restaurantRs->get();                                                
         $restaurants                        =   $restaurantRs->toArray();
 
-        foreach($restaurants as $key => $restaurant) {    
-
-            if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
+        if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){            
+            foreach($restaurants as $key => $restaurant) {    
                 $distance                       =   "";
                 $lat                            =   ($restaurant['latitude'])?$restaurant['latitude']:'';
                 $long                           =   ($restaurant['longitude'])?$restaurant['longitude']:'';

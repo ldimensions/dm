@@ -23,10 +23,6 @@ return [
     ],
 
     'defaultBaseURL' => [
-        'dallas-malayali-church'                => 'dallas-malayali-church',
-        'dallas-malayali-temple'                => 'dallas-malayali-temple',
-        'dallas-malayali-mosque'                => 'dallas-malayali-mosque',
-
         'dallas-indian-grocery-store'           => 'dallas-indian-grocery-store',
         'dallas-kerala-grocery-store'           => 'dallas-kerala-grocery-store',
         'dallas-tamil-grocery-store'            => 'dallas-tamil-grocery-store',
@@ -43,6 +39,11 @@ return [
 
         'dallas-indian-religion'                => 'dallas-indian-religion',
         'religion-search'                       => 'religion-search',
+        'dallas-malayali-church'                => 'dallas-malayali-church',
+        'dallas-malayali-temple'                => 'dallas-malayali-temple',
+        'dallas-malayali-mosque'                => 'dallas-malayali-mosque',
+
+        'dallas-indian-travels'                => 'dallas-indian-travels',        
         
     ],
 

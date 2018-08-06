@@ -36,6 +36,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="{{ asset('js/lightslider.js') }}" ></script>
+        <script src="{{ asset('js/common.js') }}" ></script>        
 
     </head>
     <body>
@@ -53,6 +54,10 @@
                         <a href="{{ route('grocery') }}" class="{{ (CommonController::activeMenu('grocery')) ? 'activemenu' : 'inactivemenu' }}">Groceries</a>                         
                         <a href="{{ route('restaurant') }}" class="{{ (CommonController::activeMenu('restaurant')) ? 'activemenu' : 'inactivemenu' }}">Restaurants </a> 
                         <a href="{{ route('religion') }}" class="{{ (CommonController::activeMenu('religion')) ? 'activemenu' : 'inactivemenu' }}">Religions </a> 
+                        <!-- <a href="{{ route('travels') }}" class="{{ (CommonController::activeMenu('travels')) ? 'activemenu' : 'inactivemenu' }}">Travels </a> 
+                        <a href="#" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Auto </a>     
+                        <a href="#" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Events </a> 
+                        <a href="#" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Movies </a>                      -->
                     </div>
                 </div>
             </div>
@@ -63,23 +68,6 @@
                 </div>
             </div>
         </div>
-        <script>
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                console.log("Geolocation is not supported by this browser.");
-            }
-            function showPosition(position) {
-                console.log("Latitude: " + position.coords.latitude +"Longitude: " + position.coords.longitude);
-                setCookie(position.coords.latitude, position.coords.longitude);
-            }
-            function setCookie(lat, long, value) {
-                var d = new Date;
-                d.setTime(d.getTime() + 24*60*60*1000*1);
-                document.cookie = "lat=" + lat + ";path=/;expires=" + d.toGMTString();
-                document.cookie = "long=" + long + ";path=/;expires=" + d.toGMTString();
-            }    
-        </script>
     </body>
 </html>
 

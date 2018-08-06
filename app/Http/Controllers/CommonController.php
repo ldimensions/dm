@@ -244,6 +244,7 @@ class CommonController extends Controller
         $groceryArr         =   array('dallas-indian-grocery-store','dallas-grocery-store','grocery-search');
         $restaurantArr      =   array('dallas-indian-restaurant','restaurant-search');
         $religionArr        =   array('dallas-indian-religion','religion-search','dallas-malayali-church');
+        $travelsArr         =   array('dallas-indian-travels','travels-search');        
         switch($type){
             case 'home':
                 if(count($hostNameArr)  ==  2){
@@ -271,6 +272,14 @@ class CommonController extends Controller
                     }
                 }
                 break;
+            case 'travels':
+                foreach($travelsArr as $travel){
+                    if (in_array($travel, $hostNameArr)){
+                        $isActive = true;
+                    }
+                }
+                break;
+                
         }
         return $isActive;
     }

@@ -38,7 +38,7 @@
                         </option>
                     @endforeach
                 </select>
-                <input type="text" id="keyword" value="{{$keyword}}" name="Keyword" placeholder="Keywords" class="text1" maxlength="50" pattern="(1[0-2]|0[1-9])\/(1[5-9]|2\d)">
+                <input type="text" id="searchKeyword" value="{{$keyword}}" name="searchKeyword" placeholder="Keywords" class="text1" maxlength="50" pattern="(1[0-2]|0[1-9])\/(1[5-9]|2\d)">
                 <a href="JavaScript:void(0)" class="search" onclick="grocerySearch()">Search</a>
             </form>
         </div>
@@ -73,7 +73,7 @@
                     @if (isset($rel['distance']) && $rel['distance'])
                         <div class="gro_kmblock_list">Distance : {{ $rel['distance'] }}</div>
                     @endif                 
-                    <!-- <div class="open_close">Closed - Open 7 AM----</div> -->
+                    <!-- <div class="open_close">Closed - Open 7 AM</div> -->
             </div>
         @endforeach
     </div>
@@ -83,9 +83,8 @@
         function grocerySearch() {
             var type        =   document.getElementById("type").value;
             var city        =   document.getElementById("city").value;
-            var keyword     =   document.getElementById("keyword").value;
+            var keyword     =   document.getElementById("searchKeyword").value;
             var urlParm     =   '';
-        
             if(city && city != 'all'){
                 if(type == "{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}-2"){
                     city        =   'indian-grocery-store-in-'+city;
@@ -99,26 +98,9 @@
             }else{
                 city        =   'all';
             }
-
             urlParm = "{{ URL::to('/') }}/{{config('app.defaultBaseURL.grocery-search')}}/"+type+"/"+city+"/"+keyword;
             window.location.href = urlParm;
-
         } 
-
-        $(function(){
-            $('#keyword').keyup(function()
-            {
-                var yourInput = $(this).val();
-                re = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi;
-                var isSplChar = re.test(yourInput);
-                if(isSplChar)
-                {
-                    var no_spl_char = yourInput.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
-                    $(this).val(no_spl_char);
-                }
-            });
-        
-        });
     </script>
 
 @endsection

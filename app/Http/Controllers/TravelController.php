@@ -4,72 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\CommonController;
 use Illuminate\Http\Request;
-use App\Http\Models\Grocery;
+use App\Http\Models\Travel;
 use App\Http\Models\Photo;
 use App\Http\Models\Url;
 use App\Http\Models\City;
 
-class GroceryController extends Controller
+class TravelController extends Controller
 {
     public function __construct(){
 
-    }
-
-    public function index_old(Request $request)
-    {
-        $siteId                         =   config('app.siteId');
-        $commonCtrl                     =   new CommonController;
-
-        $groceryRs                      =   Grocery::select('grocery.id', 'grocery.name', 
-                                                'grocery.description', 'grocery.workingTime',
-                                                'address.address1', 'address.address2',
-                                                'city.city', 'address.state',
-                                                'address.zip', 'address.county',
-                                                'address.phone1', 'address.latitude',
-                                                'address.longitude', 'ethnic.ethnicName',
-                                                'url.urlName', 'photo.photoName')
-                                            ->leftjoin('url','url.groceryId', '=', 'grocery.id')
-                                            ->leftjoin('address','address.id', '=', 'grocery.addressId')
-                                            ->leftjoin('ethnic','ethnic.id', '=', 'grocery.ethnicId')
-                                            ->leftjoin('site','site.siteId', '=', 'grocery.siteId')
-                                            ->leftJoin('photo', function($join){
-                                                    $join->on('photo.groceryId', '=', 'grocery.id')
-                                                        //->on('photo.is_primary','=',1);
-                                                        ->where('photo.is_primary','=',1);
-                                            })   
-                                            ->leftjoin('city','city.cityId', '=', 'address.city')                                           
-                                            ->where('grocery.is_deleted', '=', '0')
-                                            ->where('grocery.is_disabled', '=', '0')
-                                            ->where('site.siteId', '=', $siteId)
-                                            ->orderBy('grocery.premium', 'asc')
-                                            ->orderBy('grocery.order', 'asc')                                                    
-                                            ->get(); 
-        
-        $grocerys                        =   $groceryRs->toArray();
-
-        if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){            
-            foreach($grocerys as $key => $grocery) {    
-                $distance                       =   "";
-                $lat                            =   ($grocery['latitude'])?$grocery['latitude']:'';
-                $long                           =   ($grocery['longitude'])?$grocery['longitude']:'';
-                if($lat && $long){
-                    $dist                       =   $commonCtrl->distance($lat, $long, "M");
-                    if($dist){
-                        $grocerys[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
-                    }
-                }
-            }
-        }
-
-        $cityRs                             =   City::select('cityId','city', 'value')
-                                                ->orderBy('city', 'asc')
-                                                ->get();  
-        $cities                             =   $cityRs->toArray();      
-        $commonCtrl->setMeta($request->path(),1);
-        // echo "<pre>";
-        // print_r($cities);
-        
-        return view('grocery',['grocery' => $grocerys, 'cities' => $cities]);
     }
 
     public function index(Request $request,$type,$city=null,$keyword=null)
@@ -93,52 +36,52 @@ class GroceryController extends Controller
         $siteId                         =   config('app.siteId');
         $commonCtrl                     =   new CommonController;
 
-        $groceryRs                      =   Grocery::select('grocery.id', 'grocery.name', 
-                                                    'grocery.description', 'grocery.workingTime',
+        $travelRs                       =   Travel::select('travel.id', 'travel.name', 
+                                                    'travel.description', 'travel.workingTime',
                                                     'address.address1', 'address.address2',
                                                     'city.city', 'address.state',
                                                     'address.zip', 'address.county',
                                                     'address.phone1', 'address.latitude',
                                                     'address.longitude', 'ethnic.ethnicName',
                                                     'url.urlName', 'photo.photoName')
-                                                ->leftjoin('url','url.groceryId', '=', 'grocery.id')
-                                                ->leftjoin('address','address.id', '=', 'grocery.addressId')
-                                                ->leftjoin('ethnic','ethnic.id', '=', 'grocery.ethnicId')
-                                                ->leftjoin('site','site.siteId', '=', 'grocery.siteId')
+                                                ->leftjoin('url','url.travelId', '=', 'travel.id')
+                                                ->leftjoin('address','address.id', '=', 'travel.addressId')
+                                                ->leftjoin('ethnic','ethnic.id', '=', 'travel.ethnicId')
+                                                ->leftjoin('site','site.siteId', '=', 'travel.siteId')
                                                 ->leftJoin('photo', function($join){
-                                                    $join->on('photo.groceryId', '=', 'grocery.id')
+                                                    $join->on('photo.travelId', '=', 'travel.id')
                                                         ->where('photo.is_primary','=',1);
                                                 })   
                                                 ->leftjoin('city','city.cityId', '=', 'address.city')                                           
-                                                ->where('grocery.is_deleted', '=', '0')
-                                                ->where('grocery.is_disabled', '=', '0')
+                                                ->where('travel.is_deleted', '=', '0')
+                                                ->where('travel.is_disabled', '=', '0')
                                                 ->where('site.siteId', '=', $siteId)
-                                                ->orderBy('grocery.premium', 'asc')
-                                                ->orderBy('grocery.order', 'asc');                                                  
+                                                ->orderBy('travel.premium', 'asc')
+                                                ->orderBy('travel.order', 'asc');                                                  
                                                 
 
         if($cityVal){
-            $groceryRs->where('city.cityId', '=', $cityVal);
+            $travelRs->where('city.cityId', '=', $cityVal);
         }
         if($type){
-            $groceryRs->where('ethnic.id', '=', $typeVal);
+            $travelRs->where('ethnic.id', '=', $typeVal);
         }      
         if($keywordVal){
-            $groceryRs->where('grocery.name', 'like', '%'.$keywordVal.'%');
+            $travelRs->where('travel.name', 'like', '%'.$keywordVal.'%');
         }           
 
-        $groceryRs                       =   $groceryRs->get();
-        $grocerys                        =   $groceryRs->toArray();
+        $travelRs                           =   $travelRs->get();
+        $travels                            =   $travelRs->toArray();
 
         if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){            
-            foreach($grocerys as $key => $grocery) {    
+            foreach($travels as $key => $travel) {    
                 $distance                       =   "";
-                $lat                            =   ($grocery['latitude'])?$grocery['latitude']:'';
-                $long                           =   ($grocery['longitude'])?$grocery['longitude']:'';
+                $lat                            =   ($travel['latitude'])?$travel['latitude']:'';
+                $long                           =   ($travel['longitude'])?$travel['longitude']:'';
                 if($lat && $long){
                     $dist                       =   $commonCtrl->distance($lat, $long, "M");
                     if($dist){
-                        $grocerys[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
+                        $travels[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
                     }
                 }
             }
@@ -150,9 +93,9 @@ class GroceryController extends Controller
         $cities                             =   $cityRs->toArray();      
         $commonCtrl->setMeta($request->path(),1);
         // echo "<pre>";
-        // print_r($grocerys);
+        // print_r($travels);
         
-        return view('grocery',['grocery' => $grocerys, 'cities' => $cities, 'type' => $type, 'cityVal' => $cityVal, 'keyword' => $keyword]);        
+        return view('travel',['travels' => $travels, 'cities' => $cities, 'type' => $type, 'cityVal' => $cityVal, 'keyword' => $keyword]);        
     }    
 
     public function getDetails(Request $request,$url){
