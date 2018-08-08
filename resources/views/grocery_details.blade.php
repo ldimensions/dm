@@ -2,49 +2,49 @@
 
 @section('content')
 
-<div class="col-md-9 leftcontainer">
-    <div class="col-md-12 paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}" class="subcontent2">Grocery</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Details</span></div>
-    <div class="col-md-6 block2">
-        <div class="gro_title toparea space"><h1>{{ $grocery['name'] }}</h1></div>
-        <div class="content">
+<div class="maincontainer">
+<div class="leftcontainer">
+    <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}" class="subcontent2">Grocery</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Details</span></div>
+    <div class="block2">
+        <div class="gro_title toparea space">
             <table class="fullWidth">
                 <tr>
-                    <td colspan="2" class="tdtoppadd">{{ $grocery['description'] }}</td>
+                <td colspan="2" ><h1>{{ $grocery['name'] }}</h1></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity:</td>
-                </tr> 
+                    <td colspan="2"><h2 class="extra">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</h2></td>
+                </tr>
+                
                 <tr>
-                    <td colspan="2"><h2>{{ $grocery['ethnicName'] }}</h2></td>
-                </tr>                
-                @if ( !empty ( $distance ) )                    
-                    <tr>
-                        <td colspan="2" class="smallfont tdtoppadd1">Distance:</td>
-                    </tr> 
-                    <tr>
-                        <td colspan="2">{{ $distance }}</td>
-                    </tr>
-                @endif                 
-                <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Address:</td>
+                    <td colspan="2"><a href="tel:{{ $grocery['phone1'] }}" class="extra">{{ $grocery['phone1'] }}</a></td>
                 </tr>
                 <tr>
-                    <td colspan="2">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</td>
+                    <td colspan="2" class="extra">Working Time</td>
                 </tr>
-                <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Phone:</td>
+            </table>    
+
+        </div>
+        <div class="content">
+            <table class="fullWidth">
+            <tr>
+                    <td colspan="2"> <h4>{{ $grocery['description'] }}</h4></td>
                 </tr>
-                <tr>
-                    <td colspan="2"><a href="tel:{{ $grocery['phone1'] }}">{{ $grocery['phone1'] }}</a></td>
-                </tr>
-                @if (isset($grocery['website']) && $grocery['website'])
+            @if (isset($grocery['website']) && $grocery['website'])
+                
                   <tr>
                       <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
                   </tr>
                   <tr>
                       <td colspan="2"><a href="http://{{ $grocery['website'] }}" target="_blank"><h2>{{ $grocery['website'] }}</h2></a></td>
                   </tr> 
-                @endif               
+                @endif  
+                <tr>
+                    <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity:</td>
+                </tr> 
+                <tr>
+                    <td colspan="2"><h3>{{ $grocery['ethnicName'] }}</h3></td>
+                </tr>                
+                            
                 <tr>
                     <td colspan="2" class="smallfont tdtoppadd1">Located In:</td>
                 </tr>
@@ -59,6 +59,7 @@
                       <td colspan="2">{{ $distance }}</td>
                   </tr>
                 @endif
+                
             </table>
             @foreach ($workingTimes as $wtKey => $wtArr)
                 @if($wtKey == "default")
@@ -84,28 +85,30 @@
                                     @endforeach
                                 @endforeach
                             </tr>
+                            
                             @endif                           
-                        @endforeach   
+                        @endforeach  
+                         
                     </table>   
                   @endif                   
             @endforeach   
-            <div style="text-align: right;">
-                <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="text-align:right;">Suggest an edit</a>   
+            <div class="suggestionblock">
+                <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent2">Suggest an edit</a>   
             </div>                                         
         </div>
     </div>
-    <div class="col-md-6 block22">
-    <div class="white_t space"><h2 class="graycolor">{{ $grocery['name'] }} Location</h2></div>
+    <div class="block22">
+    <div class="white_t space"><h2 class="graycolor">Location</h2></div>
         <div class="white_map">   
             <a href="https://www.google.com/maps/dir/{{$grocery['latitude']}},{{$grocery['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $grocery['name'] }}"/></a>
         </div>
         <div id="map" class="map"></div>
     </div>
     @if($photos)
-        <div class="col-md-6 block23">
-            <div class="white_Photo space"><h2 class="graycolor">{{ $grocery['name'] }} Photos</h2></div>
+        <div class="block23">
+            <div class="white_Photo space"><h2 class="graycolor">Photos</h2></div>
         </div>
-        <div class="col-md-6 block23">
+        <div class="block231">
             <div class="topdetail slideshow-container">
                 <ul id="lightSlider">
                     @foreach ($photos as $key => $photo)
@@ -118,7 +121,8 @@
         </div>
     @endif
 </div>
-<div class="col-md-3 rightcontainer"></div>
+<div class="rightcontainer"></div>
+</div>
   
 <div class="row">
     <div class="col-md-12 footerh nopadding"></div>
