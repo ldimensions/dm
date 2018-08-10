@@ -242,32 +242,31 @@ class GroceryController extends Controller
 
         $siteId                         =   config('app.siteId');
         $relatedRs                      =   Grocery::select('grocery.id', 'grocery.name', 
-                                            'grocery.description', 'grocery.workingTime',
-                                            'address.address1', 'address.address2',
-                                            'grocery.website',                                                
-                                            'city.city', 'address.state',
-                                            'address.zip', 'address.county',
-                                            'address.phone1', 'address.latitude',
-                                            'address.longitude', 'ethnic.ethnicName',
-                                            'ethnic.id as ethnicId', 'url.urlName')
-                                                ->leftjoin('url','url.groceryId', '=', 'grocery.id')
-                                                ->leftjoin('address','address.id', '=', 'grocery.addressId')
-                                                ->leftjoin('city','city.cityId', '=', 'address.city')                                                                                           
-                                                ->leftjoin('ethnic','ethnic.id', '=', 'grocery.ethnicId')
-                                                ->leftjoin('site','site.siteId', '=', 'grocery.siteId')
-                                                ->leftJoin('photo', function($join){
-                                                    $join->on('photo.groceryId', '=', 'grocery.id')
-                                                        ->where('photo.is_primary','=',1);
-                                                    })                                                                                   
-                                                ->where('site.siteId', '=', $siteId)
-                                                ->where('grocery.id', '!=', $id)
-                                                ->where('ethnic.id', '=', $ethnicId)                                        
-                                                ->where('grocery.is_deleted', '=', '0')
-                                                ->where('grocery.is_disabled', '=', '0')
-                                                ->orderBy('grocery.premium', 'desc')
-                                                ->orderBy('grocery.order', 'asc')                                         
-                                                ->take(5)->get();                                          
-        
+                                                'address.address1', 'address.address2',
+                                                'grocery.website',                                                
+                                                'city.city', 'address.state',
+                                                'address.zip', 'address.county',
+                                                'address.phone1', 'address.latitude',
+                                                'address.longitude', 'ethnic.ethnicName',
+                                                'ethnic.id as ethnicId', 'url.urlName')
+                                                    ->leftjoin('url','url.groceryId', '=', 'grocery.id')
+                                                    ->leftjoin('address','address.id', '=', 'grocery.addressId')
+                                                    ->leftjoin('city','city.cityId', '=', 'address.city')                                                                                           
+                                                    ->leftjoin('ethnic','ethnic.id', '=', 'grocery.ethnicId')
+                                                    ->leftjoin('site','site.siteId', '=', 'grocery.siteId')
+                                                    ->leftJoin('photo', function($join){
+                                                        $join->on('photo.groceryId', '=', 'grocery.id')
+                                                            ->where('photo.is_primary','=',1);
+                                                        })                                                                                   
+                                                    ->where('site.siteId', '=', $siteId)
+                                                    ->where('grocery.id', '!=', $id)
+                                                    ->where('ethnic.id', '=', $ethnicId)                                        
+                                                    ->where('grocery.is_deleted', '=', '0')
+                                                    ->where('grocery.is_disabled', '=', '0')
+                                                    ->orderBy('grocery.premium', 'desc')
+                                                    ->orderBy('grocery.order', 'asc')                                         
+                                                    ->take(5)->get();                                          
+            
         $related                     =   $relatedRs->toArray();  
 
         if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){

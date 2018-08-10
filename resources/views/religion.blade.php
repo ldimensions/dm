@@ -12,18 +12,18 @@
                         All
                 </option>
                 <option 
-                    value="{{config('app.defaultBaseURL.dallas-malayali-church')}}-1"
-                    {{ config('app.defaultBaseURL.dallas-malayali-church').'-1' == $type ? 'selected="selected"' : '' }}>
+                    value="{{config('app.defaultBaseURL.dallas-christian-church')}}-1"
+                    {{ config('app.defaultBaseURL.dallas-christian-church').'-1' == $type ? 'selected="selected"' : '' }}>
                         Christianity
                 </option>
                 <option 
-                    value="{{config('app.defaultBaseURL.dallas-malayali-temple')}}-2"
-                    {{ config('app.defaultBaseURL.dallas-malayali-temple').'-2' == $type ? 'selected="selected"' : '' }}>
+                    value="{{config('app.defaultBaseURL.dallas-hindu-temple')}}-2"
+                    {{ config('app.defaultBaseURL.dallas-hindu-temple').'-2' == $type ? 'selected="selected"' : '' }}>
                         Hinduism
                 </option>
                 <option 
-                    value="{{config('app.defaultBaseURL.dallas-malayali-mosque')}}-5"
-                    {{ config('app.defaultBaseURL.dallas-malayali-mosque').'-5' == $type ? 'selected="selected"' : '' }}>
+                    value="{{config('app.defaultBaseURL.dallas-islan-mosque')}}-5"
+                    {{ config('app.defaultBaseURL.dallas-islan-mosque').'-5' == $type ? 'selected="selected"' : '' }}>
                         Islam
                 </option>
             </select>
@@ -63,15 +63,15 @@
                 @endif                 
                 <div class="content1"> 
                     @if ($rel['religionName'] == 'Christianity')
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-church')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-christian-church')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
                     @elseif($rel['religionName'] == 'Hinduism')
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-hindu-temple')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
                     @elseif($rel['religionName'] == 'Judaism')
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
+                        <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/> -->
                     @elseif($rel['religionName'] == 'Buddhism')
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
+                        <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/> -->
                     @elseif($rel['religionName'] == 'Islam')
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-mosque')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>                                                           
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-islan-mosque')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>                                                           
                     @endif
                     <!-- <span>{{ str_limit($rel['shortDescription'], 100) }}</span>  -->
                 </div>
@@ -96,12 +96,12 @@
             var keyword     =   document.getElementById("searchKeyword").value;
             var urlParm     =   '';
             if(city && city != 'all'){
-                if(type == "{{config('app.defaultBaseURL.dallas-malayali-church')}}-1"){
-                    city        =   'malayali-church-in-'+city;
-                }else if(type == "{{config('app.defaultBaseURL.dallas-malayali-temple')}}-2"){
-                    city        =   'malayali-temple-in-'+city;
-                }else if(type == "{{config('app.defaultBaseURL.dallas-malayali-mosque')}}-5"){
-                    city        =   'malayali-mosque-in-'+city;
+                if(type == "{{config('app.defaultBaseURL.dallas-christian-church')}}-1"){
+                    city        =   "{{config('app.defaultBaseURL.christian-church-in')}}"+city;
+                }else if(type == "{{config('app.defaultBaseURL.dallas-hindu-temple')}}-2"){
+                    city        =   "{{config('app.defaultBaseURL.hindu-temple-in')}}"+city;
+                }else if(type == "{{config('app.defaultBaseURL.dallas-islan-mosque')}}-5"){
+                    city        =   "{{config('app.defaultBaseURL.islam-mosque-in')}}"+city;                    
                 }else{
                     city        =   'all';
                 }
@@ -109,7 +109,7 @@
                 city        =   'all';
             }
             urlParm = "{{ URL::to('/') }}/{{config('app.defaultBaseURL.religion-search')}}/"+type+"/"+city+"/"+keyword;
-            window.location.href = urlParm;
+            window.location.href = urlParm;            
         } 
     </script>
 @endsection

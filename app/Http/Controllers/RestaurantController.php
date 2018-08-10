@@ -187,12 +187,10 @@ class RestaurantController extends Controller
         $siteId                         =   config('app.siteId');
 
         $relatedRs                      =   Restaurant::select('restaurant.id', 'restaurant.name', 
-                                                'restaurant.description', 'restaurant.workingTime',
                                                 'address.address1', 'address.address2',
                                                 'restaurant.website',                                                
-                                                'address.city', 'address.state',
+                                                'city.city', 'address.state',
                                                 'address.zip', 'address.county',
-                                                'address.city', 'address.state',
                                                 'address.phone1', 'address.latitude',
                                                 'address.longitude', 'ethnic.ethnicName',
                                                 'ethnic.id as ethnicId')
@@ -200,6 +198,7 @@ class RestaurantController extends Controller
                                                 ->leftjoin('address','address.id', '=', 'restaurant.addressId')
                                                 ->leftjoin('ethnic','ethnic.id', '=', 'restaurant.ethnicId')
                                                 ->leftjoin('site','site.siteId', '=', 'restaurant.siteId')
+                                                ->leftjoin('city','city.cityId', '=', 'address.city')                                                                                             
                                                 ->leftJoin('photo', function($join){
                                                     $join->on('photo.photoId', '=', 'restaurant.id')
                                                         ->where('photo.is_primary','=',1);

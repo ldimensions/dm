@@ -30,20 +30,29 @@ return [
         'grocery-store-details'                 => 'dallas-grocery-store', 
         'grocery-search'                        => 'grocery-search',
         'grocery-related'                       => 'grocery-related',
+        'indian-grocery-store-in'               => 'indian-grocery-store-in-',
+        'kerala-grocery-store-in'               => 'kerala-grocery-store-in-',
+        'tamil-grocery-in'                      => 'tamil-grocery-in-',        
 
         'dallas-indian-restaurant'              => 'dallas-indian-restaurant',
         'dallas-kerala-restaurant'              => 'dallas-kerala-restaurant',
         'dallas-tamil-restaurant'               => 'dallas-tamil-restaurant',
         'restaurant-related'                    => 'restaurant-related',
         'restaurant-search'                     => 'restaurant-search',
+        'indian-restaurant-in'                  => 'indian-restaurant-in-',
+        'kerala-restaurant-in'                  => 'kerala-restaurant-in-',
+        'tamil-restaurant-in'                   => 'tamil-restaurant-in-',
 
         'dallas-indian-religion'                => 'dallas-indian-religion',
         'religion-search'                       => 'religion-search',
-        'dallas-malayali-church'                => 'dallas-malayali-church',
-        'dallas-malayali-temple'                => 'dallas-malayali-temple',
-        'dallas-malayali-mosque'                => 'dallas-malayali-mosque',
+        'dallas-christian-church'               => 'dallas-christian-church',
+        'dallas-hindu-temple'                   => 'dallas-hindu-temple',
+        'dallas-islan-mosque'                   => 'dallas-islan-mosque',
+        'christian-church-in'                   => 'christian-church-in-',
+        'hindu-temple-in'                       => 'hindu-temple-in-',
+        'islam-mosque-in'                       => 'islam-mosque-in-',           
 
-        'dallas-indian-travels'                => 'dallas-indian-travels',        
+        'dallas-indian-travels'                 => 'dallas-indian-travels',        
         
     ],
 

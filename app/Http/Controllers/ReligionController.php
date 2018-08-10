@@ -184,10 +184,9 @@ class ReligionController extends Controller
 
         $siteId                         =   config('app.siteId');
         $relatedRs                      =   Religion::select('religion.id', 'religion.name', 
-                                                'religion.shortDescription', 'religion.workingTime',
                                                 'address.address1', 'address.address2',
-                                                'address.zip', 'religion.shortDescription',
-                                                'address.city', 'address.state',
+                                                'address.zip', 
+                                                'city.city', 'address.state',
                                                 'address.phone1', 'address.latitude',
                                                 'address.longitude','religion_type.religionName',
                                                 'url.urlName', 'photo.photoName',
@@ -197,7 +196,8 @@ class ReligionController extends Controller
                                             ->leftjoin('url','url.religionId', '=', 'religion.id')
                                             ->leftjoin('address','address.id', '=', 'religion.addressId')
                                             ->leftjoin('site','site.siteId', '=', 'religion.siteId')
-                                            ->leftjoin('photo','photo.religionId', '=', 'religion.id')                                            
+                                            ->leftjoin('photo','photo.religionId', '=', 'religion.id')   
+                                            ->leftjoin('city','city.cityId', '=', 'address.city')                                             
                                             ->where('religion.is_deleted', '=', '0')
                                             ->where('religion.is_disabled', '=', '0')
                                             ->where('site.siteId', '=', $siteId)
@@ -227,6 +227,6 @@ class ReligionController extends Controller
             }
         }  
                 
-        return view('related',['related' => $related]);
+        return view('related',['related' => $related, 'type' => 'religion']);
     }    
 }

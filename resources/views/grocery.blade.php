@@ -87,11 +87,11 @@
             var urlParm     =   '';
             if(city && city != 'all'){
                 if(type == "{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}-2"){
-                    city        =   'indian-grocery-store-in-'+city;
+                    city        =   "{{config('app.defaultBaseURL.indian-grocery-store-in')}}"+city;
                 }else if(type == "{{config('app.defaultBaseURL.dallas-kerala-grocery-store')}}-1"){
-                    city        =   'kerala-grocery-store-in-'+city;
+                    city        =   "{{config('app.defaultBaseURL.kerala-grocery-store-in')}}"+city;
                 }else if(type == "{{config('app.defaultBaseURL.dallas-tamil-grocery-store')}}-3"){
-                    city        =   'tamil-grocery-in-'+city;
+                    city        =   "{{config('app.defaultBaseURL.tamil-grocery-in')}}"+city;
                 }else{
                     city        =   'all';
                 }
