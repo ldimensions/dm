@@ -12,54 +12,67 @@
                 <td colspan="2" ><h1>{{ $grocery['name'] }}</h1></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><h2 class="extra">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</h2></td>
+                    <td colspan="2"><span class="extra">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</span></td>
                 </tr>
                 
                 <tr>
                     <td colspan="2"><a href="tel:{{ $grocery['phone1'] }}" class="extra">{{ $grocery['phone1'] }}</a></td>
                 </tr>
-                <tr>
-                    <td colspan="2" class="extra">Working Time</td>
-                </tr>
+                @foreach ($workingTimes as $wtKey => $wtArr)
+                    @if($wtKey == "default")
+                        <tr>
+                            <td colspan="2" class="extra">Working Time
+                                @foreach ($wtArr[0] as $wtArrKey => $wtRs)
+                                    @if ( !empty ( $wtRs ) )
+                                            @foreach ($wtRs as $key => $wt)
+                                                @foreach ($wt as $wtTimeKey => $wtTime)
+                                                    @if ( $wtArrKey == $today )
+                                                        {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif
+                                                    @endif                                              
+                                                @endforeach
+                                            @endforeach
+                                    @endif                           
+                                @endforeach 
+                            </td>
+                        </tr>                         
+                    @endif                   
+                @endforeach  
             </table>    
-
         </div>
         <div class="content">
             <table class="fullWidth">
             <tr>
-                    <td colspan="2"> <h4>{{ $grocery['description'] }}</h4></td>
-                </tr>
+                <td colspan="2"> <h4>{{ $grocery['description'] }}</h4></td>
+            </tr>
             @if (isset($grocery['website']) && $grocery['website'])
-                
-                  <tr>
-                      <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
-                  </tr>
-                  <tr>
-                      <td colspan="2"><a href="http://{{ $grocery['website'] }}" target="_blank"><h2>{{ $grocery['website'] }}</h2></a></td>
-                  </tr> 
-                @endif  
                 <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity:</td>
+                    <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><a href="http://{{ $grocery['website'] }}" target="_blank"><h2>{{ $grocery['website'] }}</h2></a></td>
                 </tr> 
+            @endif  
+            <tr>
+                <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity:</td>
+            </tr> 
+            <tr>
+                <td colspan="2"><h3>{{ $grocery['ethnicName'] }}</h3></td>
+            </tr>                
+                        
+            <tr>
+                <td colspan="2" class="smallfont tdtoppadd1">Located In:</td>
+            </tr>
+            <tr>
+                <td colspan="2"><h3>{{ $grocery['city'] }}</h3></td>
+            </tr>
+            @if (isset($distance) && $distance)
                 <tr>
-                    <td colspan="2"><h3>{{ $grocery['ethnicName'] }}</h3></td>
-                </tr>                
-                            
-                <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Located In:</td>
+                    <td colspan="2" class="smallfont tdtoppadd1">Distance:</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><h3>{{ $grocery['city'] }}</h3></td>
+                    <td colspan="2">{{ $distance }}</td>
                 </tr>
-                @if (isset($distance) && $distance)
-                  <tr>
-                      <td colspan="2" class="smallfont tdtoppadd1">Distance:</td>
-                  </tr>
-                  <tr>
-                      <td colspan="2">{{ $distance }}</td>
-                  </tr>
-                @endif
-                
+            @endif
             </table>
             @foreach ($workingTimes as $wtKey => $wtArr)
                 @if($wtKey == "default")
@@ -90,7 +103,7 @@
                         @endforeach  
                          
                     </table>   
-                  @endif                   
+                @endif                   
             @endforeach   
             <div class="suggestionblock">
                 <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent2">Suggest an edit</a>   
@@ -98,7 +111,7 @@
         </div>
     </div>
     <div class="block22">
-    <div class="white_t space"><h2 class="graycolor">Location</h2></div>
+    <div class="white_t space"><h2 class="graycolor">{{$grocery['name']}} Location</h2></div>
         <div class="white_map">   
             <a href="https://www.google.com/maps/dir/{{$grocery['latitude']}},{{$grocery['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $grocery['name'] }}"/></a>
         </div>
@@ -106,7 +119,7 @@
     </div>
     @if($photos)
         <div class="block23">
-            <div class="white_Photo space"><h2 class="graycolor">Photos</h2></div>
+            <div class="white_Photo space"><h2 class="graycolor">{{$grocery['name']}} Photos</h2></div>
         </div>
         <div class="block231">
             <div class="topdetail slideshow-container">
@@ -134,32 +147,43 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Suggession For Edit</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <form>
-            <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Recipient:</label>
-                <input type="text" class="form-control" id="recipient-name">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Suggession For Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="form-group">
-                <label for="message-text" class="col-form-label">Message:</label>
-                <textarea class="form-control" id="message-text"></textarea>
+            <div class="modal-body">
+                <div class="form-group" id="formGrpErrName">
+                    <label for="recipient-name" class="col-form-label">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                    <div id="nameError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Email:</label>
+                    <input type="text" class="form-control" id="email" name="email">
+                    <div id="emailError"></div>
+                </div>   
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Phone:</label>
+                    <input type="text" class="form-control" id="phone" name="phone" >
+                </div>                       
+                <div class="form-group" id="formGrpErrSuggession">
+                    <label for="message-text" class="col-form-label">Suggession:</label>
+                    <textarea class="form-control" id="suggession" name="suggession"></textarea>
+                    <div id="sugessionError"></div>                        
+                </div>
             </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Send message</button>
-        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onClick="validate()" />Submit</button>
+            </div>            
         </div>
     </div>
 </div>
+
 <script>
+
     /*---------- Google Map ----------*/
     
     function initMap() {
