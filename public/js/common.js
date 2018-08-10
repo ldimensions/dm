@@ -26,7 +26,7 @@ function setCookie(lat, long, value) {
     document.cookie = "lat=" + lat + ";path=/;expires=" + d.toGMTString();
     document.cookie = "long=" + long + ";path=/;expires=" + d.toGMTString();
 } 
-  
+
 function validate() {
     var errors = true;
     if (document.getElementById("name").value.length === 0) {
@@ -49,11 +49,29 @@ function validate() {
         var phone                       =   document.getElementById("phone").value;
         var suggession                  =   document.getElementById("suggession").value;
         var url                         =   window.location.href;
-
-        $.post("demo_test_post.asp",{ name: name, email: email, phone: phone, suggession: suggession, url: url}, function(data,status){
-            if(status=="success"){
+        var token                       =   document.getElementById("token").value;
+        console.log(token);
+        // $.post("/suggessionForEdit",{ name: name, email: email, phone: phone, suggession: suggession, url: url}, function(data,status){
+        //     if(status=="success"){
                 
-            }
-        });                       
+        //     }
+        // }); 
+        $.ajax({
+            url: "/suggessionForEdit",
+            type: "POST",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {name: name, email: email, phone: phone, suggession: suggession, url: url},
+            cache: false,
+            datatype: 'JSON',
+            processData: false,
+            success: function (response) {
+                 console.log(response);
+               },
+               error: function (response) {
+                 console.log(response);
+               }
+        });                              
     }       
 }

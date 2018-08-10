@@ -39,7 +39,7 @@ $this->get('/religion-related/{denomination}/{id}', 'ReligionController@getRelat
 
 //$this->get('/'.config('app.defaultBaseURL.dallas-indian-travels'), 'TravelController@index')->name('travels');
 
-$this->get('/sitemap1', 'CommonController@siteMap');
+$this->post('/suggessionForEdit', 'CommonController@suggessionForEdit');
 
 Route::get('sitemap', function() {
     $date                                   =   date(DateTime::ISO8601);

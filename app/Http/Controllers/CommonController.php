@@ -284,4 +284,8 @@ class CommonController extends Controller
         return $isActive;
     }
 
+    public static function suggessionForEdit(Request $request){
+        echo $request->input('name');
+    }
+
 }
