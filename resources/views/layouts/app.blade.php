@@ -48,6 +48,7 @@
                         <a href="#"  class="signinbutton">Sign In</a> 
                         <a href="#"  class="location"><img alt="{{config('app.siteId')}}" src="{{ URL::to('/') }}/image/location.svg" />Dallas</a> 
                     </div>
+                    <div class="menumain">
                     <div class="menu"> 
                         <a href="{{ url('/') }}" class="{{ (CommonController::activeMenu('home')) ? 'activemenu' : 'inactivemenu' }}">Home</a> 
                         <!-- <a href="{{ route('grocery') }}" class="{{ (request()->is('dallas-indian-grocery-store')) ? 'activemenu' : 'inactivemenu' }}">Groceries</a>  -->
@@ -59,6 +60,7 @@
                         <a href="#" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Events </a> 
                         <a href="#" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Movies </a>                      -->
                     </div>
+                    </div
                 </div>
             </div>
             <div class="row">
