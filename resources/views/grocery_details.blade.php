@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div class="mcontainer">
 <div class="maincontainer">
 <div class="leftcontainer">
     <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}" class="subcontent2">Grocery</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Details</span></div>
@@ -106,7 +106,7 @@
                 @endif                   
             @endforeach   
             <div class="suggestionblock">
-                <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent2">Suggest an edit</a>   
+                <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent22">Suggest an edit</a>   
             </div>                                         
         </div>
     </div>
@@ -133,16 +133,16 @@
             </div>        
         </div>
     @endif
+    <div class="row" id="related"></div>
 </div>
 <div class="rightcontainer"></div>
+</div>
 </div>
   
 <div class="row">
     <div class="col-md-12 footerh nopadding"></div>
 </div>
-<div class="col-md-9 leftcontainer relatedContent">   
-    <div class="row" id="related"></div>
-</div>
+
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
