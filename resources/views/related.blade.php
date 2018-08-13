@@ -1,5 +1,6 @@
+<div class="related title">Related Groceries</div>
 @foreach ($related as $key => $rel)
- 
+
     <div class="col-md-12 block1">
         @if (isset($type) && $type == 'grocery')
             <div class="smallImage">

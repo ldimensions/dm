@@ -188,10 +188,12 @@ table {
 	float: left;
 	position: relative;
 	width: 980px;
-	padding-bottom: 15px;
-	background-position: top;
+	margin-bottom: 15px;
+	background-position: bottom;
     background-image: url(../image/shadow_bottom.gif);
-    background-repeat: repeat-x;
+	background-repeat: repeat-x;
+	height:35px;
+	padding-left: 15px;
 }
 .headerstrip{
 	position: relative;
@@ -240,7 +242,7 @@ table {
 	background-color:#FFF;
 	height:126px;
 	border:1px solid #E1E1E1;
-	margin-top:15px;
+	margin-bottom:15px;
 	border-radius:5px;
 	margin-left:15px;
 	width:467px;

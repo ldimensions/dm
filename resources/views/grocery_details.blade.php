@@ -133,7 +133,7 @@
             </div>        
         </div>
     @endif
-    <div class="row related" id="related"></div>
+    <div class="row" id="related"></div>
 </div>
 <div class="rightcontainer"></div>
 </div>
