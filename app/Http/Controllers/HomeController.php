@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Http\Controllers\CommonController;
 use Illuminate\Http\Request;
 use App\Http\Models\Religion;
@@ -9,25 +7,17 @@ use App\Http\Models\Restaurant;
 use App\Http\Models\Grocery;
 use App\Http\Models\Photo;
 use App\Http\Models\Url;
-
 use SEOMeta;
 use OpenGraph;
 use Twitter;
 use Cookie;
-
-
 class HomeController extends Controller
 {
-
     public function __construct(){
         //$this->middleware('auth');
     }
-
     public function index(Request $request){
-
-
         $commonCtrl                     =   new CommonController;
-
         $siteId                         =   config('app.siteId');
         $religionRs                     =   Religion::select('religion.id', 'religion.name', 
                                                 'religion.workingTime',
@@ -52,7 +42,6 @@ class HomeController extends Controller
                                             ->get(); 
         
         $religions                      =   $religionRs->toArray();  
-
         if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
             foreach($religions as $key => $religion) {    
                 $distance                       =   "";
@@ -67,7 +56,6 @@ class HomeController extends Controller
                 }
             }
         }       
-
         // Top groceries
         
         $groceryRs                      =   Grocery::select('grocery.id', 'grocery.name', 
@@ -92,9 +80,7 @@ class HomeController extends Controller
                                             ->get(); 
         
         $grocerys                        =   $groceryRs->toArray();
-
         foreach($grocerys as $key => $grocery) {    
-
             if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
                 $distance                       =   "";
                 $lat                            =   ($grocery['latitude'])?$grocery['latitude']:'';
@@ -107,9 +93,7 @@ class HomeController extends Controller
                 }
             }
         }
-
         // Top restaurants
-
         $restaurantRs                   =   Restaurant::select('restaurant.id', 'restaurant.name', 
                                                     'restaurant.description', 'restaurant.workingTime',
                                                     'address.address1', 'address.address2',
@@ -132,7 +116,6 @@ class HomeController extends Controller
                                                 ->get(); 
         
         $restaurants                     =   $restaurantRs->toArray();
-
         if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){            
             foreach($restaurants as $key => $restaurant) {    
                 $distance                       =   "";

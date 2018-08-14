@@ -17,12 +17,12 @@
                 @endif  
             </div> 
             <div class="content1"> 
-                <a href="../{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>
+                <a href="../{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" class="title"><h2>{{ $rel['name'] }}</h2></a><br/>
             </div>
             <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
             <div class="content2"> <span class="subcontent2">{{ $rel['address1'] }} {{ $rel['address2'] }}, {{ $rel['city'] }}, {{ $rel['state'] }} {{ $rel['zip'] }}</span> </div>
             <div class="content3"> <span class="subcontent2"><a href="tel:{{ $rel['phone1'] }}">{{ $rel['phone1'] }}</a></span> </div>
-            <div class="content2">Closed - Open 7 AM----</div>
+            <!-- <div class="content2">Closed - Open 7 AM</div> -->
         @endif 
 
         @if(isset($type) && $type == 'restaurant')

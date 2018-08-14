@@ -243,7 +243,7 @@ class GroceryController extends Controller
         $siteId                         =   config('app.siteId');
         $relatedRs                      =   Grocery::select('grocery.id', 'grocery.name', 
                                                 'address.address1', 'address.address2',
-                                                'grocery.website',                                                
+                                                'grocery.website', 'grocery.workingTime',                                             
                                                 'city.city', 'address.state',
                                                 'address.zip', 'address.county',
                                                 'address.phone1', 'address.latitude',
