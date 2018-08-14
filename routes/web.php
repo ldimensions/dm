@@ -97,3 +97,4 @@ Route::get('sitemap', function() {
     
 });
     
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
