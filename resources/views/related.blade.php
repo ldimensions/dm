@@ -1,8 +1,11 @@
  
 @foreach ($related as $key => $rel)
-
-    @if ($type == 'grocery' && $key == 0)
+    @if (isset($type) && $type == 'grocery' && $key == 0)
         <div class="related title">Related Groceries</div>
+    @elseif(isset($type) && $type == 'restaurant' && $key == 0)
+        <div class="related title">Related Restaurants</div>
+    @elseif(isset($type) && $type == 'religion' && $key == 0)
+        <div class="related title">Related Religions</div>
     @endif 
     <div class="col-md-12 block1">
         @if (isset($type) && $type == 'grocery')
