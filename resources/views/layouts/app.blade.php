@@ -45,7 +45,13 @@
                 <div class="headerstrip"></div>
                 <div class="col-md-12 headerh nopadding">
                     <div class="header"> 
-                        <a href="#"  class="signinbutton">Sign In</a> 
+                        @if ( Auth::guest() )
+                            <a href="{{ url('/login') }}"  class="signinbutton">Login</a> 
+                            <a href="{{ url('/register') }}"  class="signinbutton">Sign Up</a>                            
+                        @else
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"  class="signinbutton">Logout</a> 
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>                            
+                        @endif                        
                         <a href="#"  class="location"><img alt="{{config('app.siteId')}}" src="{{ URL::to('/') }}/image/location.svg" />Dallas</a> 
                     </div>
                     <div class="menumain">
