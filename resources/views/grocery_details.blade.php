@@ -12,11 +12,11 @@
                 <td colspan="2" ><h1>{{ $grocery['name'] }}</h1></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><span class="extra">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</span></td>
+                    <td colspan="2"><h2 class="white smaextra">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</h2></td>
                 </tr>
                 
                 <tr>
-                    <td colspan="2"><a href="tel:{{ $grocery['phone1'] }}" class="extra">{{ $grocery['phone1'] }}</a></td>
+                    <td colspan="2"><h2 class="white smaextra"><a href="tel:{{ $grocery['phone1'] }}" class="extra">{{ $grocery['phone1'] }}</a></h2></td>
                 </tr>
                 @foreach ($workingTimes as $wtKey => $wtArr)
                     @if($wtKey == "default")
