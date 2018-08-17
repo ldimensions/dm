@@ -135,7 +135,4 @@ class HomeController extends Controller
         return view('home',['religion' => $religions, 'grocery' => $grocerys, 'restaurants' => $restaurants]);
     }
 
-    public function dashboard(){
-        return view('admin.dashboard');
-    }
 }

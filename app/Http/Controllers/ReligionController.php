@@ -58,7 +58,7 @@ class ReligionController extends Controller
                                                 ->where('religion.is_deleted', '=', '0')
                                                 ->where('religion.is_disabled', '=', '0')
                                                 ->where('site.siteId', '=', $siteId)
-                                                ->orderBy('religion.premium', 'desc')
+                                                ->orderBy('religion.premium', 'DESC')
                                                 ->orderBy('religion.order', 'asc');                                                    
 
         if($cityVal){

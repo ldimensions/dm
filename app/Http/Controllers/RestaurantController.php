@@ -123,13 +123,11 @@ class RestaurantController extends Controller
                                                     ->where('url.urlName', '=', $url)
                                                     ->where('restaurant.is_deleted', '=', '0')
                                                     ->where('restaurant.is_disabled', '=', '0')
-                                                    ->get(); 
+                                                    ->get()->first();; 
 
         $restaurant                         =   $restaurantRs->toArray(); 
-        $restaurant                         =   $restaurant[0]; 
 
         if($restaurant){
-
             $restaurantId                   =   $restaurant['id'];
             
             $lat                            =   ($restaurant['latitude'])?$restaurant['latitude']:'';
@@ -140,12 +138,14 @@ class RestaurantController extends Controller
             }
 
             $workingTimes                   =   json_decode($restaurant['workingTime'], true);
-            foreach($workingTimes as $rootKey => $workingTime) {
-                foreach($workingTime as $subkey => $subWorkingTime) {
-                    foreach($subWorkingTime as $dayKey => $dayWorkingTime) {
-                        foreach($dayWorkingTime as $keys => $times) {
-                            foreach($times as $key => $time) {
-                                $workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'] = date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time']));
+            if($workingTimes){
+                foreach($workingTimes as $rootKey => $workingTime) {
+                    foreach($workingTime as $subkey => $subWorkingTime) {
+                        foreach($subWorkingTime as $dayKey => $dayWorkingTime) {
+                            foreach($dayWorkingTime as $keys => $times) {
+                                foreach($times as $key => $time) {
+                                    $workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'] = date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time']));
+                                }
                             }
                         }
                     }

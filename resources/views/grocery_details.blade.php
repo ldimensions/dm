@@ -18,25 +18,27 @@
                 <tr>
                     <td colspan="2"><span class="white smaextra"><a href="tel:{{ $grocery['phone1'] }}" class="extra">{{ $grocery['phone1'] }}</a></span></td>
                 </tr>
-                @foreach ($workingTimes as $wtKey => $wtArr)
-                    @if($wtKey == "default")
-                        <tr>
-                            <td colspan="2" class="extra">Working Time
-                                @foreach ($wtArr[0] as $wtArrKey => $wtRs)
-                                    @if ( !empty ( $wtRs ) )
-                                            @foreach ($wtRs as $key => $wt)
-                                                @foreach ($wt as $wtTimeKey => $wtTime)
-                                                    @if ( $wtArrKey == $today )
-                                                        {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif
-                                                    @endif                                              
+                @if($workingTimes)
+                    @foreach ($workingTimes as $wtKey => $wtArr)
+                        @if($wtKey == "default")
+                            <tr>
+                                <td colspan="2" class="extra">Working Time
+                                    @foreach ($wtArr[0] as $wtArrKey => $wtRs)
+                                        @if ( !empty ( $wtRs ) )
+                                                @foreach ($wtRs as $key => $wt)
+                                                    @foreach ($wt as $wtTimeKey => $wtTime)
+                                                        @if ( $wtArrKey == $today )
+                                                            {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif
+                                                        @endif                                              
+                                                    @endforeach
                                                 @endforeach
-                                            @endforeach
-                                    @endif                           
-                                @endforeach 
-                            </td>
-                        </tr>                         
-                    @endif                   
-                @endforeach  
+                                        @endif                           
+                                    @endforeach 
+                                </td>
+                            </tr>                         
+                        @endif                   
+                    @endforeach  
+                @endif
             </table>    
         </div>
         <div class="content">
@@ -74,37 +76,39 @@
                 </tr>
             @endif
             </table>
-            @foreach ($workingTimes as $wtKey => $wtArr)
-                @if($wtKey == "default")
-                    <table>
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Working Time:</td>
-                        </tr>
-                        @foreach ($wtArr[0] as $wtArrKey => $wtRs)
-                            @if ( !empty ( $wtRs ) )
+            @if($workingTimes)
+                @foreach ($workingTimes as $wtKey => $wtArr)
+                    @if($wtKey == "default")
+                        <table>
                             <tr>
-                                @if ( $wtArrKey == $today )
-                                    <td class="activeweekdays daysWith">{{$wtArrKey}}</td>
-                                @else
-                                    <td class="inactiveweekdays daysWith">{{$wtArrKey}}</td>
-                                @endif    
-                                @foreach ($wtRs as $key => $wt)
-                                    @foreach ($wt as $wtTimeKey => $wtTime)
-                                        @if ( $wtArrKey == $today )
-                                            <td class="activeweekdays">{{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif</td>
-                                        @else
-                                            <td class="inactiveweekdays">{{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif</td>
-                                        @endif                                              
-                                    @endforeach
-                                @endforeach
+                                <td colspan="2" class="smallfont tdtoppadd1">Working Time:</td>
                             </tr>
+                            @foreach ($wtArr[0] as $wtArrKey => $wtRs)
+                                @if ( !empty ( $wtRs ) )
+                                <tr>
+                                    @if ( $wtArrKey == $today )
+                                        <td class="activeweekdays daysWith">{{$wtArrKey}}</td>
+                                    @else
+                                        <td class="inactiveweekdays daysWith">{{$wtArrKey}}</td>
+                                    @endif    
+                                    @foreach ($wtRs as $key => $wt)
+                                        @foreach ($wt as $wtTimeKey => $wtTime)
+                                            @if ( $wtArrKey == $today )
+                                                <td class="activeweekdays">{{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif</td>
+                                            @else
+                                                <td class="inactiveweekdays">{{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif</td>
+                                            @endif                                              
+                                        @endforeach
+                                    @endforeach
+                                </tr>
+                                
+                                @endif                           
+                            @endforeach  
                             
-                            @endif                           
-                        @endforeach  
-                         
-                    </table>   
-                @endif                   
-            @endforeach   
+                        </table>   
+                    @endif                   
+                @endforeach 
+            @endif
             <div class="suggestionblock">
                 <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent22">Suggest an edit</a>   
             </div>                                         

@@ -5,15 +5,17 @@
 <div class="col-md-9 leftcontainer">
     <div class="col-md-12 paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-restaurant')}}" class="subcontent2">Restaurant</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{ $restaurant['name'] }}</span></div>
     <div class="col-md-6 block2">
-        <div class="topdetail slideshow-container">
-            <ul id="lightSlider">
-                @foreach ($photos as $key => $photo)
-                    <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
-                        <img src="{{ URL::to('/') }}/image/restaurant/{{$restaurant['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $restaurant['name'] }}" style="width:100%;height:100%" class="toparea">
-                    </li>
-                @endforeach
-            </ul>            
-        </div>
+        @if($photos)
+            <div class="topdetail slideshow-container">
+                <ul id="lightSlider">
+                    @foreach ($photos as $key => $photo)
+                        <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
+                            <img src="{{ URL::to('/') }}/image/restaurant/{{$restaurant['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $restaurant['name'] }}" style="width:100%;height:100%" class="toparea">
+                        </li>
+                    @endforeach
+                </ul>            
+            </div>
+        @endif
         <div class="gro_title">{{ $restaurant['name'] }}</div>
         <div class="content">
             <table class="fullWidth">
@@ -63,41 +65,43 @@
                   </tr>
                 @endif
             </table>
-            @foreach ($workingTimes as $wtKey => $wtArr)
-                @if($wtKey == "default")
-                    <table>
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Working Time:</td>
-                        </tr>
-                        @foreach ($wtArr[0] as $wtArrKey => $wtRs)
-                            @if ( !empty ( $wtRs ) )
+            @if($workingTimes)
+                @foreach ($workingTimes as $wtKey => $wtArr)
+                    @if($wtKey == "default")
+                        <table>
                             <tr>
-                                @if ( $wtArrKey == $today )
-                                    <td class="activeweekdays daysWith">{{$wtArrKey}}</td>
-                                @else
-                                    <td class="inactiveweekdays daysWith">{{$wtArrKey}}</td>
-                                @endif    
-                                @foreach ($wtRs as $key => $wt)
-                                    @foreach ($wt as $wtTimeKey => $wtTimes)
-                                        @foreach ($wtTimes as $wtTimeKeys => $wtTime)
-                                            @if ( $wtArrKey == $today )
-                                                <td class="activeweekdays">
-                                                    {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if ($loop->parent->index == $loop->count),&nbsp;@endif
-                                                </td>
-                                            @else
-                                                <td class="inactiveweekdays">
-                                                    {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if($loop->parent->count == $loop->parent->index+1 and $loop->parent->last == 1),&nbsp;@endif
-                                                </td>
-                                            @endif  
-                                        @endforeach                                         
-                                    @endforeach
-                                @endforeach
+                                <td colspan="2" class="smallfont tdtoppadd1">Working Time:</td>
                             </tr>
-                            @endif                           
-                        @endforeach   
-                    </table>   
-                @endif                   
-            @endforeach               
+                            @foreach ($wtArr[0] as $wtArrKey => $wtRs)
+                                @if ( !empty ( $wtRs ) )
+                                <tr>
+                                    @if ( $wtArrKey == $today )
+                                        <td class="activeweekdays daysWith">{{$wtArrKey}}</td>
+                                    @else
+                                        <td class="inactiveweekdays daysWith">{{$wtArrKey}}</td>
+                                    @endif    
+                                    @foreach ($wtRs as $key => $wt)
+                                        @foreach ($wt as $wtTimeKey => $wtTimes)
+                                            @foreach ($wtTimes as $wtTimeKeys => $wtTime)
+                                                @if ( $wtArrKey == $today )
+                                                    <td class="activeweekdays">
+                                                        {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if ($loop->parent->index == $loop->count),&nbsp;@endif
+                                                    </td>
+                                                @else
+                                                    <td class="inactiveweekdays">
+                                                        {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if($loop->parent->count == $loop->parent->index+1 and $loop->parent->last == 1),&nbsp;@endif
+                                                    </td>
+                                                @endif  
+                                            @endforeach                                         
+                                        @endforeach
+                                    @endforeach
+                                </tr>
+                                @endif                           
+                            @endforeach   
+                        </table>   
+                    @endif                   
+                @endforeach   
+            @endif            
         </div>
     </div>
     <div class="col-md-6 block2">

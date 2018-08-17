@@ -36,8 +36,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="{{ asset('js/lightslider.js') }}" ></script>
-        <script src="{{ asset('js/common.js') }}" ></script>        
-
+        <script src="{{ asset('js/common.js') }}" ></script>                
     </head>
     <body>
         <div class="container">
@@ -57,7 +56,6 @@
                     <div class="menumain">
                     <div class="menu"> 
                         <a href="{{ url('/') }}" class="{{ (CommonController::activeMenu('home')) ? 'activemenu' : 'inactivemenu' }}">Home</a> 
-                        <!-- <a href="{{ route('grocery') }}" class="{{ (request()->is('dallas-indian-grocery-store')) ? 'activemenu' : 'inactivemenu' }}">Groceries</a>  -->
                         <a href="{{ route('grocery') }}" class="{{ (CommonController::activeMenu('grocery')) ? 'activemenu' : 'inactivemenu' }}">Groceries</a>                         
                         <a href="{{ route('restaurant') }}" class="{{ (CommonController::activeMenu('restaurant')) ? 'activemenu' : 'inactivemenu' }}">Restaurants </a> 
                         <a href="{{ route('religion') }}" class="{{ (CommonController::activeMenu('religion')) ? 'activemenu' : 'inactivemenu' }}">Religions </a> 

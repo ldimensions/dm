@@ -97,4 +97,14 @@ Route::get('sitemap', function() {
     
 });
     
-Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+Route::get('/admin/dashboard', 'Admin\DashboardController@dashboard')->name('dashboard');
+
+Route::get('/admin/grocery', 'Admin\GroceryController@index')->name('grocery_listing');
+Route::get('/admin/grocery_add/{id?}', 'Admin\GroceryController@addGroceryView')->name('grocery_add')->where(['id' => '[0-9]+']);
+Route::post('/admin/grocery_add', 'Admin\GroceryController@addGrocery');
+Route::get('admin/grocery/delete/{id}', 'Admin\GroceryController@deleteGrocery')->where(['id' => '[0-9]+']);
+
+Route::get('/admin/restaurant', 'Admin\RestaurantController@index')->name('restaurant_listing');
+Route::get('/admin/restaurant_add/{id?}', 'Admin\RestaurantController@addRestaurantView')->name('grocery_add')->where(['id' => '[0-9]+']);
+Route::post('/admin/restaurant_add', 'Admin\RestaurantController@addRestaurant');
+Route::get('admin/restaurant/delete/{id}', 'Admin\RestaurantController@deleteRestaurant')->where(['id' => '[0-9]+']);

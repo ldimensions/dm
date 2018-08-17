@@ -113,7 +113,7 @@ class GroceryController extends Controller
                                                 ->where('grocery.is_deleted', '=', '0')
                                                 ->where('grocery.is_disabled', '=', '0')
                                                 ->where('site.siteId', '=', $siteId)
-                                                ->orderBy('grocery.premium', 'asc')
+                                                ->orderBy('grocery.premium', 'DESC')
                                                 ->orderBy('grocery.order', 'asc');                                                  
                                                 
 
@@ -181,13 +181,11 @@ class GroceryController extends Controller
                                             ->where('url.urlName', '=', $url)
                                             ->where('grocery.is_deleted', '=', '0')
                                             ->where('grocery.is_disabled', '=', '0')
-                                            ->get(); 
+                                            ->get()->first();; 
 
         $grocery                            =   $groceryRs->toArray(); 
-        $grocery                            =   $grocery[0]; 
 
         if($grocery){
-
             $groceryId                      =   $grocery['id'];
             
             $lat                            =   ($grocery['latitude'])?$grocery['latitude']:'';
@@ -198,14 +196,16 @@ class GroceryController extends Controller
             }
 
             $workingTimes                   =   json_decode($grocery['workingTime'], true);
-            foreach($workingTimes as $rootKey => $workingTime) {
-                foreach($workingTime as $subkey => $subWorkingTime) {
-                    foreach($subWorkingTime as $dayKey => $dayWorkingTime) {
-                        foreach($dayWorkingTime as $key => $time) {
-                            $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'] = date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+            if($workingTimes){
+                foreach($workingTimes as $rootKey => $workingTime) {
+                    foreach($workingTime as $subkey => $subWorkingTime) {
+                        foreach($subWorkingTime as $dayKey => $dayWorkingTime) {
+                            foreach($dayWorkingTime as $key => $time) {
+                                $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'] = date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                            }
                         }
                     }
-                }
+                }            
             }
     
             $photoRs                        =   Photo::select('photo.photoId', 'photo.photoName', 
