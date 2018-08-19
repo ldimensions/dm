@@ -13,15 +13,21 @@
         @endif
       <div class="row">
           <div class="col-lg-12">
-              <div class="panel panel-default">
-                  <div class="panel-heading" style="position:relative;width:80%;float:left;">
-                    Restaurant
-                  </div>
-                  <div class="panel-heading" style="position:relative;width:20%;float:left;">
-                      <div style="position:relative;float:right">
-                        <a href="{{ url('/admin/restaurant_add') }}"><button type="button" class="btn btn-primary btn-xs">Add</button></a>
-                      </div>
-                  </div>                  
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                <a href="#">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Restaurant</li>
+            </ol>
+              <div class="panel panel-default"> 
+                  <div class="panel-heading" style="position:relative;width:100%;height:45px;">
+                    <div style="position:relative;width:80%;float:left;">Restaurant Listing</div>
+                    <div style="position:relative;width:20%;float:left;">
+                        <div style="position:relative;float:right;top:-5px;">
+                        <a href="{{ url('/admin/restaurant_add') }}"><button type="button" class="btn btn-primary btn-ms">Add</button></a>
+                        </div>                        
+                    </div>
+                  </div>                                  
                   <!-- /.panel-heading -->
                   <div class="panel-body">
                       <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -48,10 +54,11 @@
                                         <td class="ceter">{{ $rel['city'] }}</td>
                                         <td class="ceter">
                                             <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-restaurant')}}/{{ $rel['urlName'] }}" target="_blank" class="title">Link</a>    
-                                        <td width="130px;">
-                                            <a href="{{ url('/admin/restaurant_add') }}/{{$rel['restaurantId']}}"><button type="button" class="btn btn-primary">Edit</button></a>
-                                            <button type="button" class="btn btn-danger" onClick="deleteRestaurant({{$rel['restaurantId']}})">Delete</button>
                                         </td>
+                                        <td width="75px;">
+                                            <a href="{{ url('/admin/restaurant_add') }}/{{$rel['restaurantId']}}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></button></a>
+                                            <button type="button" class="btn btn-default btn-sm" onClick="deleteRestaurant({{$rel['restaurantId']}})"><i class="fa fa-trash-o"></i></button>
+                                        </td>                                         
                                     </tr>
                               @endforeach
                           </tbody>
@@ -69,7 +76,8 @@
   <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            responsive: true
+            responsive: true,
+            'bSort': false,  
         });
     });
     function deleteRestaurant(id) {

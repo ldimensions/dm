@@ -48,29 +48,26 @@ function validate() {
         var email                       =   document.getElementById("email").value;
         var phone                       =   document.getElementById("phone").value;
         var suggession                  =   document.getElementById("suggession").value;
+        var type                        =   document.getElementById("type").value;        
         var url                         =   window.location.href;
         var token                       =   document.getElementById("token").value;
-        console.log(token);
-        // $.post("/suggessionForEdit",{ name: name, email: email, phone: phone, suggession: suggession, url: url}, function(data,status){
-        //     if(status=="success"){
-                
-        //     }
-        // }); 
         $.ajax({
             url: "/suggessionForEdit",
             type: "POST",
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            data: {name: name, email: email, phone: phone, suggession: suggession, url: url},
+            data: {name: name, email: email, phone: phone, suggession: suggession, url: url, type: type},
             cache: false,
-            datatype: 'JSON',
-            processData: false,
             success: function (response) {
-                 console.log(response);
+                $('#exampleModal').modal('hide');
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
                },
                error: function (response) {
-                 console.log(response);
+                $('#exampleModal').modal('hide');
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
                }
         });                              
     }       

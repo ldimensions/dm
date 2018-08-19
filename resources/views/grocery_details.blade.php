@@ -161,17 +161,17 @@
             <div class="modal-body">
                 <div class="form-group" id="formGrpErrName">
                     <label for="recipient-name" class="col-form-label">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" name="name" maxLength="40">
                     <div id="nameError"></div>
                 </div>
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Email:</label>
-                    <input type="text" class="form-control" id="email" name="email">
+                    <input type="text" class="form-control" id="email" name="email" maxLength="50">
                     <div id="emailError"></div>
                 </div>   
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Phone:</label>
-                    <input type="text" class="form-control" id="phone" name="phone" >
+                    <input type="text" class="form-control" id="phone" name="phone" maxLength="20">
                 </div>                       
                 <div class="form-group" id="formGrpErrSuggession">
                     <label for="message-text" class="col-form-label">Suggession:</label>
@@ -180,6 +180,7 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <input type="hidden" class="form-control" id="type" name="type" value="1">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" onClick="validate()" />Submit</button>
             </div>            

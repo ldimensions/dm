@@ -48,14 +48,14 @@ $this->get('/'.config('app.defaultBaseURL.restaurant-related').'/{ethnicId}/{id}
 
 $this->get('/'.config('app.defaultBaseURL.dallas-indian-religion'), 'ReligionController@index')->name('religion');
 $this->get('/'.config('app.defaultBaseURL.religion-search').'/{type?}/{city?}/{keyword?}', 'ReligionController@index')->where(['city' => '[A-Za-z-+0-9]+', 'type' => '[A-Za-z-+0-9]+']);
-$this->get('/'.config('app.defaultBaseURL.dallas-christian-church').'/{url}', 'ReligionController@getDetails')->name('religionDetails')->where('url', '[A-Za-z-+]+');
-$this->get('/'.config('app.defaultBaseURL.dallas-hindu-temple').'/{url}', 'ReligionController@getDetails')->name('religionDetails')->where('url', '[A-Za-z-+]+');
-$this->get('/'.config('app.defaultBaseURL.dallas-islan-mosque').'/{url}', 'ReligionController@getDetails')->name('religionDetails')->where('url', '[A-Za-z-+]+');
+$this->get('/'.config('app.defaultBaseURL.dallas-christian-church').'/{url}', 'ReligionController@getDetails')->name('religionDetails')->where('url', '[A-Za-z-+0-9]+');
+$this->get('/'.config('app.defaultBaseURL.dallas-hindu-temple').'/{url}', 'ReligionController@getDetails')->name('religionDetails')->where('url', '[A-Za-z-+0-9]+');
+$this->get('/'.config('app.defaultBaseURL.dallas-islan-mosque').'/{url}', 'ReligionController@getDetails')->name('religionDetails')->where('url', '[A-Za-z-+0-9]+');
 $this->get('/religion-related/{denomination}/{id}', 'ReligionController@getRelated')->name('religionDetails')->where(['denomination' => '[A-Za-z-+0-9]+', 'id' => '[0-9]+']);
 
 //$this->get('/'.config('app.defaultBaseURL.dallas-indian-travels'), 'TravelController@index')->name('travels');
 
-$this->post('/suggessionForEdit', 'CommonController@suggessionForEdit');
+$this->post('/suggessionForEdit', 'SuggessionForEditController@suggessionForEdit');
 
 Route::get('sitemap', function() {
     $date                                   =   date(DateTime::ISO8601);
@@ -97,6 +97,8 @@ Route::get('sitemap', function() {
     
 });
     
+Route::get('/getSuggessionNotification', 'SuggessionForEditController@getSuggessionNotification');
+
 Route::get('/admin/dashboard', 'Admin\DashboardController@dashboard')->name('dashboard');
 
 Route::get('/admin/grocery', 'Admin\GroceryController@index')->name('grocery_listing');
@@ -108,3 +110,12 @@ Route::get('/admin/restaurant', 'Admin\RestaurantController@index')->name('resta
 Route::get('/admin/restaurant_add/{id?}', 'Admin\RestaurantController@addRestaurantView')->name('grocery_add')->where(['id' => '[0-9]+']);
 Route::post('/admin/restaurant_add', 'Admin\RestaurantController@addRestaurant');
 Route::get('admin/restaurant/delete/{id}', 'Admin\RestaurantController@deleteRestaurant')->where(['id' => '[0-9]+']);
+
+Route::get('/admin/religion', 'Admin\ReligionController@index')->name('religion_listing');
+Route::get('/admin/religion_add/{id?}', 'Admin\ReligionController@addReligionView')->name('religion_add')->where(['id' => '[0-9]+']);
+Route::post('/admin/religion_add', 'Admin\ReligionController@addReligion');
+Route::get('admin/religion/delete/{id}', 'Admin\ReligionController@deleteReligion')->where(['id' => '[0-9]+']);
+
+Route::get('/admin/suggession_for_edit', 'Admin\SuggessionForEditController@index')->name('suggession_for_edit');
+Route::get('/admin/suggession_for_edit/{id}', 'Admin\SuggessionForEditController@suggessionView')->name('suggessionView')->where(['id' => '[0-9]+']);
+Route::get('admin/suggession_for_edit/delete/{id}', 'Admin\SuggessionForEditController@deleteSuggession')->where(['id' => '[0-9]+']);

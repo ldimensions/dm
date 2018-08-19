@@ -136,15 +136,19 @@ class ReligionController extends Controller
             }
 
             $workingTimes                   =   json_decode($religionRs['workingTime'], true);
-            foreach($workingTimes as $rootKey => $workingTime) {
-                foreach($workingTime as $subkey => $subWorkingTime) {
-                    foreach($subWorkingTime as $dayKey => $dayWorkingTime) {
-                        foreach($dayWorkingTime as $key => $time) {
-                            $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'] = date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+
+            if($workingTimes){
+                foreach($workingTimes as $rootKey => $workingTime) {
+                    foreach($workingTime as $subkey => $subWorkingTime) {
+                        foreach($subWorkingTime as $dayKey => $dayWorkingTime) {
+                            foreach($dayWorkingTime as $key => $time) {
+                                $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'] = date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                            }
                         }
                     }
-                }
-             }
+                 }
+            }
+            
             // print "<pre>";
             // print_r($workingTimes);
             $religion                       =   $religionRs->toArray(); 

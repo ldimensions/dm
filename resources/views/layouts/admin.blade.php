@@ -56,50 +56,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-messages">
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>John Smith</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>Yesterday</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>John Smith</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>Yesterday</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>John Smith</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>Yesterday</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a class="text-center" href="#">
-                                    <strong>Read All Messages</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <ul  class="dropdown-menu dropdown-messages" id="suggessionNotification"></ul>
                         <!-- /.dropdown-messages -->
                     </li>
                     <li class="dropdown">
@@ -132,15 +89,15 @@
                             </li>
                             <li>
                                 <a href="{{ url('/admin/restaurant') }}"> Restarunt</a>
-                            </li>                            
+                            </li> 
                             <li>
-                                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                            </li>
+                                <a href="{{ url('/admin/religion') }}"> Religion</a>
+                            </li>                                                                                   
                             <li>
-                                <a href="#"><i class="fa fa-sitemap fa-fw"></i> Items<span class="fa arrow"></span></a>
+                                <a href="#"> Messages<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">Second Level Item</a>
+                                        <a href="{{ url('/admin/suggession_for_edit') }}">Suggessions for edit (<span id="suggessionForEditCount"></span>)</a>
                                     </li>                                
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -152,7 +109,19 @@
                 <!-- /.navbar-static-side -->
             </nav>
             @yield('content')
-        </div>        
+        </div> 
+        <script>
+            /*---------- Image Slider End----------*/
+            $( document ).ready(function() {
+                $.get("<?php echo URL::to('/');?>/getSuggessionNotification", function(data, status){
+                    //if(status=="success"){
+                        document.getElementById("suggessionNotification").innerHTML = data.message;
+                        document.getElementById("suggessionForEditCount").innerHTML = data.count;
+                    //}
+                });
+            });
+            
+        </script>               
     </body>
 </html>
 

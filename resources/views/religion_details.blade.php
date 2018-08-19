@@ -5,15 +5,17 @@
 <div class="col-md-9 leftcontainer">
     <div class="col-md-12 paggination"><a href="../{{config('app.defaultBaseURL.dallas-malayali-church')}}" class="subcontent2">Religions</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Details</span></div>
     <div class="col-md-6 block2">
-        <div class="topdetail slideshow-container">
-            <ul id="lightSlider">
-                @foreach ($photos as $key => $photo)
-                    <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
-                        <img src="{{ URL::to('/') }}/image/religion/{{$religion['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $religion['name'] }}" style="width:100%;height:100%" class="toparea">
-                    </li>
-                @endforeach
-            </ul>            
-        </div>
+        @if($photos)
+            <div class="topdetail slideshow-container">
+                <ul id="lightSlider">
+                    @foreach ($photos as $key => $photo)
+                        <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
+                            <img src="{{ URL::to('/') }}/image/religion/{{$religion['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $religion['name'] }}" style="width:100%;height:100%" class="toparea">
+                        </li>
+                    @endforeach
+                </ul>            
+            </div>
+        @endif
         <div class="gro_title">{{ $religion['name'] }}</div>
         <div class="content">
             <table class="fullWidth">
@@ -63,99 +65,101 @@
                     </tr>
                 @endif
             </table>
-            @if ($religion['religionName'] == 'Christianity')
-            @foreach ($workingTimes as $wtKey => $wtArr)
-                @if($wtKey == "Mass")
-                    <table>
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Mass:</td>
-                        </tr>
-                        @foreach ($wtArr[0] as $wtMassArrKey => $wtMass)
-                            @if ( !empty ( $wtMass ) )
-                            <tr>
-                                @if ( $wtMassArrKey == $today )
-                                    <td class="activeweekdays daysWith">{{$wtMassArrKey}}</td>
-                                @else
-                                    <td class="inactiveweekdays daysWith">{{$wtMassArrKey}}</td>
-                                @endif    
-                                @foreach ($wtMass as $massKey => $mass)
-                                    @foreach ($mass as $massTimeKey => $massTime)
-                                        @if ( $wtMassArrKey == $today )
-                                            <td class="activeweekdays">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                        @else
-                                            <td class="inactiveweekdays">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                        @endif                                              
-                                    @endforeach
-                                @endforeach
-                            </tr>
-                            @endif                           
-                        @endforeach   
-                    </table>                     
-                @elseif($wtKey == "Confession")
-                    <table>
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Confession:</td>
-                        </tr>
-                        @foreach ($wtArr[0] as $wtConfArrKey => $wtConf)
-                            @if ( !empty ( $wtConf ) )
+            @if($workingTimes)
+                @if ($religion['religionName'] == 'Christianity')
+                    @foreach ($workingTimes as $wtKey => $wtArr)
+                        @if($wtKey == "Mass")
+                            <table>
                                 <tr>
-                                    @if ( $wtConfArrKey == $today )
-                                        <td class="activeweekdays daysWith">{{$wtConfArrKey}}</td>
-                                    @else
-                                        <td class="inactiveweekdays daysWith">{{$wtConfArrKey}}</td>
-                                    @endif                                             
-                                    @foreach ($wtConf as $confession)
-                                        @foreach ($confession as $confessionTimeKey => $confessionTime)
-                                            @if ( $wtConfArrKey == $today )
-                                                <td class="activeweekdays">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                            @else
-                                                <td class="inactiveweekdays">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                            @endif  
-                                        @endforeach
-                                    @endforeach
+                                    <td colspan="2" class="smallfont tdtoppadd1">Mass:</td>
                                 </tr>
-                            @endif                           
-                        @endforeach
-                    </table>                                 
-                @elseif($wtKey == "Adoration")
-                    <table>
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Adoration:</td>
-                        </tr>
-                        @foreach ($wtArr[0] as $wtAdoArrKey => $wtAdo)
-                            @if ( !empty ( $wtAdo ) )
-                                <tr>
-                                    @if ( $wtAdoArrKey == $today )
-                                        <td class="activeweekdays daysWith">{{$wtAdoArrKey}}</td>
-                                    @else
-                                        <td class="inactiveweekdays daysWith">{{$wtAdoArrKey}}</td>
-                                    @endif                                          
-                                    @foreach ($wtAdo as $adoration)
-                                        @foreach ($adoration as $adorationTimeKey => $adorationTime)
-                                            @if ( $wtAdoArrKey == $today )
-                                                <td class="activeweekdays">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                            @else
-                                                <td class="inactiveweekdays">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                            @endif 
+                                @foreach ($wtArr[0] as $wtMassArrKey => $wtMass)
+                                    @if ( !empty ( $wtMass ) )
+                                    <tr>
+                                        @if ( $wtMassArrKey == $today )
+                                            <td class="activeweekdays daysWith">{{$wtMassArrKey}}</td>
+                                        @else
+                                            <td class="inactiveweekdays daysWith">{{$wtMassArrKey}}</td>
+                                        @endif    
+                                        @foreach ($wtMass as $massKey => $mass)
+                                            @foreach ($mass as $massTimeKey => $massTime)
+                                                @if ( $wtMassArrKey == $today )
+                                                    <td class="activeweekdays">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                @else
+                                                    <td class="inactiveweekdays">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                @endif                                              
+                                            @endforeach
                                         @endforeach
-                                    @endforeach
-                                </tr>                           
-                            @endif                           
-                        @endforeach     
-                    </table>                                             
-                @endif                       
-            @endforeach                                               
-            @elseif ($religion['religionName'] == 'Hinduism')
-                I have multiple records!
-            @elseif ($religion['religionName'] == 'Islam')
-                I have multiple records!
-            @elseif ($religion['religionName'] == 'Judaism')
-                I have multiple records!
-            @elseif ($religion['religionName'] == 'Buddhism')
-                I have multiple records!                
-            @else
-            
-            @endif
+                                    </tr>
+                                    @endif                           
+                                @endforeach   
+                            </table>                     
+                        @elseif($wtKey == "Confession")
+                            <table>
+                                <tr>
+                                    <td colspan="2" class="smallfont tdtoppadd1">Confession:</td>
+                                </tr>
+                                @foreach ($wtArr[0] as $wtConfArrKey => $wtConf)
+                                    @if ( !empty ( $wtConf ) )
+                                        <tr>
+                                            @if ( $wtConfArrKey == $today )
+                                                <td class="activeweekdays daysWith">{{$wtConfArrKey}}</td>
+                                            @else
+                                                <td class="inactiveweekdays daysWith">{{$wtConfArrKey}}</td>
+                                            @endif                                             
+                                            @foreach ($wtConf as $confession)
+                                                @foreach ($confession as $confessionTimeKey => $confessionTime)
+                                                    @if ( $wtConfArrKey == $today )
+                                                        <td class="activeweekdays">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                    @else
+                                                        <td class="inactiveweekdays">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                    @endif  
+                                                @endforeach
+                                            @endforeach
+                                        </tr>
+                                    @endif                           
+                                @endforeach
+                            </table>                                 
+                        @elseif($wtKey == "Adoration")
+                            <table>
+                                <tr>
+                                    <td colspan="2" class="smallfont tdtoppadd1">Adoration:</td>
+                                </tr>
+                                @foreach ($wtArr[0] as $wtAdoArrKey => $wtAdo)
+                                    @if ( !empty ( $wtAdo ) )
+                                        <tr>
+                                            @if ( $wtAdoArrKey == $today )
+                                                <td class="activeweekdays daysWith">{{$wtAdoArrKey}}</td>
+                                            @else
+                                                <td class="inactiveweekdays daysWith">{{$wtAdoArrKey}}</td>
+                                            @endif                                          
+                                            @foreach ($wtAdo as $adoration)
+                                                @foreach ($adoration as $adorationTimeKey => $adorationTime)
+                                                    @if ( $wtAdoArrKey == $today )
+                                                        <td class="activeweekdays">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                    @else
+                                                        <td class="inactiveweekdays">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                    @endif 
+                                                @endforeach
+                                            @endforeach
+                                        </tr>                           
+                                    @endif                           
+                                @endforeach     
+                            </table>                                             
+                        @endif                       
+                    @endforeach                                               
+                @elseif ($religion['religionName'] == 'Hinduism')
+                    I have multiple records!
+                @elseif ($religion['religionName'] == 'Islam')
+                    I have multiple records!
+                @elseif ($religion['religionName'] == 'Judaism')
+                    I have multiple records!
+                @elseif ($religion['religionName'] == 'Buddhism')
+                    I have multiple records!                
+                @else
+                
+                @endif
+            @endif            
         </div>
     </div>
     <div class="col-md-6 block2">
