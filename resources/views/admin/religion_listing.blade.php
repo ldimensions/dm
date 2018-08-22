@@ -50,15 +50,15 @@
                                         <td class="ceter">
 
                                             @if ($rel['religionName'] == 'Christianity')
-                                                <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-christian-church')}}/{{ $rel['urlName'] }}" class="title">Link</a><br/>
+                                                <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-christian-church')}}/{{ $rel['urlName'] }}" target="_blank" class="title">Link</a><br/>
                                             @elseif($rel['religionName'] == 'Hinduism')
-                                                <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-hindu-temple')}}/{{ $rel['urlName'] }}" class="title">Link</a><br/>
+                                                <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-hindu-temple')}}/{{ $rel['urlName'] }}" target="_blank" class="title">Link</a><br/>
                                             @elseif($rel['religionName'] == 'Judaism')
                                                 <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/> -->
                                             @elseif($rel['religionName'] == 'Buddhism')
                                                 <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/> -->
                                             @elseif($rel['religionName'] == 'Islam')
-                                                <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-islan-mosque')}}/{{ $rel['urlName'] }}" class="title">Link</a><br/>                                                           
+                                                <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-islan-mosque')}}/{{ $rel['urlName'] }}" target="_blank" class="title">Link</a><br/>                                                           
                                             @endif
                                         </td>                                        
                                         <td class="ceter">{{ $rel['city'] }}</td>

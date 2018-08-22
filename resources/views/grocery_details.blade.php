@@ -182,12 +182,14 @@
             <div class="modal-footer">
                 <input type="hidden" class="form-control" id="type" name="type" value="1">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onClick="validate()" />Submit</button>
+                <button type="button" class="btn btn-primary" id="suggessionBtn" />Submit</button>
             </div>            
         </div>
     </div>
 </div>
-
+<div class="loading-overlay">
+    <div class="spin-loader"></div>
+</div>
 <script>
 
     /*---------- Google Map ----------*/

@@ -72,3 +72,56 @@ function validate() {
         });                              
     }       
 }
+
+$( document ).ready(function() {
+    $('#suggessionBtn').click(function(){
+
+        var errors = true;
+        if (document.getElementById("name").value.length === 0) {
+            document.getElementById("name").style.border = "1px solid red";
+            document.getElementById("name").style.backgroundColor = "#FFCCCC";
+            document.getElementById("formGrpErrName").style.color   =   "red";
+            document.getElementById("nameError").innerHTML ="Please enter the name";
+            errors  =   false;
+        }
+        if (document.getElementById("suggession").value.length === 0) {
+            document.getElementById("suggession").style.border = "1px solid red";
+            document.getElementById("suggession").style.backgroundColor = "#FFCCCC";
+            document.getElementById("formGrpErrSuggession").style.color   =   "red";
+            document.getElementById("sugessionError").innerHTML ="Please enter the suggession";
+            errors  =   false;
+        }   
+        if (errors) {
+            $('.loading-overlay').show();            
+            var name                        =   document.getElementById("name").value;
+            var email                       =   document.getElementById("email").value;
+            var phone                       =   document.getElementById("phone").value;
+            var suggession                  =   document.getElementById("suggession").value;
+            var type                        =   document.getElementById("type").value;        
+            var url                         =   window.location.href;
+            var token                       =   document.getElementById("token").value;
+            $.ajax({
+                url: "/suggessionForEdit",
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {name: name, email: email, phone: phone, suggession: suggession, url: url, type: type},
+                cache: false,
+                success: function (response) {
+                    $('#exampleModal').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                    $('.loading-overlay').hide()
+                   },
+                   error: function (response) {
+                    $('#exampleModal').modal('hide');
+                    $('body').removeClass('modal-open');
+                    $('.modal-backdrop').remove();
+                    $('.loading-overlay').hide()
+                   }
+            });                              
+        }  
+
+    });        
+});

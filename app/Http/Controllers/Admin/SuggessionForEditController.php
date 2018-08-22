@@ -11,21 +11,19 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Models\SuggessionForEdit;
 use DateTime;
 
-
-
 class SuggessionForEditController extends Controller
 {
     public function __construct(){
-        
+        $this->middleware('role:Admin');
     }
 
     public static function index(){
 
         $commonCtrl                         =   new CommonController;
 
-        $suggessionForEditRs                =   SuggessionForEdit::select('id', 'name', 'suggession', 'created_at', 'is_read')
+        $suggessionForEditRs                =   SuggessionForEdit::select('id', 'name', 'suggession', 'created_at', 'is_read', 'type')
                                                     ->where('is_deleted', 0)
-                                                    ->orderBy('is_read', 'DESC')
+                                                    //->orderBy('is_read', 'DESC')
                                                     ->orderBy('created_at', 'DESC')
                                                     ->get(); 
         $suggessionForEdit                  =   $suggessionForEditRs->toArray(); 

@@ -11,7 +11,8 @@
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "renatomarinho/laravel-page-speed": "^1.8",
-        "roumen/sitemap": "^2.8"
+        "roumen/sitemap": "^2.8",
+        "spatie/laravel-permission": "^2.15"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

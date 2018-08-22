@@ -23,30 +23,49 @@
                     </div>
                   </div>               
                   <!-- /.panel-heading -->
-                  <div class="panel-body">
+                  <div class="panel-body tooltip-demo">
                       <table width="100%" style="border:0" class="table table-striped table-bordered table-hover" id="dataTables-example">
                           <thead>
                               <tr style="postion:relative;border:1px solid red;display:none;">
-                                  <th>Name</th>
-                                  <th>Premium</th>
-                                  <th>date</th>
-                                  <th data-sortable="false">Action</th>
+                                    <th>Type</th>
+                                    <th>Name</th>
+                                    <th>Premium</th>
+                                    <th>date</th>
+                                    <th data-sortable="false">Action</th>
                               </tr>
                           </thead>
                           <tbody>
                             @foreach ($suggessionForEdit as $key => $rel)
                                <tr class="odd gradeX">
-                                   @if($rel['is_read'] == 1)
-                                   <td style="border:0;padding:5px;width:25%;border-left:3px solid gray;"><a href="{{ url('/admin/suggession_for_edit') }}/{{$rel['id']}}" style="color: black;text-decoration:none;font-weight:bold">{{$rel['name']}}</a></td>
+                                    @if($rel['type'] == 1)
+                                        @if($rel['is_read'] == 1)
+                                            <td style="border:0;padding:5px;width:30px;font-weight:bold;border-left:3px solid gray;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Grocery">G</td>
+                                        @else
+                                            <td style="border:0;padding:5px;width:30px;font-weight:bold;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Grocery">G</td>
+                                        @endif
+                                    @elseif($rel['type'] == 2)
+                                        @if($rel['is_read'] == 1)
+                                            <td style="border:0;padding:5px;width:30px;font-weight:bold;border-left:3px solid gray;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Restarunt">R</td>
+                                        @else
+                                            <td style="border:0;padding:5px;width:30px;font-weight:bold;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Restarunt">R</td>
+                                        @endif
+                                    @elseif($rel['type'] == 3)
+                                        @if($rel['is_read'] == 1)
+                                            <td style="border:0;padding:5px;width:30px;font-weight:bold;border-left:3px solid gray;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Religion">Re</td>                                        
+                                        @else    
+                                            <td style="border:0;padding:5px;width:30px;font-weight:bold;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Religion">Re</td>                                        
+                                        @endif
+                                    @endif
+                                    @if($rel['is_read'] == 1)
+                                        <td style="border:0;padding:5px;width:25%;font-weight:bold;"><a href="{{ url('/admin/suggession_for_edit') }}/{{$rel['id']}}" style="color: black;text-decoration:none;">{{$rel['name']}}</a></td>
                                     @else
                                     <td style="border:0;padding:5px;width:25%"><a href="{{ url('/admin/suggession_for_edit') }}/{{$rel['id']}}" style="color: black;text-decoration:none;">{{$rel['name']}}</a></td>
                                     @endif
-                                    
                                     <td style="border:0;padding:5px;">{{ $rel['suggession'] }}</td>
                                     @if($rel['is_read'] == 1)
                                         <td style="border:0;padding:5px;width:100px;color: blue;">{{ $rel['created_at'] }}</td>
                                     @else
-                                    <td style="border:0;padding:5px;width:150px">{{ $rel['created_at'] }}</td>
+                                        <td style="border:0;padding:5px;width:150px">{{ $rel['created_at'] }}</td>
                                     @endif
                                     <td style="border:0;padding:5px;width:35px">
                                         <button type="button" onClick="deleteSuggession({{$rel['id']}})" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
@@ -78,7 +97,11 @@
         if (r == true) {
             window.location.href = "/admin/suggession_for_edit/delete/"+id;
         }
-    }      
+    } 
+    $('.tooltip-demo').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+    })         
     </script> 
 @endsection
   

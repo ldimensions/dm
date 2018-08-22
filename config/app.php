@@ -217,6 +217,8 @@ return [
 
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
+        Spatie\Permission\PermissionServiceProvider::class,
+
     ],
 
     /*
