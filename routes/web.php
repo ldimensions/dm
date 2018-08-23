@@ -82,6 +82,10 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::get('/admin/suggession_for_edit/{id}', 'Admin\SuggessionForEditController@suggessionView')->name('suggessionView')->where(['id' => '[0-9]+']);
     Route::get('admin/suggession_for_edit/delete/{id}', 'Admin\SuggessionForEditController@deleteSuggession')->where(['id' => '[0-9]+']);
 
+    Route::get('/admin/events', 'Admin\EventsController@index')->name('events');
+    Route::get('/admin/events_add/{id?}', 'Admin\EventsController@addEventsView')->name('addEventsView')->where(['id' => '[0-9]+']);
+    //Route::get('admin/suggession_for_edit/delete/{id}', 'Admin\SuggessionForEditController@deleteSuggession')->where(['id' => '[0-9]+']);
+
 });
 
 
