@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Models\SuggessionForEdit;
+use Mail;
 
 class SuggessionForEditController extends Controller
 {
@@ -38,6 +39,34 @@ class SuggessionForEditController extends Controller
                     'updated_at'    => date("Y-m-d H:i:s")
                 ]
             );
+
+            if($request->post('type') == 1){
+                $suggessiontype             =   "Grocery";
+            }else if($request->post('type') == 2){
+                $suggessiontype             =   "Restarunt";
+            }else if($request->post('type') == 3){
+                $suggessiontype             =   "Religion";
+            }else{
+                $suggessiontype             =   "Unknown";
+            }
+
+            $data                           =   array(
+                                                    'name' =>$request->post('name'), 
+                                                    "email" => $request->post('email'), 
+                                                    "phone" => $request->post('phone'),
+                                                    "url" => $request->post('url'),
+                                                    "type" => $suggessiontype,
+                                                    "suggession" => $request->post('suggession')
+                                                );
+            
+            $fromEmail                  =   config('app.fromEmail');
+            $toEmail                    =   config('app.toEmail');
+            
+            Mail::send('email.suggession', $data, function($message) use ($fromEmail, $toEmail, $suggessiontype){
+                $message->to($toEmail, 'Suggession from '.$suggessiontype)
+                        ->subject('Suggession from '.$suggessiontype);
+                $message->from($fromEmail,'');
+            });
         }
     }
     

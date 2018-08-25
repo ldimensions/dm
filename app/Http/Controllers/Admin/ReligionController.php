@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use Image;
 
 class ReligionController extends Controller
 {
@@ -234,18 +234,25 @@ class ReligionController extends Controller
                     ]
                 ); 
 
+        if (!file_exists(public_path().'/image/religion/'.$religionVal['id'])) {
+            mkdir(public_path().'/image/religion/'.$religionVal['id'], 0777, true);
+        }                
+
         if($request->hasFile('photos')){
             $files                          = $request->file('photos');
             
-            DB::table('photo')->where('religionId', $religionVal['id'])->delete();
+            DB::table('photo')->where('religionId', $religionVal['id'])->where('is_primary', 0)->delete();
             
-        
             foreach($files as $key=> $file){
                 $filename                   = $file->getClientOriginalName();
                 $rand                       = (rand(10,100));
                 $extension                  = $file->getClientOriginalExtension();                
                 $fileName                   = $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                $file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
+                //$file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
+                $resizeImage                = Image::make($file);
+                $resizeImage->resize(466,350);
+                $path                       = public_path('image/religion/'.$religionVal['id'].'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                $resizeImage->save($path); 
 
                 DB::table('photo')->insertGetId(
                     [
@@ -260,16 +267,20 @@ class ReligionController extends Controller
         }
         if($request->hasFile('thumbnail')){
             $files                          = $request->file('thumbnail');
-            if(!$request->hasFile('photos')){
-                DB::table('photo')->where('religionId', $religionVal['id'])->delete();
-            }            
-        
+
+            DB::table('photo')->where('religionId', $religionVal['id'])->where('is_primary', 1)->delete();
+            
             foreach($files as $key=> $file){
                 $filename                   = $file->getClientOriginalName();
                 $rand                       = (rand(10,1000));
                 $extension                  = $file->getClientOriginalExtension();                
                 $fileName                   = $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                $file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
+                //$file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
+
+                $resizeImage                = Image::make($file);
+                $resizeImage->resize(128,95);
+                $path                       = public_path('image/religion/'.$religionVal['id'].'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                $resizeImage->save($path); 
 
                 DB::table('photo')->insertGetId(
                     [
@@ -354,7 +365,11 @@ class ReligionController extends Controller
                                                         'created_at'                        => date("Y-m-d H:i:s"),
                                                         'updated_at'                        => date("Y-m-d H:i:s")
                                                     ]
-                                                );   
+                                                );  
+
+            if (!file_exists(public_path().'/image/religion/'.$religionId)) {
+                mkdir(public_path().'/image/religion/'.$religionId, 0777, true);
+            }                                                  
             if($request->hasFile('photos')){
                 $files                          = $request->file('photos');
                 
@@ -363,13 +378,17 @@ class ReligionController extends Controller
                     $rand                       = (rand(10,100));
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                    $file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
+                    //$file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
+                    $resizeImage                = Image::make($file);
+                    $resizeImage->resize(466,350);
+                    $path                       = public_path('image/religion/'.$religionId.'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    $resizeImage->save($path);                      
     
                     DB::table('photo')->insertGetId(
                         [
                             'photoName'         => $fileName,
                             'order'             => $key,
-                            'religionId'         => $religionVal['id'],
+                            'religionId'         => $religionId,
                             'created_at'  => date("Y-m-d H:i:s"),
                             'updated_at'  => date("Y-m-d H:i:s")
                         ]
@@ -384,13 +403,17 @@ class ReligionController extends Controller
                     $rand                       = (rand(10,1000));
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                    $file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
+                    //$file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
+                    $resizeImage                = Image::make($file);
+                    $resizeImage->resize(128,95);
+                    $path                       = public_path('image/religion/'.$religionId.'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    $resizeImage->save($path);                      
     
                     DB::table('photo')->insertGetId(
                         [
                             'photoName'         => $fileName,
                             'order'             => $key,
-                            'religionId'         => $religionVal['id'],
+                            'religionId'        => $religionId,
                             'is_primary'        => 1,
                             'created_at'  => date("Y-m-d H:i:s"),
                             'updated_at'  => date("Y-m-d H:i:s")

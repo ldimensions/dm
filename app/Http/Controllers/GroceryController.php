@@ -211,6 +211,7 @@ class GroceryController extends Controller
             $photoRs                        =   Photo::select('photo.photoId', 'photo.photoName', 
                                                     'photo.is_primary', 'photo.order')
                                                 ->where('photo.is_deleted', '=', '0')
+                                                ->where('photo.is_primary', '=', '0')
                                                 ->where('photo.is_disabled', '=', '0')
                                                 ->where('photo.groceryId', '=', $groceryId)
                                                 ->orderBy('photo.order', 'asc') 

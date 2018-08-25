@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Image;
 
 
 class GroceryController extends Controller
@@ -218,10 +219,13 @@ class GroceryController extends Controller
                     ]
                 ); 
 
+        if (!file_exists(public_path().'/image/grocery/'.$groceryVal['id'])) {
+            mkdir(public_path().'/image/grocery/'.$groceryVal['id'], 0777, true);
+        }
         if($request->hasFile('photos')){
             $files                          = $request->file('photos');
             
-            DB::table('photo')->where('groceryId', $groceryVal['id'])->delete();
+            DB::table('photo')->where('groceryId', $groceryVal['id'])->where('is_primary', 0)->delete();
             
         
             foreach($files as $key=> $file){
@@ -229,7 +233,12 @@ class GroceryController extends Controller
                 $rand                       = (rand(10,100));
                 $extension                  = $file->getClientOriginalExtension();                
                 $fileName                   = $groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                $file->move(public_path().'/image/grocery/'.$groceryVal['id'], $fileName); 
+
+                $resizeImage                = Image::make($file);
+                $resizeImage->resize(466,350);
+                $path                       = public_path('image/grocery/'.$groceryVal['id'].'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                $resizeImage->save($path);   
+                //$file->move(public_path().'/image/grocery/'.$groceryVal['id'], $fileName); 
 
                 DB::table('photo')->insertGetId(
                     [
@@ -244,17 +253,20 @@ class GroceryController extends Controller
         }
         if($request->hasFile('thumbnail')){
             $files                          = $request->file('thumbnail');
-            if(!$request->hasFile('photos')){
-                DB::table('photo')->where('groceryId', $groceryVal['id'])->delete();
-            }            
+
+            DB::table('photo')->where('groceryId', $groceryVal['id'])->where('is_primary', 1)->delete();
         
             foreach($files as $key=> $file){
                 $filename                   = $file->getClientOriginalName();
                 $rand                       = (rand(10,1000));
                 $extension                  = $file->getClientOriginalExtension();                
                 $fileName                   = $groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                $file->move(public_path().'/image/grocery/'.$groceryVal['id'], $fileName); 
-
+                //$file->move(public_path().'/image/grocery/'.$groceryVal['id'], $fileName); 
+                $resizeImage                = Image::make($file);
+                $resizeImage->resize(128,95);
+                $path                       = public_path('image/grocery/'.$groceryVal['id'].'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                $resizeImage->save($path);                 
+               
                 DB::table('photo')->insertGetId(
                     [
                         'photoName'         => $fileName,
@@ -338,6 +350,10 @@ class GroceryController extends Controller
                                                         'updated_at'                        => date("Y-m-d H:i:s")
                                                     ]
                                                 );   
+
+            if (!file_exists(public_path().'/image/grocery/'.$groceryId)) {
+                mkdir(public_path().'/image/grocery/'.$groceryId, 0777, true);
+            }                                                
             if($request->hasFile('photos')){
                 $files                          = $request->file('photos');
             
@@ -346,13 +362,17 @@ class GroceryController extends Controller
                     $rand                       = (rand(10,100));
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                    $file->move(public_path().'/image/grocery/'.$groceryVal['id'], $fileName); 
+                    //$file->move(public_path().'/image/grocery/'.$groceryVal['id'], $fileName); 
+                    $resizeImage                = Image::make($file);
+                    $resizeImage->resize(466,350);
+                    $path                       = public_path('image/grocery/'.$groceryId.'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    $resizeImage->save($path);                      
     
                     DB::table('photo')->insertGetId(
                         [
                             'photoName'         => $fileName,
                             'order'             => $key,
-                            'groceryId'         => $groceryVal['id'],
+                            'groceryId'         => $groceryId,
                             'created_at'  => date("Y-m-d H:i:s"),
                             'updated_at'  => date("Y-m-d H:i:s")
                         ]
@@ -367,13 +387,17 @@ class GroceryController extends Controller
                     $rand                       = (rand(10,1000));
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                    $file->move(public_path().'/image/grocery/'.$groceryVal['id'], $fileName); 
+                    //$file->move(public_path().'/image/grocery/'.$groceryVal['id'], $fileName); 
+                    $resizeImage                = Image::make($file);
+                    $resizeImage->resize(128,95);
+                    $path                       = public_path('image/grocery/'.$groceryId.'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    $resizeImage->save($path);                     
     
                     DB::table('photo')->insertGetId(
                         [
                             'photoName'         => $fileName,
                             'order'             => $key,
-                            'groceryId'         => $groceryVal['id'],
+                            'groceryId'         => $groceryId,
                             'is_primary'        => 1,
                             'created_at'  => date("Y-m-d H:i:s"),
                             'updated_at'  => date("Y-m-d H:i:s")

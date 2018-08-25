@@ -112,13 +112,15 @@ $( document ).ready(function() {
                     $('#exampleModal').modal('hide');
                     $('body').removeClass('modal-open');
                     $('.modal-backdrop').remove();
-                    $('.loading-overlay').hide()
+                    $('.loading-overlay').hide();
+                    location.reload();
                    },
                    error: function (response) {
                     $('#exampleModal').modal('hide');
                     $('body').removeClass('modal-open');
                     $('.modal-backdrop').remove();
-                    $('.loading-overlay').hide()
+                    $('.loading-overlay').hide();
+                    location.reload();
                    }
             });                              
         }  

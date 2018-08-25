@@ -4,6 +4,8 @@ return [
 
     'siteId' => env('SITE_ID', 1),   // 1 - Dallas
     'siteLocatioin' => env('SITE_LOCATION', 'Dallas'),   // 1 - Dallas
+    'fromEmail' =>  'lindosebastian@gmail.com',
+    'toEmail' =>  'lindosebastian@gmail.com',
     'defaultSEO' => [
         '1' => [    // Dallas
             'SEOMetaTitle'                        => "Home Page - Testing",
@@ -218,6 +220,7 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
         Spatie\Permission\PermissionServiceProvider::class,
+        'Intervention\Image\ImageServiceProvider',
 
     ],
 
@@ -273,6 +276,8 @@ return [
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
         // or
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+
+        'Image' => 'Intervention\Image\Facades\Image',
 
     ],
 

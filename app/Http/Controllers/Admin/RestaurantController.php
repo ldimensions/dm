@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Image;
 
 
 class RestaurantController extends Controller
@@ -219,56 +220,66 @@ class RestaurantController extends Controller
                     ]
                 ); 
 
-        if($request->hasFile('photos')){
-            $files                          = $request->file('photos');
-            
-            DB::table('photo')->where('restaurantId', $restaurantVal['id'])->delete();
-            
-        
-            foreach($files as $key=> $file){
-                $filename                   = $file->getClientOriginalName();
-                $rand                       = (rand(10,100));
-                $extension                  = $file->getClientOriginalExtension();                
-                $fileName                   = $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                $file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $fileName); 
-
-                DB::table('photo')->insertGetId(
-                    [
-                        'photoName'         => $fileName,
-                        'order'             => $key,
-                        'restaurantId'      => $restaurantVal['id'],
-                        'created_at'  => date("Y-m-d H:i:s"),
-                        'updated_at'  => date("Y-m-d H:i:s")
-                    ]
-                );
+            if (!file_exists(public_path().'/image/restaurant/'.$restaurantVal['id'])) {
+                mkdir(public_path().'/image/restaurant/'.$restaurantVal['id'], 0777, true);
             }
-        }
-        if($request->hasFile('thumbnail')){
-            $files                          = $request->file('thumbnail');
-            if(!$request->hasFile('photos')){
-                DB::table('photo')->where('restaurantId', $restaurantVal['id'])->delete();
-            }            
-        
-            foreach($files as $key=> $file){
-                $filename                   = $file->getClientOriginalName();
-                $rand                       = (rand(10,1000));
-                $extension                  = $file->getClientOriginalExtension();                
-                $fileName                   = $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                $file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $fileName); 
+            if($request->hasFile('photos')){
+                $files                          = $request->file('photos');
+                
+                DB::table('photo')->where('restaurantId', $restaurantVal['id'])->where('is_primary', 0)->delete();
+                
+            
+                foreach($files as $key=> $file){
+                    $filename                   = $file->getClientOriginalName();
+                    $rand                       = (rand(10,100));
+                    $extension                  = $file->getClientOriginalExtension();                
+                    $fileName                   = $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
+                    //$file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $fileName); 
+                    $resizeImage                = Image::make($file);
+                    $resizeImage->resize(466,350);
+                    $path                       = public_path('image/restaurant/'.$restaurantVal['id'].'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    $resizeImage->save($path); 
 
-                DB::table('photo')->insertGetId(
-                    [
-                        'photoName'         => $fileName,
-                        'order'             => $key,
-                        'restaurantId'      => $restaurantVal['id'],
-                        'is_primary'        => 1,
-                        'created_at'  => date("Y-m-d H:i:s"),
-                        'updated_at'  => date("Y-m-d H:i:s")
-                    ]
-                );
+                    DB::table('photo')->insertGetId(
+                        [
+                            'photoName'         => $fileName,
+                            'order'             => $key,
+                            'restaurantId'      => $restaurantVal['id'],
+                            'created_at'  => date("Y-m-d H:i:s"),
+                            'updated_at'  => date("Y-m-d H:i:s")
+                        ]
+                    );
+                }
             }
-        }        
-        return redirect('/admin/restaurant')->with('status', 'Restaurant updated!');                    
+            if($request->hasFile('thumbnail')){
+                $files                          = $request->file('thumbnail');
+                
+                DB::table('photo')->where('restaurantId', $restaurantVal['id'])->where('is_primary', 1)->delete();
+            
+                foreach($files as $key=> $file){
+                    $filename                   = $file->getClientOriginalName();
+                    $rand                       = (rand(10,1000));
+                    $extension                  = $file->getClientOriginalExtension();                
+                    $fileName                   = $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
+                    //$file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $fileName); 
+                    $resizeImage                = Image::make($file);
+                    $resizeImage->resize(128,95);
+                    $path                       = public_path('image/restaurant/'.$restaurantVal['id'].'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    $resizeImage->save($path);                
+
+                    DB::table('photo')->insertGetId(
+                        [
+                            'photoName'         => $fileName,
+                            'order'             => $key,
+                            'restaurantId'      => $restaurantVal['id'],
+                            'is_primary'        => 1,
+                            'created_at'  => date("Y-m-d H:i:s"),
+                            'updated_at'  => date("Y-m-d H:i:s")
+                        ]
+                    );
+                }
+            }        
+            return redirect('/admin/restaurant')->with('status', 'Restaurant updated!');                    
         }else{
 
             $restaurantId                      =   DB::table('restaurant')->insertGetId(
@@ -339,6 +350,10 @@ class RestaurantController extends Controller
                                                         'updated_at'                        => date("Y-m-d H:i:s")
                                                     ]
                                                 );   
+
+            if (!file_exists(public_path().'/image/restaurant/'.$restaurantId)) {
+                mkdir(public_path().'/image/restaurant/'.$restaurantId, 0777, true);
+            }                                                
             if($request->hasFile('photos')){
                 $files                          = $request->file('photos');
                
@@ -347,13 +362,17 @@ class RestaurantController extends Controller
                     $rand                       = (rand(10,100));
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                    $file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $fileName); 
+                    //$file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $fileName); 
+                    $resizeImage                = Image::make($file);
+                    $resizeImage->resize(466,350);
+                    $path                       = public_path('image/restaurant/'.$restaurantId.'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    $resizeImage->save($path);                     
     
                     DB::table('photo')->insertGetId(
                         [
                             'photoName'         => $fileName,
                             'order'             => $key,
-                            'restaurantId'      => $restaurantVal['id'],
+                            'restaurantId'      => $restaurantId,
                             'created_at'  => date("Y-m-d H:i:s"),
                             'updated_at'  => date("Y-m-d H:i:s")
                         ]
@@ -368,13 +387,17 @@ class RestaurantController extends Controller
                     $rand                       = (rand(10,1000));
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                    $file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $fileName); 
+                    //$file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $fileName); 
+                    $resizeImage                = Image::make($file);
+                    $resizeImage->resize(128,95);
+                    $path                       = public_path('image/restaurant/'.$restaurantId.'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    $resizeImage->save($path);                     
     
                     DB::table('photo')->insertGetId(
                         [
                             'photoName'         => $fileName,
                             'order'             => $key,
-                            'restaurantId'      => $restaurantVal['id'],
+                            'restaurantId'      => $restaurantId,
                             'is_primary'        => 1,
                             'created_at'  => date("Y-m-d H:i:s"),
                             'updated_at'  => date("Y-m-d H:i:s")
