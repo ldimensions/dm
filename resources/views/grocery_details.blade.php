@@ -44,32 +44,35 @@
         <div class="content">
             <table class="fullWidth">
             <tr>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
                 <td colspan="2">{{ $grocery['description'] }}</td>
             </tr>
             @if (isset($grocery['website']) && $grocery['website'])
                 <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
+                    <td colspan="2" class="smallfont tdtoppadd1">Website</td>
                 </tr>
                 <tr>
                     <td colspan="2"><a href="http://{{ $grocery['website'] }}" target="_blank"><h2>{{ $grocery['website'] }}</h2></a></td>
                 </tr> 
             @endif  
             <tr>
-                <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity:</td>
+                <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity</td>
             </tr> 
             <tr>
                 <td colspan="2"><h3>{{ $grocery['ethnicName'] }}</h3></td>
             </tr>                
                         
             <tr>
-                <td colspan="2" class="smallfont tdtoppadd1">Located In:</td>
+                <td colspan="2" class="smallfont tdtoppadd1">Located In</td>
             </tr>
             <tr>
                 <td colspan="2"><h3>{{ $grocery['city'] }}</h3></td>
             </tr>
             @if (isset($distance) && $distance)
                 <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Distance:</td>
+                    <td colspan="2" class="smallfont tdtoppadd1">Distance</td>
                 </tr>
                 <tr>
                     <td colspan="2">{{ $distance }}</td>
@@ -81,7 +84,7 @@
                     @if($wtKey == "default")
                         <table>
                             <tr>
-                                <td colspan="2" class="smallfont tdtoppadd1">Working Time:</td>
+                                <td colspan="2" class="smallfont tdtoppadd1">Working Time</td>
                             </tr>
                             @foreach ($wtArr[0] as $wtArrKey => $wtRs)
                                 @if ( !empty ( $wtRs ) )
@@ -115,7 +118,7 @@
         </div>
     </div>
     <div class="block22">
-    <div class="white_t space"><h2 class="graycolor">{{$grocery['name']}} Location</h2></div>
+    <div class="white_t space"><h2 class="titleh2 graycolor">{{$grocery['name']}} Location</h2></div>
         <div class="white_map">   
             <a href="https://www.google.com/maps/dir/{{$grocery['latitude']}},{{$grocery['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $grocery['name'] }}"/></a>
         </div>
@@ -123,7 +126,7 @@
     </div>
     @if($photos)
         <div class="block23">
-            <div class="white_Photo space"><h2 class="graycolor">{{$grocery['name']}} Photos</h2></div>
+            <div class="white_Photo space"><h2 class="titleh2 graycolor">{{$grocery['name']}} Photos</h2></div>
         </div>
         <div class="block231">
             <div class="topdetail slideshow-container">
