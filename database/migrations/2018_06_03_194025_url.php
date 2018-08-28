@@ -18,10 +18,10 @@ class Url extends Migration
             $table->string('urlName');
             $table->integer('groceryId')->default(0);
             $table->integer('restaurantId')->default(0);
-            $table->integer('a')->default(0);
-            $table->integer('b')->default(0);
-            $table->integer('c')->default(0);
-            $table->integer('d')->default(0);
+            $table->integer('religionId')->default(0);
+            $table->integer('travelId')->default(0);
+            $table->integer('theatreId')->default(0);
+            $table->integer('movieId')->default(0);
             $table->integer('e')->default(0);
             $table->integer('f')->default(0);
             $table->integer('g')->default(0);

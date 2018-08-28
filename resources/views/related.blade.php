@@ -12,7 +12,7 @@
             <div class="smallImage">
                 @if (isset($rel['photoName']) && $rel['photoName'])
                     <img src="{{ URL::to('/') }}/image/grocery/{{$rel['id']}}/{{$rel['photoName']}}" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%">
-                @elses
+                @else
                     <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%">
                 @endif  
             </div> 

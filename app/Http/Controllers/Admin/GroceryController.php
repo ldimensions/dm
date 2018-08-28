@@ -25,14 +25,8 @@ class GroceryController extends Controller
         $siteId                         =   config('app.siteId');
         
         $groceryRs                      =   Grocery::select('grocery.id as groceryId', 'grocery.name', 
-                                                'grocery.description', 'grocery.workingTime',
-                                                'address.address1', 'address.address2',
-                                                'city.city', 'address.state',
-                                                'address.zip', 'address.county',
-                                                'address.phone1', 'address.latitude',
-                                                'grocery.premium', 'grocery.is_disabled',
-                                                'address.longitude', 'ethnic.ethnicName',
-                                                'url.urlName')
+                                                'city.city', 'grocery.premium', 
+                                                'grocery.is_disabled', 'ethnic.ethnicName', 'url.urlName')
                                             ->leftjoin('url','url.groceryId', '=', 'grocery.id')
                                             ->leftjoin('address','address.id', '=', 'grocery.addressId')
                                             ->leftjoin('ethnic','ethnic.id', '=', 'grocery.ethnicId')
@@ -293,7 +287,7 @@ class GroceryController extends Controller
                                                         'order'         => ($groceryVal['order'])?$groceryVal['order']:0,
                                                         'premium'       => $groceryVal['premium'],
                                                         'is_disabled'   => $groceryVal['is_disabled'],
-                                                        'urlid'         => 0,
+                                                        'urlId'         => 0,
                                                         'addressId'     => 0,
                                                         'updated_by'    => Auth::user()->id,
                                                         'created_at'  => date("Y-m-d H:i:s"),

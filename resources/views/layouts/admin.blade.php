@@ -98,7 +98,19 @@
                             </li>  
                             <li>
                                 <a href="{{ url('/admin/events') }}"> Events</a>
-                            </li>                                                                                                              
+                            </li>
+                            <li>
+                                <a href="#"> Movies<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ url('/admin/movies') }}">Movies</a>
+                                    </li>                                       
+                                    <li>
+                                        <a href="{{ url('/admin/theatre') }}">Theatre</a>
+                                    </li>                                
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>                                                                                                                                          
                             <li>
                                 <a href="#"> Messages<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">

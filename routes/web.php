@@ -84,8 +84,18 @@ Route::group(['middleware' => ['role:Admin']], function () {
 
     Route::get('/admin/events', 'Admin\EventsController@index')->name('events');
     Route::get('/admin/events_add/{id?}', 'Admin\EventsController@addEventsView')->name('addEventsView')->where(['id' => '[0-9]+']);
-    //Route::get('admin/suggession_for_edit/delete/{id}', 'Admin\SuggessionForEditController@deleteSuggession')->where(['id' => '[0-9]+']);
+    Route::get('admin/suggession_for_edit/delete/{id}', 'Admin\SuggessionForEditController@deleteSuggession')->where(['id' => '[0-9]+']);
 
+    Route::get('/admin/theatre', 'Admin\MovieController@theatreListing')->name('theatre_listing');
+    Route::get('/admin/theatre_add/{id?}', 'Admin\MovieController@addtheatreView')->name('add_theatre_view')->where(['id' => '[0-9]+']);
+    Route::post('/admin/theatre_add', 'Admin\MovieController@addTheatre');
+    Route::get('admin/theatre/delete/{id}', 'Admin\MovieController@deleteTheatre')->where(['id' => '[0-9]+']);
+
+    Route::get('/admin/movies', 'Admin\MovieController@MovieListing')->name('movies_listing');
+    Route::get('/admin/movie_add/{id?}', 'Admin\MovieController@addMovieView')->name('add_movie_view')->where(['id' => '[0-9]+']);
+    Route::post('/admin/movie_add', 'Admin\MovieController@addMovie');
+    Route::get('admin/movie/delete/{id}', 'Admin\MovieController@deleteMovie')->where(['id' => '[0-9]+']);
+    
 });
 
 

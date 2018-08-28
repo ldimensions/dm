@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Events extends Migration
+class Movie extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,17 @@ class Events extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('movie', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('website',100)->nullable();             
-            $table->string('categoryId')->nullable();
-            $table->string('organizerName')->nullable();
-            $table->string('organizerContact')->nullable();
-            $table->string('email')->nullable();;
-            $table->string('phone')->nullable();;
-            $table->string('url');            
-            $table->integer('addressId');
+            $table->string('cast')->nullable();
+            $table->string('music')->nullable();
+            $table->string('director')->nullable();
+            $table->string('producer')->nullable();
+            $table->string('urlId');            
             $table->integer('siteId');
+            $table->integer('language');
             $table->integer('order')->default(0);
             $table->integer('premium')->default(0);
             $table->boolean('is_disabled',1)->default(0);
@@ -42,6 +40,6 @@ class Events extends Migration
      */
     public function down()
     {
-        Schema::drop('events');
+        Schema::drop('movie');
     }
 }

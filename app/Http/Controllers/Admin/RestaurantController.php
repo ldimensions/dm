@@ -25,14 +25,8 @@ class RestaurantController extends Controller
         $siteId                         =   config('app.siteId');
         
         $restaurantRs                   =   Restaurant::select('restaurant.id as restaurantId', 'restaurant.name', 
-                                                'restaurant.description', 'restaurant.workingTime',
-                                                'address.address1', 'address.address2',
-                                                'city.city', 'address.state',
-                                                'address.zip', 'address.county',
-                                                'address.phone1', 'address.latitude',
-                                                'restaurant.premium', 'restaurant.is_disabled',
-                                                'address.longitude', 'ethnic.ethnicName',
-                                                'url.urlName')
+                                                'city.city', 'restaurant.premium', 'restaurant.is_disabled',
+                                                'ethnic.ethnicName', 'url.urlName')
                                             ->leftjoin('url','url.restaurantId', '=', 'restaurant.id')
                                             ->leftjoin('address','address.id', '=', 'restaurant.addressId')
                                             ->leftjoin('ethnic','ethnic.id', '=', 'restaurant.ethnicId')
@@ -293,7 +287,7 @@ class RestaurantController extends Controller
                                                         'order'         => ($restaurantVal['order'])?$restaurantVal['order']:0,
                                                         'premium'       => $restaurantVal['premium'],
                                                         'is_disabled'   => $restaurantVal['is_disabled'],
-                                                        'urlid'         => 0,
+                                                        'urlId'         => 0,
                                                         'addressId'     => 0,
                                                         'updated_by'    => Auth::user()->id,
                                                         'created_at'  => date("Y-m-d H:i:s"),

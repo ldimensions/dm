@@ -26,13 +26,8 @@ class ReligionController extends Controller
         $siteId                         =   config('app.siteId');
         
         $religionRs                     =   Religion::select('religion.id as religionId', 'religion.name', 
-                                                'religion.description', 'religion.workingTime',
-                                                'address.address1', 'address.address2',
-                                                'city.city', 'address.state',
-                                                'address.zip', 'address.county',
-                                                'address.phone1', 'address.latitude',
-                                                'religion.premium', 'religion.is_disabled',
-                                                'address.longitude', 'religion_type.religionName',
+                                               'religion.premium', 'religion.is_disabled',
+                                                'religion_type.religionName', 'city.city',
                                                 'url.urlName','denomination.denominationName')
                                             ->leftjoin('url','url.religionId', '=', 'religion.id')
                                             ->leftjoin('address','address.id', '=', 'religion.addressId')
@@ -309,7 +304,7 @@ class ReligionController extends Controller
                                                         'order'         => ($religionVal['order'])?$religionVal['order']:0,
                                                         'premium'       => $religionVal['premium'],
                                                         'is_disabled'   => $religionVal['is_disabled'],
-                                                        'urlid'         => 0,
+                                                        'urlId'         => 0,
                                                         'addressId'     => 0,
                                                         'updated_by'    => Auth::user()->id,
                                                         'created_at'  => date("Y-m-d H:i:s"),
