@@ -878,4 +878,28 @@ h4{
 	width: 120px;
 	text-transform: uppercase;
   }
+  .modal-header .close {
+    margin-top: -20px;
+}
+.nup{
+	width: 100% !important;
+	margin: 0 0 !important;
+}
+.labelfont{
+	font-weight: normal !important;
+}
+.modal-dialog {
+    width: 500px;
+    margin: 30px auto;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #009BFF;
+    border-color: #009BFF;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #009BFF;
+    border-color: #009BFF;
+}
 /*------------ End Loading Wheel ----*/

@@ -156,34 +156,34 @@
         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Suggession For Edit</h5>
+                <h5 class="modal-title titleh2 " id="exampleModalLabel">Suggest an edit</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="form-group" id="formGrpErrName">
-                    <label for="recipient-name" class="col-form-label">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" maxLength="40">
+                    <label for="recipient-name" class="col-form-label labelfont">Name:</label>
+                    <input type="text" class="form-control nup" id="name" name="name" maxLength="40">
                     <div id="nameError"></div>
                 </div>
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Email:</label>
-                    <input type="text" class="form-control" id="email" name="email" maxLength="50">
+                    <label for="recipient-name" class="col-form-label labelfont">Email:</label>
+                    <input type="text" class="form-control nup" id="email" name="email" maxLength="50">
                     <div id="emailError"></div>
                 </div>   
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Phone:</label>
-                    <input type="text" class="form-control" id="phone" name="phone" maxLength="20">
+                    <label for="recipient-name" class="col-form-label labelfont">Phone:</label>
+                    <input type="text" class="form-control nup" id="phone" name="phone" maxLength="20">
                 </div>                       
                 <div class="form-group" id="formGrpErrSuggession">
-                    <label for="message-text" class="col-form-label">Suggession:</label>
-                    <textarea class="form-control" id="suggession" name="suggession"></textarea>
+                    <label for="message-text" class="col-form-label labelfont">Suggession:</label>
+                    <textarea class="form-control nup" id="suggession" name="suggession"></textarea>
                     <div id="sugessionError"></div>                        
                 </div>
             </div>
             <div class="modal-footer">
-                <input type="hidden" class="form-control" id="type" name="type" value="1">
+                <input type="hidden" class="form-control nup" id="type" name="type" value="1">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="suggessionBtn" />Submit</button>
             </div>            
