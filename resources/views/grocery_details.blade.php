@@ -177,7 +177,7 @@
                     <input type="text" class="form-control nup" id="phone" name="phone" maxLength="20">
                 </div>                       
                 <div class="form-group" id="formGrpErrSuggession">
-                    <label for="message-text" class="col-form-label labelfont">Suggession:</label>
+                    <label for="message-text" class="col-form-label labelfont">Suggestion:</label>
                     <textarea class="form-control nup" id="suggession" name="suggession"></textarea>
                     <div id="sugessionError"></div>                        
                 </div>

@@ -38,9 +38,9 @@ function validate() {
     }
     if (document.getElementById("suggession").value.length === 0) {
         document.getElementById("suggession").style.border = "1px solid red";
-        document.getElementById("suggession").style.backgroundColor = "#FFCCCC";
+        document.getElementById("suggession").style.backgroundColor = "#FFF";
         document.getElementById("formGrpErrSuggession").style.color   =   "red";
-        document.getElementById("sugessionError").innerHTML ="Please enter the suggession";
+        document.getElementById("sugessionError").innerHTML ="Please enter the suggestion";
         errors  =   false;
     }   
     if (errors) {
@@ -88,7 +88,7 @@ $( document ).ready(function() {
             document.getElementById("suggession").style.border = "1px solid red";
             document.getElementById("suggession").style.backgroundColor = "#FFCCCC";
             document.getElementById("formGrpErrSuggession").style.color   =   "red";
-            document.getElementById("sugessionError").innerHTML ="Please enter the suggession";
+            document.getElementById("sugessionError").innerHTML ="Please enter the suggestion";
             errors  =   false;
         }   
         if (errors) {
