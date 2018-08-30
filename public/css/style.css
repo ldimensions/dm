@@ -213,12 +213,13 @@ table {
 	border-radius:5px;
 	margin-left:15px;
 	margin-right:15px;
+	margin-bottom:15px;
 	width:97.2%;
 	}
 .paggination{
 	float: left;
-	position;: relative;
-	width: 1080px;
+	position: relative;
+	width: 980px;
 	line-height:50px;
 	padding-left:15px;
 	padding-right:15px;
@@ -338,11 +339,11 @@ input[type=text], select{
 }
 .search{
 	float:right;
-	width:80px;
+	width:79px;
     box-sizing: border-box;
 	border:1px solid #E1E1E1;
 	color:#646464;
-	line-height:66px;
+	line-height:68px;
 	border-radius:0px 5px 5px 0px;
 	background-color:#009BFF;
 	color:#FFF;
@@ -593,7 +594,6 @@ input[type=text], select{
 	position:relative;
 	width:70%;
 	padding-left:15px;
-	padding-top:5px;
 
 }
 .content3{
@@ -601,7 +601,6 @@ input[type=text], select{
 	position:relative;
 	width:40%;
 	padding-left:15px;
-	padding-top:2px;
 
 }
 .title{
@@ -642,8 +641,8 @@ input[type=text], select{
 	border-radius:3px;
 	font-weight:bold;
 	color:#B20095;
-	margin-top:-10px;
-	margin-right:-8px;
+	margin-top:17px;
+	margin-right:-11px;
 }
 .open_close{
 	float:right;
