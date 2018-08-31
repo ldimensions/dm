@@ -69,10 +69,45 @@ class MovieController extends Controller
             $photoRs                        =   $photoArr->toArray();   
 
             $movieTimeArr                   =   MovieTheatre::select('theatreId','dateTime')
+                                                        ->orderBy('theatreId', 'ASC')
                                                         ->where('movieId', '=', $id)
                                                         ->get();  
-            $movieTimeRs                    =   $movieTimeArr->toArray();             
+            $movieTimeRs                    =   $movieTimeArr->toArray();    
+            
+            $theatreIdArr                   =   array();
+            $movieTheatreAggr               =   array();
 
+            foreach ($movieTimeRs as $key => $movieTime) {
+                $theatreIdArr[$movieTime['theatreId']]          =   $movieTime['theatreId'];               
+            } 
+            foreach ($theatreIdArr as $theatrekey => $theatreId) {
+                $movieTimeAgg                                   =   array();
+                $key                                            =   0;
+                foreach ($movieTimeRs as $movieKey => $movieTime) {
+                    if($theatrekey == $movieTime['theatreId']){
+                        $movieTimeAgg['dateTime'][$key]    =   date('Y-m-d\TH:i',  strtotime($movieTime['dateTime']));
+                        $movieTheatreAggr[$theatrekey]          =   $movieTimeAgg;
+                        $key++;
+                    }                 
+                }
+            }                
+           
+            $movieTimeRs1                           =   array();
+            $movieTimeRs1['1']['dateTime'][0]       =   date('Y-m-d\TH:i',  strtotime('2018-01-01 01:20:10'));
+            $movieTimeRs1['1']['dateTime'][1]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 02:20:20'));
+            $movieTimeRs1['1']['dateTime'][3]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 03:20:20'));
+            $movieTimeRs1['1']['dateTime'][4]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 04:20:20'));
+            $movieTimeRs1['1']['dateTime'][5]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 05:20:20'));
+            $movieTimeRs1['1']['dateTime'][6]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 06:20:20'));            
+            $movieTimeRs1['2']['dateTime'][0]       =   date('Y-m-d\TH:i',  strtotime('2018-01-01 03:22:30'));
+            $movieTimeRs1['2']['dateTime'][1]       =   date('Y-m-d\TH:i',  strtotime('2018-02-01 03:22:30'));
+            $movieTimeRs1['3']['dateTime'][0]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 04:23:40'));            
+            
+            //$movieTimeRs['theatreId']['1']  =   
+            // echo "<pre>";
+            // print_r($movieTheatreAggr);
+            // print_r($movieTimeRs1);
+            // exit();
         }else{
             $movie['id']                    =   "";
             $movie['addressId']             =   "";
@@ -103,6 +138,7 @@ class MovieController extends Controller
             $movie['OpenGraph']                           =   "";  
             
             $photoRs                        =   array();
+            $movieTheatreAggr               =   array();
         }
 
         $theatreRs                          =   Theatre::select('theatre.id', 'theatre.name', 'city.city as cityName')
@@ -112,14 +148,15 @@ class MovieController extends Controller
                                                     ->orderBy('name', 'asc')
                                                     ->get();  
         $theatres                           =   $theatreRs->toArray();  
-        return view('admin.movie_add',['movie' => $movie, 'theatres' => $theatres, 'photos' => $photoRs, 'movieTimes' => $movieTimeRs]); 
+        return view('admin.movie_add',['movie' => $movie, 'theatres' => $theatres, 'photos' => $photoRs, 'movieTimes' => $movieTheatreAggr]); 
     }
 
     public function addMovie(Request $request)
     {
 
         $movieVal                           =   $request->post();
-       
+        print_r($movieVal);
+        exit();
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'urlName' => [
@@ -139,6 +176,8 @@ class MovieController extends Controller
                 return redirect('/admin/movie_add')->withErrors($validator)->withInput();
             }
         }
+
+
         
         // if($groceryVal['id']){
         //     DB::table('grocery')
