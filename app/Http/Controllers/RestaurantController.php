@@ -122,7 +122,7 @@ class RestaurantController extends Controller
                                                     ->where('url.urlName', '=', $url)
                                                     ->where('restaurant.is_deleted', '=', '0')
                                                     ->where('restaurant.is_disabled', '=', '0')
-                                                    ->get()->first();; 
+                                                    ->get()->first();
 
         $restaurant                         =   $restaurantRs->toArray(); 
 

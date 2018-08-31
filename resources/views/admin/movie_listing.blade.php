@@ -29,7 +29,6 @@
                               <tr>
                                   <th>Name</th>
                                   <th>Language</th>
-                                  <th>City</th>
                                   <th data-sortable="false" width="100px;">Link</th>
                                   <th data-sortable="false" width="75px;">Action</th>
                               </tr>
@@ -42,8 +41,7 @@
                                     <tr class="odd gradeX">
                                 @endif    
                                         <td>{{$rel['name']}}</td>
-                                        <td>--</td>
-                                        <td class="ceter"></td>
+                                        <td>{{config('app.movieLanguage.'.$rel["language"])}}</td>
                                         <td class="ceter" width="100px;">
                                             <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.movie-store-details')}}/{{ $rel['urlName'] }}" target="_blank" class="title"> -->
                                                 Link

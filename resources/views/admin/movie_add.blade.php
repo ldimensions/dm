@@ -60,6 +60,12 @@
                                                     <option value="2" @if(old('language', $movie['language']) == 2) {{ 'selected' }} @endif>Malayalam</option>
                                                     <option value="3" @if(old('language', $movie['language']) == 3) {{ 'selected' }} @endif>Tamil</option>
                                                     <option value="4" @if(old('language', $movie['language']) == 4) {{ 'selected' }} @endif>Telugu</option>
+                                                    <option value="5" @if(old('language', $movie['language']) == 5) {{ 'selected' }} @endif>Kannada</option>
+                                                    <option value="6" @if(old('language', $movie['language']) == 6) {{ 'selected' }} @endif>Punjabi</option>
+                                                    <option value="7" @if(old('language', $movie['language']) == 7) {{ 'selected' }} @endif>Urdu</option>
+                                                    <option value="8" @if(old('language', $movie['language']) == 8) {{ 'selected' }} @endif>Bengali</option>
+                                                    <option value="9" @if(old('language', $movie['language']) == 9) {{ 'selected' }} @endif>Gujarathi</option>
+                                                    <option value="10" @if(old('language', $movie['language']) == 10) {{ 'selected' }} @endif>Marathi</option>
                                                 </select>
                                             </div>                                             
                                             <div class="form-group">
@@ -111,6 +117,7 @@
                                         <div id="theatreDiv">
                                             @if($movie['id']) 
                                                 <input type="text" name="theatreCount" id="theatreCount" value="{{count($movieTimes)}}"/>
+                                                <span style="display:none">{{$index = 1}}</span>   
                                                 @foreach ($movieTimes as $theatreKey => $movieTime)
                                                 
                                                     @if($theatreKey == 1)
@@ -171,7 +178,7 @@
                                                                     </div>                                                 
                                                                 </div> 
                                                             </div> 
-                                                        @if($theatreKey == 1)
+                                                        @if($index == 1)
                                                             <div class="col-lg-6 col-xs-2 col-sm-2"> 
                                                                 <button type="button" class="btn btn-default btn-sm" id="addTheatre" ><i class="fa glyphicon-plus"></i></button>
                                                             </div>                                                           
@@ -186,7 +193,8 @@
                                                             </script>
                                                         @endif                                                                                                                                      
                                                                                                           
-                                                    </div>                                                
+                                                    </div> 
+                                                    <span style="display:none">{{$index++}}</span>                                            
                                                 @endforeach                                            
                                             @else 
                                                 <input type="text" name="theatreCount" id="theatreCount" value="1"/>
@@ -380,7 +388,7 @@
                             `); 
         $("#addDate_btn_"+theatreIdVal).click(function(){
             var dateCountVal;
-            var theatreIdVal                            =   document.getElementById("theatreCount").value;
+            //var theatreIdVal                            =   document.getElementById("theatreCount").value;
             dateCountVal                                =   document.getElementById("dateCount_"+theatreIdVal).value;
             dateCountId                                 =   parseInt(dateCountVal)+1;
             document.getElementById("dateCount_"+theatreIdVal).value     =   dateCountId;

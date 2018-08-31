@@ -6,6 +6,7 @@ return [
     'siteLocatioin' => env('SITE_LOCATION', 'Dallas'),   // 1 - Dallas
     'fromEmail' =>  'lindosebastian@gmail.com',
     'toEmail' =>  'lindosebastian@gmail.com',
+    'test' => 'aaaaaa',
     'defaultSEO' => [
         '1' => [    // Dallas
             'SEOMetaTitle'                        => "Home Page - Testing",
@@ -23,6 +24,19 @@ return [
             'OpenGraph'                           =>  '',    
         ]
     ],
+    
+    'movieLanguage' => [
+        '1'                        => "Hindi",
+        '2'                        => "Malayalam",
+        '3'                        => "Tamil",
+        '4'                        => "Telugu",
+        '5'                        => "Kannada",
+        '6'                        => "Punjabi",
+        '7'                        => "Urdu",
+        '8'                        => "Bengali",
+        '9'                        => "Gujarathi",
+        '10'                       => "Marathi",        
+    ],   
 
     'defaultBaseURL' => [
         'dallas-indian-grocery-store'           => 'dallas-indian-grocery-store',

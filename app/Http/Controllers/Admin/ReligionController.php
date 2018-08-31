@@ -254,7 +254,6 @@ class ReligionController extends Controller
                         'photoName'         => $fileName,
                         'order'             => $key,
                         'religionId'         => $religionVal['id'],
-                        'created_at'  => date("Y-m-d H:i:s"),
                         'updated_at'  => date("Y-m-d H:i:s")
                     ]
                 );
@@ -283,7 +282,6 @@ class ReligionController extends Controller
                         'order'             => $key,
                         'religionId'         => $religionVal['id'],
                         'is_primary'        => 1,
-                        'created_at'  => date("Y-m-d H:i:s"),
                         'updated_at'  => date("Y-m-d H:i:s")
                     ]
                 );

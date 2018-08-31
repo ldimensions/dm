@@ -239,7 +239,6 @@ class RestaurantController extends Controller
                             'photoName'         => $fileName,
                             'order'             => $key,
                             'restaurantId'      => $restaurantVal['id'],
-                            'created_at'  => date("Y-m-d H:i:s"),
                             'updated_at'  => date("Y-m-d H:i:s")
                         ]
                     );
@@ -267,7 +266,6 @@ class RestaurantController extends Controller
                             'order'             => $key,
                             'restaurantId'      => $restaurantVal['id'],
                             'is_primary'        => 1,
-                            'created_at'  => date("Y-m-d H:i:s"),
                             'updated_at'  => date("Y-m-d H:i:s")
                         ]
                     );

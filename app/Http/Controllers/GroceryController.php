@@ -180,7 +180,7 @@ class GroceryController extends Controller
                                             ->where('url.urlName', '=', $url)
                                             ->where('grocery.is_deleted', '=', '0')
                                             ->where('grocery.is_disabled', '=', '0')
-                                            ->get()->first();; 
+                                            ->get()->first();
 
         $grocery                            =   $groceryRs->toArray(); 
 

@@ -37,9 +37,8 @@ class ReligionController extends Controller
 
         $siteId                         =   config('app.siteId');
         $religionRs                     =   Religion::select('religion.id', 'religion.name', 
-                                                    'religion.shortDescription', 'religion.workingTime',
                                                     'address.address1', 'address.address2',
-                                                    'address.zip', 'religion.shortDescription',
+                                                    'address.zip', 
                                                     'city.city', 'address.state',
                                                     'address.phone1', 'address.latitude',
                                                     'address.longitude','religion_type.religionName',

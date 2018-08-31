@@ -26,7 +26,7 @@ class MovieController extends Controller
         $siteId                         =   config('app.siteId');
         
         $movieRs                      =   Movie::select('movie.id as movieId', 'movie.name', 
-                                                'movie.is_disabled', 'url.urlName')
+                                                'movie.is_disabled', 'url.urlName', 'movie.language')
                                                 ->leftjoin('url','url.movieId', '=', 'movie.id')
                                                 ->leftjoin('site','site.siteId', '=', 'movie.siteId')                                            
                                                 ->where('movie.is_deleted', '=', '0')
@@ -92,21 +92,20 @@ class MovieController extends Controller
                 }
             }                
            
-            $movieTimeRs1                           =   array();
-            $movieTimeRs1['1']['dateTime'][0]       =   date('Y-m-d\TH:i',  strtotime('2018-01-01 01:20:10'));
-            $movieTimeRs1['1']['dateTime'][1]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 02:20:20'));
-            $movieTimeRs1['1']['dateTime'][3]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 03:20:20'));
-            $movieTimeRs1['1']['dateTime'][4]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 04:20:20'));
-            $movieTimeRs1['1']['dateTime'][5]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 05:20:20'));
-            $movieTimeRs1['1']['dateTime'][6]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 06:20:20'));            
-            $movieTimeRs1['2']['dateTime'][0]       =   date('Y-m-d\TH:i',  strtotime('2018-01-01 03:22:30'));
-            $movieTimeRs1['2']['dateTime'][1]       =   date('Y-m-d\TH:i',  strtotime('2018-02-01 03:22:30'));
-            $movieTimeRs1['3']['dateTime'][0]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 04:23:40'));            
+            // $movieTimeRs1                           =   array();
+            // $movieTimeRs1['1']['dateTime'][0]       =   date('Y-m-d\TH:i',  strtotime('2018-01-01 01:20:10'));
+            // $movieTimeRs1['1']['dateTime'][1]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 02:20:20'));
+            // $movieTimeRs1['1']['dateTime'][3]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 03:20:20'));
+            // $movieTimeRs1['1']['dateTime'][4]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 04:20:20'));
+            // $movieTimeRs1['1']['dateTime'][5]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 05:20:20'));
+            // $movieTimeRs1['1']['dateTime'][6]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 06:20:20'));            
+            // $movieTimeRs1['2']['dateTime'][0]       =   date('Y-m-d\TH:i',  strtotime('2018-01-01 03:22:30'));
+            // $movieTimeRs1['2']['dateTime'][1]       =   date('Y-m-d\TH:i',  strtotime('2018-02-01 03:22:30'));
+            // $movieTimeRs1['3']['dateTime'][0]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 04:23:40'));            
             
             //$movieTimeRs['theatreId']['1']  =   
             // echo "<pre>";
             // print_r($movieTheatreAggr);
-            // print_r($movieTimeRs1);
             // exit();
         }else{
             $movie['id']                    =   "";
@@ -155,8 +154,7 @@ class MovieController extends Controller
     {
 
         $movieVal                           =   $request->post();
-        print_r($movieVal);
-        exit();
+        
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'urlName' => [
@@ -176,134 +174,133 @@ class MovieController extends Controller
                 return redirect('/admin/movie_add')->withErrors($validator)->withInput();
             }
         }
-
+        // echo "<pre>";
+        // print_r($movieVal);
+        // exit();
 
         
-        // if($groceryVal['id']){
-        //     DB::table('grocery')
-        //         ->where('id', $groceryVal['id'])
-        //         ->update(
-        //             [
-        //                 'name'          => $groceryVal['name'],
-        //                 'description'   => $groceryVal['description'],
-        //                 'workingTime'   => $groceryVal['workingTime'],
-        //                 'ethnicId'      => $groceryVal['ethnic'],
-        //                 'siteId'        => config('app.siteId'),
-        //                 'website'       => $groceryVal['website'],
-        //                 'order'         => ($groceryVal['order'])?$groceryVal['order']:0,
-        //                 'premium'       => $groceryVal['premium'],
-        //                 'is_disabled'   => $groceryVal['is_disabled'],
-        //                 'updated_by'    => Auth::user()->id,
-        //                 'updated_at'    => date("Y-m-d H:i:s")                    
-        //             ]
-        //         );
-        //     DB::table('address')
-        //         ->where('id', $groceryVal['addressId'])
-        //         ->update(
-        //             [
-        //                 'address1'      => $groceryVal['address1'],
-        //                 'address2'      => $groceryVal['address2'],
-        //                 'city'          => $groceryVal['city'],
-        //                 'state'         => $groceryVal['state'],
-        //                 'zip'           => $groceryVal['zip'],
-        //                 'county'        => $groceryVal['county'],
-        //                 'phone1'        => $groceryVal['phone1'],
-        //                 'phone2'        => $groceryVal['phone2'],
-        //                 'latitude'      => $groceryVal['latitude'],
-        //                 'longitude'     => $groceryVal['latitude'],                   
-        //             ]
-        //     );
-        //     if($groceryVal['urlName'] != $groceryVal['urlNameChk']){
-        //         DB::table('url')
-        //         ->where('id', $groceryVal['urlId'])
-        //         ->update(
-        //             [
-        //                 'urlName'       => $groceryVal['urlName'],
-        //                 'updated_at'    => date("Y-m-d H:i:s")                 
-        //             ]
-        //         );
-        //     }
-        //     DB::table('seo')
-        //         ->where('seoId', $groceryVal['seoId'])
-        //         ->update(
-        //             [
-        //                 'SEOMetaTitle'                      => $groceryVal['SEOMetaTitle'],
-        //                 'SEOMetaDesc'                       => $groceryVal['SEOMetaDesc'],
-        //                 'SEOMetaPublishedTime'              => $groceryVal['SEOMetaPublishedTime'],
-        //                 'SEOMetaKeywords'                   => $groceryVal['SEOMetaKeywords'],
-        //                 'OpenGraphTitle'                    => $groceryVal['OpenGraphTitle'],
-        //                 'OpenGraphDesc'                     => $groceryVal['OpenGraphDesc'],
-        //                 'OpenGraphUrl'                      => $groceryVal['OpenGraphUrl'],
-        //                 'OpenGraphPropertyType'             => $groceryVal['OpenGraphPropertyType'],
-        //                 'OpenGraphPropertyLocale'           => $groceryVal['OpenGraphPropertyLocale'],
-        //                 'OpenGraphPropertyLocaleAlternate'  => $groceryVal['OpenGraphPropertyLocaleAlternate'],
-        //                 'OpenGraph'                         => $groceryVal['OpenGraph'],
-        //                 'updated_at'                        => date("Y-m-d H:i:s")
-        //             ]
-        //         ); 
+        if($movieVal['id']){
+            DB::table('movie')
+                ->where('id', $movieVal['id'])
+                ->update(
+                    [
+                        'name'          => $movieVal['name'],
+                        'description'   => $movieVal['description'],
+                        'language'      => $movieVal['language'],
+                        'cast'          => $movieVal['cast'],
+                        'music'         => $movieVal['music'],
+                        'director'      => $movieVal['director'],
+                        'producer'      => $movieVal['producer'],
+                        'siteId'        => config('app.siteId'),
+                        'order'         => ($movieVal['order'])?$movieVal['order']:0,
+                        'premium'       => $movieVal['premium'],
+                        'is_disabled'   => $movieVal['is_disabled'],
+                        'updated_by'    => Auth::user()->id,
+                        'updated_at'  => date("Y-m-d H:i:s")                   
+                    ]
+                ); 
+                
+            DB::table('movie_theatre')->where('movieId', $movieVal['id'])->delete();
+            $movieTheatre                       =   array();
+            for($i =1; $i<=$movieVal['theatreCount']; $i++){
+                for($j =0; $j< count($movieVal['dateTime_'.$i]); $j++){
+                    if($movieVal['dateTime_'.$i][$j]){
+                        if($movieVal['dateTime_'.$i][$j]){
+                            DB::table('movie_theatre')->insert([
+                                ['movieId' => $movieVal['id'], 'theatreId' => $movieVal['theatre_'.$i][0], 'dateTime' => $movieVal['dateTime_'.$i][$j], 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s") ],
+                            ]);
+                        }
+                    }
+                }
+            }                 
 
-        // if (!file_exists(public_path().'/image/grocery/'.$groceryVal['id'])) {
-        //     mkdir(public_path().'/image/grocery/'.$groceryVal['id'], 0777, true);
-        // }
-        // if($request->hasFile('photos')){
-        //     $files                          = $request->file('photos');
+            if($movieVal['urlName'] != $movieVal['urlNameChk']){
+                DB::table('url')
+                ->where('id', $movieVal['urlId'])
+                ->update(
+                    [
+                        'urlName'       => $movieVal['urlName'],
+                        'updated_at'    => date("Y-m-d H:i:s")                 
+                    ]
+                );
+            }
+            DB::table('seo')
+                ->where('seoId', $movieVal['seoId'])
+                ->update(
+                    [
+                        'SEOMetaTitle'                      => $movieVal['SEOMetaTitle'],
+                        'SEOMetaDesc'                       => $movieVal['SEOMetaDesc'],
+                        'SEOMetaPublishedTime'              => $movieVal['SEOMetaPublishedTime'],
+                        'SEOMetaKeywords'                   => $movieVal['SEOMetaKeywords'],
+                        'OpenGraphTitle'                    => $movieVal['OpenGraphTitle'],
+                        'OpenGraphDesc'                     => $movieVal['OpenGraphDesc'],
+                        'OpenGraphUrl'                      => $movieVal['OpenGraphUrl'],
+                        'OpenGraphPropertyType'             => $movieVal['OpenGraphPropertyType'],
+                        'OpenGraphPropertyLocale'           => $movieVal['OpenGraphPropertyLocale'],
+                        'OpenGraphPropertyLocaleAlternate'  => $movieVal['OpenGraphPropertyLocaleAlternate'],
+                        'OpenGraph'                         => $movieVal['OpenGraph'],
+                        'updated_at'                        => date("Y-m-d H:i:s")
+                    ]
+                ); 
+
+            if (!file_exists(public_path().'/image/movie/'.$movieVal['id'])) {
+                mkdir(public_path().'/image/movie/'.$movieVal['id'], 0777, true);
+            }
+            if($request->hasFile('photos')){
+                $files                          = $request->file('photos');
+                
+                DB::table('photo')->where('movieId', $movieVal['id'])->where('is_primary', 0)->delete();
+                
             
-        //     DB::table('photo')->where('groceryId', $groceryVal['id'])->where('is_primary', 0)->delete();
+                foreach($files as $key=> $file){
+                    $filename                   = $file->getClientOriginalName();
+                    $rand                       = (rand(10,100));
+                    $extension                  = $file->getClientOriginalExtension();                
+                    $fileName                   = $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
+
+                    $resizeImage                = Image::make($file);
+                    $resizeImage->resize(466,350);
+                    $path                       = public_path('image/movie/'.$movieVal['id'].'/'.$movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    $resizeImage->save($path);   
+
+                    DB::table('photo')->insertGetId(
+                        [
+                            'photoName'         => $fileName,
+                            'order'             => $key,
+                            'movieId'         => $movieVal['id'],
+                            'updated_at'  => date("Y-m-d H:i:s")
+                        ]
+                    );
+                }
+            }
+            if($request->hasFile('thumbnail')){
+                $files                          = $request->file('thumbnail');
+
+                DB::table('photo')->where('movieId', $movieVal['id'])->where('is_primary', 1)->delete();
             
-        
-        //     foreach($files as $key=> $file){
-        //         $filename                   = $file->getClientOriginalName();
-        //         $rand                       = (rand(10,100));
-        //         $extension                  = $file->getClientOriginalExtension();                
-        //         $fileName                   = $groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-
-        //         $resizeImage                = Image::make($file);
-        //         $resizeImage->resize(466,350);
-        //         $path                       = public_path('image/grocery/'.$groceryVal['id'].'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-        //         $resizeImage->save($path);   
-        //         //$file->move(public_path().'/image/grocery/'.$groceryVal['id'], $fileName); 
-
-        //         DB::table('photo')->insertGetId(
-        //             [
-        //                 'photoName'         => $fileName,
-        //                 'order'             => $key,
-        //                 'groceryId'         => $groceryVal['id'],
-        //                 'created_at'  => date("Y-m-d H:i:s"),
-        //                 'updated_at'  => date("Y-m-d H:i:s")
-        //             ]
-        //         );
-        //     }
-        // }
-        // if($request->hasFile('thumbnail')){
-        //     $files                          = $request->file('thumbnail');
-
-        //     DB::table('photo')->where('groceryId', $groceryVal['id'])->where('is_primary', 1)->delete();
-        
-        //     foreach($files as $key=> $file){
-        //         $filename                   = $file->getClientOriginalName();
-        //         $rand                       = (rand(10,1000));
-        //         $extension                  = $file->getClientOriginalExtension();                
-        //         $fileName                   = $groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-        //         //$file->move(public_path().'/image/grocery/'.$groceryVal['id'], $fileName); 
-        //         $resizeImage                = Image::make($file);
-        //         $resizeImage->resize(128,95);
-        //         $path                       = public_path('image/grocery/'.$groceryVal['id'].'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-        //         $resizeImage->save($path);                 
-               
-        //         DB::table('photo')->insertGetId(
-        //             [
-        //                 'photoName'         => $fileName,
-        //                 'order'             => $key,
-        //                 'groceryId'         => $groceryVal['id'],
-        //                 'is_primary'        => 1,
-        //                 'created_at'  => date("Y-m-d H:i:s"),
-        //                 'updated_at'  => date("Y-m-d H:i:s")
-        //             ]
-        //         );
-        //     }
-        // }        
-        // return redirect('/admin/grocery')->with('status', 'Grocery updated!');                    
-        // }else{
+                foreach($files as $key=> $file){
+                    $filename                   = $file->getClientOriginalName();
+                    $rand                       = (rand(10,1000));
+                    $extension                  = $file->getClientOriginalExtension();                
+                    $fileName                   = $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
+                    $resizeImage                = Image::make($file);
+                    $resizeImage->resize(128,95);
+                    $path                       = public_path('image/movie/'.$movieVal['id'].'/'.$movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    $resizeImage->save($path);                 
+                
+                    DB::table('photo')->insertGetId(
+                        [
+                            'photoName'         => $fileName,
+                            'order'             => $key,
+                            'movieId'         => $movieVal['id'],
+                            'is_primary'        => 1,
+                            'updated_at'  => date("Y-m-d H:i:s")
+                        ]
+                    );
+                }
+            }        
+        return redirect('/admin/movies')->with('status', 'Movie updated!');             
+        }else{
 
             $movieId                      =   DB::table('movie')->insertGetId(
                                                     [
@@ -338,7 +335,6 @@ class MovieController extends Controller
                 ->update(
                     [
                         'urlId'             => $urlId
-                        //'addressId'         => $addressId
                     ]
                 );
 
@@ -429,7 +425,7 @@ class MovieController extends Controller
                 }
             }                                                
             return redirect('/admin/movies')->with('status', 'movie Added!');                                                
-        //}
+        }
     }    
 
     public function theatreListing(){
