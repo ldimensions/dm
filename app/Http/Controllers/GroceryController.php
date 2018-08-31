@@ -94,10 +94,9 @@ class GroceryController extends Controller
         $commonCtrl                     =   new CommonController;
 
         $groceryRs                      =   Grocery::select('grocery.id', 'grocery.name', 
-                                                    'grocery.description', 'grocery.workingTime',
                                                     'address.address1', 'address.address2',
                                                     'city.city', 'address.state',
-                                                    'address.zip', 'address.county',
+                                                    'address.zip',
                                                     'address.phone1', 'address.latitude',
                                                     'address.longitude', 'ethnic.ethnicName',
                                                     'url.urlName', 'photo.photoName')
@@ -243,13 +242,11 @@ class GroceryController extends Controller
 
         $siteId                         =   config('app.siteId');
         $relatedRs                      =   Grocery::select('grocery.id', 'grocery.name', 
-                                                'address.address1', 'address.address2',
-                                                'grocery.website', 'grocery.workingTime',                                             
+                                                'address.address1', 'address.address2',                                            
                                                 'city.city', 'address.state',
-                                                'address.zip', 'address.county',
+                                                'address.zip', 'photo.photoName',
                                                 'address.phone1', 'address.latitude',
-                                                'address.longitude', 'ethnic.ethnicName',
-                                                'ethnic.id as ethnicId', 'url.urlName')
+                                                'address.longitude', 'url.urlName')
                                                     ->leftjoin('url','url.groceryId', '=', 'grocery.id')
                                                     ->leftjoin('address','address.id', '=', 'grocery.addressId')
                                                     ->leftjoin('city','city.cityId', '=', 'address.city')                                                                                           

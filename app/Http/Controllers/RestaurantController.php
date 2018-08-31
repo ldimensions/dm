@@ -34,10 +34,9 @@ class RestaurantController extends Controller
         $commonCtrl                     =   new CommonController;
 
         $restaurantRs                   =   Restaurant::select('restaurant.id', 'restaurant.name', 
-                                                    'restaurant.description', 'restaurant.workingTime',
                                                     'address.address1', 'address.address2',
                                                     'city.city', 'address.state',
-                                                    'address.zip', 'address.county',
+                                                    'address.zip', 
                                                     'address.phone1', 'address.latitude',
                                                     'address.longitude', 'ethnic.ethnicName',
                                                     'url.urlName', 'photo.photoName')
@@ -186,33 +185,30 @@ class RestaurantController extends Controller
         $commonCtrl                     =   new CommonController;        
 
         $siteId                         =   config('app.siteId');
-
         $relatedRs                      =   Restaurant::select('restaurant.id', 'restaurant.name', 
-                                                'address.address1', 'address.address2',
-                                                'restaurant.website',                                                
+                                                'address.address1', 'address.address2',                                            
                                                 'city.city', 'address.state',
-                                                'address.zip', 'address.county',
+                                                'address.zip', 'photo.photoName',
                                                 'address.phone1', 'address.latitude',
-                                                'address.longitude', 'ethnic.ethnicName',
-                                                'ethnic.id as ethnicId')
-                                                ->leftjoin('url','url.restaurantId', '=', 'restaurant.id')
-                                                ->leftjoin('address','address.id', '=', 'restaurant.addressId')
-                                                ->leftjoin('ethnic','ethnic.id', '=', 'restaurant.ethnicId')
-                                                ->leftjoin('site','site.siteId', '=', 'restaurant.siteId')
-                                                ->leftjoin('city','city.cityId', '=', 'address.city')                                                                                             
-                                                ->leftJoin('photo', function($join){
-                                                    $join->on('photo.photoId', '=', 'restaurant.id')
-                                                        ->where('photo.is_primary','=',1);
-                                                    })                                                                                                                                 
-                                                ->where('site.siteId', '=', $siteId)
-                                                ->where('restaurant.id', '!=', $id)
-                                                ->where('ethnic.id', '=', $ethnicId)                                        
-                                                ->where('restaurant.is_deleted', '=', '0')
-                                                ->where('restaurant.is_disabled', '=', '0')
-                                                ->orderBy('restaurant.premium', 'desc')
-                                                ->orderBy('restaurant.order', 'asc')                                         
-                                                ->take(5)->get();                                          
-        
+                                                'address.longitude', 'url.urlName')
+                                                    ->leftjoin('url','url.restaurantId', '=', 'restaurant.id')
+                                                    ->leftjoin('address','address.id', '=', 'restaurant.addressId')
+                                                    ->leftjoin('city','city.cityId', '=', 'address.city')                                                                                           
+                                                    ->leftjoin('ethnic','ethnic.id', '=', 'restaurant.ethnicId')
+                                                    ->leftjoin('site','site.siteId', '=', 'restaurant.siteId')
+                                                    ->leftJoin('photo', function($join){
+                                                        $join->on('photo.restaurantId', '=', 'restaurant.id')
+                                                            ->where('photo.is_primary','=',1);
+                                                        })                                                                                   
+                                                    ->where('site.siteId', '=', $siteId)
+                                                    ->where('restaurant.id', '!=', $id)
+                                                    ->where('ethnic.id', '=', $ethnicId)                                        
+                                                    ->where('restaurant.is_deleted', '=', '0')
+                                                    ->where('restaurant.is_disabled', '=', '0')
+                                                    ->orderBy('restaurant.premium', 'desc')
+                                                    ->orderBy('restaurant.order', 'asc')                                         
+                                                    ->take(5)->get();   
+            
         $related                     =   $relatedRs->toArray();  
 
         if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
@@ -231,5 +227,5 @@ class RestaurantController extends Controller
         }  
                 
         return view('related',['related' => $related, 'type' => 'restaurant']);
-    }
+    }     
 }
