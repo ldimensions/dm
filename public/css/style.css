@@ -4,6 +4,7 @@ body{
 	color:#646464;
 	background-color:#f6f6f6;
 }
+
 .container {
     padding-right: 0px;
     padding-left: 0px;
@@ -586,7 +587,7 @@ input[type=text], select{
 	float:left;
 	position:relative;
 	width:65%;
-	margin-top:15px;
+	margin-top:30px;
 	padding-left:15px;
 }
 .content2{
@@ -594,6 +595,7 @@ input[type=text], select{
 	position:relative;
 	width:70%;
 	padding-left:15px;
+	padding-top:1px;
 
 }
 .content3{
@@ -601,6 +603,7 @@ input[type=text], select{
 	position:relative;
 	width:40%;
 	padding-left:15px;
+	padding-top:1px;
 
 }
 .title{
@@ -641,7 +644,7 @@ input[type=text], select{
 	border-radius:3px;
 	font-weight:bold;
 	color:#B20095;
-	margin-top:17px;
+	margin-top:10px;
 	margin-right:-11px;
 }
 .open_close{
@@ -703,10 +706,14 @@ h1{
 	color:#FFFFFF;
 }
 .colorh1{	
-	font-size:22px;
+	font-size:20px;
 	color:#646464;
 }
-
+.colorh1:hover;{	
+	font-size:20px;
+	color:#646464;
+	text-decoration: none;
+}
 h2{
 	font-size:14px;
 	color:#646464;

@@ -64,7 +64,7 @@
                         <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
                     @endif                 
                     <div class="content1"> 
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" title="{{ $rel['name'] }}" class="colorh1">{{ $rel['name'] }}</a>                                                           
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" title="{{ $rel['name'] }}" ><h2 class="colorh1">{{ $rel['name'] }}</h2></a>                                                           
                     </div>
                     <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" title="{{ $rel['name'] }}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
                     <div class="content2"><span class="subcontent2">{{ $rel['address1'] }} {{ $rel['address2'] }}, {{ $rel['city'] }}, {{ $rel['state'] }} {{ $rel['zip'] }}</span> </div>
