@@ -4,7 +4,7 @@
 <div class="mcontainer">
 <div class="maincontainer">
 <div class="leftcontainer">
-    <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}" class="subcontent2">Grocery</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Details</span></div>
+    <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}" class="subcontent2 h21">Grocery</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Details</span></div>
     <div class="block2">
         <div class="gro_title toparea space">
             <table class="fullWidth">
@@ -22,7 +22,7 @@
                     @foreach ($workingTimes as $wtKey => $wtArr)
                         @if($wtKey == "default")
                             <tr>
-                                <td colspan="2" class="extra">Working Time
+                                <td colspan="2" class="smaextra">Working Time
                                     @foreach ($wtArr[0] as $wtArrKey => $wtRs)
                                         @if ( !empty ( $wtRs ) )
                                                 @foreach ($wtRs as $key => $wt)
@@ -54,7 +54,7 @@
                     <td colspan="2" class="smallfont tdtoppadd1">Website</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><a href="http://{{ $grocery['website'] }}" target="_blank"><h2>{{ $grocery['website'] }}</h2></a></td>
+                    <td colspan="2"><h2><a href="http://{{ $grocery['website'] }}" class="h21" target="_blank">{{ $grocery['website'] }}</a></h2></td>
                 </tr> 
             @endif  
             <tr>
