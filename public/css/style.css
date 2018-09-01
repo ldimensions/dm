@@ -4,6 +4,7 @@ body{
 	color:#646464;
 	background-color:#f6f6f6;
 }
+a:hover{text-decoration: none;}
 
 .container {
     padding-right: 0px;
@@ -99,7 +100,7 @@ table {
 	text-align:center;
 	background-color:#FFFFFF;
 	border-radius:5px;
-	color:#646464 !important;
+	color:#323232 !important;
 	text-decoration:none !important;
 	margin-top:22px;
 	margin-right:22px;
@@ -112,8 +113,8 @@ table {
 	text-align:center;
 	background-color:#FFFFFF;
 	border-radius:5px;
-	color:#000 !important;
-	text-decoration:underline !important;
+	color:#646464 !important;
+	text-decoration:none !important;
 	margin-top:22px;
 	margin-right:22px;
 }
@@ -158,7 +159,7 @@ table {
 	line-height:43px;
 	border-right:1px solid #E1E1E1;
 	color:#000 !important;
-	text-decoration:underline !important;
+	text-decoration:none !important;
 	margin-top:-3px;
 
 }
@@ -352,11 +353,11 @@ input[type=text], select{
 }
 .search:hover{
 	float:right;
-	width:80px;
+	width:79px;
     box-sizing: border-box;
 	border:1px solid #E1E1E1;
 	color:#646464;
-	line-height:66px;
+	line-height:68px;
 	border-radius:0px 5px 5px 0px;
 	background-color:#28ABFF;
 	color:#FFFFFF !important;
@@ -410,9 +411,9 @@ input[type=text], select{
 	width:87%;
 	line-height:30px;
 	font-weight:bold;
-	color:#323232;
+	color:#646464;
 	padding-left:10px;
-	text-decoration:underline;
+	text-decoration:none;
 }
 .block_kmblock{
 	float:left;
@@ -626,6 +627,15 @@ input[type=text], select{
 	color:#646464;
 	width:auto;
 }
+/*.subcontent2:hover{
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#949494;
+	width:auto;
+	text-decoration: none;
+}*/
+
 .subcontent22{
 	float:left;
 	font-family:Arial, Helvetica, sans-serif;
@@ -640,11 +650,9 @@ input[type=text], select{
 	padding-left:10px;
 	padding-right:10px;
 	line-height:35px;
-	border:1px solid #E1E1E1;
-	border-radius:3px;
 	font-weight:bold;
 	color:#B20095;
-	margin-top:10px;
+	margin-top:14px;
 	margin-right:-11px;
 }
 .open_close{
@@ -677,12 +685,6 @@ input[type=text], select{
 	color:#323232;
 	text-decoration:none;
 }
-.title:hover{
-	font-size:14px;
-	font-weight:bold;
-	color:#323232;
-	text-decoration:underline;
-}
 .topdetail{
 	margin:auto;
 }
@@ -705,11 +707,13 @@ h1{
 	font-size:24px;
 	color:#FFFFFF;
 }
+
 .colorh1{	
 	font-size:20px;
-	color:#646464;
+	color:#323232;
+
 }
-.colorh1:hover;{	
+.colorh1:hover{	
 	font-size:20px;
 	color:#646464;
 	text-decoration: none;
@@ -717,6 +721,15 @@ h1{
 h2{
 	font-size:14px;
 	color:#646464;
+}
+.h21 {
+    font-size: 14px;
+    color: #646464;
+}
+.h21:hover{
+    font-size: 14px;
+	color: #323232;
+	text-decoration: none;
 }
 .titleh2{
 	font-size:16px;
@@ -727,6 +740,11 @@ h2{
 .extra{
 	line-height: 25px;
 	color: #fde2ec !important;
+}
+.extra:hover{
+	line-height: 25px;
+	color: #fffcfd !important;
+	text-decoration: none;
 }
 .smaextra{
 	color: #fde2ec !important;
