@@ -63,7 +63,7 @@
                     @else   
                         <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
                     @endif                 
-                    <div class="content1"> 
+                    <div class="content1" > 
 
                     <h2><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" title="{{ $rel['name'] }}" class=" colorh1">{{ $rel['name'] }}</a>   </h2>                                                        
                     </div>
