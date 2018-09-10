@@ -43,11 +43,11 @@
                 <a href="JavaScript:void(0)" class="search" onclick="grocerySearch()">Search</a>
             </form>
         </div>
-        <!--<div class="col-md-12 paggination">
+        <!-- <div class="col-md-12 paggination">
              <div class="count">1 to xx of xx Groceries</div> 
             <div class="pagecount">Page: 1 of 1</div> 
             <div class="pagecount">&nbsp;</div>
-        </div>-->
+        </div> -->
         @if (count($grocery) == 0)
             <div class="col-md-12 block1">
             Suggestions for improving the results:<br/>
@@ -77,7 +77,7 @@
             </div>
         @endforeach
     </div>
-    <div class="col-md-3 rightcontainer"></div>
+    <div class="rightcontainer"></div>
 </div>    
 </div> 
     
