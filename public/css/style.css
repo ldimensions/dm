@@ -274,6 +274,12 @@ table {
 	border:1px solid #e1e1e1;
 	padding:0px !important;
 }
+.blockk1{
+	float: left;
+	position;relative;
+	width:468px;
+	min-height:350px;
+}
 .block23{
 	float: left;
 	position;: relative;
@@ -777,6 +783,7 @@ h4{
 .suggestionblock{
 	float: right;
 	position: relative;
+	padding-top: 10px;
 }
 .topspace{
 	margin-top:10px;
