@@ -30,7 +30,7 @@
                                     @foreach ($wt as $wtTimeKey => $wtTimes)
                                         @foreach ($wtTimes as $wtTimeKeys => $wtTime)
                                             @if ( $wtArrKey == $today )
-                                                {{$}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if ($loop->parent->index == $loop->count),&nbsp;@endif                                               
+                                                {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if ($loop->parent->index == $loop->count),&nbsp;@endif                                               
                                             @endif  
                                         @endforeach                                         
                                     @endforeach

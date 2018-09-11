@@ -247,7 +247,7 @@ class CommonController extends Controller
         $travelsArr         =   array('dallas-indian-travels','travels-search');        
         switch($type){
             case 'home':
-                if(count(array_filter($hostNameArr))  ==  2){
+                if(count(array_filter($hostNameArr))  ==  0){
                     $isActive = true;
                 }
                 break;            
