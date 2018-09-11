@@ -72,7 +72,7 @@
                     <div class="content2"><span class="subcontent2">{{ $rel['address1'] }} {{ $rel['address2'] }}, {{ $rel['city'] }}, {{ $rel['state'] }} {{ $rel['zip'] }}</span> </div>
                     <div class="content3"><span class="subcontent2"><a href="tel:{{ $rel['phone1'] }}" class="h21">{{ $rel['phone1'] }}</a></span> </div>
                     @if (isset($rel['distance']) && $rel['distance'])
-                        <div class="gro_kmblock_list">{{ $rel['distance'] }}</div>
+                        <div class="res_kmblock_list">{{ $rel['distance'] }}</div>
                     @endif                 
             </div>
         @endforeach
