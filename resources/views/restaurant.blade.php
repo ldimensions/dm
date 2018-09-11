@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <div class="col-md-9 leftcontainer">
+<div class="mcontainer">
+<div class="maincontainer">
+    <div class="leftcontainer">
         <div class="col-md-12 searchbar hiddepadding"> <a href="#" class="selocation"></a>
             <form>
                 <input name="Location" type="text" class="text locationimage" id="Location" placeholder="Location" readonly="readonly" >
@@ -42,11 +43,11 @@
                 <a href="JavaScript:void(0)" class="search" onclick="restaurantSearch()">Search</a>
             </form>
         </div>
-        <div class="col-md-12 paggination">
-            <!-- <div class="count">1 to xx of xx Groceries</div> -->
-            <!-- <div class="pagecount">Page: 1 of 1</div> -->
+        <!-- <div class="col-md-12 paggination">
+            <div class="count">1 to xx of xx Groceries</div>
+            <div class="pagecount">Page: 1 of 1</div>
             <div class="pagecount">&nbsp;</div>
-        </div>
+        </div> -->
         @if (count($restaurant) == 0)
             <div class="col-md-12 block1">
                 Suggestions for improving the results:<br/>
@@ -63,21 +64,22 @@
                         <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
                     @endif                 
                     <div class="content1"> 
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-restaurant')}}/{{ $rel['urlName'] }}" class="title">{{ $rel['name'] }}</a><br/>                                                           
+                    <h2><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-restaurant')}}/{{ $rel['urlName'] }}" class=" colorh1">{{ $rel['name'] }}</a><br/>                                                           
                     </div>
-                    <div class="content3"> <span class="subcontent1">Ethnicity:</span> <span class="subcontent2">{{ $rel['ethnicName'] }}</span> </div>
                     <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
-                    <div class="content2"> <span class="subcontent1">Address:</span> <span class="subcontent2">{{ $rel['address1'] }} {{ $rel['address2'] }}, {{ $rel['city'] }}, {{ $rel['state'] }} {{ $rel['zip'] }}</span> </div>
-                    <div class="content3"> <span class="subcontent1">Phone:</span> <span class="subcontent2"><a href="tel:{{ $rel['phone1'] }}">{{ $rel['phone1'] }}</a></span> </div>
-                    <div class="content3"> <span class="subcontent1">Located In:</span> <span class="subcontent2">{{ $rel['city'] }}</span> </div>
+                    <div class="content2"><span class="subcontent2">{{ $rel['address1'] }} {{ $rel['address2'] }}, {{ $rel['city'] }}, {{ $rel['state'] }} {{ $rel['zip'] }}</span> </div>
+                    <div class="content3"><span class="subcontent2"><a href="tel:{{ $rel['phone1'] }}" class="h21">{{ $rel['phone1'] }}</a></span> </div>
                     @if (isset($rel['distance']) && $rel['distance'])
-                        <div class="gro_kmblock_list">Distance : {{ $rel['distance'] }}</div>
+                        <div class="gro_kmblock_list">{{ $rel['distance'] }}</div>
                     @endif                 
             </div>
         @endforeach
     </div>
-    <div class="col-md-3 rightcontainer"></div>
-    
+
+
+    <div class="rightcontainer"></div>
+</div>
+</div>
     <script>
 
         function restaurantSearch() {

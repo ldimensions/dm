@@ -2,9 +2,11 @@
 
 @section('content')
 
-<div class="col-md-9 leftcontainer">
-    <div class="col-md-12 paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-restaurant')}}" class="subcontent2">Restaurant</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{ $restaurant['name'] }}</span></div>
-    <div class="col-md-6 block2">
+<div class="mcontainer">
+<div class="maincontainer">
+<div class="leftcontainer">
+    <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-restaurant')}}" class="subcontent2 h21">Restaurant</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{ $restaurant['name'] }}</span></div>
+    <div class="block2">
         @if($photos)
             <div class="topdetail slideshow-container">
                 <ul id="lightSlider">
@@ -109,7 +111,9 @@
         <div id="map" class="map"></div>
     </div>
 </div>
-<div class="col-md-3 rightcontainer"></div>
+<div class="rightcontainer"></div>
+</div>
+</div>
   
 <div class="row">
     <div class="col-md-12 footerh nopadding"></div>
