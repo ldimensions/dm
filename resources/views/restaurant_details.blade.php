@@ -1,85 +1,74 @@
 @extends('layouts.app')
-
 @section('content')
-
 <div class="mcontainer">
 <div class="maincontainer">
 <div class="leftcontainer">
     <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-restaurant')}}" class="subcontent2 h21">Restaurant</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{ $restaurant['name'] }}</span></div>
     <div class="block2">
-        @if($photos)
-            <div class="topdetail slideshow-container">
-                <ul id="lightSlider">
-                    @foreach ($photos as $key => $photo)
-                        <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
-                            <img src="{{ URL::to('/') }}/image/restaurant/{{$restaurant['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $restaurant['name'] }}" style="width:100%;height:100%" class="toparea">
-                        </li>
-                    @endforeach
-                </ul>            
-            </div>
-        @endif
-        <div class="gro_title">{{ $restaurant['name'] }}</div>
-
-        @if($workingTimes)
+        <div class="gro_title toparea space">
+        <table class="fullWidth">
+                <tr>
+                <td colspan="2" ><h1>{{ $restaurant['name'] }}</h1></td>
+                </tr>
+                <tr>
+                <td colspan="2"><span class="white smaextra">{{ $restaurant['address1'] }} {{ $restaurant['address2'] }}, {{ $restaurant['city'] }}, {{ $restaurant['state'] }}, {{ $restaurant['zip'] }}</span></td>
+                </tr>
+                <tr>
+                <td colspan="2"><span class="white smaextra"><a href="tel:{{ $restaurant['phone1'] }}" class="extra">{{ $restaurant['phone1'] }}</a></span></td>
+                </tr>
+                @if($workingTimes)
             @foreach ($workingTimes as $wtKey => $wtArr)
                 @if($wtKey == "default")
-                    <div>Working Time:
+                    <tr>
+                     <td colspan="2" class="smaextra">Working Time
                         @foreach ($wtArr[0] as $wtArrKey => $wtRs)
                             @if ( !empty ( $wtRs ) )
                                 @foreach ($wtRs as $key => $wt)
                                     @foreach ($wt as $wtTimeKey => $wtTimes)
                                         @foreach ($wtTimes as $wtTimeKeys => $wtTime)
                                             @if ( $wtArrKey == $today )
-                                                {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if ($loop->parent->index == $loop->count),&nbsp;@endif                                               
+                                                {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if ($loop->parent->index == $loop->count)@endif                                               
                                             @endif  
                                         @endforeach                                         
                                     @endforeach
                                 @endforeach
                             @endif                           
                         @endforeach   
-                    </div>
+                     </td>
+                            </tr> 
                 @endif                   
             @endforeach   
         @endif
+        </table>        
+        </div>
 
         <div class="content">
             <table class="fullWidth">
+            <tr>
+                <td colspan="2">&nbsp;</td>
+            </tr>
                 <tr>
-                    <td colspan="2" class="tdtoppadd">{{ $restaurant['description'] }}</td>
-                </tr>
-                @if ( !empty ( $distance ) )                    
-                    <tr>
-                        <td colspan="2" class="smallfont tdtoppadd1">Distance:</td>
-                    </tr> 
-                    <tr>
-                        <td colspan="2">{{ $distance }}</td>
-                    </tr>
-                @endif                 
-                <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Address:</td>
-                </tr>
-                <tr>
-                    <td colspan="2">{{ $restaurant['address1'] }} {{ $restaurant['address2'] }}, {{ $restaurant['city'] }}, {{ $restaurant['state'] }}, {{ $restaurant['zip'] }}</td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Phone:</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><a href="tel:{{ $restaurant['phone1'] }}">{{ $restaurant['phone1'] }}</a></td>
-                </tr>
+                    <td colspan="2">{{ $restaurant['description'] }}</td>
+                </tr>            
                 @if (isset($restaurant['website']) && $restaurant['website'])
                   <tr>
                       <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
                   </tr>
                   <tr>
-                      <td colspan="2"><a href="http://{{ $restaurant['website'] }}" target="_blank">{{ $restaurant['website'] }}</a></td>
+                      <td colspan="2"><h2><a href="http://{{ $restaurant['website'] }}" target="_blank"  class="h21" >{{ $restaurant['website'] }}</a></h2></td>
                   </tr> 
-                @endif               
+                @endif   
+                <tr>
+                <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity</td>
+            </tr> 
+            <tr>
+                <td colspan="2"><h3>{{ $restaurant['ethnicName'] }}</h3></td>
+            </tr>               
                 <tr>
                     <td colspan="2" class="smallfont tdtoppadd1">Located In:</td>
                 </tr>
                 <tr>
-                    <td colspan="2">{{ $restaurant['city'] }}</td>
+                    <td colspan="2"><h3>{{ $restaurant['city'] }}</h3></td>
                 </tr>
                 @if (isset($distance) && $distance)
                   <tr>
@@ -110,11 +99,11 @@
                                             @foreach ($wtTimes as $wtTimeKeys => $wtTime)
                                                 @if ( $wtArrKey == $today )
                                                     <td class="activeweekdays">
-                                                        {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if ($loop->parent->index == $loop->count),&nbsp;@endif
+                                                        {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if ($loop->parent->index == $loop->count)@endif
                                                     </td>
                                                 @else
                                                     <td class="inactiveweekdays">
-                                                        {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if($loop->parent->count == $loop->parent->index+1 and $loop->parent->last == 1),&nbsp;@endif
+                                                        {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if($loop->parent->count == $loop->parent->index+1 and $loop->parent->last == 1)@endif
                                                     </td>
                                                 @endif  
                                             @endforeach                                         
@@ -126,14 +115,38 @@
                         </table>   
                     @endif                   
                 @endforeach   
-            @endif            
+            @endif  
+            <div class="suggestionblock">
+                <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent22">Suggest an edit</a>   
+            </div>             
         </div>
     </div>
-    <div class="col-md-6 block2">
-        <div class="white_title toparea">{{ $restaurant['name'] }}</div>
+    <div class="block22">
+    <div class="white_t space"><h2 class="titleh2 graycolor">{{$restaurant['name']}} Location</h2></div>
         <div id="map" class="map"></div>
     </div>
+    @if($photos)
+        <div class="blockk1">
+        <div class="block23">
+            <div class="white_Photo space"><h2 class="titleh2 graycolor">{{$restaurant['name']}} Photos</h2></div>
+        </div>
+        <div class="block231">
+            <div class="topdetail slideshow-container">
+                <ul id="lightSlider">
+                @foreach ($photos as $key => $photo)
+                        <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
+                            <img src="{{ URL::to('/') }}/image/restaurant/{{$restaurant['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $restaurant['name'] }}" style="width:100%;height:100%" class="bottomarea">
+                        </li>
+                        @endforeach
+                </ul>            
+            </div>        
+        </div>
+        </div> 
+    @endif
+    
+    <div class="row" id="related"></div>
 </div>
+
 <div class="rightcontainer"></div>
 </div>
 </div>
@@ -141,8 +154,48 @@
 <div class="row">
     <div class="col-md-12 footerh nopadding"></div>
 </div>
-<div class="col-md-9 leftcontainer relatedContent">   
-    <div class="row" id="related"></div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title titleh2 " id="exampleModalLabel">Suggest an edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" id="formGrpErrName">
+                    <label for="recipient-name" class="col-form-label labelfont">Name:</label>
+                    <input type="text" class="form-control nup" id="name" name="name" maxLength="40">
+                    <div id="nameError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label labelfont">Email:</label>
+                    <input type="text" class="form-control nup" id="email" name="email" maxLength="50">
+                    <div id="emailError"></div>
+                </div>   
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label labelfont">Phone:</label>
+                    <input type="text" class="form-control nup" id="phone" name="phone" maxLength="20">
+                </div>                       
+                <div class="form-group" id="formGrpErrSuggession">
+                    <label for="message-text" class="col-form-label labelfont">Suggestion:</label>
+                    <textarea class="form-control nup" id="suggession" name="suggession"></textarea>
+                    <div id="sugessionError"></div>                        
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" class="form-control nup" id="type" name="type" value="1">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="suggessionBtn" />Submit</button>
+            </div>            
+        </div>
+    </div>
+</div>
+<div class="loading-overlay">
+    <div class="spin-loader"></div>
 </div>
 <script>
     /*---------- Google Map ----------*/

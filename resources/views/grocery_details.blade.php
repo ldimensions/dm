@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="mcontainer">
 <div class="maincontainer">
@@ -14,7 +13,6 @@
                 <tr>
                     <td colspan="2"><span class="white smaextra">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</span></td>
                 </tr>
-                
                 <tr>
                     <td colspan="2"><span class="white smaextra"><a href="tel:{{ $grocery['phone1'] }}" class="extra">{{ $grocery['phone1'] }}</a></span></td>
                 </tr>
@@ -28,7 +26,7 @@
                                                 @foreach ($wtRs as $key => $wt)
                                                     @foreach ($wt as $wtTimeKey => $wtTime)
                                                         @if ( $wtArrKey == $today )
-                                                            {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif
+                                                            {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif  @if ($loop->parent->index == $loop->count)@endif         
                                                         @endif                                              
                                                     @endforeach
                                                 @endforeach
@@ -39,7 +37,9 @@
                         @endif                   
                     @endforeach  
                 @endif
-            </table>    
+            </table> 
+            
+               
         </div>
         <div class="content">
             <table class="fullWidth">
@@ -119,12 +119,10 @@
     </div>
     <div class="block22">
     <div class="white_t space"><h2 class="titleh2 graycolor">{{$grocery['name']}} Location</h2></div>
-        <div class="white_map">   
-            <a href="https://www.google.com/maps/dir/{{$grocery['latitude']}},{{$grocery['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $grocery['name'] }}"/></a>
-        </div>
         <div id="map" class="map"></div>
     </div>
     @if($photos)
+    <div class="blockk1">
         <div class="block23">
             <div class="white_Photo space"><h2 class="titleh2 graycolor">{{$grocery['name']}} Photos</h2></div>
         </div>
@@ -139,6 +137,7 @@
                 </ul>            
             </div>        
         </div>
+    </div>    
     @endif
     <div class="row" id="related"></div>
 </div>
