@@ -104,7 +104,7 @@
                 }else if(type == "{{config('app.defaultBaseURL.dallas-islan-mosque')}}-5"){
                     city        =   "{{config('app.defaultBaseURL.islam-mosque-in')}}"+city;                    
                 }else{
-                    city        =   'all';
+                    city        =   city;
                 }
             }else{
                 city        =   'all';
