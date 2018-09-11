@@ -6,7 +6,6 @@ return [
     'siteLocatioin' => env('SITE_LOCATION', 'Dallas'),   // 1 - Dallas
     'fromEmail' =>  'lindosebastian@gmail.com',
     'toEmail' =>  'lindosebastian@gmail.com',
-    'test' => 'aaaaaa',
     'defaultSEO' => [
         '1' => [    // Dallas
             'SEOMetaTitle'                        => "Home Page - Testing",
@@ -66,7 +65,9 @@ return [
         'dallas-islan-mosque'                   => 'dallas-islan-mosque',
         'christian-church-in'                   => 'christian-church-in-',
         'hindu-temple-in'                       => 'hindu-temple-in-',
-        'islam-mosque-in'                       => 'islam-mosque-in-',           
+        'islam-mosque-in'                       => 'islam-mosque-in-',        
+        
+        'dallas-indian-movie'                   => 'dallas-indian-movie',
 
         'dallas-indian-travels'                 => 'dallas-indian-travels',        
         

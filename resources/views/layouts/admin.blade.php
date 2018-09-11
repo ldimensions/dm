@@ -97,7 +97,15 @@
                                 <a href="{{ url('/admin/religion') }}"> Religion</a>
                             </li>  
                             <li>
-                                <a href="{{ url('/admin/events') }}"> Events</a>
+                                <a href="#"> Events<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ url('/admin/events') }}">Events</a>
+                                    </li>                                       
+                                    <li>
+                                        <a href="{{ url('/admin/events_category') }}">Category</a>
+                                    </li>                                
+                                </ul>                                
                             </li>
                             <li>
                                 <a href="#"> Movies<span class="fa arrow"></span></a>
@@ -109,7 +117,6 @@
                                         <a href="{{ url('/admin/theatre') }}">Theatre</a>
                                     </li>                                
                                 </ul>
-                                <!-- /.nav-second-level -->
                             </li>                                                                                                                                          
                             <li>
                                 <a href="#"> Messages<span class="fa arrow"></span></a>
@@ -118,8 +125,7 @@
                                         <a href="{{ url('/admin/suggession_for_edit') }}">Suggessions for edit (<span id="suggessionForEditCount"></span>)</a>
                                     </li>                                
                                 </ul>
-                                <!-- /.nav-second-level -->
-                            </li>
+                            </li>                           
                         </ul>
                     </div>
                     <!-- /.sidebar-collapse -->

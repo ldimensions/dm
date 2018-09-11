@@ -23,7 +23,7 @@ class Events extends Migration
             $table->string('organizerContact')->nullable();
             $table->string('email')->nullable();;
             $table->string('phone')->nullable();;
-            $table->string('url');            
+            $table->string('urlId');            
             $table->integer('addressId');
             $table->integer('siteId');
             $table->integer('order')->default(0);

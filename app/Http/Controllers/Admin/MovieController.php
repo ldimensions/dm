@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Models\Movie;
 use App\Http\Models\Theatre;
 use App\Http\Models\MovieTheatre;
+use App\Http\Models\MovieBooking;
 use App\Http\Models\Photo;
 use App\Http\Models\Url;
 use App\Http\Models\City;
@@ -47,7 +48,7 @@ class MovieController extends Controller
                                                         'movie.description', 'movie.cast', 'movie.language',
                                                         'movie.music', 'movie.director', 'movie.producer',
                                                         'movie.premium', 'movie.order','movie.is_disabled', 
-                                                        'url.urlName', 'url.id as urlId',                                              
+                                                        'url.urlName', 'url.id as urlId', 'movie.trailer',                                            
                                                         'seo.seoId', 'seo.SEOMetaTitle',
                                                         'seo.SEOMetaDesc', 'seo.SEOMetaPublishedTime',
                                                         'seo.SEOMetaKeywords', 'seo.OpenGraphTitle',
@@ -72,7 +73,12 @@ class MovieController extends Controller
                                                         ->orderBy('theatreId', 'ASC')
                                                         ->where('movieId', '=', $id)
                                                         ->get();  
-            $movieTimeRs                    =   $movieTimeArr->toArray();    
+            $movieTimeRs                    =   $movieTimeArr->toArray();   
+            
+            $movieBookingLinkArr            =   MovieBooking::select('theatreId','bookingLink')
+                                                        ->where('movieId', '=', $id)
+                                                        ->get();  
+            $movieBookingLinkRs             =   $movieBookingLinkArr->toArray();              
             
             $theatreIdArr                   =   array();
             $movieTheatreAggr               =   array();
@@ -85,13 +91,17 @@ class MovieController extends Controller
                 $key                                            =   0;
                 foreach ($movieTimeRs as $movieKey => $movieTime) {
                     if($theatrekey == $movieTime['theatreId']){
-                        $movieTimeAgg['dateTime'][$key]    =   date('Y-m-d\TH:i',  strtotime($movieTime['dateTime']));
+                        $movieTimeAgg['dateTime'][$key]         =   date('Y-m-d\TH:i',  strtotime($movieTime['dateTime']));
                         $movieTheatreAggr[$theatrekey]          =   $movieTimeAgg;
                         $key++;
                     }                 
                 }
-            }                
-           
+            } 
+            $movieBookingLinkArr                                =   array();
+            foreach ($movieBookingLinkRs as $key => $movieBookingLink) {
+                $movieBookingLinkArr[$movieBookingLink['theatreId']]          =   $movieBookingLink['bookingLink'];  
+            }   
+
             // $movieTimeRs1                           =   array();
             // $movieTimeRs1['1']['dateTime'][0]       =   date('Y-m-d\TH:i',  strtotime('2018-01-01 01:20:10'));
             // $movieTimeRs1['1']['dateTime'][1]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 02:20:20'));
@@ -105,7 +115,7 @@ class MovieController extends Controller
             
             //$movieTimeRs['theatreId']['1']  =   
             // echo "<pre>";
-            // print_r($movieTheatreAggr);
+            // print_r($movieBookingLinkArr);
             // exit();
         }else{
             $movie['id']                    =   "";
@@ -116,6 +126,7 @@ class MovieController extends Controller
             $movie['music']                 =   "";
             $movie['director']              =   "";
             $movie['producer']              =   "";
+            $movie['trailer']               =   "";
             $movie['name']                  =   "";
             $movie['description']           =   "";
             $movie['language']              =   "";
@@ -138,6 +149,7 @@ class MovieController extends Controller
             
             $photoRs                        =   array();
             $movieTheatreAggr               =   array();
+            $movieBookingLink               =   array();
         }
 
         $theatreRs                          =   Theatre::select('theatre.id', 'theatre.name', 'city.city as cityName')
@@ -147,7 +159,7 @@ class MovieController extends Controller
                                                     ->orderBy('name', 'asc')
                                                     ->get();  
         $theatres                           =   $theatreRs->toArray();  
-        return view('admin.movie_add',['movie' => $movie, 'theatres' => $theatres, 'photos' => $photoRs, 'movieTimes' => $movieTheatreAggr]); 
+        return view('admin.movie_add',['movie' => $movie, 'theatres' => $theatres, 'photos' => $photoRs, 'movieTimes' => $movieTheatreAggr, 'movieBookingLink' => $movieBookingLinkArr]); 
     }
 
     public function addMovie(Request $request)
@@ -176,6 +188,7 @@ class MovieController extends Controller
         }
         // echo "<pre>";
         // print_r($movieVal);
+          
         // exit();
 
         
@@ -191,29 +204,43 @@ class MovieController extends Controller
                         'music'         => $movieVal['music'],
                         'director'      => $movieVal['director'],
                         'producer'      => $movieVal['producer'],
+                        'trailer'       => $movieVal['trailer'],
                         'siteId'        => config('app.siteId'),
                         'order'         => ($movieVal['order'])?$movieVal['order']:0,
                         'premium'       => $movieVal['premium'],
                         'is_disabled'   => $movieVal['is_disabled'],
                         'updated_by'    => Auth::user()->id,
-                        'updated_at'  => date("Y-m-d H:i:s")                   
+                        'updated_at'    => date("Y-m-d H:i:s")                   
                     ]
                 ); 
                 
             DB::table('movie_theatre')->where('movieId', $movieVal['id'])->delete();
             $movieTheatre                       =   array();
             for($i =1; $i<=$movieVal['theatreCount']; $i++){
-                for($j =0; $j< count($movieVal['dateTime_'.$i]); $j++){
-                    if($movieVal['dateTime_'.$i][$j]){
-                        if($movieVal['dateTime_'.$i][$j]){
-                            DB::table('movie_theatre')->insert([
-                                ['movieId' => $movieVal['id'], 'theatreId' => $movieVal['theatre_'.$i][0], 'dateTime' => $movieVal['dateTime_'.$i][$j], 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s") ],
-                            ]);
-                        }
-                    }
-                }
-            }                 
-
+                if(isset($movieVal['theatre_'.$i]) && isset($movieVal['dateTime_'.$i]) && count($movieVal['dateTime_'.$i]) >0){
+                    for($j =0; $j< count($movieVal['dateTime_'.$i]); $j++){
+                        DB::table('movie_theatre')->insert([
+                            ['movieId' => $movieVal['id'], 
+                            'theatreId' => $movieVal['theatre_'.$i], 
+                            'dateTime' => $movieVal['dateTime_'.$i][$j],
+                            'updated_at' => date("Y-m-d H:i:s") ],
+                        ]);     
+                        // $arr = 
+                        //     ['movieId' => $movieVal['id'], 
+                        //     'theatreId' => $movieVal['theatre_'.$i], 
+                        //     'dateTime' => $movieVal['dateTime_'.$i][$j]];
+                        // print_r($arr) ;            
+                    } 
+                    DB::table('movie_booking')->where('movieId', $movieVal['id'])->where('theatreId', $movieVal['theatre_'.$i])->delete();
+                    if(isset($movieVal['bookingLink_'.$i])) {
+                        DB::table('movie_booking')->insert([
+                            ['movieId' => $movieVal['id'], 
+                            'theatreId' => $movieVal['theatre_'.$i], 
+                            'bookingLink' => $movieVal['bookingLink_'.$i]]
+                        ]);     
+                    }                                   
+                }                  
+            }                    
             if($movieVal['urlName'] != $movieVal['urlNameChk']){
                 DB::table('url')
                 ->where('id', $movieVal['urlId'])
@@ -311,6 +338,7 @@ class MovieController extends Controller
                                                         'music'         => $movieVal['music'],
                                                         'director'      => $movieVal['director'],
                                                         'producer'      => $movieVal['producer'],
+                                                        'trailer'       => $movieVal['trailer'],
                                                         'siteId'        => config('app.siteId'),
                                                         'order'         => ($movieVal['order'])?$movieVal['order']:0,
                                                         'premium'       => $movieVal['premium'],
@@ -340,16 +368,27 @@ class MovieController extends Controller
 
             $movieTheatre                       =   array();
             for($i =1; $i<=$movieVal['theatreCount']; $i++){
-                for($j =0; $j< count($movieVal['dateTime_'.$i]); $j++){
-                    if($movieVal['dateTime_'.$i][$j]){
-                        if($movieVal['dateTime_'.$i][$j]){
-                            DB::table('movie_theatre')->insert([
-                                ['movieId' => $movieId, 'theatreId' => $movieVal['theatre_'.$i][0], 'dateTime' => $movieVal['dateTime_'.$i][$j], 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s") ],
-                            ]);
-                        }
-                    }
+                if(isset($movieVal['theatre_'.$i]) && isset($movieVal['dateTime_'.$i]) && count($movieVal['dateTime_'.$i]) >0){
+                    for($j =0; $j< count($movieVal['dateTime_'.$i]); $j++){
+                        DB::table('movie_theatre')->insert([
+                            [
+                                'movieId' => $movieId, 
+                                'theatreId' => $movieVal['theatre_'.$i][0], 
+                                'dateTime' => $movieVal['dateTime_'.$i][$j], 
+                                'created_at' => date("Y-m-d H:i:s"), 
+                                'updated_at' => date("Y-m-d H:i:s") 
+                            ],
+                        ]);                                        
+                    }                
                 }
-            }                  
+                if(isset($movieVal['bookingLink_'.$i])) {
+                    DB::table('movie_booking')->insert([
+                        ['movieId' => $movieVal['id'], 
+                        'theatreId' => $movieVal['theatre_'.$i], 
+                        'bookingLink' => $movieVal['bookingLink_'.$i]]
+                    ]);     
+                }                                    
+            }             
 
             $seoId                          =   DB::table('seo')->insertGetId(
                                                     [

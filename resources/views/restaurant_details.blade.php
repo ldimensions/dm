@@ -19,6 +19,29 @@
             </div>
         @endif
         <div class="gro_title">{{ $restaurant['name'] }}</div>
+
+        @if($workingTimes)
+            @foreach ($workingTimes as $wtKey => $wtArr)
+                @if($wtKey == "default")
+                    <div>Working Time:
+                        @foreach ($wtArr[0] as $wtArrKey => $wtRs)
+                            @if ( !empty ( $wtRs ) )
+                                @foreach ($wtRs as $key => $wt)
+                                    @foreach ($wt as $wtTimeKey => $wtTimes)
+                                        @foreach ($wtTimes as $wtTimeKeys => $wtTime)
+                                            @if ( $wtArrKey == $today )
+                                                {{$}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if ($loop->parent->index == $loop->count),&nbsp;@endif                                               
+                                            @endif  
+                                        @endforeach                                         
+                                    @endforeach
+                                @endforeach
+                            @endif                           
+                        @endforeach   
+                    </div>
+                @endif                   
+            @endforeach   
+        @endif
+
         <div class="content">
             <table class="fullWidth">
                 <tr>

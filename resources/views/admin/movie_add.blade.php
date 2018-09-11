@@ -39,7 +39,7 @@
                                     </li> 
                                 </ul>  
                                 <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="movie" style="position: relative;min-height: 550px;height:550px;">
+                                    <div class="tab-pane fade in active" id="movie" style="position: relative;min-height: 610px;height:610px;">
                                         <br/><br/>
                                         <div class="col-lg-6">
                                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -85,7 +85,11 @@
                                                     <option value="0" @if(old('is_disabled', $movie['is_disabled']) == 0) {{ 'selected' }} @endif >No</option>
                                                     <option value="1" @if(old('is_disabled', $movie['is_disabled']) == 1) {{ 'selected' }} @endif >Yes</option>
                                                 </select>
-                                            </div>                                                                                    
+                                            </div>    
+                                            <div class="form-group">
+                                                <label>Trailer</label>
+                                                <input name="trailer" value="{{ old('trailer', $movie['trailer']) }}" id="trailer" maxlength="240" class="form-control">
+                                            </div>                                                                                                                            
                                         </div>
                                         <div class="col-lg-6">  
                                             <div class="form-group">
@@ -115,7 +119,7 @@
                                     <div class="tab-pane fade" id="theatre" style="position: relative;min-height: 255px;height:255px;height:auto;overflow: auto;" >
                                         <br/><br/>
                                         <div id="theatreDiv">
-                                            @if($movie['id']) 
+                                            @if($movie['id'] && count($movieTimes) >0) 
                                                 <input type="text" name="theatreCount" id="theatreCount" value="{{count($movieTimes)}}"/>
                                                 <span style="display:none">{{$index = 1}}</span>   
                                                 @foreach ($movieTimes as $theatreKey => $movieTime)
@@ -130,7 +134,7 @@
                                                                     <div class="panel-body">
                                                                         <div class="form-group">
                                                                             <label>Theatre</label>
-                                                                            <select name="theatre_1[]" value="" id="theatre" class="form-control">
+                                                                            <select name="theatre_{{$index}}" value="" id="theatre" class="form-control">
                                                                                 @foreach ($theatres as $timeKey => $theatre)
                                                                                     <option 
                                                                                         value="{{$theatre['id']}}"    
@@ -141,12 +145,16 @@
                                                                                 @endforeach                                                
                                                                             </select>
                                                                         </div>
+                                                                        <div class="form-group">
+                                                                            <label>Booking Link</label>
+                                                                            <input type="text" name="bookingLink_{{$index}}" id="boolingLink" value="{{(isset($movieBookingLink[$theatreKey]))?$movieBookingLink[$theatreKey]:''}}" class="form-control"/>
+                                                                        </div>
                                                                         @foreach ($movieTime as $key => $timeRs) 
-                                                                            <input type="text" name="dateCount_{{$theatreKey}}" id="dateCount_{{$theatreKey}}" value="{{count($timeRs)}}"/>
+                                                                            <input type="text" name="dateCount_{{$index}}" id="dateCount_{{$index}}" value="{{count($timeRs)}}"/>
                                                                             <div id="dateDiv_{{$theatreKey}}" >
                                                                                 @foreach ($timeRs as $timeKey => $time) 
                                                                                     <div class="form-group" id="{{$theatreKey}}_{{$timeKey+1}}">
-                                                                                        <input type="datetime-local" id="" name="dateTime_{{$theatreKey}}[]" value="{{$time}}" /> 
+                                                                                        <input type="datetime-local" id="" name="dateTime_{{$index}}[]" value="{{$time}}" /> 
                                                                                         @if($timeKey == 0)
                                                                                             <button type="button" class="btn btn-default btn-sm" id="addDate_btn_{{$theatreKey}}"><i class="fa glyphicon-plus"></i></button>   
                                                                                             <script>
@@ -154,13 +162,13 @@
                                                                                                     console.log("#addDate_btn_"+{{$theatreKey}});
                                                                                                     var dateCountVal;
                                                                                                     //var theatreIdVal                            =   document.getElementById("theatreCount").value;
-                                                                                                    dateCountVal                                =   document.getElementById("dateCount_"+{{$theatreKey}}).value;
+                                                                                                    dateCountVal                                =   document.getElementById("dateCount_"+{{$index}}).value;
                                                                                                     dateCountId                                 =   parseInt(dateCountVal)+1;
-                                                                                                    document.getElementById("dateCount_"+{{$theatreKey}}).value     =   dateCountId;
+                                                                                                    document.getElementById("dateCount_"+{{$index}}).value     =   dateCountId;
                                                                                                     
                                                                                                     $("#dateDiv_"+{{$theatreKey}}).append(`
                                                                                                                             <div class="form-group" id="`+dateCountId+`">
-                                                                                                                                <input type="datetime-local" id="" name="dateTime_`+{{$theatreKey}}+`[]" value="" /> 
+                                                                                                                                <input type="datetime-local" id="" name="dateTime_`+{{$index}}+`[]" value="" /> 
                                                                                                                                 <button type="button" class="btn btn-default btn-sm" onClick="removeDate('`+dateCountId+`')"><i class="glyphicon glyphicon-remove"></i></button>
                                                                                                                             </div>
                                                                                                                         `); 
@@ -184,10 +192,11 @@
                                                             </div>                                                           
                                                         @else 
                                                             <div class="col-lg-6 col-xs-2 col-sm-2"> 
-                                                                <button type="button" class="btn btn-default btn-sm" id="removeTheatre_{{$theatreKey}}"><i class="glyphicon glyphicon-remove"></i></button>
+                                                                --<button type="button" class="btn btn-default btn-sm" id="removeTheatre_{{$theatreKey}}"><i class="glyphicon glyphicon-remove"></i></button>
                                                             </div> 
                                                             <script>
                                                                 $("#removeTheatre_"+{{$theatreKey}}).click(function(){
+                                                                    console.log({{$theatreKey}});
                                                                     $('#theatre_div_'+{{$theatreKey}}).remove();
                                                                 });
                                                             </script>
@@ -204,17 +213,32 @@
                                                             <div class="panel-body">
                                                                 <div class="form-group">
                                                                     <label>Theatre</label>
-                                                                    <select name="theatre_1[]" value="{{ old('theatre', $movie['theatre']) }}" id="theatre" class="form-control">
-                                                                        @foreach ($theatres as $key => $theatre)
-                                                                            <option 
-                                                                                value="{{$theatre['id']}}"
-                                                                                @if(old('theatre', $movie['theatre']) == $theatre['id']) {{ 'selected' }} @endif
-                                                                                >
-                                                                                {{$theatre['name']}} ({{$theatre['cityName']}})
-                                                                            </option>
-                                                                        @endforeach                                                
-                                                                    </select>
+                                                                    @if($movie['id'])
+                                                                        <select name="theatre_1" value="" id="theatre" class="form-control">
+                                                                            @foreach ($theatres as $key => $theatre)
+                                                                                <option 
+                                                                                    value="{{$theatre['id']}}">
+                                                                                    {{$theatre['name']}} ({{$theatre['cityName']}})
+                                                                                </option>
+                                                                            @endforeach                                                
+                                                                        </select>
+                                                                    @else 
+                                                                        <select name="theatre_1" value="{{ old('theatre', $movie['theatre']) }}" id="theatre" class="form-control">
+                                                                            @foreach ($theatres as $key => $theatre)
+                                                                                <option 
+                                                                                    value="{{$theatre['id']}}"
+                                                                                    @if(old('theatre', $movie['theatre']) == $theatre['id']) {{ 'selected' }} @endif
+                                                                                    >
+                                                                                    {{$theatre['name']}} ({{$theatre['cityName']}})
+                                                                                </option>
+                                                                            @endforeach                                                
+                                                                        </select>    
+                                                                    @endif  
                                                                 </div> 
+                                                                <div class="form-group">
+                                                                    <label>Booking Link</label>
+                                                                    <input type="text" name="bookingLink_1" id="boolingLink" value="" class="form-control"/>
+                                                                </div>                                                                
                                                                 <div id="dateDiv">
                                                                     <input type="text" name="dateCount_1" id="dateCount_1" value="1"/>
                                                                     <div class="form-group">
@@ -324,7 +348,7 @@
                                 </div>
                                 <div style="position:relative;widht:100%">                                  
                                     <button type="submit" class="btn btn-default">Submit</button>
-                                    <a href="{{ url('/admin/movie') }}"><button type="button" class="btn btn-default">Cancel</button></a>                                                              
+                                    <a href="{{ url('/admin/movies') }}"><button type="button" class="btn btn-default">Cancel</button></a>                                                              
                                 </div>
                             </form>
                         </div>
@@ -358,7 +382,7 @@
                                                 <div class="panel-body">
                                                     <div class="form-group">
                                                         <label>Theatre</label>
-                                                        <select name="theatre_`+theatreIdVal+`[]" value="" id="theatre" class="form-control">
+                                                        <select name="theatre_`+theatreIdVal+`" value="" id="theatre" class="form-control">
                                                             @foreach ($theatres as $key => $theatre)
                                                                 <option 
                                                                     value="{{$theatre['id']}}"
@@ -368,6 +392,10 @@
                                                             @endforeach                                                
                                                         </select>
                                                     </div> 
+                                                    <div class="form-group">
+                                                        <label>Booking Link</label>
+                                                        <input type="text" name="bookingLink_`+theatreIdVal+`" id="boolingLink" value="" class="form-control"/>
+                                                    </div>                                                     
                                                     <div id="dateDiv_`+theatreIdVal+`">
                                                         <input type="text" name="dateCount_`+theatreIdVal+`" id="dateCount_`+theatreIdVal+`" value="1"/>
                                                             <div class="form-group">
@@ -380,7 +408,7 @@
                                             </div> 
 
                                             <div class="col-lg-6 col-xs-2 col-sm-2"> 
-                                                <button type="button" class="btn btn-default btn-sm" id="removeTheatre_`+theatreIdVal+`" ><i class="glyphicon glyphicon-remove"></i></button>
+                                                -<button type="button" class="btn btn-default btn-sm" id="removeTheatre_`+theatreIdVal+`" ><i class="glyphicon glyphicon-remove"></i></button>
                                             </div>   
                                         </div>
                                     </div>                                                                          
@@ -402,6 +430,7 @@
 
         });   
         $("#removeTheatre_"+theatreIdVal).click(function(){
+            console.log(theatreIdVal);
             $('#theatre_div_'+theatreIdVal).remove();
         });
 
@@ -415,9 +444,9 @@
         document.getElementById("dateCount_1").value     =   dateCountId;
         
         $('#dateDiv').append(`
-                                <div class="form-group" id="`+theatreIdVal+`_`+dateCountId+`">
-                                    <input type="datetime-local" id="" name="dateTime_`+theatreIdVal+`[]" value="" /> 
-                                    <button type="button" class="btn btn-default btn-sm" onClick="removeDate('`+theatreIdVal+`_`+dateCountId+`')"><i class="glyphicon glyphicon-remove"></i></button>
+                                <div class="form-group" id="1_`+dateCountId+`">
+                                    <input type="datetime-local" id="" name="dateTime_1[]" value="" /> 
+                                    <button type="button" class="btn btn-default btn-sm" onClick="removeDate('1_`+dateCountId+`')"><i class="glyphicon glyphicon-remove"></i></button>
                                 </div>
                             `); 
 

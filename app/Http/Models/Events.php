@@ -4,7 +4,7 @@ namespace App\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Restaurant extends Model
+class Events extends Model
 {
-    protected $table = 'restaurant';
+    protected $table = 'events';
 }

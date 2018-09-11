@@ -22,7 +22,7 @@ class Url extends Migration
             $table->integer('travelId')->default(0);
             $table->integer('theatreId')->default(0);
             $table->integer('movieId')->default(0);
-            $table->integer('e')->default(0);
+            $table->integer('eventId')->default(0);
             $table->integer('f')->default(0);
             $table->integer('g')->default(0);
             $table->integer('h')->default(0);

@@ -15,19 +15,26 @@
           <div class="col-lg-12">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <a href="{{ url('/admin/dashboard') }}">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item active">Restaurant</li>
             </ol>
               <div class="panel panel-default"> 
-                  <div class="panel-heading" style="position:relative;width:100%;height:45px;">
-                    <div style="position:relative;width:80%;float:left;">Restaurant Listing</div>
-                    <div style="position:relative;width:20%;float:left;">
-                        <div style="position:relative;float:right;top:-5px;">
-                        <a href="{{ url('/admin/restaurant_add') }}"><button type="button" class="btn btn-primary btn-ms">Add</button></a>
-                        </div>                        
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Restaurant
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                Actions
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li><a href="{{ url('/admin/restaurant_add') }}">Add</a>
+                                </li>                                   
+                            </ul>
+                        </div>
                     </div>
-                  </div>                                  
+                </div>                                                                
                   <!-- /.panel-heading -->
                   <div class="panel-body">
                       <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">

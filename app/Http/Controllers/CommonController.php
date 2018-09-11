@@ -238,7 +238,7 @@ class CommonController extends Controller
 
     public static function activeMenu($type){
         $isActive           =   false;
-        $hostName           =   $_SERVER['PHP_SELF'];
+        $hostName           =   $_SERVER['REQUEST_URI'];
         $hostNameArr        =   explode("/",$hostName);
 
         $groceryArr         =   array('dallas-indian-grocery-store','dallas-grocery-store','grocery-search');
@@ -247,7 +247,7 @@ class CommonController extends Controller
         $travelsArr         =   array('dallas-indian-travels','travels-search');        
         switch($type){
             case 'home':
-                if(count($hostNameArr)  ==  2){
+                if(count(array_filter($hostNameArr))  ==  2){
                     $isActive = true;
                 }
                 break;            

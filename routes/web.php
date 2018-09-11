@@ -25,8 +25,8 @@ $this->post('login', 'Auth\LoginController@login');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
-$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-$this->post('register', 'Auth\RegisterController@register');
+//$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+//$this->post('register', 'Auth\RegisterController@register');
 
 // Password Reset Routes...
 // $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
@@ -59,6 +59,9 @@ $this->post('/suggessionForEdit', 'SuggessionForEditController@suggessionForEdit
     
 Route::get('/getSuggessionNotification', 'SuggessionForEditController@getSuggessionNotification');
 
+$this->get('/'.config('app.defaultBaseURL.dallas-indian-movie'), 'MovieController@index')->name('movie');
+
+
 Route::group(['middleware' => ['role:Admin']], function () {
     
     Route::get('/admin/dashboard', 'Admin\DashboardController@dashboard')->name('dashboard');
@@ -83,8 +86,15 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::get('admin/suggession_for_edit/delete/{id}', 'Admin\SuggessionForEditController@deleteSuggession')->where(['id' => '[0-9]+']);
 
     Route::get('/admin/events', 'Admin\EventsController@index')->name('events');
-    Route::get('/admin/events_add/{id?}', 'Admin\EventsController@addEventsView')->name('addEventsView')->where(['id' => '[0-9]+']);
-    Route::get('admin/suggession_for_edit/delete/{id}', 'Admin\SuggessionForEditController@deleteSuggession')->where(['id' => '[0-9]+']);
+    Route::get('/admin/event_add/{id?}', 'Admin\EventsController@addEventsView')->name('addEventsView')->where(['id' => '[0-9]+']);
+    Route::post('/admin/event_add', 'Admin\EventsController@addEvents');
+    Route::get('/admin/event/delete/{id}', 'Admin\EventsController@deleteEvent')->where(['id' => '[0-9]+']);
+
+    Route::get('/admin/events_category', 'Admin\EventsController@eventsCategory')->name('eventsCategory');
+    Route::get('/admin/events_category_add/{id?}', 'Admin\EventsController@eventsCategoryView')->name('eventsCategoryView')->where(['id' => '[0-9]+']);
+    Route::post('/admin/events_category_add', 'Admin\EventsController@addEventsCategory');
+    Route::get('/admin/events_category/delete/{id}', 'Admin\EventsController@deleteCategory')->where(['id' => '[0-9]+']);
+    
 
     Route::get('/admin/theatre', 'Admin\MovieController@theatreListing')->name('theatre_listing');
     Route::get('/admin/theatre_add/{id?}', 'Admin\MovieController@addtheatreView')->name('add_theatre_view')->where(['id' => '[0-9]+']);
@@ -95,6 +105,13 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::get('/admin/movie_add/{id?}', 'Admin\MovieController@addMovieView')->name('add_movie_view')->where(['id' => '[0-9]+']);
     Route::post('/admin/movie_add', 'Admin\MovieController@addMovie');
     Route::get('admin/movie/delete/{id}', 'Admin\MovieController@deleteMovie')->where(['id' => '[0-9]+']);
+
+
+    
+
+
+
+    Route::get('/admin/dbBackup', 'Admin\DashboardController@dbBackUp');
     
 });
 
@@ -102,7 +119,7 @@ Route::group(['middleware' => ['role:Admin']], function () {
 
 Route::group(['middleware' => ['role:Admin']], function () {
     
-    Route::get('sitemap', function() {
+    Route::get('admin/sitemap', function() {
         $date                                   =   date(DateTime::ISO8601);
         
         $sitemap                                =   App::make("sitemap");
@@ -117,7 +134,6 @@ Route::group(['middleware' => ['role:Admin']], function () {
 
         //Religion    
         $sitemap->add(URL::to(config('app.defaultBaseURL.dallas-indian-religion')), $date, '1.0', 'daily');
-        
             
         $citys                                  =   DB::select('select cityId, value from city ORDER BY city ASC'); 
 
@@ -137,8 +153,33 @@ Route::group(['middleware' => ['role:Admin']], function () {
             $sitemap->add(URL::to(config('app.defaultBaseURL.religion-search').'/'.config('app.defaultBaseURL.dallas-hindu-temple').'-2/'.config('app.defaultBaseURL.hindu-temple-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');
             $sitemap->add(URL::to(config('app.defaultBaseURL.religion-search').'/'.config('app.defaultBaseURL.dallas-islan-mosque').'-5/'.config('app.defaultBaseURL.islam-mosque-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');                
         }
+
+        //Grocery    
+        $grocerys                                  =   DB::select('select url.urlName from grocery left join url on url.groceryId = grocery.id where grocery.is_deleted = 0 and grocery.is_disabled = 0');
+        foreach ($grocerys as $grocery) {
+            $sitemap->add(URL::to(config('app.defaultBaseURL.grocery-store-details').'/'.$grocery->urlName), $date, '1.0', 'daily');
+        }
+
+        //Restaurant
+        $restaurants                               =   DB::select('select url.urlName from restaurant left join url on url.restaurantId = restaurant.id where restaurant.is_deleted = 0 and restaurant.is_disabled = 0');
+        foreach ($restaurants as $restaurant) {
+            $sitemap->add(URL::to(config('app.defaultBaseURL.dallas-indian-restaurant').'/'.$restaurant->urlName), $date, '1.0', 'daily');
+        }
+
+        //Religion
+        $religions                                 =   DB::select('select url.urlName, religion_type.religionName from religion left join url on url.religionId = religion.id left join religion_type on religion_type.id = religion.religionTypeId where religion.is_deleted = 0 and religion.is_disabled = 0');
+        foreach ($religions as $religion) {
+            if($religion->religionName == "Christianity"){
+                $sitemap->add(URL::to(config('app.defaultBaseURL.dallas-christian-church').'/'.$religion->urlName), $date, '1.0', 'daily');
+            }elseif($religion->religionName == "Hinduism"){
+                $sitemap->add(URL::to(config('app.defaultBaseURL.dallas-hindu-temple').'/'.$religion->urlName), $date, '1.0', 'daily');
+            }elseif($religion->religionName == "Islam"){
+                $sitemap->add(URL::to(config('app.defaultBaseURL.dallas-islan-mosque').'/'.$religion->urlName), $date, '1.0', 'daily');
+            }
+        }             
         
         $sitemap->store('xml', 'sitemap');
+        return redirect('/admin/dashboard');
         
     });
 });
