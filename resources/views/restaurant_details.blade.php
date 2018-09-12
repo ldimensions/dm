@@ -5,22 +5,22 @@
 <div class="leftcontainer">
     <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-restaurant')}}" class="subcontent2 h21">Restaurant</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{ $restaurant['name'] }}</span></div>
     <div class="block2">
-        <div class="gro_title toparea space">
+        <div class="res_title toparea space">
         <table class="fullWidth">
                 <tr>
                 <td colspan="2" ><h1>{{ $restaurant['name'] }}</h1></td>
                 </tr>
                 <tr>
-                <td colspan="2"><span class="white smaextra">{{ $restaurant['address1'] }} {{ $restaurant['address2'] }}, {{ $restaurant['city'] }}, {{ $restaurant['state'] }}, {{ $restaurant['zip'] }}</span></td>
+                <td colspan="2"><span class="white smaextra_res">{{ $restaurant['address1'] }} {{ $restaurant['address2'] }}, {{ $restaurant['city'] }}, {{ $restaurant['state'] }}, {{ $restaurant['zip'] }}</span></td>
                 </tr>
                 <tr>
-                <td colspan="2"><span class="white smaextra"><a href="tel:{{ $restaurant['phone1'] }}" class="extra">{{ $restaurant['phone1'] }}</a></span></td>
+                <td colspan="2"><span class="white smaextra_res"><a href="tel:{{ $restaurant['phone1'] }}" class="extra_res">{{ $restaurant['phone1'] }}</a></span></td>
                 </tr>
                 @if($workingTimes)
             @foreach ($workingTimes as $wtKey => $wtArr)
                 @if($wtKey == "default")
                     <tr>
-                     <td colspan="2" class="smaextra">Working Time
+                     <td colspan="2" class="smaextra_res">Working Time
                         @foreach ($wtArr[0] as $wtArrKey => $wtRs)
                             @if ( !empty ( $wtRs ) )
                                 @foreach ($wtRs as $key => $wt)
@@ -90,7 +90,7 @@
                                 @if ( !empty ( $wtRs ) )
                                 <tr>
                                     @if ( $wtArrKey == $today )
-                                        <td class="activeweekdays daysWith">{{$wtArrKey}}</td>
+                                        <td class="activeweekdays_res daysWith">{{$wtArrKey}}</td>
                                     @else
                                         <td class="inactiveweekdays daysWith">{{$wtArrKey}}</td>
                                     @endif    
@@ -98,7 +98,7 @@
                                         @foreach ($wt as $wtTimeKey => $wtTimes)
                                             @foreach ($wtTimes as $wtTimeKeys => $wtTime)
                                                 @if ( $wtArrKey == $today )
-                                                    <td class="activeweekdays">
+                                                    <td class="activeweekdays_res">
                                                         {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if ($loop->parent->index == $loop->count)@endif
                                                     </td>
                                                 @else

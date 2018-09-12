@@ -667,6 +667,18 @@ input[type=text], select{
 	margin-top:14px;
 	margin-right:-11px;
 }
+.res_kmblock_list{
+	float:right;
+	position:relative;
+	width:auto;
+	padding-left:10px;
+	padding-right:10px;
+	line-height:35px;
+	font-weight:bold;
+	color:#00A53C;
+	margin-top:14px;
+	margin-right:-11px;
+}
 .open_close{
 	float:right;
 	position:relative;
@@ -711,6 +723,13 @@ input[type=text], select{
 .gro_title{
 	float:left;
 	background-color:#B20095;
+	width:100%;
+	height: 125px;
+	padding-left:15px;
+}
+.res_title{
+	float:left;
+	background-color:#00A53C;
 	width:100%;
 	height: 125px;
 	padding-left:15px;
@@ -760,6 +779,19 @@ h2{
 }
 .smaextra{
 	color: #fde2ec !important;
+	line-height: 25px;
+}
+.extra_res{
+	line-height: 25px;
+	color: #f5fff9 !important;
+}
+.extra_res:hover{
+	line-height: 25px;
+	color: #FFF !important;
+	text-decoration: none;
+}
+.smaextra_res{
+	color: #f5fff9 !important;
 	line-height: 25px;
 }
 h3{
@@ -848,6 +880,13 @@ h4{
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:14px;
 	color:#B20095;
+	font-weight:bold;
+	padding-top:3px;
+}
+.activeweekdays_res{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#00A53C;
 	font-weight:bold;
 	padding-top:3px;
 }
