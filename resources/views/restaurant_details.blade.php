@@ -27,7 +27,7 @@
                                     @foreach ($wt as $wtTimeKey => $wtTimes)
                                         @foreach ($wtTimes as $wtTimeKeys => $wtTime)
                                             @if ( $wtArrKey == $today )
-                                                {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if ($loop->parent->index == $loop->count)@endif                                               
+                                                {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if ($loop->parent->index == $loop->count)&nbsp;@endif                                               
                                             @endif  
                                         @endforeach                                         
                                     @endforeach
@@ -99,11 +99,11 @@
                                             @foreach ($wtTimes as $wtTimeKeys => $wtTime)
                                                 @if ( $wtArrKey == $today )
                                                     <td class="activeweekdays_res">
-                                                        {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if ($loop->parent->index == $loop->count)@endif
+                                                        {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if  ($loop->parent->index == $loop->count)&nbsp;@endif
                                                     </td>
                                                 @else
                                                     <td class="inactiveweekdays">
-                                                        {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if($loop->parent->count == $loop->parent->index+1 and $loop->parent->last == 1)@endif
+                                                        {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if($loop->parent->count == $loop->parent->index+1 and $loop->parent->last == 1)&nbsp;@endif
                                                     </td>
                                                 @endif  
                                             @endforeach                                         
