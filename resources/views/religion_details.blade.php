@@ -1,24 +1,25 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="mcontainer">
 <div class="maincontainer">
 <div class="leftcontainer">
     <div class="paggination"><a href="../{{config('app.defaultBaseURL.dallas-malayali-church')}}" class="subcontent2 h21">Religions</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Details</span></div>
     <div class="block2">
-        @if($photos)
-            <div class="topdetail slideshow-container">
-                <ul id="lightSlider">
-                    @foreach ($photos as $key => $photo)
-                        <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
-                            <img src="{{ URL::to('/') }}/image/religion/{{$religion['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $religion['name'] }}" style="width:100%;height:100%" class="toparea">
-                        </li>
-                    @endforeach
-                </ul>            
-            </div>
-        @endif
-        <div class="gro_title">{{ $religion['name'] }}</div>
-        @if($workingTimes)
+        <div class="relig_title toparea space">
+            <table class="fullWidth">
+            <tr>
+                <td colspan="2" ><h1>{{ $religion['name'] }}</h1></td>
+                </tr> 
+            <tr>
+                    <td colspan="2"><span class="white smaextra_res">{{ $religion['address1'] }} {{ $religion['address2'] }}, {{ $religion['city'] }}, {{ $religion['state'] }}, {{ $religion['zip'] }}</span></td>
+                </tr>
+            <tr>
+                    <td colspan="2"><span class="white smaextra_res"><a href="tel:{{ $religion['phone1'] }}"  class="extra_res">{{ $religion['phone1'] }}</a></span></td>
+                </tr>  
+                <tr>
+                    <td colspan="2"><span class="white smaextra_res">
+                    
+                    @if($workingTimes)
             @if ($religion['religionName'] == 'Christianity')
                 @foreach ($workingTimes as $wtKey => $wtArr)
                     @if($wtKey == "Mass")
@@ -76,7 +77,14 @@
             @else
             
             @endif
-        @endif        
+        @endif    
+                    
+                    </span></td>
+                </tr>                
+            </table>    
+        </div>        
+                
+            
         <div class="content">
             <table class="fullWidth">
                 <tr>
@@ -90,18 +98,7 @@
                         <td colspan="2">{{ $distance }}</td>
                     </tr>
                 @endif                 
-                <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Address:</td>
-                </tr>
-                <tr>
-                    <td colspan="2">{{ $religion['address1'] }} {{ $religion['address2'] }}, {{ $religion['city'] }}, {{ $religion['state'] }}, {{ $religion['zip'] }}</td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Phone:</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><a href="tel:{{ $religion['phone1'] }}">{{ $religion['phone1'] }}</a></td>
-                </tr>
+
                 @if (isset($religion['website']) && $religion['website'])
                     <tr>
                         <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
