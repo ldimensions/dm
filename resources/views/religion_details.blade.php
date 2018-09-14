@@ -9,82 +9,72 @@
             <table class="fullWidth">
             <tr>
                 <td colspan="2" ><h1>{{ $religion['name'] }}</h1></td>
-                </tr> 
+            </tr> 
             <tr>
-                    <td colspan="2"><span class="white smaextra_res">{{ $religion['address1'] }} {{ $religion['address2'] }}, {{ $religion['city'] }}, {{ $religion['state'] }}, {{ $religion['zip'] }}</span></td>
-                </tr>
+                <td colspan="2"><span class="white smaextra_res">{{ $religion['address1'] }} {{ $religion['address2'] }}, {{ $religion['city'] }}, {{ $religion['state'] }}, {{ $religion['zip'] }}</span></td>
+            </tr>
             <tr>
-                    <td colspan="2"><span class="white smaextra_res"><a href="tel:{{ $religion['phone1'] }}"  class="extra_res">{{ $religion['phone1'] }}</a></span></td>
-                </tr>  
-                <tr>
-                    <td colspan="2"><span class="white smaextra_res">
-                    
+                <td colspan="2"><span class="white smaextra_res"><a href="tel:{{ $religion['phone1'] }}"  class="extra_res">{{ $religion['phone1'] }}</a></span></td>
+            </tr>  
+            <tr>
+                <td colspan="2"><span class="white smaextra_res">
                     @if($workingTimes)
-            @if ($religion['religionName'] == 'Christianity')
-                @foreach ($workingTimes as $wtKey => $wtArr)
-                    @if($wtKey == "Mass")
-                        <div>Mass:
-                            @foreach ($wtArr[0] as $wtMassArrKey => $wtMass)
-                                @if ( !empty ( $wtMass ) )
-                                    @foreach ($wtMass as $massKey => $mass)
-                                        @foreach ($mass as $massTimeKey => $massTime)
-                                            @if ( $wtMassArrKey == $today )
-                                                <span>{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</span>
-                                            @endif                                              
-                                        @endforeach
+                        @if ($religion['religionName'] == 'Christianity')
+                            @foreach ($workingTimes as $wtKey => $wtArr)
+                                @if($wtKey == "Mass")
+                                    @foreach ($wtArr[0] as $wtMassArrKey => $wtMass)
+                                        @if ( !empty ( $wtMass ) )
+                                            @foreach ($wtMass as $massKey => $mass)
+                                                @foreach ($mass as $massTimeKey => $massTime)
+                                                    @if ( $wtMassArrKey == $today )
+                                                    <div>Mass: <span>{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</span></div>
+                                                    @endif                                              
+                                                @endforeach
+                                            @endforeach
+                                        @endif                           
+                                    @endforeach  
+                                @elseif($wtKey == "Confession")
+                                    @foreach ($wtArr[0] as $wtConfArrKey => $wtConf)
+                                        @if ( !empty ( $wtConf ) )
+                                            @foreach ($wtConf as $confession)
+                                                @foreach ($confession as $confessionTimeKey => $confessionTime)
+                                                    @if ( $wtConfArrKey == $today )
+                                                    <div>Confession: <span>{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</span></div>   
+                                                    @endif  
+                                                @endforeach
+                                            @endforeach
+                                        @endif                           
                                     @endforeach
-                                @endif                           
-                            @endforeach  
-                        </div>
-                    @elseif($wtKey == "Confession")
-                        <div>Confession:
-                            @foreach ($wtArr[0] as $wtConfArrKey => $wtConf)
-                                @if ( !empty ( $wtConf ) )
-                                    @foreach ($wtConf as $confession)
-                                        @foreach ($confession as $confessionTimeKey => $confessionTime)
-                                            @if ( $wtConfArrKey == $today )
-                                                <span>{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</span>
-                                            @endif  
-                                        @endforeach
-                                    @endforeach
-                                @endif                           
-                            @endforeach
-                        </div>                                 
-                    @elseif($wtKey == "Adoration")
-                        <div>Adoration:
-                            @foreach ($wtArr[0] as $wtAdoArrKey => $wtAdo)
-                                @if ( !empty ( $wtAdo ) )
-                                    @foreach ($wtAdo as $adoration)
-                                        @foreach ($adoration as $adorationTimeKey => $adorationTime)
-                                            @if ( $wtAdoArrKey == $today )
-                                                <span>{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</span>
-                                            @endif 
-                                        @endforeach
-                                    @endforeach
-                                @endif                           
-                            @endforeach   
-                        </div>  
-                    @endif                       
-                @endforeach                                               
-            @elseif ($religion['religionName'] == 'Hinduism')
-                I have multiple records!
-            @elseif ($religion['religionName'] == 'Islam')
-                I have multiple records!
-            @elseif ($religion['religionName'] == 'Judaism')
-                I have multiple records!
-            @elseif ($religion['religionName'] == 'Buddhism')
-                I have multiple records!                
-            @else
-            
-            @endif
-        @endif    
-                    
+                                @elseif($wtKey == "Adoration")
+                                    @foreach ($wtArr[0] as $wtAdoArrKey => $wtAdo)
+                                        @if ( !empty ( $wtAdo ) )
+                                            @foreach ($wtAdo as $adoration)
+                                                @foreach ($adoration as $adorationTimeKey => $adorationTime)
+                                                    @if ( $wtAdoArrKey == $today )
+                                                    <div>Adoration:<span>{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</span></div>  
+                                                    @endif 
+                                                @endforeach
+                                            @endforeach
+                                        @endif                           
+                                    @endforeach   
+                                @endif                       
+                            @endforeach                                               
+                        @elseif ($religion['religionName'] == 'Hinduism')
+                            I have multiple records!
+                        @elseif ($religion['religionName'] == 'Islam')
+                            I have multiple records!
+                        @elseif ($religion['religionName'] == 'Judaism')
+                            I have multiple records!
+                        @elseif ($religion['religionName'] == 'Buddhism')
+                            I have multiple records!                
+                        @else
+                        
+                        @endif
+                    @endif    
                     </span></td>
                 </tr>                
             </table>    
         </div>        
-                
-            
         <div class="content">
             <table class="fullWidth">
                 <tr>
