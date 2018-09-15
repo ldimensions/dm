@@ -100,6 +100,7 @@ class RestaurantController extends Controller
         
         $distance                       =   "";
         $todaysWorkingTime              =   "";
+        $descriptionHeight              =   "60";
         $commonCtrl                     =   new CommonController;
 
         $seoUrl                         =   $commonCtrl->seoUrl($request->path(),2);        
@@ -177,7 +178,8 @@ class RestaurantController extends Controller
             //echo $todaysWorkingTime;
             // echo "<pre>";
             // print_r($workingTimes);
-            return view('restaurant_details',['restaurant' => $restaurant, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate, 'todaysWorkingTime' => $todaysWorkingTime]);
+            $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($restaurant['description']));
+            return view('restaurant_details',['restaurant' => $restaurant, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate, 'todaysWorkingTime' => $todaysWorkingTime, 'descriptionHeight' => $descriptionHeight]);
         }else{
             return redirect()->back();
         }

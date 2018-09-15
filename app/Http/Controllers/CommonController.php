@@ -312,4 +312,20 @@ class CommonController extends Controller
         if (!$full) $string = array_slice($string, 0, 1);
         return $string ? implode(', ', $string) . ' ago' : 'just now';
     }
+
+    function descriptionLength($length) {
+        if($length >=320){
+            return 100;
+        }else if($length >=256){
+            return 80;
+        }else if($length >=192){
+            return 60;
+        }else if($length >=128){
+            return 40;
+        }else if($length >=64){
+            return 20;
+        }else{
+            return 20;
+        }
+    }
 }

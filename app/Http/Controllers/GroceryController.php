@@ -158,6 +158,7 @@ class GroceryController extends Controller
 
         $distance                       =   "";
         $todaysWorkingTime              =   "";
+        $descriptionHeight              =   "60";
         $commonCtrl                     =   new CommonController;
 
         $seoUrl                         =   $commonCtrl->seoUrl($request->path(),2);        
@@ -230,8 +231,10 @@ class GroceryController extends Controller
             $photo                          =   $photoRs->toArray();  
 
             $commonCtrl->setMeta($request->path(),2);
+
+            $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($grocery['description']));
             
-            return view('grocery_details',['grocery' => $grocery, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate, 'todaysWorkingTime' => $todaysWorkingTime]);
+            return view('grocery_details',['grocery' => $grocery, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate, 'todaysWorkingTime' => $todaysWorkingTime, 'descriptionHeight' => $descriptionHeight]);
         }else{
             return redirect()->back();
         }

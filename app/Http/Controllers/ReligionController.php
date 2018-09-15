@@ -105,6 +105,7 @@ class ReligionController extends Controller
         $todaysMassTime                 =   "";
         $todaysConfessionTime           =   "";
         $todaysAdorationTime            =   "";
+        $descriptionHeight              =   "60";
         $commonCtrl                     =   new CommonController;
 
         $seoUrl                         =   $commonCtrl->seoUrl($request->path(),2);
@@ -185,6 +186,7 @@ class ReligionController extends Controller
 
                 
             // echo $todaysDate;exit();  
+            $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($religionRs['description']));
             
             return view('religion_details',[
                                                 'religion' => $religion, 
@@ -194,7 +196,8 @@ class ReligionController extends Controller
                                                 'today' => $todaysDate,
                                                 'todaysMassTime' =>$todaysMassTime,
                                                 'todaysConfessionTime' => $todaysConfessionTime,
-                                                'todaysAdorationTime' => $todaysAdorationTime
+                                                'todaysAdorationTime' => $todaysAdorationTime,
+                                                'descriptionHeight' => $descriptionHeight
                                             ]
                     );
         }else{

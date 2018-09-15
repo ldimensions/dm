@@ -29,7 +29,7 @@
                 <td colspan="2">&nbsp;</td>
             </tr>
             <tr>
-                <td colspan="2">{{ $grocery['description'] }}</td>
+                <td colspan="2"><div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{{ $grocery['description'] }}</div><a id="readMore">Read more</a></td>
             </tr>
             @if (isset($grocery['website']) && $grocery['website'])
                 <tr>
@@ -213,6 +213,11 @@
             }
         });
     });
+
+    document.querySelector('#readMore').addEventListener('click', function() {
+        document.querySelector('#description').style.height= 'auto';
+        this.style.display= 'none';
+    });      
     
 </script>
 <script async defer

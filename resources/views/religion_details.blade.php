@@ -36,7 +36,7 @@
                 <td colspan="2">&nbsp;</td>
             </tr>
             <tr>
-                    <td colspan="2" class="tdtoppadd"><div id="description" style="overflow: hidden; height: 120px;">{{ $religion['description'] }}</div><a id="readMore">Read more</a></td>
+                    <td colspan="2" class="tdtoppadd"><div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{{ $religion['description'] }}</div><a id="readMore">Read more</a></td>
                 </tr>
                 @if (isset($religion['website']) && $religion['website'])
                     <tr>
