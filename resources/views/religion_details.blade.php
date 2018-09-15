@@ -64,7 +64,7 @@
                 @if($workingTimes)
                 @if ($religion['religionName'] == 'Christianity')
                     @foreach ($workingTimes as $wtKey => $wtArr)
-                        @if($wtKey == "Mass")
+                        @if($wtKey == "Mass" && count($wtArr) >0)
                             <table>
                                 <tr>
                                     <td colspan="2" class="smallfont tdtoppadd1">Mass:</td>
@@ -90,7 +90,7 @@
                                     @endif                           
                                 @endforeach   
                             </table>                     
-                        @elseif($wtKey == "Confession")
+                        @elseif($wtKey == "Confession"  && count($wtArr) >0)
                             <table>
                                 <tr>
                                     <td colspan="2" class="smallfont tdtoppadd1">Confession:</td>
@@ -116,7 +116,7 @@
                                     @endif                           
                                 @endforeach
                             </table>                                 
-                        @elseif($wtKey == "Adoration")
+                        @elseif($wtKey == "Adoration"  && count($wtArr) >0)
                             <table>
                                 <tr>
                                     <td colspan="2" class="smallfont tdtoppadd1">Adoration:</td>
@@ -228,7 +228,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <input type="hidden" class="form-control nup" id="type" name="type" value="1">
+                <input type="hidden" class="form-control nup" id="type" name="type" value="3">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="suggessionBtn" />Submit</button>
             </div>            

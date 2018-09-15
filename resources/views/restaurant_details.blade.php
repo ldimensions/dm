@@ -171,7 +171,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <input type="hidden" class="form-control nup" id="type" name="type" value="1">
+                <input type="hidden" class="form-control nup" id="type" name="type" value="2">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="suggessionBtn" />Submit</button>
             </div>            
