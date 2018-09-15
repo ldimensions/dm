@@ -64,17 +64,17 @@
                     <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
                 @endif         
                      
-                <h2 class="content4"> 
+                
                     @if ($rel['religionName'] == 'Christianity')
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-christian-church')}}/{{ $rel['urlName'] }}" class=" colorh1">{{ $rel['name'] }}</a>
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-christian-church')}}/{{ $rel['urlName'] }}" class=" colorh1"><h2 class="content4"> {{ $rel['name'] }}</h2></a>
                     @elseif($rel['religionName'] == 'Hinduism')
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-hindu-temple')}}/{{ $rel['urlName'] }}"  class=" colorh1">>{{ $rel['name'] }}</a>
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-hindu-temple')}}/{{ $rel['urlName'] }}"  class=" colorh1"><h2 class="content4"> {{ $rel['name'] }}</h2></a>
                     @elseif($rel['religionName'] == 'Judaism')
-                        <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class=" colorh1">{{ $rel['name'] }}</a> -->
+                        <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class=" colorh1"><h2 class="content4"> {{ $rel['name'] }}</h2></a> -->
                     @elseif($rel['religionName'] == 'Buddhism')
-                        <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class=" colorh1">{{ $rel['name'] }}</a> -->
+                        <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" class=" colorh1"><h2 class="content4"> {{ $rel['name'] }}</h2></a> -->
                     @elseif($rel['religionName'] == 'Islam')
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-islan-mosque')}}/{{ $rel['urlName'] }}"  class=" colorh1">{{ $rel['name'] }}</a>                                                          
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-islan-mosque')}}/{{ $rel['urlName'] }}"  class=" colorh1"><h2 class="content4"> {{ $rel['name'] }}</h2></a>                                                          
                     @endif
                 </h2>
                 @if ($rel['latitude'] && $rel['longitude'])

@@ -8,16 +8,16 @@
         <div class="relig_title toparea space">
             <table class="fullWidth">
             <tr>
-                <td colspan="2" ><h1>{{ $religion['name'] }}</h1></td>
+                <td colspan="2" ><h1 class="religin_txt titleblock">{{ $religion['name'] }}</h1></td>
                 </tr> 
             <tr>
-                    <td colspan="2"><span class="white smaextra_res">{{ $religion['address1'] }} {{ $religion['address2'] }}, {{ $religion['city'] }}, {{ $religion['state'] }}, {{ $religion['zip'] }}</span></td>
+                    <td colspan="2"><div class="titleblock smaextra_reli">{{ $religion['address1'] }} {{ $religion['address2'] }}, {{ $religion['city'] }}, {{ $religion['state'] }}, {{ $religion['zip'] }}</div></td>
                 </tr>
             <tr>
-                    <td colspan="2"><span class="white smaextra_res"><a href="tel:{{ $religion['phone1'] }}"  class="extra_res">{{ $religion['phone1'] }}</a></span></td>
+                    <td colspan="2"><div class="titleblock smaextra_reli"><a href="tel:{{ $religion['phone1'] }}"  class="extra_reli">{{ $religion['phone1'] }}</a></div></td>
                 </tr>  
                 <tr>
-                    <td colspan="2"><span class="white smaextra_res">
+                    <td colspan="2"><div class="titleblock smaextra_reli  smaextra_reli">
                     
                     @if($workingTimes)
             @if ($religion['religionName'] == 'Christianity')
@@ -79,7 +79,7 @@
             @endif
         @endif    
                     
-                    </span></td>
+</div></td>
                 </tr>                
             </table>    
         </div>        
@@ -132,14 +132,14 @@
                                     @if ( !empty ( $wtMass ) )
                                     <tr>
                                         @if ( $wtMassArrKey == $today )
-                                            <td class="activeweekdays daysWith">{{$wtMassArrKey}}</td>
+                                            <td class="activeweekdays_reli daysWith">{{$wtMassArrKey}}</td>
                                         @else
                                             <td class="inactiveweekdays daysWith">{{$wtMassArrKey}}</td>
                                         @endif    
                                         @foreach ($wtMass as $massKey => $mass)
                                             @foreach ($mass as $massTimeKey => $massTime)
                                                 @if ( $wtMassArrKey == $today )
-                                                    <td class="activeweekdays">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                    <td class="activeweekdays_reli">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
                                                 @else
                                                     <td class="inactiveweekdays">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
                                                 @endif                                              
@@ -158,14 +158,14 @@
                                     @if ( !empty ( $wtConf ) )
                                         <tr>
                                             @if ( $wtConfArrKey == $today )
-                                                <td class="activeweekdays daysWith">{{$wtConfArrKey}}</td>
+                                                <td class="activeweekdays_reli daysWith">{{$wtConfArrKey}}</td>
                                             @else
                                                 <td class="inactiveweekdays daysWith">{{$wtConfArrKey}}</td>
                                             @endif                                             
                                             @foreach ($wtConf as $confession)
                                                 @foreach ($confession as $confessionTimeKey => $confessionTime)
                                                     @if ( $wtConfArrKey == $today )
-                                                        <td class="activeweekdays">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                        <td class="activeweekdays_reli">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
                                                     @else
                                                         <td class="inactiveweekdays">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
                                                     @endif  
@@ -184,14 +184,14 @@
                                     @if ( !empty ( $wtAdo ) )
                                         <tr>
                                             @if ( $wtAdoArrKey == $today )
-                                                <td class="activeweekdays daysWith">{{$wtAdoArrKey}}</td>
+                                                <td class="activeweekdays_reli daysWith">{{$wtAdoArrKey}}</td>
                                             @else
                                                 <td class="inactiveweekdays daysWith">{{$wtAdoArrKey}}</td>
                                             @endif                                          
                                             @foreach ($wtAdo as $adoration)
                                                 @foreach ($adoration as $adorationTimeKey => $adorationTime)
                                                     @if ( $wtAdoArrKey == $today )
-                                                        <td class="activeweekdays">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                        <td class="activeweekdays_reli">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
                                                     @else
                                                         <td class="inactiveweekdays">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
                                                     @endif 
