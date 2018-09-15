@@ -36,7 +36,7 @@
                 <td colspan="2">&nbsp;</td>
             </tr>
             <tr>
-                    <td colspan="2" class="tdtoppadd"><div id="description" style="overflow: hidden; height: 120px;">{{ $religion['description'] }}</div><button>Read more</button></td>
+                    <td colspan="2" class="tdtoppadd"><div id="description" style="overflow: hidden; height: 120px;">{{ $religion['description'] }}</div><a id="readMore">Read more</a></td>
                 </tr>
                 @if (isset($religion['website']) && $religion['website'])
                     <tr>
@@ -276,7 +276,7 @@
         });
     });
 
-    document.querySelector('button').addEventListener('click', function() {
+    document.querySelector('#readMore').addEventListener('click', function() {
         document.querySelector('#description').style.height= 'auto';
         this.style.display= 'none';
     });    
