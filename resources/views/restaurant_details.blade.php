@@ -78,7 +78,7 @@
                       <td colspan="2">{{ $distance }}</td>
                   </tr>
                 @endif
-            </table>
+
             @if($workingTimes)
                 @foreach ($workingTimes as $wtKey => $wtArr)
                     @if($wtKey == "default")
@@ -116,6 +116,8 @@
                     @endif                   
                 @endforeach   
             @endif  
+            </table>
+
             <div class="suggestionblock">
                 <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent22">Suggest an edit</a>   
             </div>             
