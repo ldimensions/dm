@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="mcontainer">
 <div class="maincontainer">
@@ -62,10 +61,8 @@
                         <img src="{{ URL::to('/') }}/image/grocery/{{$rel['id']}}/{{$rel['photoName']}}" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
                     @else   
                         <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
-                    @endif                 
-                    <h2 class="content1" > 
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" title="{{ $rel['name'] }}" class=" colorh1">{{ $rel['name'] }}</a>                                                      
-                    </h2>
+                    @endif                  
+                    <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" title="{{ $rel['name'] }}" class="colorh1"><h2 class="content1">{{ $rel['name'] }}</h2></a>                                                      
                     @if ($rel['latitude'] && $rel['longitude'])
                         <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" title="{{ $rel['name'] }}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
                     @endif    

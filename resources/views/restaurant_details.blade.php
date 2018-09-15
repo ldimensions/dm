@@ -8,19 +8,19 @@
         <div class="res_title toparea space">
         <table class="fullWidth">
                 <tr>
-                <td colspan="2" ><h1>{{ $restaurant['name'] }}</h1></td>
+                <td colspan="2" ><h1 class="titleblock">{{ $restaurant['name'] }}</h1></td>
                 </tr>
                 <tr>
-                <td colspan="2"><span class="white smaextra_res">{{ $restaurant['address1'] }} {{ $restaurant['address2'] }}, {{ $restaurant['city'] }}, {{ $restaurant['state'] }}, {{ $restaurant['zip'] }}</span></td>
+                <td colspan="2"><div class="titleblock"><span class="white smaextra_res">{{ $restaurant['address1'] }} {{ $restaurant['address2'] }}, {{ $restaurant['city'] }}, {{ $restaurant['state'] }}, {{ $restaurant['zip'] }}</span></div></td>
                 </tr>
                 <tr>
-                <td colspan="2"><span class="white smaextra_res"><a href="tel:{{ $restaurant['phone1'] }}" class="extra_res">{{ $restaurant['phone1'] }}</a></span></td>
+                <td colspan="2"><div class="titleblock"><span class="white smaextra_res"><a href="tel:{{ $restaurant['phone1'] }}" class="extra_res">{{ $restaurant['phone1'] }}</a></span></div></td>
                 </tr>
                 @if($workingTimes)
             @foreach ($workingTimes as $wtKey => $wtArr)
                 @if($wtKey == "default")
                     <tr>
-                     <td colspan="2" class="smaextra_res">Working Time
+                     <td colspan="2" class="smaextra_res"><div class="titleblock">Working Time
                         @foreach ($wtArr[0] as $wtArrKey => $wtRs)
                             @if ( !empty ( $wtRs ) )
                                 @foreach ($wtRs as $key => $wt)
@@ -33,7 +33,7 @@
                                     @endforeach
                                 @endforeach
                             @endif                           
-                        @endforeach   
+                        @endforeach  </div> 
                      </td>
                             </tr> 
                 @endif                   
