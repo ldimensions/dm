@@ -115,7 +115,7 @@ class ReligionController extends Controller
                                                 'religion.website',
                                                 'address.address1', 'address.address2',
                                                 'address.zip', 'religion.shortDescription',
-                                                'address.city', 'address.state',
+                                                'city.city', 'address.state',
                                                 'address.phone1', 'address.latitude',
                                                 'address.longitude','religion_type.religionName',
                                                 'denomination.denominationName')
@@ -123,6 +123,7 @@ class ReligionController extends Controller
                                             ->leftjoin('religion_type','religion_type.id', '=', 'religion.religionTypeId')                                                
                                             ->leftjoin('denomination','denomination.id', '=', 'religion.denominationId')                                                
                                             ->leftjoin('address','address.id', '=', 'religion.addressId')
+                                            ->leftjoin('city','city.cityId', '=', 'address.city')         
                                             ->where('religion.is_deleted', '=', '0')
                                             ->where('religion.is_disabled', '=', '0')
                                             ->where('url.urlName', '=', $url)

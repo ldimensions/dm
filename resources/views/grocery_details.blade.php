@@ -38,14 +38,15 @@
                 <tr>
                     <td colspan="2"><h2><a href="http://{{ $grocery['website'] }}" class="h21" target="_blank">{{ $grocery['website'] }}</a></h2></td>
                 </tr> 
-            @endif  
-            <tr>
-                <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity</td>
-            </tr> 
-            <tr>
-                <td colspan="2"><h3>{{ $grocery['ethnicName'] }}</h3></td>
-            </tr>                
-                        
+            @endif 
+            @if($grocery['ethnicName']) 
+                <tr>
+                    <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity</td>
+                </tr> 
+                <tr>
+                    <td colspan="2"><h3>{{ $grocery['ethnicName'] }}</h3></td>
+                </tr>                
+            @endif            
             <tr>
                 <td colspan="2" class="smallfont tdtoppadd1">Located In</td>
             </tr>

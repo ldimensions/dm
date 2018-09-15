@@ -39,13 +39,15 @@
                   <tr>
                       <td colspan="2"><h2><a href="http://{{ $restaurant['website'] }}" target="_blank"  class="h21" >{{ $restaurant['website'] }}</a></h2></td>
                   </tr> 
-                @endif   
+                @endif  
+            @if($restaurant['ethnicName']) 
                 <tr>
-                <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity</td>
-            </tr> 
-            <tr>
-                <td colspan="2"><h3>{{ $restaurant['ethnicName'] }}</h3></td>
-            </tr>               
+                    <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity</td>
+                </tr> 
+                <tr>
+                    <td colspan="2"><h3>{{ $restaurant['ethnicName'] }}</h3></td>
+                </tr>  
+            @endif              
                 <tr>
                     <td colspan="2" class="smallfont tdtoppadd1">Located In:</td>
                 </tr>
