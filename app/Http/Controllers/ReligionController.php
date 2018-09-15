@@ -102,6 +102,9 @@ class ReligionController extends Controller
     public function getDetails(Request $request,$url){
 
         $distance                       =   "";
+        $todaysMassTime                 =   "";
+        $todaysConfessionTime           =   "";
+        $todaysAdorationTime            =   "";
         $commonCtrl                     =   new CommonController;
 
         $seoUrl                         =   $commonCtrl->seoUrl($request->path(),2);
@@ -136,20 +139,26 @@ class ReligionController extends Controller
 
             $workingTimes                   =   json_decode($religionRs['workingTime'], true);
 
+            $todaysDate                     =   date("l");
+
             if($workingTimes){
                 foreach($workingTimes as $rootKey => $workingTime) {
                     foreach($workingTime as $subkey => $subWorkingTime) {
-                        foreach($subWorkingTime as $dayKey => $dayWorkingTime) {
+                        foreach($subWorkingTime as $dayKey => $dayWorkingTime) {                          
                             foreach($dayWorkingTime as $key => $time) {
                                 $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'] = date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                                if($dayKey == $todaysDate && $rootKey == "Mass"){
+                                    $todaysMassTime             .=   ($todaysMassTime)?', '.date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                                }elseif($dayKey == $todaysDate && $rootKey == "Confession"){
+                                    $todaysConfessionTime       .=   ($todaysConfessionTime)?', '.date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                                }else if($dayKey == $todaysDate && $rootKey == "Adoration"){
+                                    $todaysAdorationTime        .=   ($todaysAdorationTime)?', '.date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                                }
                             }
                         }
                     }
                  }
-            }
-            
-            // print "<pre>";
-            // print_r($workingTimes);
+            }            
             $religion                       =   $religionRs->toArray(); 
             $religionId                     =   $religion['id'];
     
@@ -173,9 +182,20 @@ class ReligionController extends Controller
             // $hours = floor($diff / (60 * 60));
             // $minutes = $diff - $hours * (60 * 60);
 
-            $todaysDate =   date("l");     
+                
+            // echo $todaysDate;exit();  
             
-            return view('religion_details',['religion' => $religion, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate]);
+            return view('religion_details',[
+                                                'religion' => $religion, 
+                                                'photos' => $photo, 
+                                                'distance' => $distance, 
+                                                'workingTimes' => $workingTimes, 
+                                                'today' => $todaysDate,
+                                                'todaysMassTime' =>$todaysMassTime,
+                                                'todaysConfessionTime' => $todaysConfessionTime,
+                                                'todaysAdorationTime' => $todaysAdorationTime
+                                            ]
+                    );
         }else{
             return redirect()->back();
         }

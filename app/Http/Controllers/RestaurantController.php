@@ -99,6 +99,7 @@ class RestaurantController extends Controller
     public function getDetails(Request $request,$url){
         
         $distance                       =   "";
+        $todaysWorkingTime              =   "";
         $commonCtrl                     =   new CommonController;
 
         $seoUrl                         =   $commonCtrl->seoUrl($request->path(),2);        
@@ -137,14 +138,24 @@ class RestaurantController extends Controller
             }
 
             $workingTimes                   =   json_decode($restaurant['workingTime'], true);
+            $todaysDate                     =   date("l");   
             if($workingTimes){
                 foreach($workingTimes as $rootKey => $workingTime) {
                     foreach($workingTime as $subkey => $subWorkingTime) {
                         foreach($subWorkingTime as $dayKey => $dayWorkingTime) {
                             foreach($dayWorkingTime as $keys => $times) {
                                 foreach($times as $key => $time) {
+                                    $oldKey                     =   "";
                                     $workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'] = date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time']));
-                                }
+                                    if($dayKey == $todaysDate){
+                                        if($oldKey != $key){
+                                            $todaysWorkingTime      .=   ' - '.$workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'];                            
+                                        }else{
+                                            $todaysWorkingTime      .=   ($todaysWorkingTime)?', '.$workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time']: $workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'];
+                                        }
+                                    }
+                                    $oldKey                         =  $key; 
+                                }                                
                             }
                         }
                     }
@@ -163,17 +174,10 @@ class RestaurantController extends Controller
             $photo                          =   $photoRs->toArray();  
 
             $commonCtrl->setMeta($request->path(),2);
-
-            // $now = strtotime("now");
-            // $yourTime   =   strtotime('2018-06-22 11:04:00');
-            // $diff  = $now - $yourTime;
-
-            // $hours = floor($diff / (60 * 60));
-            // $minutes = $diff - $hours * (60 * 60);
-
-            $todaysDate =   date("l");     
-            
-            return view('restaurant_details',['restaurant' => $restaurant, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate]);
+            //echo $todaysWorkingTime;
+            // echo "<pre>";
+            // print_r($workingTimes);
+            return view('restaurant_details',['restaurant' => $restaurant, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate, 'todaysWorkingTime' => $todaysWorkingTime]);
         }else{
             return redirect()->back();
         }

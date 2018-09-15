@@ -16,26 +16,10 @@
                 <tr>
                     <td colspan="2"><span class="white smaextra"><a href="tel:{{ $grocery['phone1'] }}" class="extra">{{ $grocery['phone1'] }}</a></span></td>
                 </tr>
-                @if($workingTimes)
-                    @foreach ($workingTimes as $wtKey => $wtArr)
-                        @if($wtKey == "default")
-                            <tr>
-                                <td colspan="2" class="smaextra">Working Time
-                                    @foreach ($wtArr[0] as $wtArrKey => $wtRs)
-                                        @if ( !empty ( $wtRs ) )
-                                                @foreach ($wtRs as $key => $wt)
-                                                    @foreach ($wt as $wtTimeKey => $wtTime)
-                                                        @if ( $wtArrKey == $today )
-                                                            {{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif  @if ($loop->parent->index == $loop->count)@endif         
-                                                        @endif                                              
-                                                    @endforeach
-                                                @endforeach
-                                        @endif                           
-                                    @endforeach 
-                                </td>
-                            </tr>                         
-                        @endif                   
-                    @endforeach  
+                @if($todaysWorkingTime)
+                    <tr>
+                        <td colspan="2" class="smaextra">Working Time : {{$todaysWorkingTime}}</td>
+                    </tr>                         
                 @endif
             </table> 
             
