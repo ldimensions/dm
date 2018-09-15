@@ -29,7 +29,14 @@
                 <td colspan="2">&nbsp;</td>
             </tr>
             <tr>
-                <td colspan="2"><div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{{ $grocery['description'] }}</div><a id="readMore">Read more</a></td>
+                <td colspan="2">
+                    <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{{ $grocery['description'] }}</div>
+                    @if(strlen($grocery['description']) >= '220') 
+                        <a id="readMore">Read more</a>
+                    @else
+                        <span id="readMore"></span>
+                    @endif 
+                </td>
             </tr>
             @if (isset($grocery['website']) && $grocery['website'])
                 <tr>
