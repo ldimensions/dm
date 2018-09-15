@@ -8,13 +8,13 @@
         <div class="gro_title toparea space">
             <table class="fullWidth">
                 <tr>
-                <td colspan="2" ><h1>{{ $grocery['name'] }}</h1></td>
+                <td colspan="2" ><h1 class="titleblock">{{ $grocery['name'] }}</h1></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><span class="white smaextra">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</span></td>
+                    <td colspan="2"><div class="titleblock"><span class="white smaextra">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</span></div></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><span class="white smaextra"><a href="tel:{{ $grocery['phone1'] }}" class="extra">{{ $grocery['phone1'] }}</a></span></td>
+                    <td colspan="2"><div class="titleblock"><span class="white smaextra"><a href="tel:{{ $grocery['phone1'] }}" class="extra">{{ $grocery['phone1'] }}</a></span></div></td>
                 </tr>
                 @if($todaysWorkingTime)
                     <tr>
@@ -22,8 +22,6 @@
                     </tr>                         
                 @endif
             </table> 
-            
-               
         </div>
         <div class="content">
             <table class="fullWidth">

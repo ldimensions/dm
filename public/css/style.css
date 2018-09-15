@@ -516,7 +516,7 @@ input[type=text], select{
 	font-size:14px;
 	font-family:Arial, Helvetica, sans-serif;
 	font-weight:bold;
-	color:#FFC800;
+	color:#ffc100;
 	padding-left:10px;
 }
 
@@ -531,12 +531,12 @@ input[type=text], select{
 	margin-left:10px;
 	margin-top:4px;
 	font-weight:bold;
-	color:#FFC800;
+	color:#ffc100;
 }
 .reli_block3bottom{
 	float:left;
 	position:relative;
-	background-color:#FFC800;
+	background-color:#ffc100;
 	height:auto;
 	width:100%;
 	height:6px;
@@ -557,7 +557,12 @@ input[type=text], select{
 	color:#FA9600;
 	padding-left:10px;
 }
-
+.titleblock{
+width: 437px;
+}
+.religin_txt{
+	color:#413100;
+}
 .auto_kmblock{
 	float:left;
 	position:relative;
@@ -596,9 +601,18 @@ input[type=text], select{
 	width:280px;
 	margin-top:30px;
 	padding-left:15px;
+	font-size: 20px;
+	color: #323232;
 	white-space: nowrap;
 	overflow:hidden;
 	text-overflow:ellipsis;
+}
+.religionTrim{
+	font-size: 20px;
+	color: #323232;
+	white-space: nowrap!important;
+	overflow:hidden!important;
+	text-overflow:ellipsis!important;
 }
 .content4{
 	float:left;
@@ -606,6 +620,8 @@ input[type=text], select{
 	width:275px;
 	margin-top:27px;
 	padding-left:15px;
+	font-size: 20px;
+	color: #323232;
 	white-space: nowrap;
 	overflow:hidden;
 	text-overflow:ellipsis;
@@ -697,7 +713,7 @@ input[type=text], select{
 	padding-right:10px;
 	line-height:35px;
 	font-weight:bold;
-	color:#FFC800;
+	color:#ffc100;
 	margin-top:16px;
 	margin-right:-11px;
 }
@@ -758,7 +774,7 @@ input[type=text], select{
 }
 .relig_title{
 	float:left;
-	background-color:#FFC800;
+	background-color:#ffc100;
 	width:100%;
 	height: auto;
 	padding-left:15px;
@@ -819,8 +835,22 @@ h2{
 	color: #FFF !important;
 	text-decoration: none;
 }
+.extra_reli{
+	line-height: 25px;
+	color: #4c3a00 !important;
+}
+.extra_reli:hover{
+	line-height: 25px;
+	color: #4c3a00 !important;
+	text-decoration: none;
+}
+
 .smaextra_res{
 	color: #f5fff9 !important;
+	line-height: 25px;
+}
+.smaextra_reli{
+	color: #4c3a00 !important;
 	line-height: 25px;
 }
 h3{
@@ -923,6 +953,13 @@ h4{
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:14px;
 	color:#646464;
+	padding-top:3px;
+}
+.activeweekdays_reli{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#ffc100;
+	font-weight:bold;
 	padding-top:3px;
 }
 
