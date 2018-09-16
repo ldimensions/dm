@@ -36,7 +36,7 @@
                 <td colspan="2">&nbsp;</td>
             </tr>
             <tr>
-                    <td colspan="2" class="tdtoppadd">
+                    <td colspan="2">
                         <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($religion['description']) !!}</div>
                          @if(strlen($religion['description']) >= '220') 
                             <a id="readMore" class="h21">Read more</a>
