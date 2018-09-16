@@ -4,7 +4,7 @@ body{
 	color:#646464;
 	background-color:#f6f6f6;
 }
-a:hover{text-decoration: none;}
+a:hover{text-decoration: none; cursor: pointer;}
 
 .container {
     padding-right: 0px;
