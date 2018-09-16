@@ -14,15 +14,15 @@
                     <td colspan="2"><div class="titleblock smaextra_reli">{{ $religion['address1'] }} {{ $religion['address2'] }}, {{ $religion['city'] }}, {{ $religion['state'] }}, {{ $religion['zip'] }}</div></td>
                 </tr>
             <tr>
-                    <td colspan="2"><div class="titleblock smaextra_reli"><a href="tel:{{ $religion['phone1'] }}"  class="extra_reli">{{ $religion['phone1'] }}</a></div></td>
+                    <td colspan="2"><a href="tel:{{ $religion['phone1'] }}"  class="titleblock smaextra_reli extra_reli">{{ $religion['phone1'] }}</a></td>
                 </tr>  
                 <tr>
                     @if ($todaysMassTime || $todaysConfessionTime || $todaysAdorationTime) 
                         <tr>
                             <td colspan="2">
-                                @if ($todaysMassTime)<div class="titleblock smaextra_reli  smaextra_reli">Mass: <span>{{$todaysMassTime}}</span></div>@endif   
-                                @if ($todaysConfessionTime)<div class="titleblock smaextra_reli  smaextra_reli">Confession: <span>{{$todaysConfessionTime}}</span></div>@endif     
-                                @if ($todaysAdorationTime)<div class="titleblock smaextra_reli  smaextra_reli">Adoration:<span>{{$todaysAdorationTime}}</span></div>@endif     
+                                @if ($todaysMassTime)<div class="titleblock smaextra_reli  smaextra_reli">Mass: {{$todaysMassTime}}</div>@endif   
+                                @if ($todaysConfessionTime)<div class="titleblock smaextra_reli  smaextra_reli">Confession: {{$todaysConfessionTime}}</div>@endif     
+                                @if ($todaysAdorationTime)<div class="titleblock smaextra_reli  smaextra_reli">Adoration:{{$todaysAdorationTime}}</div>@endif     
                             </td>
                         </tr>   
                     @endif  
@@ -50,7 +50,7 @@
                         <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
                     </tr>
                     <tr>
-                        <td colspan="2"><h2><a href="http://{{ $religion['website'] }}" target="_blank" class="h21" >{{ $religion['website'] }}</a></h2></td>
+                        <td colspan="2"><a href="http://{{ $religion['website'] }}" target="_blank"><h2 class="h21">{{ $religion['website'] }}</h2></a></td>
                     </tr>   
                 @endif                          
                 <tr>

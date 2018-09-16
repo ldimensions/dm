@@ -63,7 +63,7 @@
                     @else
                         <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
                     @endif                 
-                    <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-restaurant')}}/{{ $rel['urlName'] }}" class=" colorh1"><h2 class="content1"> {{ $rel['name'] }}</h2></a>                                                           
+                    <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-restaurant')}}/{{ $rel['urlName'] }}" ><h2 class="content1 colorh1"> {{ $rel['name'] }}</h2></a>                                                           
                     @if ($rel['latitude'] && $rel['longitude'])
                         <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
                     @endif  
