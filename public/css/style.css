@@ -13,6 +13,9 @@ a:hover{text-decoration: none; cursor: pointer;}
 	margin-left: auto;
 	width:auto;
 }
+.read{
+	line-height: 34px;
+}
 .row {
     margin-right: 0px !important;
     margin-left: 0px !important;
