@@ -314,11 +314,11 @@ class CommonController extends Controller
     }
 
     function descriptionLength($length) {
-        if($length <= 55){
+        if($length <= 65){
             return 20;
-        }else if($length <= 110){
+        }else if($length <= 130){
             return 40;
-        }else if($length <= 165){
+        }else if($length <= 195){
             return 60;
         }
         // else if($length <= 220){

@@ -50,7 +50,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">CDO Forcast</a>
+                    <a class="navbar-brand" href="index.html">Dallas Indian Portal</a>
                 </div>
                 <!-- /.navbar-header -->
 

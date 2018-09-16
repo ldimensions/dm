@@ -27,7 +27,7 @@
                                 <input type="hidden" name="id" value="{{ $grocery['id'] }}" id="id">
                                 <input type="hidden" name="addressId" value="{{ $grocery['addressId'] }}" id="addressId">
                                 <input type="hidden" name="urlId" value="{{ $grocery['urlId'] }}" id="urlId">
-                                <input type="hidden" name="seoId" value="{{ $grocery['seoId'] }}" id="urlId">  
+                                <input type="hidden" name="seoId" value="{{ $grocery['seoId'] }}" id="seoId">  
                                 
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#grocery" data-toggle="tab">Grocery</a>

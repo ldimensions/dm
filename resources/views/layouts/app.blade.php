@@ -5,21 +5,16 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-        <!-- {!! SEOMeta::generate() !!}
-        {!! OpenGraph::generate() !!}
-        {!! Twitter::generate() !!} -->
-            <!-- OR -->
-        <!-- {!! SEO::generate() !!} -->
         
-        <!-- MINIFIED -->
+        <meta name="copyright" content="dallasindianportal.com" />
+        <meta name="author" content="dallasindianportal.com" />
+        <meta name="allow-search" content="yes" />
+        <meta name="revisit-after" content="daily" />
+        <meta name="robots" content="index,follow" />
         {!! SEO::generate(true) !!}
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <!-- <title>{{ config('app.name', 'Laravel') }}</title> -->
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -44,13 +39,13 @@
                 <div class="headerstrip"></div>
                 <div class="col-md-12 headerh nopadding">
                     <div class="header"> 
-                        @if ( Auth::guest() )
+                        <!-- @if ( Auth::guest() )
                             <a href="{{ url('/login') }}"  class="signinbutton">Login</a> 
                             <a href="{{ url('/register') }}"  class="signinbutton">Sign Up</a>                            
                         @else
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"  class="signinbutton">Logout</a> 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>                            
-                        @endif                        
+                        @endif                         -->
                         <a href="#"  class="location"><img alt="{{config('app.siteId')}}" src="{{ URL::to('/') }}/image/location.svg" />Dallas</a> 
                     </div>
                     <div class="menumain">
