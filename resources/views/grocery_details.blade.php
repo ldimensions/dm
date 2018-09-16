@@ -32,7 +32,7 @@
                 <td colspan="2">
                     <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($grocery['description']) !!}</div>
                     @if(strlen($grocery['description']) >= '220') 
-                        <a id="readMore">Read more</a>
+                        <a id="readMore" class="h21">Read more</a>
                     @else
                         <span id="readMore"></span>
                     @endif 
