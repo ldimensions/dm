@@ -105,7 +105,7 @@ class ReligionController extends Controller
         $todaysMassTime                 =   "";
         $todaysConfessionTime           =   "";
         $todaysAdorationTime            =   "";
-        $descriptionHeight              =   "60";
+        $descriptionHeight              =   "20";
         $commonCtrl                     =   new CommonController;
 
         $seoUrl                         =   $commonCtrl->seoUrl($request->path(),2);
@@ -236,7 +236,7 @@ class ReligionController extends Controller
                                             ->where('religion.is_disabled', '=', '0')                                            
                                             ->orderBy('religion.premium', 'desc')
                                             ->orderBy('religion.order', 'asc')                                                    
-                                            ->take(5)->get();
+                                            ->take(10)->get();
         
         $related                        =   $relatedRs->toArray();  
 

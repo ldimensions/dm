@@ -100,7 +100,7 @@ class RestaurantController extends Controller
         
         $distance                       =   "";
         $todaysWorkingTime              =   "";
-        $descriptionHeight              =   "60";
+        $descriptionHeight              =   "20";
         $commonCtrl                     =   new CommonController;
 
         $seoUrl                         =   $commonCtrl->seoUrl($request->path(),2);        
@@ -213,7 +213,7 @@ class RestaurantController extends Controller
                                                     ->where('restaurant.is_disabled', '=', '0')
                                                     ->orderBy('restaurant.premium', 'desc')
                                                     ->orderBy('restaurant.order', 'asc')                                         
-                                                    ->take(5)->get();   
+                                                    ->take(10)->get();   
             
         $related                     =   $relatedRs->toArray();  
 

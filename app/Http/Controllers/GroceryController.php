@@ -158,7 +158,7 @@ class GroceryController extends Controller
 
         $distance                       =   "";
         $todaysWorkingTime              =   "";
-        $descriptionHeight              =   "60";
+        $descriptionHeight              =   "20";
         $commonCtrl                     =   new CommonController;
 
         $seoUrl                         =   $commonCtrl->seoUrl($request->path(),2);        
@@ -268,7 +268,7 @@ class GroceryController extends Controller
                                                     ->where('grocery.is_disabled', '=', '0')
                                                     ->orderBy('grocery.premium', 'desc')
                                                     ->orderBy('grocery.order', 'asc')                                         
-                                                    ->take(5)->get();                                          
+                                                    ->take(10)->get();                                          
             
         $related                     =   $relatedRs->toArray();  
 

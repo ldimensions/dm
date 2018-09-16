@@ -229,65 +229,65 @@ class ReligionController extends Controller
                     ]
                 ); 
 
-        if (!file_exists(public_path().'/image/religion/'.$religionVal['id'])) {
-            mkdir(public_path().'/image/religion/'.$religionVal['id'], 0777, true);
-        }                
+            if (!file_exists(public_path().'/image/religion/'.$religionVal['id'])) {
+                mkdir(public_path().'/image/religion/'.$religionVal['id'], 0777, true);
+            }                
 
-        if($request->hasFile('photos')){
-            $files                          = $request->file('photos');
-            
-            DB::table('photo')->where('religionId', $religionVal['id'])->where('is_primary', 0)->delete();
-            
-            foreach($files as $key=> $file){
-                $filename                   = $file->getClientOriginalName();
-                $rand                       = (rand(10,100));
-                $extension                  = $file->getClientOriginalExtension();                
-                $fileName                   = $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                //$file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
-                $resizeImage                = Image::make($file);
-                $resizeImage->resize(466,350);
-                $path                       = public_path('image/religion/'.$religionVal['id'].'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                $resizeImage->save($path); 
+            if($request->hasFile('photos')){
+                $files                          = $request->file('photos');
+                
+                DB::table('photo')->where('religionId', $religionVal['id'])->where('is_primary', 0)->delete();
+                
+                foreach($files as $key=> $file){
+                    $filename                   = $file->getClientOriginalName();
+                    $rand                       = (rand(10,100));
+                    $extension                  = $file->getClientOriginalExtension();                
+                    $fileName                   = $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
+                    //$file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
+                    $resizeImage                = Image::make($file);
+                    $resizeImage->resize(466,350);
+                    $path                       = public_path('image/religion/'.$religionVal['id'].'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    $resizeImage->save($path); 
 
-                DB::table('photo')->insertGetId(
-                    [
-                        'photoName'         => $fileName,
-                        'order'             => $key,
-                        'religionId'         => $religionVal['id'],
-                        'updated_at'  => date("Y-m-d H:i:s")
-                    ]
-                );
+                    DB::table('photo')->insertGetId(
+                        [
+                            'photoName'         => $fileName,
+                            'order'             => $key,
+                            'religionId'         => $religionVal['id'],
+                            'updated_at'  => date("Y-m-d H:i:s")
+                        ]
+                    );
+                }
             }
-        }
-        if($request->hasFile('thumbnail')){
-            $files                          = $request->file('thumbnail');
+            if($request->hasFile('thumbnail')){
+                $files                          = $request->file('thumbnail');
 
-            DB::table('photo')->where('religionId', $religionVal['id'])->where('is_primary', 1)->delete();
-            
-            foreach($files as $key=> $file){
-                $filename                   = $file->getClientOriginalName();
-                $rand                       = (rand(10,1000));
-                $extension                  = $file->getClientOriginalExtension();                
-                $fileName                   = $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                //$file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
+                DB::table('photo')->where('religionId', $religionVal['id'])->where('is_primary', 1)->delete();
+                
+                foreach($files as $key=> $file){
+                    $filename                   = $file->getClientOriginalName();
+                    $rand                       = (rand(10,1000));
+                    $extension                  = $file->getClientOriginalExtension();                
+                    $fileName                   = $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
+                    //$file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
 
-                $resizeImage                = Image::make($file);
-                $resizeImage->resize(128,95);
-                $path                       = public_path('image/religion/'.$religionVal['id'].'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                $resizeImage->save($path); 
-
-                DB::table('photo')->insertGetId(
-                    [
-                        'photoName'         => $fileName,
-                        'order'             => $key,
-                        'religionId'         => $religionVal['id'],
-                        'is_primary'        => 1,
-                        'updated_at'  => date("Y-m-d H:i:s")
-                    ]
-                );
-            }
-        }        
-        return redirect('/admin/religion')->with('status', 'Religion updated!');                    
+                    $resizeImage                = Image::make($file);
+                    $resizeImage->resize(128,95);
+                    $path                       = public_path('image/religion/'.$religionVal['id'].'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    $resizeImage->save($path); 
+echo $path;exit();
+                    DB::table('photo')->insertGetId(
+                        [
+                            'photoName'         => $fileName,
+                            'order'             => $key,
+                            'religionId'         => $religionVal['id'],
+                            'is_primary'        => 1,
+                            'updated_at'  => date("Y-m-d H:i:s")
+                        ]
+                    );
+                }
+            }        
+            return redirect('/admin/religion')->with('status', 'Religion updated!');                    
         }else{
 
             $religionId                      =   DB::table('religion')->insertGetId(

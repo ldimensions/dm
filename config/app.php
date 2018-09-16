@@ -8,15 +8,24 @@ return [
     'toEmail' =>  'lindosebastian@gmail.com',
     'defaultSEO' => [
         '1' => [    // Dallas
-            'SEOMetaTitle'                        => "Home Page - Testing",
-            'SEOMetaDesc'                         =>  'Dallas Malayali Grocery shops, Restarunt and churches',
+            'SEOMetaTitle'                        => "Dallas Indian Portal | Dallas Indian Community - dallasindianportal.com",
+            'SEOMetaDesc'                         =>  'Find indian grocery shops, indian restarunt, indian christian churches, indian hindu temple, indian muslim mosque, indian movies, indian events, indain classifieds ',
             'SEOMetaKeywords'                     =>  [
-                                                         'keyword 1','keyword 2', 'keyword 3', 'keyword 4'
+                                                         'Dallas indian portal',
+                                                         'Dallas indian community', 
+                                                         'Dallas indian grocery', 
+                                                         'Dallas indian restaurants',
+                                                         'Dallas indian events',
+                                                         'Dallas indian christian church',
+                                                         'Dallas indian hindu temple',
+                                                         'Dallas indian movies',
+                                                         'Dallas indian muslim mosque',
+                                                         'Dallas indian travels'
                                                       ],
             'SEOMetaPublishedTime'                =>  '',
-            'OpenGraphTitle'                      =>  '',
-            'OpenGraphDesc'                       =>  '',
-            'OpenGraphUrl'                        =>  '',
+            'OpenGraphTitle'                      =>  'Dallas Indian Portal | Dallas Indian Community - dallasindianportal.com',
+            'OpenGraphDesc'                       =>  'Find indian grocery shops, indian restarunt, indian christian churches, indian hindu temple, indian muslim mosque, indian movies, indian events, indain classifieds ',
+            'OpenGraphUrl'                        =>  'dallasindianportal.com',
             'OpenGraphPropertyType'               =>  '',
             'OpenGraphPropertyLocale'             =>  '',
             'OpenGraphPropertyLocaleAlternate'    =>  '',
