@@ -125,7 +125,10 @@
                                         <a href="{{ url('/admin/suggession_for_edit') }}">Suggessions for edit (<span id="suggessionForEditCount"></span>)</a>
                                     </li>                                
                                 </ul>
-                            </li>                           
+                            </li> 
+                            <li>
+                                <a href="{{ url('/admin/seo') }}"> SEO</a>
+                            </li>                                                        
                         </ul>
                     </div>
                     <!-- /.sidebar-collapse -->
@@ -138,10 +141,8 @@
             /*---------- Image Slider End----------*/
             $( document ).ready(function() {
                 $.get("<?php echo URL::to('/');?>/getSuggessionNotification", function(data, status){
-                    //if(status=="success"){
-                        document.getElementById("suggessionNotification").innerHTML = data.message;
-                        document.getElementById("suggessionForEditCount").innerHTML = data.count;
-                    //}
+                    document.getElementById("suggessionNotification").innerHTML = data.message;
+                    document.getElementById("suggessionForEditCount").innerHTML = data.count;
                 });
             });
             

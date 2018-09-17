@@ -106,7 +106,10 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::post('/admin/movie_add', 'Admin\MovieController@addMovie');
     Route::get('admin/movie/delete/{id}', 'Admin\MovieController@deleteMovie')->where(['id' => '[0-9]+']);
 
-
+    Route::get('/admin/seo', 'Admin\SEOController@index')->name('seo');
+    Route::get('/admin/seo_add/{id?}', 'Admin\SEOController@addSeoView')->name('addSeoView')->where(['id' => '[0-9]+']);
+    Route::post('/admin/seo_add', 'Admin\SEOController@addSeo');
+    Route::get('/admin/seo/delete/{id}', 'Admin\SEOController@deleteEvent')->where(['id' => '[0-9]+']);
     
 
 

@@ -15,7 +15,9 @@ class Seo extends Migration
     {
         Schema::create('seo', function (Blueprint $table) {
             $table->increments('seoId');
-            $table->integer('urlId');
+            $table->integer('urlId')->nullable();
+            $table->string('keyValue')->nullable();
+            $table->integer('index')->nullable();            
             $table->string('SEOMetaTitle')->nullable();
             $table->string('SEOMetaDesc')->nullable();
             $table->string('SEOMetaPublishedTime')->nullable();

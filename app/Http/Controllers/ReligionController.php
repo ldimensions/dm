@@ -73,24 +73,24 @@ class ReligionController extends Controller
         $religionRs                         =   $religionRs->get();
         $religions                          =   $religionRs->toArray();  
 
-        if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
-            foreach($religions as $key => $religion) {    
-                $distance                       =   "";
-                $religions[$key]["distance"]    =   "";
-                $lat                            =   ($religion['latitude'])?$religion['latitude']:'';
-                $long                           =   ($religion['longitude'])?$religion['longitude']:'';
-                if($lat && $long){
-                    $dist                       =   $commonCtrl->distance($lat, $long, "M");
-                    if($dist){
-                        $religions[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
-                    }
-                }
-            }
-        } 
+        // if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
+        //     foreach($religions as $key => $religion) {    
+        //         $distance                       =   "";
+        //         $religions[$key]["distance"]    =   "";
+        //         $lat                            =   ($religion['latitude'])?$religion['latitude']:'';
+        //         $long                           =   ($religion['longitude'])?$religion['longitude']:'';
+        //         if($lat && $long){
+        //             $dist                       =   $commonCtrl->distance($lat, $long, "M");
+        //             if($dist){
+        //                 $religions[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
+        //             }
+        //         }
+        //     }
+        // } 
         
         $cityRs                             =   City::select('cityId','city', 'value')
-        ->orderBy('city', 'asc')
-        ->get();  
+                                                    ->orderBy('city', 'asc')
+                                                    ->get();  
         $cities                             =   $cityRs->toArray();      
         //print_r($religions);
 
@@ -135,9 +135,9 @@ class ReligionController extends Controller
             $lat                            =   ($religionRs['latitude'])?$religionRs['latitude']:'';
             $long                           =   ($religionRs['longitude'])?$religionRs['longitude']:'';
     
-            if($lat && $long){
-                $distance                   =   number_format((float)$commonCtrl->distance($lat, $long, "M"), 1, '.', '')." Miles";
-            }
+            // if($lat && $long){
+            //     $distance                   =   number_format((float)$commonCtrl->distance($lat, $long, "M"), 1, '.', '')." Miles";
+            // }
 
             $workingTimes                   =   json_decode($religionRs['workingTime'], true);
 
@@ -240,20 +240,20 @@ class ReligionController extends Controller
         
         $related                        =   $relatedRs->toArray();  
 
-        if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
-            foreach($related as $key => $relatedRs) {    
-                $distance                       =   "";
-                $related[$key]["distance"]    =   "";
-                $lat                            =   ($relatedRs['latitude'])?$relatedRs['latitude']:'';
-                $long                           =   ($relatedRs['longitude'])?$relatedRs['longitude']:'';
-                if($lat && $long){
-                    $dist                       =   $commonCtrl->distance($lat, $long, "M");
-                    if($dist){
-                        $related[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
-                    }
-                }
-            }
-        }  
+        // if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
+        //     foreach($related as $key => $relatedRs) {    
+        //         $distance                       =   "";
+        //         $related[$key]["distance"]    =   "";
+        //         $lat                            =   ($relatedRs['latitude'])?$relatedRs['latitude']:'';
+        //         $long                           =   ($relatedRs['longitude'])?$relatedRs['longitude']:'';
+        //         if($lat && $long){
+        //             $dist                       =   $commonCtrl->distance($lat, $long, "M");
+        //             if($dist){
+        //                 $related[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
+        //             }
+        //         }
+        //     }
+        // }  
                 
         return view('related',['related' => $related, 'type' => 'religion']);
     }    

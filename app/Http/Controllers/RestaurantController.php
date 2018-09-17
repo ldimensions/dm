@@ -68,19 +68,19 @@ class RestaurantController extends Controller
         $restaurantRs                       =   $restaurantRs->get();                                                
         $restaurants                        =   $restaurantRs->toArray();
 
-        if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){            
-            foreach($restaurants as $key => $restaurant) {    
-                $distance                       =   "";
-                $lat                            =   ($restaurant['latitude'])?$restaurant['latitude']:'';
-                $long                           =   ($restaurant['longitude'])?$restaurant['longitude']:'';
-                if($lat && $long){
-                    $dist                       =   $commonCtrl->distance($lat, $long, "M");
-                    if($dist){
-                        $restaurants[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
-                    }
-                }
-            }
-        }
+        // if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){            
+        //     foreach($restaurants as $key => $restaurant) {    
+        //         $distance                       =   "";
+        //         $lat                            =   ($restaurant['latitude'])?$restaurant['latitude']:'';
+        //         $long                           =   ($restaurant['longitude'])?$restaurant['longitude']:'';
+        //         if($lat && $long){
+        //             $dist                       =   $commonCtrl->distance($lat, $long, "M");
+        //             if($dist){
+        //                 $restaurants[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
+        //             }
+        //         }
+        //     }
+        // }
 
         // echo "<pre>";
         // print_r($restaurants);
@@ -134,9 +134,9 @@ class RestaurantController extends Controller
             $lat                            =   ($restaurant['latitude'])?$restaurant['latitude']:'';
             $long                           =   ($restaurant['longitude'])?$restaurant['longitude']:'';
     
-            if($lat && $long){
-                $distance                   =   number_format((float)$commonCtrl->distance($lat, $long, "M"), 1, '.', '')." Miles";
-            }
+            // if($lat && $long){
+            //     $distance                   =   number_format((float)$commonCtrl->distance($lat, $long, "M"), 1, '.', '')." Miles";
+            // }
 
             $workingTimes                   =   json_decode($restaurant['workingTime'], true);
             $todaysDate                     =   date("l");   
@@ -217,20 +217,20 @@ class RestaurantController extends Controller
             
         $related                     =   $relatedRs->toArray();  
 
-        if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
-            foreach($related as $key => $relatedRs) {    
-                $distance                       =   "";
-                $related[$key]["distance"]    =   "";
-                $lat                            =   ($relatedRs['latitude'])?$relatedRs['latitude']:'';
-                $long                           =   ($relatedRs['longitude'])?$relatedRs['longitude']:'';
-                if($lat && $long){
-                    $dist                       =   $commonCtrl->distance($lat, $long, "M");
-                    if($dist){
-                        $related[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
-                    }
-                }
-            }
-        }  
+        // if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
+        //     foreach($related as $key => $relatedRs) {    
+        //         $distance                       =   "";
+        //         $related[$key]["distance"]    =   "";
+        //         $lat                            =   ($relatedRs['latitude'])?$relatedRs['latitude']:'';
+        //         $long                           =   ($relatedRs['longitude'])?$relatedRs['longitude']:'';
+        //         if($lat && $long){
+        //             $dist                       =   $commonCtrl->distance($lat, $long, "M");
+        //             if($dist){
+        //                 $related[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
+        //             }
+        //         }
+        //     }
+        // }  
                 
         return view('related',['related' => $related, 'type' => 'restaurant']);
     }     
