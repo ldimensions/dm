@@ -22,9 +22,9 @@
                         <a href="../{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" class="block_txtblock">{{ $rel['name'] }}</a>                                                          
                         <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img {{$loop->index}}{{ $rel['name'] }} src="image/map.svg" /></a>
                         <div class="block_kmblock">
-                            @if (isset($rel['distance']) && $rel['distance'])
+                           <!-- @if (isset($rel['distance']) && $rel['distance'])
                                 <div class="gro_kmblock">{{$rel['distance']}}</div>
-                            @endif   
+                            @endif -->  
                             <div class="txtblock">{{$rel['city']}}, {{$rel['zip']}}</div>
                             <a href="tel:{{ $rel['phone1'] }}" class="txtblock1 h21">{{ $rel['phone1'] }}</a>
                         </div>
@@ -41,9 +41,9 @@
                         <a href="../{{config('app.defaultBaseURL.dallas-indian-restaurant')}}/{{ $rel['urlName'] }}" class="block_txtblock">{{ $rel['name'] }}</a>                                                          
                         <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img {{$loop->index}}{{ $rel['name'] }} src="image/map.svg" /></a>
                         <div class="block_kmblock">
-                            @if (isset($rel['distance']) && $rel['distance'])
+                           <!-- @if (isset($rel['distance']) && $rel['distance'])
                                 <div class="re_kmblock">{{$rel['distance']}}</div>
-                            @endif   
+                            @endif   -->
                             <div class="txtblock">{{$rel['city']}}, {{$rel['zip']}}</div>
                             <a href="tel:{{ $rel['phone1'] }}" class="txtblock1 h21">{{ $rel['phone1'] }}</a>
                         </div>
@@ -70,9 +70,9 @@
                         @endif
                         <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img {{$loop->index}}{{ $rel['name'] }} src="image/map.svg" /></a>
                         <div class="block_kmblock">
-                            @if (isset($rel['distance']) && $rel['distance'])
+                            <!-- @if (isset($rel['distance']) && $rel['distance'])
                                 <div class="reli_kmblock">{{$rel['distance']}}</div>
-                            @endif   
+                            @endif    -->
                             <div class="txtblock">{{$rel['city']}}, {{$rel['zip']}}</div>
                             <a href="tel:{{ $rel['phone1'] }}"class="txtblock1 h21">{{ $rel['phone1'] }}</a>
                         </div>
