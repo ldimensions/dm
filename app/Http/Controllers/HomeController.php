@@ -23,7 +23,7 @@ class HomeController extends Controller
                                                 'religion.workingTime',
                                                 'address.address1',
                                                 'address.zip', 
-                                                'address.city',
+                                                'city.city',
                                                 'address.phone1', 'address.latitude',
                                                 'address.longitude','religion_type.religionName',
                                                 'url.urlName',
@@ -33,6 +33,7 @@ class HomeController extends Controller
                                             ->leftjoin('url','url.religionId', '=', 'religion.id')
                                             ->leftjoin('address','address.id', '=', 'religion.addressId')
                                             ->leftjoin('site','site.siteId', '=', 'religion.siteId')
+                                            ->leftjoin('city','city.cityId', '=', 'address.city')                                                                                       
                                             ->where('religion.is_deleted', '=', '0')
                                             ->where('religion.is_disabled', '=', '0')
                                             ->where('site.siteId', '=', $siteId)
