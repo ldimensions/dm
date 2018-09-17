@@ -1,8 +1,8 @@
 @extends('layouts.app')
-
 @section('content')
-
-    <div class="col-md-9 leftcontainer">
+<div class="mcontainer">
+<div class="maincontainer">
+    <div class="leftcontainer">
         <div class="col-md-12 searchbar hiddepadding">
             <a href="#" class="selocation"></a>
             <form>
@@ -23,9 +23,10 @@
                         <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img {{$loop->index}}{{ $rel['name'] }} src="image/map.svg" /></a>
                         <div class="block_kmblock">
                             @if (isset($rel['distance']) && $rel['distance'])
-                                <div class="reli_kmblock">{{$rel['distance']}}</div>
+                                <div class="gro_kmblock">{{$rel['distance']}}</div>
                             @endif   
-                            <div class="txtblock">{{$rel['city']}}, {{$rel['zip']}}</br>{{$rel['phone1']}}</div>
+                            <div class="txtblock">{{$rel['city']}}, {{$rel['zip']}}</div>
+                            <a href="tel:{{ $rel['phone1'] }}" class="txtblock1 h21">{{ $rel['phone1'] }}</a>
                         </div>
                         <div class="bottomborder"></div>
                     </div>
@@ -41,9 +42,10 @@
                         <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img {{$loop->index}}{{ $rel['name'] }} src="image/map.svg" /></a>
                         <div class="block_kmblock">
                             @if (isset($rel['distance']) && $rel['distance'])
-                                <div class="reli_kmblock">{{$rel['distance']}}</div>
+                                <div class="re_kmblock">{{$rel['distance']}}</div>
                             @endif   
-                            <div class="txtblock">{{$rel['city']}}, {{$rel['zip']}}</br>{{$rel['phone1']}}</div>
+                            <div class="txtblock">{{$rel['city']}}, {{$rel['zip']}}</div>
+                            <a href="tel:{{ $rel['phone1'] }}" class="txtblock1 h21">{{ $rel['phone1'] }}</a>
                         </div>
                         <div class="bottomborder"></div>
                     </div>
@@ -71,7 +73,8 @@
                             @if (isset($rel['distance']) && $rel['distance'])
                                 <div class="reli_kmblock">{{$rel['distance']}}</div>
                             @endif   
-                            <div class="txtblock">{{$rel['city']}}, {{$rel['zip']}}</br>{{$rel['phone1']}}</div>
+                            <div class="txtblock">{{$rel['city']}}, {{$rel['zip']}}</div>
+                            <a href="tel:{{ $rel['phone1'] }}"class="txtblock1 h21">{{ $rel['phone1'] }}</a>
                         </div>
                         <div class="bottomborder"></div>
                     </div>
@@ -83,4 +86,6 @@
         </div>
         <div class="col-md-3 rightcontainer"></div>
     </div>
+</div>
+</div>    
 @endsection
