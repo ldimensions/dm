@@ -11,7 +11,7 @@ $(function(){
     });
 });
 
-if (navigator.geolocation) {
+/*if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
 } else {
     console.log("Geolocation is not supported by this browser.");
@@ -25,7 +25,7 @@ function setCookie(lat, long, value) {
     d.setTime(d.getTime() + 24*60*60*1000*1);
     document.cookie = "lat=" + lat + ";path=/;expires=" + d.toGMTString();
     document.cookie = "long=" + long + ";path=/;expires=" + d.toGMTString();
-} 
+}*/ 
 
 function validate() {
     var errors = true;
