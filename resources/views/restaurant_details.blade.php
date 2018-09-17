@@ -11,10 +11,10 @@
                 <td colspan="2" ><h1 class="titleblock">{{ $restaurant['name'] }}</h1></td>
                 </tr>
                 <tr>
-                <td colspan="2"><div class="titleblock"><span class="white smaextra_res">{{ $restaurant['address1'] }} {{ $restaurant['address2'] }}, {{ $restaurant['city'] }}, {{ $restaurant['state'] }}, {{ $restaurant['zip'] }}</span></div></td>
+                <td colspan="2"><div class="titleblock white smaextra_res">{{ $restaurant['address1'] }} {{ $restaurant['address2'] }}, {{ $restaurant['city'] }}, {{ $restaurant['state'] }}, {{ $restaurant['zip'] }}</div></td>
                 </tr>
                 <tr>
-                <td colspan="2"><div class="titleblock"><span class="white smaextra_res"><a href="tel:{{ $restaurant['phone1'] }}" class="extra_res">{{ $restaurant['phone1'] }}</a></span></div></td>
+                <td colspan="2"><a href="tel:{{ $restaurant['phone1'] }}" class="titleblock white extra_res">{{ $restaurant['phone1'] }}</a></td>
                 </tr>
                 @if($todaysWorkingTime)
                     <tr>
@@ -44,7 +44,7 @@
                       <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
                   </tr>
                   <tr>
-                      <td colspan="2"><h2><a href="http://{{ $restaurant['website'] }}" target="_blank"  class="h21" >{{ $restaurant['website'] }}</a></h2></td>
+                      <td colspan="2"><a href="http://{{ $restaurant['website'] }}" target="_blank" ><h2 class="h21">{{ $restaurant['website'] }}</h2></a></td>
                   </tr> 
                 @endif  
             @if($restaurant['ethnicName']) 

@@ -11,10 +11,10 @@
                 <td colspan="2" ><h1 class="titleblock">{{ $grocery['name'] }}</h1></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><div class="titleblock"><span class="white smaextra">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</span></div></td>
+                    <td colspan="2"><div class="titleblock white smaextra">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</div></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><div class="titleblock"><span class="white smaextra"><a href="tel:{{ $grocery['phone1'] }}" class="extra">{{ $grocery['phone1'] }}</a></span></div></td>
+                    <td colspan="2"><a href="tel:{{ $grocery['phone1'] }}" class="titleblock white smaextra extra">{{ $grocery['phone1'] }}</a></td>
                 </tr>
                 @if($todaysWorkingTime)
                     <tr>
@@ -43,7 +43,7 @@
                     <td colspan="2" class="smallfont tdtoppadd1">Website</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><h2><a href="http://{{ $grocery['website'] }}" class="h21" target="_blank">{{ $grocery['website'] }}</a></h2></td>
+                    <td colspan="2"><a href="http://{{ $grocery['website'] }}" target="_blank"><h2 class="h21" >{{ $grocery['website'] }}</h2></a></td>
                 </tr> 
             @endif 
             @if($grocery['ethnicName']) 
