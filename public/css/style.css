@@ -33,6 +33,8 @@ a:hover{text-decoration: none; cursor: pointer;}
 	background-repeat:repeat-x;
 }
 .footerh{
+	position: relative;
+	bottom: 0px;
 	line-height:62px;
 	text-align:center;
 	background-color:#FFFFFF;
@@ -317,7 +319,7 @@ table {
 	background-color:#FFF;
 	height:auto;
 	width:306px;
-	height:314px;
+	height:291px;
 	border:1px solid #E1E1E1;
 	border-radius:5px;
 	margin-left:15px;
@@ -407,8 +409,8 @@ input[type=text], select{
 	float:left;
 	position:relative;
 	width:265px;
-	height:35px;
-	font-size: 20px;
+	height:30px;
+	font-size: 18px;
 	color:#323232;
 	padding-left:15px;
 	text-decoration:none;
@@ -421,8 +423,8 @@ input[type=text], select{
 	float:left;
 	position:relative;
 	width:265px;
-	height:35px;
-	font-size: 20px;
+	height:30px;
+	font-size: 18px;
 	color:#000;
 	padding-left:15px;
 	text-decoration:none;
@@ -473,7 +475,7 @@ input[type=text], select{
 	float:left;
 	position:relative;
 	width:93%;
-	height:10px;
+	height:7px;
 	margin-left:10px;
 	border-bottom:1px solid #e1e1e1;
 }
