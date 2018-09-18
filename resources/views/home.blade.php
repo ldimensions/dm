@@ -16,7 +16,7 @@
             </form>
         </div>
         <div class="col-md-4 block3">
-            <div class="gro_block3">Groceries</div>
+            <div class="gro_block3">Top 3 Groceries</div>
                 @foreach ($grocery as $key => $rel)
                     <div class="main_block">
                         <a href="../{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" class="block_txtblock">{{ $rel['name'] }}</a>                                                          
@@ -35,7 +35,7 @@
             </div>
 
             <div class="col-md-4 block3">
-                <div class="re_block3">Restaurants</div>
+                <div class="re_block3">Top 3 Restaurants</div>
                 @foreach ($restaurants as $key => $rel)
                     <div class="main_block">
                         <a href="../{{config('app.defaultBaseURL.dallas-indian-restaurant')}}/{{ $rel['urlName'] }}" class="block_txtblock">{{ $rel['name'] }}</a>                                                          
@@ -54,7 +54,7 @@
             </div>
 
             <div class="col-md-4 block3">
-                <div class="reli_block3">Religions</div>
+                <div class="reli_block3">Top 3 Religions</div>
                 @foreach ($religion as $key => $rel)
                     <div class="main_block">
                         @if ($rel['religionName'] == 'Christianity')
