@@ -3,23 +3,26 @@
 <div class="mcontainer">
 <div class="maincontainer">
 <div class="leftcontainer">
-    <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-religion')}}" class="subcontent2 h21">Religions</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Details</span></div>
+    <div class="paggination">
+        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-religion')}}" class="subcontent2 h21">Religions</a>&nbsp;&nbsp;>&nbsp;&nbsp;
+        <span class="title">Details</span>
+    </div>
     <div class="block2">
         <div class="relig_title toparea space">
             <table class="fullWidth">
             <tr>
-                <td colspan="2" ><h1 class="religin_txt titleblock">{{ $religion['name'] }}</h1></td>
+                <td><h1 class="religin_txt titleblock">{{ $religion['name'] }}</h1></td>
                 </tr> 
             <tr>
-                    <td colspan="2"><div class="titleblock smaextra_reli">{{ $religion['address1'] }} {{ $religion['address2'] }}, {{ $religion['city'] }}, {{ $religion['state'] }}, {{ $religion['zip'] }}</div></td>
+                    <td><div class="titleblock smaextra_reli">{{ $religion['address1'] }} {{ $religion['address2'] }}, {{ $religion['city'] }}, {{ $religion['state'] }}, {{ $religion['zip'] }}</div></td>
                 </tr>
             <tr>
-                    <td colspan="2"><a href="tel:{{ $religion['phone1'] }}"  class="titleblock smaextra_reli extra_reli">{{ $religion['phone1'] }}</a></td>
+                    <td><a href="tel:{{ $religion['phone1'] }}"  class="titleblock smaextra_reli extra_reli">{{ $religion['phone1'] }}</a></td>
                 </tr>  
                 <tr>
                     @if ($todaysMassTime || $todaysConfessionTime || $todaysAdorationTime) 
                         <tr>
-                            <td colspan="2">
+                            <td>
                                 @if ($todaysMassTime)<div class="titleblock smaextra_reli  smaextra_reli">Mass: {{$todaysMassTime}}</div>@endif   
                                 @if ($todaysConfessionTime)<div class="titleblock smaextra_reli  smaextra_reli">Confession: {{$todaysConfessionTime}}</div>@endif     
                                 @if ($todaysAdorationTime)<div class="titleblock smaextra_reli  smaextra_reli">Adoration:{{$todaysAdorationTime}}</div>@endif     
@@ -33,10 +36,10 @@
         <div class="content">
             <table class="fullWidth">
             <tr>
-                <td colspan="2">&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                    <td colspan="2">
+                    <td>
                         <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($religion['description']) !!}</div>
                          @if(strlen($religion['description']) >= '220') 
                          <a id="readMore" class="read h21">Read more...</a>
@@ -47,24 +50,24 @@
                 </tr>
                 @if (isset($religion['website']) && $religion['website'])
                     <tr>
-                        <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
+                        <td class="smallfont tdtoppadd1">Website:</td>
                     </tr>
                     <tr>
-                        <td colspan="2"><a href="http://{{ $religion['website'] }}" target="_blank"><h2 class="h21">{{ $religion['website'] }}</h2></a></td>
+                        <td><a href="http://{{ $religion['website'] }}" target="_blank"><h2 class="h21">{{ $religion['website'] }}</h2></a></td>
                     </tr>   
                 @endif                          
                 <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Located In:</td>
+                    <td class="smallfont tdtoppadd1">Located In:</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><h3>{{ $religion['city'] }}</h3></td>
+                    <td><h3>{{ $religion['city'] }}</h3></td>
                 </tr>
                 @if (isset($distance) && $distance)
                     <tr>
-                        <td colspan="2" class="smallfont tdtoppadd1">Distance:</td>
+                        <td class="smallfont tdtoppadd1">Distance:</td>
                     </tr>
                     <tr>
-                        <td colspan="2">{{ $distance }}</td>
+                        <td>{{ $distance }}</td>
                     </tr>
                 @endif
 
@@ -74,7 +77,7 @@
                         @if($wtKey == "Mass" && count($wtArr) >0)
                             <table>
                                 <tr>
-                                    <td colspan="2" class="smallfont tdtoppadd1">Mass:</td>
+                                    <td colspan="3" class="smallfont tdtoppadd1">Mass:</td>
                                 </tr>
                                 @foreach ($wtArr[0] as $wtMassArrKey => $wtMass)
                                     @if ( !empty ( $wtMass ) )
@@ -100,7 +103,7 @@
                         @elseif($wtKey == "Confession"  && count($wtArr) >0)
                             <table>
                                 <tr>
-                                    <td colspan="2" class="smallfont tdtoppadd1">Confession:</td>
+                                    <td colspan="3" class="smallfont tdtoppadd1">Confession:</td>
                                 </tr>
                                 @foreach ($wtArr[0] as $wtConfArrKey => $wtConf)
                                     @if ( !empty ( $wtConf ) )
@@ -126,7 +129,7 @@
                         @elseif($wtKey == "Adoration"  && count($wtArr) >0)
                             <table>
                                 <tr>
-                                    <td colspan="2" class="smallfont tdtoppadd1">Adoration:</td>
+                                    <td colspan="3" class="smallfont tdtoppadd1">Adoration:</td>
                                 </tr>
                                 @foreach ($wtArr[0] as $wtAdoArrKey => $wtAdo)
                                     @if ( !empty ( $wtAdo ) )
@@ -237,7 +240,7 @@
             <div class="modal-footer">
                 <input type="hidden" class="form-control nup" id="type" name="type" value="3">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="suggessionBtn" />Submit</button>
+                <button type="button" class="btn btn-primary" id="suggessionBtn">Submit</button>
             </div>            
         </div>
     </div>

@@ -8,17 +8,17 @@
         <div class="gro_title toparea space">
             <table class="fullWidth">
                 <tr>
-                <td colspan="2" ><h1 class="titleblock">{{ $grocery['name'] }}</h1></td>
+                <td><h1 class="titleblock">{{ $grocery['name'] }}</h1></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><div class="titleblock white smaextra">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</div></td>
+                    <td><div class="titleblock white smaextra">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</div></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><a href="tel:{{ $grocery['phone1'] }}" class="titleblock white smaextra extra">{{ $grocery['phone1'] }}</a></td>
+                    <td><a href="tel:{{ $grocery['phone1'] }}" class="titleblock white smaextra extra">{{ $grocery['phone1'] }}</a></td>
                 </tr>
                 @if($todaysWorkingTime)
                     <tr>
-                        <td colspan="2" class="smaextra">Working Time : {{$todaysWorkingTime}}</td>
+                        <td class="smaextra">Working Time : {{$todaysWorkingTime}}</td>
                     </tr>                         
                 @endif
             </table> 
@@ -74,7 +74,7 @@
                     @if($wtKey == "default")
                         <table>
                             <tr>
-                                <td colspan="2" class="smallfont tdtoppadd1">Working Time</td>
+                                <td colspan="3" class="smallfont tdtoppadd1">Working Time</td>
                             </tr>
                             @foreach ($wtArr[0] as $wtArrKey => $wtRs)
                                 @if ( !empty ( $wtRs ) )
@@ -174,7 +174,7 @@
             <div class="modal-footer">
                 <input type="hidden" class="form-control nup" id="type" name="type" value="1">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="suggessionBtn" />Submit</button>
+                <button type="button" class="btn btn-primary" id="suggessionBtn">Submit</button>
             </div>            
         </div>
     </div>

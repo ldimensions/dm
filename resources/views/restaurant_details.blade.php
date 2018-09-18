@@ -8,17 +8,17 @@
         <div class="res_title toparea space">
         <table class="fullWidth">
                 <tr>
-                <td colspan="2" ><h1 class="titleblock">{{ $restaurant['name'] }}</h1></td>
+                <td><h1 class="titleblock">{{ $restaurant['name'] }}</h1></td>
                 </tr>
                 <tr>
-                <td colspan="2"><div class="titleblock white smaextra_res">{{ $restaurant['address1'] }} {{ $restaurant['address2'] }}, {{ $restaurant['city'] }}, {{ $restaurant['state'] }}, {{ $restaurant['zip'] }}</div></td>
+                <td><div class="titleblock white smaextra_res">{{ $restaurant['address1'] }} {{ $restaurant['address2'] }}, {{ $restaurant['city'] }}, {{ $restaurant['state'] }}, {{ $restaurant['zip'] }}</div></td>
                 </tr>
                 <tr>
-                <td colspan="2"><a href="tel:{{ $restaurant['phone1'] }}" class="titleblock white extra_res">{{ $restaurant['phone1'] }}</a></td>
+                <td><a href="tel:{{ $restaurant['phone1'] }}" class="titleblock white extra_res">{{ $restaurant['phone1'] }}</a></td>
                 </tr>
                 @if($todaysWorkingTime)
                     <tr>
-                        <td colspan="2" class="smaextra_res">Working Time : {{$todaysWorkingTime}} </td>
+                        <td class="smaextra_res">Working Time : {{$todaysWorkingTime}} </td>
                     </tr> 
                 @endif   
         </table>        
@@ -27,10 +27,10 @@
         <div class="content">
             <table class="fullWidth">
             <tr>
-                <td colspan="2">&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
                 <tr>
-                    <td colspan="2">
+                    <td>
                         <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($restaurant['description']) !!}</div>
                         @if(strlen($restaurant['description']) >= '220') 
                         <a id="readMore" class="read h21">Read more...</a>
@@ -41,32 +41,32 @@
                 </tr>            
                 @if (isset($restaurant['website']) && $restaurant['website'])
                   <tr>
-                      <td colspan="2" class="smallfont tdtoppadd1">Website:</td>
+                      <td  class="smallfont tdtoppadd1">Website:</td>
                   </tr>
                   <tr>
-                      <td colspan="2"><a href="http://{{ $restaurant['website'] }}" target="_blank" ><h2 class="h21">{{ $restaurant['website'] }}</h2></a></td>
+                      <td><a href="http://{{ $restaurant['website'] }}" target="_blank" ><h2 class="h21">{{ $restaurant['website'] }}</h2></a></td>
                   </tr> 
                 @endif  
             @if($restaurant['ethnicName']) 
                 <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity</td>
+                    <td class="smallfont tdtoppadd1 topspace">Ethnicity</td>
                 </tr> 
                 <tr>
-                    <td colspan="2"><h3>{{ $restaurant['ethnicName'] }}</h3></td>
+                    <td><h3>{{ $restaurant['ethnicName'] }}</h3></td>
                 </tr>  
             @endif              
                 <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Located In:</td>
+                    <td class="smallfont tdtoppadd1">Located In:</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><h3>{{ $restaurant['city'] }}</h3></td>
+                    <td><h3>{{ $restaurant['city'] }}</h3></td>
                 </tr>
                 @if (isset($distance) && $distance)
                   <tr>
-                      <td colspan="2" class="smallfont tdtoppadd1">Distance:</td>
+                      <td class="smallfont tdtoppadd1">Distance:</td>
                   </tr>
                   <tr>
-                      <td colspan="2">{{ $distance }}</td>
+                      <td>{{ $distance }}</td>
                   </tr>
                 @endif
 
@@ -75,7 +75,7 @@
                     @if($wtKey == "default")
                         <table>
                             <tr>
-                                <td colspan="2" class="smallfont tdtoppadd1">Working Time:</td>
+                                <td colspan="3" class="smallfont tdtoppadd1">Working Time:</td>
                             </tr>
                             @foreach ($wtArr[0] as $wtArrKey => $wtRs)
                                 @if ( !empty ( $wtRs ) )
@@ -142,7 +142,7 @@
 
 <div class="rightcontainer"></div>
 </div>
-</div>
+</div>s
   
 <div class="row">
     <div class="col-md-12 footerh nopadding"></div>
@@ -182,7 +182,7 @@
             <div class="modal-footer">
                 <input type="hidden" class="form-control nup" id="type" name="type" value="2">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="suggessionBtn" />Submit</button>
+                <button type="button" class="btn btn-primary" id="suggessionBtn">Submit</button>
             </div>            
         </div>
     </div>

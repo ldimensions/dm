@@ -87,8 +87,8 @@
                 @endif                 
         </div>
     @endforeach
-
-</div>
+    
+    </div>
 </div>
 </div>
 <div class="col-md-3 rightcontainer"></div>
