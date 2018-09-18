@@ -31,21 +31,38 @@
                                     </li>                                    
                                 </ul>  
                                 <div class="tab-content">                                        
-                                    <div class="tab-pane fade" id="seo" style="position: relative;min-height: 520px;">
+                                    <div class="tab-pane fade in active" id="seo" style="position: relative;min-height: 600px;">
                                         <br/><br/>
                                         <div class="col-lg-6">
                                             <div class="form-group">
+                                                <label>SEOKeyValue</label>
+                                                <input name="keyValue" value="{{ old('keyValue', $seo['keyValue']) }}" id="keyValue" maxlength="100" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>SEOIndexValue</label>
+                                                <select name="indexValue" id="indexValue" class="form-control">
+                                                    <option value="">-----Select SEO Index Value-----</option>
+                                                    <option value="1" @if(old('indexValue', $seo['indexValue']) == 1) {{ 'selected' }} @endif>1</option>
+                                                    <option value="2" @if(old('indexValue', $seo['indexValue']) == 2) {{ 'selected' }} @endif>2</option>
+                                                    <option value="3" @if(old('indexValue', $seo['indexValue']) == 3) {{ 'selected' }} @endif>3</option>
+                                                    <option value="4" @if(old('indexValue', $seo['indexValue']) == 4) {{ 'selected' }} @endif>4</option>
+                                                    <option value="5" @if(old('indexValue', $seo['indexValue']) == 5) {{ 'selected' }} @endif>5</option>
+                                                    <option value="6" @if(old('indexValue', $seo['indexValue']) == 6) {{ 'selected' }} @endif>6</option>
+                                                    <option value="7" @if(old('indexValue', $seo['indexValue']) == 7) {{ 'selected' }} @endif>7</option>
+                                                    <option value="8" @if(old('indexValue', $seo['indexValue']) == 8) {{ 'selected' }} @endif>8</option>
+                                                    <option value="9" @if(old('indexValue', $seo['indexValue']) == 9) {{ 'selected' }} @endif>9</option>
+                                                    <option value="10" @if(old('indexValue', $seo['indexValue']) == 10) {{ 'selected' }} @endif>10</option>
+                                                </select>                                                
+                                            </div>                                                                                    
+                                            <div class="form-group">
                                                 <label>SEOMetaTitle</label>
                                                 <input name="SEOMetaTitle" value="{{ old('SEOMetaTitle', $seo['SEOMetaTitle']) }}" id="SEOMetaTitle" maxlength="20" class="form-control">
+                                                <small class="text-danger">{{ $errors->first('SEOMetaTitle') }}</small>
                                             </div> 
                                             <div class="form-group">
                                                 <label>SEOMetaDesc</label>
                                                 <textarea name="SEOMetaDesc" class="form-control" rows="5">{{ old('SEOMetaDesc', $seo['SEOMetaDesc']) }}</textarea>                                                
-                                            </div> 
-                                            <div class="form-group">
-                                                <label>SEOMetaPublishedTime</label>
-                                                <input name="SEOMetaPublishedTime" value="{{ old('SEOMetaPublishedTime', $seo['SEOMetaPublishedTime']) }}" id="SEOMetaPublishedTime" maxlength="15" class="form-control">
-                                            </div> 
+                                            </div>  
                                             <div class="form-group">
                                                 <label>SEOMetaKeywords</label>
                                                 <input name="SEOMetaKeywords" value="{{ old('SEOMetaKeywords', $seo['SEOMetaKeywords']) }}" id="SEOMetaKeywords" maxlength="150" class="form-control">
@@ -79,7 +96,11 @@
                                             <div class="form-group">
                                                 <label>OpenGraph</label>
                                                 <input name="OpenGraph" value="{{ old('OpenGraph', $seo['OpenGraph']) }}" id="OpenGraph" maxlength="150" class="form-control">
-                                            </div>                                                                                                                                                                                                                                                                                                                                                                                                     
+                                            </div>    
+                                            <div class="form-group">
+                                                <label>SEOMetaPublishedTime</label>
+                                                <input name="SEOMetaPublishedTime" value="{{ old('SEOMetaPublishedTime', $seo['SEOMetaPublishedTime']) }}" id="SEOMetaPublishedTime" maxlength="15" class="form-control">
+                                            </div>                                                                                                                                                                                                                                                                                                                                                                                                                                             
                                         </div>                                         
                                     </div>                                     
                                 </div>

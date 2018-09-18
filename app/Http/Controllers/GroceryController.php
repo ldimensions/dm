@@ -147,7 +147,7 @@ class GroceryController extends Controller
                                                     ->orderBy('city', 'asc')
                                                     ->get();  
         $cities                             =   $cityRs->toArray();      
-        $commonCtrl->setMeta($request->path(),1);
+        $commonCtrl->setMeta($request->path(),'','default');
         // echo "<pre>";
         // print_r($grocerys);
         

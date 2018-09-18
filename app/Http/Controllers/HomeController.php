@@ -131,7 +131,8 @@ class HomeController extends Controller
             }
         }
         
-        $commonCtrl->setMeta($request->path(),1);
+        $commonCtrl->setMeta($request->path());
+        //echo $request->path();
         
         return view('home',['religion' => $religions, 'grocery' => $grocerys, 'restaurants' => $restaurants]);
     }

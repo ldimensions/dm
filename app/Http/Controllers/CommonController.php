@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Models\Url;
+use App\Http\Models\Seo;
 
 use SEOMeta;
 use OpenGraph;
@@ -43,10 +44,17 @@ class CommonController extends Controller
         return $url[$index-1];
     }
 
-    function setMeta($url, $index){
+    function setMeta($url, $index=null, $keyValue=null){
 
-        $url                                =   explode("/",$url);
-        $seoUrl                             =   $url[$index-1];
+        $seoUrl                             =   "";
+        if($url == '/'){
+            $keyValue                       =   "default";
+        }else if($index){
+            $url                            =   explode("/",$url);
+            $seoUrl                         =   $url[$index-1];
+        }
+
+        // Check the URL and Index
 
         $seoRs                              =   Url::select('seo.SEOMetaTitle', 'seo.SEOMetaDesc', 
                                                 'seo.SEOMetaPublishedTime','seo.SEOMetaKeywords',
@@ -58,7 +66,6 @@ class CommonController extends Controller
                                                 ->where('url.urlName', '=', $seoUrl)
                                                 ->get()->first();  
         if($seoRs){
-            
             $seo                            =   $seoRs->toArray();
             SEOMeta::setTitle($seo['SEOMetaTitle']);
             SEOMeta::setDescription($seo['SEOMetaDesc']);
@@ -66,14 +73,68 @@ class CommonController extends Controller
             if($seo['SEOMetaPublishedTime']){
                 SEOMeta::addMeta('article:published_time', $seo['SEOMetaPublishedTime']->toW3CString(), 'property');
             }
-            
-        }else{
-            $defaultSEOValues               =   config('app.defaultSEO');
-            $defaultSEO                     =   $defaultSEOValues[1];
-            SEOMeta::setTitle($defaultSEO['SEOMetaTitle']);
-            SEOMeta::setDescription($defaultSEO['SEOMetaDesc']);
-            SEOMeta::addKeyword($defaultSEO['SEOMetaKeywords']);    
+            return true;    
         }
+
+        // Checcking the Key value is there or not
+
+        if($keyValue){
+            $seoRs                              =   Seo::select('seo.SEOMetaTitle', 'seo.SEOMetaDesc', 
+                                                                'seo.SEOMetaPublishedTime','seo.SEOMetaKeywords',
+                                                                'seo.OpenGraphTitle','seo.OpenGraphDesc',
+                                                                'seo.OpenGraphUrl','seo.OpenGraphPropertyType',
+                                                                'seo.OpenGraphPropertyLocale','seo.OpenGraphPropertyLocaleAlternate',
+                                                                'seo.OpenGraph')
+                                                            ->where('seo.keyValue', '=', $keyValue)
+                                                            ->get()->first();    
+                                                            
+            if($seoRs){
+                $seo                            =   $seoRs->toArray();
+                SEOMeta::setTitle($seo['SEOMetaTitle']);
+                SEOMeta::setDescription($seo['SEOMetaDesc']);
+                SEOMeta::addKeyword([$seo['SEOMetaKeywords']]); 
+                if($seo['SEOMetaPublishedTime']){
+                    SEOMeta::addMeta('article:published_time', $seo['SEOMetaPublishedTime']->toW3CString(), 'property');
+                }
+                return true;                    
+            }                                                            
+        }
+
+        // Default
+
+        $seoRs                              =   Seo::select('seo.SEOMetaTitle', 'seo.SEOMetaDesc', 
+                                                            'seo.SEOMetaPublishedTime','seo.SEOMetaKeywords',
+                                                            'seo.OpenGraphTitle','seo.OpenGraphDesc',
+                                                            'seo.OpenGraphUrl','seo.OpenGraphPropertyType',
+                                                            'seo.OpenGraphPropertyLocale','seo.OpenGraphPropertyLocaleAlternate',
+                                                            'seo.OpenGraph')
+                                                        ->where('seo.keyValue', '=', 'default')
+                                                        ->get()->first();    
+                                                        
+        if($seoRs){
+            $seo                            =   $seoRs->toArray();
+            SEOMeta::setTitle($seo['SEOMetaTitle']);
+            SEOMeta::setDescription($seo['SEOMetaDesc']);
+            SEOMeta::addKeyword([$seo['SEOMetaKeywords']]); 
+            if($seo['SEOMetaPublishedTime']){
+                SEOMeta::addMeta('article:published_time', $seo['SEOMetaPublishedTime']->toW3CString(), 'property');
+            }
+            return true;                    
+        }      
+
+
+        
+
+
+
+
+        // else{
+        //     $defaultSEOValues               =   config('app.defaultSEO');
+        //     $defaultSEO                     =   $defaultSEOValues[1];
+        //     SEOMeta::setTitle($defaultSEO['SEOMetaTitle']);
+        //     SEOMeta::setDescription($defaultSEO['SEOMetaDesc']);
+        //     SEOMeta::addKeyword($defaultSEO['SEOMetaKeywords']);    
+        // }
 
     }
 

@@ -59,7 +59,6 @@
                                             Link
                                     <td width="65px;">
                                         <a href="{{ url('/admin/seo_add') }}/{{$rel['seoId']}}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></button></a>
-                                        <!-- <button type="button" class="btn btn-default btn-sm" onClick="deleteMovie({{$rel['movieId']}})"><i class="fa fa-trash-o"></i></button> -->
                                     </td>
                                 </tr>
                               @endforeach
@@ -94,14 +93,7 @@
             //"info":           true,
             "paging":         true
         });
-    });
-    function deleteMovie(id) {
-        var txt;
-        var r = confirm("Are you sure to delete");
-        if (r == true) {
-            window.location.href = "/admin/movie/delete/"+id;
-        }
-    }      
+    });   
     </script> 
 @endsection
   
