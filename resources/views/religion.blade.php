@@ -81,7 +81,7 @@
                     <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
                 @endif  
                 <div class="content2">{{ $rel['address1'] }} {{ $rel['address2'] }}, {{ $rel['city'] }}, {{ $rel['state'] }} {{ $rel['zip'] }}</div>
-                <a href="tel:{{ $rel['phone1'] }}"class="content3 h21">{{ $rel['phone1'] }}</a>
+                <a href="tel:{{ $rel['phone1'] }}" class="content3 h21">{{ $rel['phone1'] }}</a>
                 @if (isset($rel['distance']) && $rel['distance'])
                     <div class="reli_kmblock_list">{{ $rel['distance'] }}</div>
                 @endif                 

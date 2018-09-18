@@ -20,7 +20,7 @@
                 @foreach ($grocery as $key => $rel)
                     <div class="main_block">
                         <a href="../{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}" class="block_txtblock">{{ $rel['name'] }}</a>                                                          
-                        <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img {{$loop->index}}{{ $rel['name'] }} src="image/map.svg" /></a>
+                        <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img alt="{{$loop->index}}{{ $rel['name'] }}" src="image/map.svg" /></a>
                         <div class="block_kmblock">
                            <!-- @if (isset($rel['distance']) && $rel['distance'])
                                 <div class="gro_kmblock">{{$rel['distance']}}</div>
@@ -39,7 +39,7 @@
                 @foreach ($restaurants as $key => $rel)
                     <div class="main_block">
                         <a href="../{{config('app.defaultBaseURL.dallas-indian-restaurant')}}/{{ $rel['urlName'] }}" class="block_txtblock">{{ $rel['name'] }}</a>                                                          
-                        <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img {{$loop->index}}{{ $rel['name'] }} src="image/map.svg" /></a>
+                        <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img alt="{{$loop->index}}{{ $rel['name'] }}" src="image/map.svg" /></a>
                         <div class="block_kmblock">
                            <!-- @if (isset($rel['distance']) && $rel['distance'])
                                 <div class="re_kmblock">{{$rel['distance']}}</div>
@@ -68,13 +68,13 @@
                         @elseif($rel['religionName'] == 'Islam')
                             <a href="../{{config('app.defaultBaseURL.dallas-islan-mosque')}}/{{ $rel['urlName'] }}" class="block_txtblock">{{ $rel['name'] }}</a>                                                          
                         @endif
-                        <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img {{$loop->index}}{{ $rel['name'] }} src="image/map.svg" /></a>
+                        <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img alt="{{$loop->index}}{{ $rel['name'] }}" src="image/map.svg" /></a>
                         <div class="block_kmblock">
                             <!-- @if (isset($rel['distance']) && $rel['distance'])
                                 <div class="reli_kmblock">{{$rel['distance']}}</div>
                             @endif    -->
                             <div class="txtblock">{{$rel['city']}}, {{$rel['zip']}}</div>
-                            <a href="tel:{{ $rel['phone1'] }}"class="txtblock1 h21">{{ $rel['phone1'] }}</a>
+                            <a href="tel:{{ $rel['phone1'] }}" class="txtblock1 h21">{{ $rel['phone1'] }}</a>
                         </div>
                         <div class="bottomborder"></div>
                     </div>
