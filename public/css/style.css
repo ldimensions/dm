@@ -20,6 +20,12 @@ a:hover{text-decoration: none; cursor: pointer;}
     margin-right: 0px !important;
     margin-left: 0px !important;
 }
+.roww1 {
+	position: absolute;
+	bottom: 0px;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
 
 .h1, .h2, .h3, h1, h2, h3 {
     margin-top: 0px;
@@ -33,8 +39,6 @@ a:hover{text-decoration: none; cursor: pointer;}
 	background-repeat:repeat-x;
 }
 .footerh{
-	position: relative;
-	bottom: 0px;
 	line-height:62px;
 	text-align:center;
 	background-color:#FFFFFF;
@@ -205,7 +209,7 @@ table {
 }
 .headerstrip{
 	position: relative;
-	height:5px;
+	height:2px;
 	width:100%;
 	background:url(../image/topbg.gif);
 	}
