@@ -21,6 +21,9 @@ class RestaurantController extends Controller
         if($type){
             $typeArr                    =   explode("-",$type);
             $typeVal                    =   $typeArr[count($typeArr)-1];
+            
+            $commonCtrl->setMeta($request->path(),'',$type);
+            $setSeo                     =   true;
         }
         if($city && $city !='all'){
             $cityArr                    =   explode("-",$city);
@@ -88,8 +91,9 @@ class RestaurantController extends Controller
         $cityRs                             =   City::select('cityId','city', 'value')
                                                 ->orderBy('city', 'asc')
                                                 ->get();  
-        $cities                             =   $cityRs->toArray();      
-        $commonCtrl->setMeta($request->path(),1);
+        $cities                             =   $cityRs->toArray();     
+
+        (!$setSeo)?$commonCtrl->setMeta($request->path(),'','dallas-indian-restaurant'):'';
         // echo "<pre>";
         // print_r($cities);
         

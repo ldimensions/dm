@@ -178,7 +178,7 @@
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>SEOMetaTitle</label>
-                                                <input name="SEOMetaTitle" value="{{ old('SEOMetaTitle', $movie['SEOMetaTitle']) }}" id="SEOMetaTitle" maxlength="20" class="form-control">
+                                                <input name="SEOMetaTitle" value="{{ old('SEOMetaTitle', $movie['SEOMetaTitle']) }}" id="SEOMetaTitle" maxlength="70" class="form-control">
                                             </div> 
                                             <div class="form-group">
                                                 <label>SEOMetaDesc</label>

@@ -76,11 +76,17 @@ class GroceryController extends Controller
     {
         $typeVal                        =   "";
         $cityVal                        =   "";
-        $keywordVal                     =   "";
+        $keywordVal                     =   ""; 
+        $setSeo                         =   false;       
+        $siteId                         =   config('app.siteId');
+        $commonCtrl                     =   new CommonController;
 
         if($type){
             $typeArr                    =   explode("-",$type);
             $typeVal                    =   $typeArr[count($typeArr)-1];
+
+            $commonCtrl->setMeta($request->path(),'',$type);
+            $setSeo                     =   true;
         }
         if($city && $city !='all'){
             $cityArr                    =   explode("-",$city);
@@ -89,9 +95,6 @@ class GroceryController extends Controller
         if($keyword){
             $keywordVal                 =   $keyword;
         }         
-        
-        $siteId                         =   config('app.siteId');
-        $commonCtrl                     =   new CommonController;
 
         $groceryRs                      =   Grocery::select('grocery.id', 'grocery.name', 
                                                     'address.address1', 'address.address2',
@@ -147,7 +150,9 @@ class GroceryController extends Controller
                                                     ->orderBy('city', 'asc')
                                                     ->get();  
         $cities                             =   $cityRs->toArray();      
-        $commonCtrl->setMeta($request->path(),'','default');
+
+        (!$setSeo)?$commonCtrl->setMeta($request->path(),'','dallas-indian-grocery-store'):'';
+        
         // echo "<pre>";
         // print_r($grocerys);
         

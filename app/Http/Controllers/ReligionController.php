@@ -16,6 +16,9 @@ class ReligionController extends Controller
         $typeVal                        =   "";
         $cityVal                        =   "";
         $keywordVal                     =   "";
+        $setSeo                         =   false;       
+        $siteId                         =   config('app.siteId');
+        $commonCtrl                     =   new CommonController;        
 
         if($type){
             $typeArr                    =   explode("-",$type);
@@ -23,17 +26,17 @@ class ReligionController extends Controller
             if(!is_numeric($typeVal)){
                 $typeVal                =   "";
             }
+
+            $commonCtrl->setMeta($request->path(),'',$type);
+            $setSeo                     =   true;            
         }
         if($city && $city !='all'){
             $cityArr                    =   explode("-",$city);
-            $cityVal                    =   $cityArr[count($cityArr)-1];
+            $cityVal                    =   $cityArr[count($cityArr)-1];    
         } 
         if($keyword){
             $keywordVal                 =   $keyword;
         }         
-
-        $distance                       =   "";
-        $commonCtrl                     =   new CommonController;
 
         $siteId                         =   config('app.siteId');
         $religionRs                     =   Religion::select('religion.id', 'religion.name', 
@@ -94,7 +97,7 @@ class ReligionController extends Controller
         $cities                             =   $cityRs->toArray();      
         //print_r($religions);
 
-        $commonCtrl->setMeta($request->path(),1);
+        (!$setSeo)?$commonCtrl->setMeta($request->path(),'','dallas-indian-religion'):'';
         
         return view('religion',['religion' => $religions, 'cities' => $cities, 'type' => $type, 'cityVal' => $cityVal, 'keyword' => $keyword]);
     }
