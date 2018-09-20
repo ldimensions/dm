@@ -26,10 +26,10 @@
 
         <div class="content">
             <table class="fullWidth">
-            <tr>
-                <td>&nbsp;</td>
-            </tr>
             @if($restaurant['description']) 
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
                 <tr>
                     <td>
                         <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($restaurant['description']) !!}</div>
