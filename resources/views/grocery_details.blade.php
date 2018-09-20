@@ -28,16 +28,18 @@
             <tr>
                 <td colspan="2">&nbsp;</td>
             </tr>
-            <tr>
-                <td colspan="2">
-                    <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($grocery['description']) !!}</div>
-                    @if(strlen($grocery['description']) >= '220') 
-                    <a id="readMore" class="read h21">Read more...</a>
-                    @else
-                        <span id="readMore"></span>
-                    @endif 
-                </td>
-            </tr>
+            @if($grocery['description']) 
+                <tr>
+                    <td colspan="2">
+                        <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($grocery['description']) !!}</div>
+                        @if(strlen($grocery['description']) >= '220') 
+                        <a id="readMore" class="read h21">Read more...</a>
+                        @else
+                            <span id="readMore"></span>
+                        @endif 
+                    </td>
+                </tr>
+            @endif   
             @if (isset($grocery['website']) && $grocery['website'])
                 <tr>
                     <td colspan="2" class="smallfont tdtoppadd1">Website</td>

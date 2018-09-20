@@ -29,6 +29,7 @@
             <tr>
                 <td>&nbsp;</td>
             </tr>
+            @if($restaurant['description']) 
                 <tr>
                     <td>
                         <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($restaurant['description']) !!}</div>
@@ -38,7 +39,8 @@
                             <span id="readMore"></span>
                         @endif 
                     </td>
-                </tr>            
+                </tr> 
+            @endif               
                 @if (isset($restaurant['website']) && $restaurant['website'])
                   <tr>
                       <td  class="smallfont tdtoppadd1">Website:</td>

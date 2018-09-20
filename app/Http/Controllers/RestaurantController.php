@@ -17,11 +17,14 @@ class RestaurantController extends Controller
         $typeVal                        =   "";
         $cityVal                        =   "";
         $keywordVal                     =   "";
+        $setSeo                         =   false;       
+        $siteId                         =   config('app.siteId');
+        $commonCtrl                     =   new CommonController;        
 
         if($type){
             $typeArr                    =   explode("-",$type);
             $typeVal                    =   $typeArr[count($typeArr)-1];
-            
+
             $commonCtrl->setMeta($request->path(),'',$type);
             $setSeo                     =   true;
         }
@@ -32,10 +35,7 @@ class RestaurantController extends Controller
         if($keyword){
             $keywordVal                 =   $keyword;
         }         
-
-        $siteId                         =   config('app.siteId');
-        $commonCtrl                     =   new CommonController;
-
+        
         $restaurantRs                   =   Restaurant::select('restaurant.id', 'restaurant.name', 
                                                     'address.address1', 'address.address2',
                                                     'city.city', 'address.state',

@@ -38,7 +38,8 @@
             <tr>
                 <td>&nbsp;</td>
             </tr>
-            <tr>
+            @if ($religion['description'])
+                <tr>
                     <td>
                         <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($religion['description']) !!}</div>
                          @if(strlen($religion['description']) >= '220') 
@@ -48,6 +49,7 @@
                         @endif 
                     </td>
                 </tr>
+            @endif  
                 @if (isset($religion['website']) && $religion['website'])
                     <tr>
                         <td class="smallfont tdtoppadd1">Website:</td>
