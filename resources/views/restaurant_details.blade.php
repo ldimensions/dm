@@ -142,13 +142,13 @@
     <div class="row" id="related"></div>
 </div>
 
-<div class="rightcontainer"></div>
+<div class="rightcontainer">
+    <div class="ad300x600">ADVERTISE HERE</div>
 </div>
-</div>s
+</div>
+</div>
   
-<div class="row">
-    <div class="col-md-12 footerh nopadding"></div>
-</div>
+
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

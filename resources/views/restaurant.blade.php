@@ -77,7 +77,9 @@
     </div>
 
 
-    <div class="rightcontainer"></div>
+    <div class="rightcontainer">
+        <div class="ad250x250">ADVERTISE HERE</div>
+    </div>
 </div>
 </div>
     <script>
