@@ -89,9 +89,11 @@
     @endforeach
     
     </div>
+    <div class="rightcontainer">
+        <div class="ad240x400">ADVERTISE HERE</div>    
+    </div>
 </div>
 </div>
-<div class="col-md-3 rightcontainer"></div>
 
 <script>
         function religionSearch() {

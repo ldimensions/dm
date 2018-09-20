@@ -48,18 +48,21 @@
         <div class="container">
             <div class="row">
                 <div class="headerstrip"></div>
-                <div class="col-md-12 headerh nopadding">
-                    <div class="header"> 
-                        <!-- @if ( Auth::guest() )
-                            <a href="{{ url('/login') }}"  class="signinbutton">Login</a> 
-                            <a href="{{ url('/register') }}"  class="signinbutton">Sign Up</a>                            
-                        @else
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"  class="signinbutton">Logout</a> 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>                            
-                        @endif                         
-                         <a href="#"  class="location"><img alt="{{config('app.siteId')}}" src="{{ URL::to('/') }}/image/location.svg" />Dallas</a>  -->
-                        <img alt="DallasIndianPortal" src="{{ URL::to('/') }}/image/dallasLogo.svg"/>
-                    </div>
+                <div class="headerh nopadding">
+                    <div class="headercontainer">
+                        <div class="header"> 
+                            <!-- @if ( Auth::guest() )
+                                <a href="{{ url('/login') }}"  class="signinbutton">Login</a> 
+                                <a href="{{ url('/register') }}"  class="signinbutton">Sign Up</a>                            
+                            @else
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"  class="signinbutton">Logout</a> 
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>                            
+                            @endif                         
+                            <a href="#"  class="location"><img alt="{{config('app.siteId')}}" src="{{ URL::to('/') }}/image/location.svg" />Dallas</a>  -->
+                            <img alt="DallasIndianPortal" class="hDlOGO" src="{{ URL::to('/') }}/image/dallasLogo.svg"/>
+                            <div class="headerad">ADVERTISE HERE</div>
+                        </div>
+                    </div>    
                     <div class="menumain">
                         <div class="menu"> 
                             <a href="{{ url('/') }}" class="{{ (CommonController::activeMenu('home')) ? 'activemenu' : 'inactivemenu' }}">Home</a> 
@@ -74,15 +77,13 @@
                     </div
                 </div>
             </div>
-
+        </div>
 
             @yield('content')
-            <div class="roww1">
-                <div class="col-md-12 footerh nopadding">Copyright &copy; 2018 Ldimensions. All rights reserved.</div>
-            </div>
+         <div class="footerh nopadding"> Copyright 2018 Ldimensions. All rights reserved.</div>
 
 
-        </div>
+        
     </body>
 </html>
 

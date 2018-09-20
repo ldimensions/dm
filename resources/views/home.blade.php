@@ -84,8 +84,12 @@
 
 
         </div>
-        <div class="col-md-3 rightcontainer"></div>
+        <div class="col-md-3 rightcontainer nopadding">
+        <div class="ad250x250">ADVERTISE HERE</div>
+        </div>
     </div>
+    
+
 </div>
 </div>    
 @endsection

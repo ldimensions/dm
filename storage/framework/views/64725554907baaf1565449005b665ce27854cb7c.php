@@ -1,136 +1,135 @@
-@extends('layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="mcontainer">
 <div class="maincontainer">
 <div class="leftcontainer">
-    <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}" class="subcontent2 h21">Grocery</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{ $grocery['name'] }}</span></div>
+    <div class="paggination"><a href="<?php echo e(URL::to('/')); ?>/<?php echo e(config('app.defaultBaseURL.dallas-indian-grocery-store')); ?>" class="subcontent2 h21">Grocery</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title"><?php echo e($grocery['name']); ?></span></div>
     <div class="block2">
         <div class="gro_title toparea space">
             <table class="fullWidth">
                 <tr>
-                <td><h1 class="titleblock">{{ $grocery['name'] }}</h1></td>
+                <td><h1 class="titleblock"><?php echo e($grocery['name']); ?></h1></td>
                 </tr>
                 <tr>
-                    <td><div class="titleblock white smaextra">{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}</div></td>
+                    <td><div class="titleblock white smaextra"><?php echo e($grocery['address1']); ?> <?php echo e($grocery['address2']); ?>, <?php echo e($grocery['city']); ?>, <?php echo e($grocery['state']); ?>, <?php echo e($grocery['zip']); ?></div></td>
                 </tr>
                 <tr>
-                    <td><a href="tel:{{ $grocery['phone1'] }}" class="titleblock white smaextra extra">{{ $grocery['phone1'] }}</a></td>
+                    <td><a href="tel:<?php echo e($grocery['phone1']); ?>" class="titleblock white smaextra extra"><?php echo e($grocery['phone1']); ?></a></td>
                 </tr>
-                @if($todaysWorkingTime)
+                <?php if($todaysWorkingTime): ?>
                     <tr>
-                        <td class="smaextra">Working Time : {{$todaysWorkingTime}}</td>
+                        <td class="smaextra">Working Time : <?php echo e($todaysWorkingTime); ?></td>
                     </tr>                         
-                @endif
+                <?php endif; ?>
             </table> 
         </div>
         <div class="content">
             <table class="fullWidth">
-            @if($grocery['description']) 
+            <?php if($grocery['description']): ?> 
                 <tr>
                     <td colspan="2">&nbsp;</td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($grocery['description']) !!}</div>
-                        @if(strlen($grocery['description']) >= '220') 
+                        <div id="description" style="overflow: hidden; height: <?php echo e($descriptionHeight); ?>px;"><?php echo nl2br($grocery['description']); ?></div>
+                        <?php if(strlen($grocery['description']) >= '220'): ?> 
                         <a id="readMore" class="read h21">Read more...</a>
-                        @else
+                        <?php else: ?>
                             <span id="readMore"></span>
-                        @endif 
+                        <?php endif; ?> 
                     </td>
                 </tr>
-            @endif   
-            @if (isset($grocery['website']) && $grocery['website'])
+            <?php endif; ?>   
+            <?php if(isset($grocery['website']) && $grocery['website']): ?>
                 <tr>
                     <td colspan="2" class="smallfont tdtoppadd1">Website</td>
                 </tr>
                 <tr>
-                    <td colspan="2"><a href="http://{{ $grocery['website'] }}" target="_blank"><h2 class="h21" >{{ $grocery['website'] }}</h2></a></td>
+                    <td colspan="2"><a href="http://<?php echo e($grocery['website']); ?>" target="_blank"><h2 class="h21" ><?php echo e($grocery['website']); ?></h2></a></td>
                 </tr> 
-            @endif 
-            @if($grocery['ethnicName']) 
+            <?php endif; ?> 
+            <?php if($grocery['ethnicName']): ?> 
                 <tr>
                     <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity</td>
                 </tr> 
                 <tr>
-                    <td colspan="2"><h3>{{ $grocery['ethnicName'] }}</h3></td>
+                    <td colspan="2"><h3><?php echo e($grocery['ethnicName']); ?></h3></td>
                 </tr>                
-            @endif            
+            <?php endif; ?>            
             <tr>
                 <td colspan="2" class="smallfont tdtoppadd1">Located In</td>
             </tr>
             <tr>
-                <td colspan="2"><h3>{{ $grocery['city'] }}</h3></td>
+                <td colspan="2"><h3><?php echo e($grocery['city']); ?></h3></td>
             </tr>
-            @if (isset($distance) && $distance)
+            <?php if(isset($distance) && $distance): ?>
                 <tr>
                     <td colspan="2" class="smallfont tdtoppadd1">Distance</td>
                 </tr>
                 <tr>
-                    <td colspan="2">{{ $distance }}</td>
+                    <td colspan="2"><?php echo e($distance); ?></td>
                 </tr>
-            @endif
+            <?php endif; ?>
             </table>
-            @if($workingTimes)
-                @foreach ($workingTimes as $wtKey => $wtArr)
-                    @if($wtKey == "default")
+            <?php if($workingTimes): ?>
+                <?php $__currentLoopData = $workingTimes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $wtKey => $wtArr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php if($wtKey == "default"): ?>
                         <table>
                             <tr>
                                 <td colspan="3" class="smallfont tdtoppadd1">Working Time</td>
                             </tr>
-                            @foreach ($wtArr[0] as $wtArrKey => $wtRs)
-                                @if ( !empty ( $wtRs ) )
+                            <?php $__currentLoopData = $wtArr[0]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $wtArrKey => $wtRs): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php if( !empty ( $wtRs ) ): ?>
                                 <tr>
-                                    @if ( $wtArrKey == $today )
-                                        <td class="activeweekdays daysWith">{{$wtArrKey}}</td>
-                                    @else
-                                        <td class="inactiveweekdays daysWith">{{$wtArrKey}}</td>
-                                    @endif    
-                                    @foreach ($wtRs as $key => $wt)
-                                        @foreach ($wt as $wtTimeKey => $wtTime)
-                                            @if ( $wtArrKey == $today )
-                                                <td class="activeweekdays">{{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif</td>
-                                            @else
-                                                <td class="inactiveweekdays">{{$wtTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif</td>
-                                            @endif                                              
-                                        @endforeach
-                                    @endforeach
+                                    <?php if( $wtArrKey == $today ): ?>
+                                        <td class="activeweekdays daysWith"><?php echo e($wtArrKey); ?></td>
+                                    <?php else: ?>
+                                        <td class="inactiveweekdays daysWith"><?php echo e($wtArrKey); ?></td>
+                                    <?php endif; ?>    
+                                    <?php $__currentLoopData = $wtRs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $wt): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php $__currentLoopData = $wt; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $wtTimeKey => $wtTime): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if( $wtArrKey == $today ): ?>
+                                                <td class="activeweekdays"><?php echo e($wtTime); ?><?php if($loop->parent->index+1 != $loop->parent->count): ?>&nbsp;-&nbsp;<?php endif; ?></td>
+                                            <?php else: ?>
+                                                <td class="inactiveweekdays"><?php echo e($wtTime); ?><?php if($loop->parent->index+1 != $loop->parent->count): ?>&nbsp;-&nbsp;<?php endif; ?></td>
+                                            <?php endif; ?>                                              
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tr>
                                 
-                                @endif                           
-                            @endforeach  
+                                <?php endif; ?>                           
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
                             
                         </table>   
-                    @endif                   
-                @endforeach 
-            @endif
+                    <?php endif; ?>                   
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
+            <?php endif; ?>
             <div class="suggestionblock">
                 <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent22">Suggest an edit</a>   
             </div>                                         
         </div>
     </div>
     <div class="block22">
-    <div class="white_t space"><h2 class="titleh2 graycolor">{{$grocery['name']}} Location</h2></div>
+    <div class="white_t space"><h2 class="titleh2 graycolor"><?php echo e($grocery['name']); ?> Location</h2></div>
         <div id="map" class="map"></div>
     </div>
-    @if($photos)
+    <?php if($photos): ?>
     <div class="blockk1">
         <div class="block23">
-            <div class="white_Photo space"><h2 class="titleh2 graycolor">{{$grocery['name']}} Photos</h2></div>
+            <div class="white_Photo space"><h2 class="titleh2 graycolor"><?php echo e($grocery['name']); ?> Photos</h2></div>
         </div>
         <div class="block231">
             <div class="topdetail slideshow-container">
                 <ul id="lightSlider">
-                    @foreach ($photos as $key => $photo)
-                        <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
-                            <img src="{{ URL::to('/') }}/image/grocery/{{$grocery['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $grocery['name'] }}" style="width:100%;height:100%" class="bottomarea">
+                    <?php $__currentLoopData = $photos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $photo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li data-thumb="<?php echo e(URL::to('/')); ?>/image/shadow_bottom.gif">
+                            <img src="<?php echo e(URL::to('/')); ?>/image/grocery/<?php echo e($grocery['id']); ?>/<?php echo e($photo['photoName']); ?>" alt="<?php echo e($loop->index); ?><?php echo e($grocery['name']); ?>" style="width:100%;height:100%" class="bottomarea">
                         </li>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </ul>            
             </div>        
         </div>
     </div>    
-    @endif
+    <?php endif; ?>
     <div class="row" id="related"></div>
 </div>
 <div class="col-md-3 rightcontainer nopadding">
@@ -142,7 +141,7 @@
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+        <input type="hidden" name="_token" id="token" value="<?php echo e(csrf_token()); ?>">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title titleh2 " id="exampleModalLabel">Suggest an edit</h5>
@@ -187,10 +186,10 @@
     /*---------- Google Map ----------*/
     
     function initMap() {
-        var lat = parseFloat("{{ $grocery['latitude'] }}");
-        var long = parseFloat("{{ $grocery['longitude'] }}");
+        var lat = parseFloat("<?php echo e($grocery['latitude']); ?>");
+        var long = parseFloat("<?php echo e($grocery['longitude']); ?>");
         console.log(lat+'#'+long);
-        var label = "{{ $grocery['name'] }}";
+        var label = "<?php echo e($grocery['name']); ?>";
         var myLatLng = {lat: lat, lng: long};
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 11,
@@ -230,4 +229,5 @@
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQJp0CkLijcKXd44Pyn6QWX0Da0PwPKtc&callback=initMap">
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

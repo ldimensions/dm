@@ -1,0 +1,152 @@
+<?php use App\Http\Controllers\CommonController;?>
+<!DOCTYPE html>
+<html lang="<?php echo e(app()->getLocale()); ?>">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+
+        <link href="<?php echo e(asset('admin/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet">
+        <link href="<?php echo e(asset('admin/metisMenu/metisMenu.min.css')); ?>" rel="stylesheet">
+        <link href="<?php echo e(asset('admin/dist/css/sb-admin-2.css')); ?>" rel="stylesheet">
+        <link href="<?php echo e(asset('admin/font-awesome/css/font-awesome.min.css')); ?>" rel="stylesheet" type="text/css">
+        <link href="<?php echo e(asset('admin/datatables-plugins/dataTables.bootstrap.css')); ?>" rel="stylesheet">
+        <link href="<?php echo e(asset('admin/datatables-responsive/dataTables.responsive.css')); ?>" rel="stylesheet">   
+        <link href="<?php echo e(asset('admin/datetimepicker/bootstrap-datetimepicker.min.css')); ?>" rel="stylesheet">   
+
+        <script src="<?php echo e(asset('admin/jquery/jquery.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('admin/bootstrap/js/bootstrap.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('admin/metisMenu/metisMenu.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('admin/dist/js/sb-admin-2.js')); ?>"></script>      
+        
+        <script src="<?php echo e(asset('admin/datatables/js/jquery.dataTables.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('admin/datatables-plugins/dataTables.bootstrap.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('admin/datatables-responsive/dataTables.responsive.js')); ?>"></script>
+        <script src="<?php echo e(asset('admin/moment/moment-with-locales.js')); ?>"></script>
+        <script src="<?php echo e(asset('admin/datetimepicker/bootstrap-datetimepicker.min.js')); ?>"></script>
+
+        
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->        
+
+        
+    </head>
+    <body>
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Dallas Indian Portal</a>
+                </div>
+                <!-- /.navbar-header -->
+
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul  class="dropdown-menu dropdown-messages" id="suggessionNotification"></ul>
+                        <!-- /.dropdown-messages -->
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="<?php echo e(route('logout')); ?>"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;"><?php echo e(csrf_field()); ?></form>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                    <!-- /.dropdown -->
+                </ul>
+                <!-- /.navbar-top-links -->
+
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+
+                            <li>
+                                <a href="<?php echo e(url('/admin/dashboard')); ?>"> Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo e(url('/admin/grocery')); ?>"> Grocery</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo e(url('/admin/restaurant')); ?>"> Restarunt</a>
+                            </li> 
+                            <li>
+                                <a href="<?php echo e(url('/admin/religion')); ?>"> Religion</a>
+                            </li>  
+                            <li>
+                                <a href="#"> Events<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="<?php echo e(url('/admin/events')); ?>">Events</a>
+                                    </li>                                       
+                                    <li>
+                                        <a href="<?php echo e(url('/admin/events_category')); ?>">Category</a>
+                                    </li>                                
+                                </ul>                                
+                            </li>
+                            <li>
+                                <a href="#"> Movies<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="<?php echo e(url('/admin/movies')); ?>">Movies</a>
+                                    </li>                                       
+                                    <li>
+                                        <a href="<?php echo e(url('/admin/theatre')); ?>">Theatre</a>
+                                    </li>                                
+                                </ul>
+                            </li>                                                                                                                                          
+                            <li>
+                                <a href="#"> Messages<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="<?php echo e(url('/admin/suggession_for_edit')); ?>">Suggessions for edit (<span id="suggessionForEditCount"></span>)</a>
+                                    </li>                                
+                                </ul>
+                            </li> 
+                            <li>
+                                <a href="<?php echo e(url('/admin/seo')); ?>"> SEO</a>
+                            </li>                                                        
+                        </ul>
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </nav>
+            <?php echo $__env->yieldContent('content'); ?>
+        </div> 
+        <script>
+            /*---------- Image Slider End----------*/
+            $( document ).ready(function() {
+                $.get("<?php echo URL::to('/');?>/getSuggessionNotification", function(data, status){
+                    document.getElementById("suggessionNotification").innerHTML = data.message;
+                    document.getElementById("suggessionForEditCount").innerHTML = data.count;
+                });
+            });
+            
+        </script>               
+    </body>
+</html>
+
