@@ -71,7 +71,7 @@
                       <td>{{ $distance }}</td>
                   </tr>
                 @endif
-
+            </table>
             @if($workingTimes)
                 @foreach ($workingTimes as $wtKey => $wtArr)
                     @if($wtKey == "default")
@@ -109,7 +109,6 @@
                     @endif                   
                 @endforeach   
             @endif  
-            </table>
 
             <div class="suggestionblock">
                 <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent22">Suggest an edit</a>   
@@ -162,21 +161,21 @@
             </div>
             <div class="modal-body">
                 <div class="form-group" id="formGrpErrName">
-                    <label for="recipient-name" class="col-form-label labelfont">Name:</label>
+                    <label id="name1" class="col-form-label labelfont">Name:</label>
                     <input type="text" class="form-control nup" id="name" name="name" maxLength="40">
                     <div id="nameError"></div>
                 </div>
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label labelfont">Email:</label>
+                    <label id="email1" class="col-form-label labelfont">Email:</label>
                     <input type="text" class="form-control nup" id="email" name="email" maxLength="50">
                     <div id="emailError"></div>
                 </div>   
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label labelfont">Phone:</label>
+                    <label id="phone1" class="col-form-label labelfont">Phone:</label>
                     <input type="text" class="form-control nup" id="phone" name="phone" maxLength="20">
                 </div>                       
                 <div class="form-group" id="formGrpErrSuggession">
-                    <label for="message-text" class="col-form-label labelfont">Suggestion:</label>
+                    <label id="suggessioin1" class="col-form-label labelfont">Suggestion:</label>
                     <textarea class="form-control nup" id="suggession" name="suggession"></textarea>
                     <div id="sugessionError"></div>                        
                 </div>

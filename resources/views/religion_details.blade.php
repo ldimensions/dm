@@ -32,44 +32,44 @@
         </div>          
         <div class="content">
             <table class="fullWidth">
-            @if ($religion['description'])
-                <tr>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($religion['description']) !!}</div>
-                         @if(strlen($religion['description']) >= '220') 
-                         <a id="readMore" class="read h21">Read more...</a>
-                        @else
-                            <span id="readMore"></span>
-                        @endif 
-                    </td>
-                </tr>
-            @endif  
-                @if (isset($religion['website']) && $religion['website'])
+                @if ($religion['description'])
                     <tr>
-                        <td class="smallfont tdtoppadd1">Website:</td>
+                        <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td><a href="http://{{ $religion['website'] }}" target="_blank"><h2 class="h21">{{ $religion['website'] }}</h2></a></td>
-                    </tr>   
-                @endif                          
-                <tr>
-                    <td class="smallfont tdtoppadd1">Located In:</td>
-                </tr>
-                <tr>
-                    <td><h3>{{ $religion['city'] }}</h3></td>
-                </tr>
-                @if (isset($distance) && $distance)
+                        <td>
+                            <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($religion['description']) !!}</div>
+                            @if(strlen($religion['description']) >= '220') 
+                            <a id="readMore" class="read h21">Read more...</a>
+                            @else
+                                <span id="readMore"></span>
+                            @endif 
+                        </td>
+                    </tr>
+                @endif  
+                    @if (isset($religion['website']) && $religion['website'])
+                        <tr>
+                            <td class="smallfont tdtoppadd1">Website:</td>
+                        </tr>
+                        <tr>
+                            <td><a href="http://{{ $religion['website'] }}" target="_blank"><h2 class="h21">{{ $religion['website'] }}</h2></a></td>
+                        </tr>   
+                    @endif                          
                     <tr>
-                        <td class="smallfont tdtoppadd1">Distance:</td>
+                        <td class="smallfont tdtoppadd1">Located In:</td>
                     </tr>
                     <tr>
-                        <td>{{ $distance }}</td>
+                        <td><h3>{{ $religion['city'] }}</h3></td>
                     </tr>
-                @endif
-
+                    @if (isset($distance) && $distance)
+                        <tr>
+                            <td class="smallfont tdtoppadd1">Distance:</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $distance }}</td>
+                        </tr>
+                    @endif
+                </table>
                 @if($workingTimes)
                 @if ($religion['religionName'] == 'Christianity')
                     @foreach ($workingTimes as $wtKey => $wtArr)
@@ -165,8 +165,6 @@
                 
                 @endif
             @endif       
-
-            </table>
             <div class="suggestionblock">
                 <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent22">Suggest an edit</a>   
             </div>   
@@ -215,21 +213,21 @@
             </div>
             <div class="modal-body">
                 <div class="form-group" id="formGrpErrName">
-                    <label for="recipient-name" class="col-form-label labelfont">Name:</label>
+                    <label id="name1" class="col-form-label labelfont">Name:</label>
                     <input type="text" class="form-control nup" id="name" name="name" maxLength="40">
                     <div id="nameError"></div>
                 </div>
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label labelfont">Email:</label>
+                    <label id="email1" class="col-form-label labelfont">Email:</label>
                     <input type="text" class="form-control nup" id="email" name="email" maxLength="50">
                     <div id="emailError"></div>
                 </div>   
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label labelfont">Phone:</label>
+                    <label id="phone1" class="col-form-label labelfont">Phone:</label>
                     <input type="text" class="form-control nup" id="phone" name="phone" maxLength="20">
                 </div>                       
                 <div class="form-group" id="formGrpErrSuggession">
-                    <label for="message-text" class="col-form-label labelfont">Suggestion:</label>
+                    <label id="suggession1" class="col-form-label labelfont">Suggestion:</label>
                     <textarea class="form-control nup" id="suggession" name="suggession"></textarea>
                     <div id="sugessionError"></div>                        
                 </div>

@@ -25,51 +25,51 @@
         </div>
         <div class="content">
             <table class="fullWidth">
-            @if($grocery['description']) 
+                @if($grocery['description']) 
+                    <tr>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($grocery['description']) !!}</div>
+                            @if(strlen($grocery['description']) >= '220') 
+                            <a id="readMore" class="read h21">Read more...</a>
+                            @else
+                                <span id="readMore"></span>
+                            @endif 
+                        </td>
+                    </tr>
+                @endif   
+                @if (isset($grocery['website']) && $grocery['website'])
+                    <tr>
+                        <td colspan="2" class="smallfont tdtoppadd1">Website</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><a href="http://{{ $grocery['website'] }}" target="_blank"><h2 class="h21" >{{ $grocery['website'] }}</h2></a></td>
+                    </tr> 
+                @endif 
+                @if($grocery['ethnicName']) 
+                    <tr>
+                        <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity</td>
+                    </tr> 
+                    <tr>
+                        <td colspan="2"><h3>{{ $grocery['ethnicName'] }}</h3></td>
+                    </tr>                
+                @endif            
                 <tr>
-                    <td colspan="2">&nbsp;</td>
+                    <td colspan="2" class="smallfont tdtoppadd1">Located In</td>
                 </tr>
                 <tr>
-                    <td colspan="2">
-                        <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($grocery['description']) !!}</div>
-                        @if(strlen($grocery['description']) >= '220') 
-                        <a id="readMore" class="read h21">Read more...</a>
-                        @else
-                            <span id="readMore"></span>
-                        @endif 
-                    </td>
+                    <td colspan="2"><h3>{{ $grocery['city'] }}</h3></td>
                 </tr>
-            @endif   
-            @if (isset($grocery['website']) && $grocery['website'])
-                <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Website</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><a href="http://{{ $grocery['website'] }}" target="_blank"><h2 class="h21" >{{ $grocery['website'] }}</h2></a></td>
-                </tr> 
-            @endif 
-            @if($grocery['ethnicName']) 
-                <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1 topspace">Ethnicity</td>
-                </tr> 
-                <tr>
-                    <td colspan="2"><h3>{{ $grocery['ethnicName'] }}</h3></td>
-                </tr>                
-            @endif            
-            <tr>
-                <td colspan="2" class="smallfont tdtoppadd1">Located In</td>
-            </tr>
-            <tr>
-                <td colspan="2"><h3>{{ $grocery['city'] }}</h3></td>
-            </tr>
-            @if (isset($distance) && $distance)
-                <tr>
-                    <td colspan="2" class="smallfont tdtoppadd1">Distance</td>
-                </tr>
-                <tr>
-                    <td colspan="2">{{ $distance }}</td>
-                </tr>
-            @endif
+                @if (isset($distance) && $distance)
+                    <tr>
+                        <td colspan="2" class="smallfont tdtoppadd1">Distance</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">{{ $distance }}</td>
+                    </tr>
+                @endif
             </table>
             @if($workingTimes)
                 @foreach ($workingTimes as $wtKey => $wtArr)
@@ -152,21 +152,21 @@
             </div>
             <div class="modal-body">
                 <div class="form-group" id="formGrpErrName">
-                    <label for="recipient-name" class="col-form-label labelfont">Name:</label>
+                    <label id="name1" class="col-form-label labelfont">Name:</label>
                     <input type="text" class="form-control nup" id="name" name="name" maxLength="40">
                     <div id="nameError"></div>
                 </div>
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label labelfont">Email:</label>
+                    <label id="email1" class="col-form-label labelfont">Email:</label>
                     <input type="text" class="form-control nup" id="email" name="email" maxLength="50">
                     <div id="emailError"></div>
                 </div>   
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label labelfont">Phone:</label>
+                    <label id="phone1" class="col-form-label labelfont">Phone:</label>
                     <input type="text" class="form-control nup" id="phone" name="phone" maxLength="20">
                 </div>                       
                 <div class="form-group" id="formGrpErrSuggession">
-                    <label for="message-text" class="col-form-label labelfont">Suggestion:</label>
+                    <label id="suggession1" class="col-form-label labelfont">Suggestion:</label>
                     <textarea class="form-control nup" id="suggession" name="suggession"></textarea>
                     <div id="sugessionError"></div>                        
                 </div>
