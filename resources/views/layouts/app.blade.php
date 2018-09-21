@@ -39,10 +39,8 @@
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'UA-126021205-1');
         </script>
-
     </head>
     <body>
         <div class="container">
@@ -74,16 +72,12 @@
                             <a href="#" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Events </a> 
                             <a href="#" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Movies </a>                      -->
                         </div>
-                    </div
+                    </div>
                 </div>
             </div>
-        </div>
-
             @yield('content')
+        </div>
          <div class="footerh nopadding"> Copyright 2018 Ldimensions. All rights reserved.</div>
-
-
-        
     </body>
 </html>
 

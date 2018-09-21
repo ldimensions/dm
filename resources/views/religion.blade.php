@@ -63,20 +63,17 @@
                 @else
                     <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
                 @endif         
-                     
-                
-                    @if ($rel['religionName'] == 'Christianity')
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-christian-church')}}/{{ $rel['urlName'] }}"><h2 class="content4 colorh1"> {{ $rel['name'] }}</h2></a>
-                    @elseif($rel['religionName'] == 'Hinduism')
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-hindu-temple')}}/{{ $rel['urlName'] }}"><h2 class="content4 colorh1"> {{ $rel['name'] }}</h2></a>
-                    @elseif($rel['religionName'] == 'Judaism')
-                        <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" ><h2 class="content4 colorh1"> {{ $rel['name'] }}</h2></a> -->
-                    @elseif($rel['religionName'] == 'Buddhism')
-                        <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}"><h2 class="content4 colorh1"> {{ $rel['name'] }}</h2></a> -->
-                    @elseif($rel['religionName'] == 'Islam')
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-islan-mosque')}}/{{ $rel['urlName'] }}"><h2 class="content4 colorh1"> {{ $rel['name'] }}</h2></a>                                                          
-                    @endif
-                </h2>
+                @if ($rel['religionName'] == 'Christianity')
+                    <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-christian-church')}}/{{ $rel['urlName'] }}"><h2 class="content4 colorh1"> {{ $rel['name'] }}</h2></a>
+                @elseif($rel['religionName'] == 'Hinduism')
+                    <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-hindu-temple')}}/{{ $rel['urlName'] }}"><h2 class="content4 colorh1"> {{ $rel['name'] }}</h2></a>
+                @elseif($rel['religionName'] == 'Judaism')
+                    <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" ><h2 class="content4 colorh1"> {{ $rel['name'] }}</h2></a> -->
+                @elseif($rel['religionName'] == 'Buddhism')
+                    <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}"><h2 class="content4 colorh1"> {{ $rel['name'] }}</h2></a> -->
+                @elseif($rel['religionName'] == 'Islam')
+                    <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-islan-mosque')}}/{{ $rel['urlName'] }}"><h2 class="content4 colorh1"> {{ $rel['name'] }}</h2></a>                                                          
+                @endif
                 @if ($rel['latitude'] && $rel['longitude'])
                     <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
                 @endif  
