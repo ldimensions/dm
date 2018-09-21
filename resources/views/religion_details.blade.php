@@ -10,27 +10,24 @@
     <div class="block2">
         <div class="relig_title toparea space">
             <table class="fullWidth">
-            <tr>
-                <td><h1 class="religin_txt titleblock">{{ $religion['name'] }}</h1></td>
+                <tr>
+                    <td><h1 class="religin_txt titleblock">{{ $religion['name'] }}</h1></td>
                 </tr> 
-            <tr>
+                <tr>
                     <td><div class="titleblock smaextra_reli">{{ $religion['address1'] }} {{ $religion['address2'] }}, {{ $religion['city'] }}, {{ $religion['state'] }}, {{ $religion['zip'] }}</div></td>
                 </tr>
-            <tr>
+                <tr>
                     <td><a href="tel:{{ $religion['phone1'] }}"  class="titleblock smaextra_reli extra_reli">{{ $religion['phone1'] }}</a></td>
                 </tr>  
-                <tr>
-                    @if ($todaysMassTime || $todaysConfessionTime || $todaysAdorationTime) 
-                        <tr>
-                            <td>
-                                @if ($todaysMassTime)<div class="titleblock smaextra_reli  smaextra_reli">Mass: {{$todaysMassTime}}</div>@endif   
-                                @if ($todaysConfessionTime)<div class="titleblock smaextra_reli  smaextra_reli">Confession: {{$todaysConfessionTime}}</div>@endif     
-                                @if ($todaysAdorationTime)<div class="titleblock smaextra_reli  smaextra_reli">Adoration:{{$todaysAdorationTime}}</div>@endif     
-                            </td>
-                        </tr>   
-                    @endif  
-                    </td>
-                </tr>                
+                @if ($todaysMassTime || $todaysConfessionTime || $todaysAdorationTime) 
+                    <tr>
+                        <td>
+                            @if ($todaysMassTime)<div class="titleblock smaextra_reli  smaextra_reli">Mass: {{$todaysMassTime}}</div>@endif   
+                            @if ($todaysConfessionTime)<div class="titleblock smaextra_reli  smaextra_reli">Confession: {{$todaysConfessionTime}}</div>@endif     
+                            @if ($todaysAdorationTime)<div class="titleblock smaextra_reli  smaextra_reli">Adoration:{{$todaysAdorationTime}}</div>@endif     
+                        </td>
+                    </tr>   
+                @endif  
             </table>    
         </div>          
         <div class="content">
