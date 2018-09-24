@@ -56,7 +56,7 @@
                                             </div>                                                                                    
                                             <div class="form-group">
                                                 <label>SEOMetaTitle</label>
-                                                <input name="SEOMetaTitle" value="{{ old('SEOMetaTitle', $seo['SEOMetaTitle']) }}" id="SEOMetaTitle" maxlength="70" class="form-control">
+                                                <input name="SEOMetaTitle" value="{{ old('SEOMetaTitle', $seo['SEOMetaTitle']) }}" id="SEOMetaTitle" maxlength="100" class="form-control">
                                                 <small class="text-danger">{{ $errors->first('SEOMetaTitle') }}</small>
                                             </div> 
                                             <div class="form-group">

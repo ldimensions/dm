@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Models\Restaurant;
 use App\Http\Models\Photo;
+use App\Http\Models\FoodType;
+use App\Http\Models\RestaurantFoodType;
 use App\Http\Models\Url;
 use App\Http\Models\City;
 use Illuminate\Support\Facades\Validator;
@@ -45,6 +47,8 @@ class RestaurantController extends Controller
     }  
 
     public function addRestaurantView($id=null){
+
+        $resFoodTypes                       =   array();
         
         if($id){
             $restaurantRs                   =   Restaurant::select('restaurant.id', 'restaurant.name', 
@@ -78,7 +82,17 @@ class RestaurantController extends Controller
                                                         ->orderBy('order', 'desc')
                                                         ->where('restaurantId', '=', $id)
                                                         ->get();  
-            $photoRs                        =   $photoArr->toArray();             
+            $photoRs                        =   $photoArr->toArray();    
+            
+            $resFoodTypeRs                  =   RestaurantFoodType::select('foodTypeId')
+                                                    ->where('restaurantId', '=', $id)
+                                                    ->get();  
+            $resFoodTypes1                  =   $resFoodTypeRs->toArray(); 
+            if(count($resFoodTypes1) > 0){
+                for($i = 0; $i < count($resFoodTypes1); $i++){
+                    $resFoodTypes[$i]       =   $resFoodTypes1[$i]['foodTypeId'];
+                }
+            }
         }else{
             $restaurant['id']                  =   "";
             $restaurant['addressId']           =   "";
@@ -122,7 +136,13 @@ class RestaurantController extends Controller
                                                     ->orderBy('city', 'asc')
                                                     ->get();  
         $cities                             =   $cityRs->toArray();  
-        return view('admin.restaurant_add',['restaurant' => $restaurant, 'cities' => $cities, 'photos' => $photoRs]); 
+
+        $foodTypeRs                         =   FoodType::select('id','type')
+                                                    ->orderBy('type', 'asc')
+                                                    ->get();  
+        $foodType                           =   $foodTypeRs->toArray(); 
+
+        return view('admin.restaurant_add',['restaurant' => $restaurant, 'cities' => $cities, 'photos' => $photoRs, 'foodTypes' => $foodType, 'resFoodTypes' => $resFoodTypes]); 
     }
 
     public function addRestaurant(Request $request)
@@ -137,6 +157,7 @@ class RestaurantController extends Controller
                         Rule::unique('url')->ignore($restaurantVal['urlId'], 'id'),
             ],
             'address1' => 'required',
+            'foodType' => 'required',
             'city' => 'required',
             'state' => 'required',
             'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -182,7 +203,7 @@ class RestaurantController extends Controller
                         'phone1'        => $restaurantVal['phone1'],
                         'phone2'        => $restaurantVal['phone2'],
                         'latitude'      => $restaurantVal['latitude'],
-                        'longitude'     => $restaurantVal['latitude'],                   
+                        'longitude'     => $restaurantVal['longitude'],                   
                     ]
             );
             if($restaurantVal['urlName'] != $restaurantVal['urlNameChk']){
@@ -214,6 +235,16 @@ class RestaurantController extends Controller
                     ]
                 ); 
 
+            if($restaurantVal['foodType']){
+                DB::table('restaurant_food_type')->where('restaurantId', $restaurantVal['id'])->delete();
+                for($i =0; $i < count($restaurantVal['foodType']); $i++){
+                    DB::table('restaurant_food_type')->insert([
+                        ['foodTypeId' => $restaurantVal['foodType'][$i], 
+                        'restaurantId' => $restaurantVal['id']]
+                    ]);  
+                }
+            }                  
+
             if (!file_exists(public_path().'/image/restaurant/'.$restaurantVal['id'])) {
                 mkdir(public_path().'/image/restaurant/'.$restaurantVal['id'], 0777, true);
             }
@@ -233,6 +264,8 @@ class RestaurantController extends Controller
                     $resizeImage->resize(466,350);
                     $path                       = public_path('image/restaurant/'.$restaurantVal['id'].'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
                     $resizeImage->save($path); 
+
+                    $file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], 'originalFile_main_'.$key.'.'.$extension); 
 
                     DB::table('photo')->insertGetId(
                         [
@@ -258,7 +291,9 @@ class RestaurantController extends Controller
                     $resizeImage                = Image::make($file);
                     $resizeImage->resize(128,95);
                     $path                       = public_path('image/restaurant/'.$restaurantVal['id'].'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);                
+                    $resizeImage->save($path);      
+                    
+                    $file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], 'originalFile_thumbnail_'.$key.'.'.$extension); 
 
                     DB::table('photo')->insertGetId(
                         [
@@ -293,6 +328,15 @@ class RestaurantController extends Controller
                                                     ]
                                                 );
 
+            if($restaurantVal['foodType']){
+                for($i =0; $i < count($restaurantVal['foodType']); $i++){
+                    DB::table('restaurant_food_type')->insert([
+                        ['foodTypeId' => $restaurantVal['foodType'][$i], 
+                        'restaurantId' => $restaurantId]
+                    ]);  
+                }
+            }                                                
+
             $addressId                      =   DB::table('address')->insertGetId(
                                                     [
                                                         'address1'      => $restaurantVal['address1'],
@@ -304,7 +348,7 @@ class RestaurantController extends Controller
                                                         'phone1'        => $restaurantVal['phone1'],
                                                         'phone2'        => $restaurantVal['phone2'],
                                                         'latitude'      => $restaurantVal['latitude'],
-                                                        'longitude'     => $restaurantVal['latitude'],
+                                                        'longitude'     => $restaurantVal['longitude'],
                                                     ]
                                                 );
             $urlId                          =   DB::table('url')->insertGetId(
@@ -358,7 +402,9 @@ class RestaurantController extends Controller
                     $resizeImage                = Image::make($file);
                     $resizeImage->resize(466,350);
                     $path                       = public_path('image/restaurant/'.$restaurantId.'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);                     
+                    $resizeImage->save($path);    
+                    
+                    $file->move(public_path().'/image/restaurant/'.$restaurantId, 'originalFile_main_'.$key.'.'.$extension); 
     
                     DB::table('photo')->insertGetId(
                         [
@@ -383,7 +429,9 @@ class RestaurantController extends Controller
                     $resizeImage                = Image::make($file);
                     $resizeImage->resize(128,95);
                     $path                       = public_path('image/restaurant/'.$restaurantId.'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);                     
+                    $resizeImage->save($path);    
+                    
+                    $file->move(public_path().'/image/restaurant/'.$restaurantId, 'originalFile_thumbnail_'.$key.'.'.$extension); 
     
                     DB::table('photo')->insertGetId(
                         [

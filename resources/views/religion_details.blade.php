@@ -1,203 +1,203 @@
 @extends('layouts.app')
 @section('content')
 <div class="mcontainer">
-<div class="maincontainer">
-<div class="leftcontainer">
-    <div class="paggination">
-        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-religion')}}" class="subcontent2 h21">Religions</a>&nbsp;&nbsp;>&nbsp;&nbsp;
-        <span class="title">Details</span>
-    </div>
-    <div class="block2">
-        <div class="relig_title toparea space">
-            <table class="fullWidth">
-                <tr>
-                    <td><h1 class="religin_txt titleblock">{{ $religion['name'] }}</h1></td>
-                </tr> 
-                <tr>
-                    <td><div class="titleblock smaextra_reli">{{ $religion['address1'] }} {{ $religion['address2'] }}, {{ $religion['city'] }}, {{ $religion['state'] }}, {{ $religion['zip'] }}</div></td>
-                </tr>
-                <tr>
-                    <td><a href="tel:{{ $religion['phone1'] }}"  class="titleblock smaextra_reli extra_reli">{{ $religion['phone1'] }}</a></td>
-                </tr>  
-                @if ($todaysMassTime || $todaysConfessionTime || $todaysAdorationTime) 
-                    <tr>
-                        <td>
-                            @if ($todaysMassTime)<div class="titleblock smaextra_reli  smaextra_reli">Mass: {{$todaysMassTime}}</div>@endif   
-                            @if ($todaysConfessionTime)<div class="titleblock smaextra_reli  smaextra_reli">Confession: {{$todaysConfessionTime}}</div>@endif     
-                            @if ($todaysAdorationTime)<div class="titleblock smaextra_reli  smaextra_reli">Adoration:{{$todaysAdorationTime}}</div>@endif     
-                        </td>
-                    </tr>   
-                @endif  
-            </table>    
-        </div>          
-        <div class="content">
-            <table class="fullWidth">
-                @if ($religion['description'])
-                    <tr>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($religion['description']) !!}</div>
-                            @if(strlen($religion['description']) >= '220') 
-                            <a id="readMore" class="read h21">Read more...</a>
-                            @else
-                                <span id="readMore"></span>
-                            @endif 
-                        </td>
-                    </tr>
-                @endif  
-                    @if (isset($religion['website']) && $religion['website'])
+    <div class="maincontainer">
+        <div class="leftcontainer">
+            <div class="paggination">
+                <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-religion')}}" class="subcontent2 h21">Religions</a>&nbsp;&nbsp;>&nbsp;&nbsp;
+                <span class="title">Details</span>
+            </div>
+            <div class="block2">
+                <div class="relig_title toparea space">
+                    <table class="fullWidth">
                         <tr>
-                            <td class="smallfont tdtoppadd1">Website:</td>
+                            <td><h1 class="religin_txt titleblock">{{ $religion['name'] }}</h1></td>
+                        </tr> 
+                        <tr>
+                            <td><div class="titleblock smaextra_reli">{{ $religion['address1'] }} {{ $religion['address2'] }}, {{ $religion['city'] }}, {{ $religion['state'] }}, {{ $religion['zip'] }}</div></td>
                         </tr>
                         <tr>
-                            <td><a href="http://{{ $religion['website'] }}" target="_blank"><h2 class="h21">{{ $religion['website'] }}</h2></a></td>
-                        </tr>   
-                    @endif                          
-                    <tr>
-                        <td class="smallfont tdtoppadd1">Located In:</td>
-                    </tr>
-                    <tr>
-                        <td><h3>{{ $religion['city'] }}</h3></td>
-                    </tr>
-                    @if (isset($distance) && $distance)
-                        <tr>
-                            <td class="smallfont tdtoppadd1">Distance:</td>
-                        </tr>
-                        <tr>
-                            <td>{{ $distance }}</td>
-                        </tr>
-                    @endif
-                </table>
-                @if($workingTimes)
-                @if ($religion['religionName'] == 'Christianity')
-                    @foreach ($workingTimes as $wtKey => $wtArr)
-                        @if($wtKey == "Mass" && count($wtArr) >0)
-                            <table>
+                            <td><a href="tel:{{ $religion['phone1'] }}"  class="titleblock smaextra_reli extra_reli">{{ $religion['phone1'] }}</a></td>
+                        </tr>  
+                        @if ($todaysMassTime || $todaysConfessionTime || $todaysAdorationTime) 
+                            <tr>
+                                <td>
+                                    @if ($todaysMassTime)<div class="titleblock smaextra_reli  smaextra_reli">Mass: {{$todaysMassTime}}</div>@endif   
+                                    @if ($todaysConfessionTime)<div class="titleblock smaextra_reli  smaextra_reli">Confession: {{$todaysConfessionTime}}</div>@endif     
+                                    @if ($todaysAdorationTime)<div class="titleblock smaextra_reli  smaextra_reli">Adoration:{{$todaysAdorationTime}}</div>@endif     
+                                </td>
+                            </tr>   
+                        @endif  
+                    </table>    
+                </div>          
+                <div class="content">
+                    <table class="fullWidth">
+                        @if ($religion['description'])
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($religion['description']) !!}</div>
+                                    @if(strlen($religion['description']) >= '220') 
+                                    <a id="readMore" class="read h21">Read more...</a>
+                                    @else
+                                        <span id="readMore"></span>
+                                    @endif 
+                                </td>
+                            </tr>
+                        @endif  
+                            @if (isset($religion['website']) && $religion['website'])
                                 <tr>
-                                    <td colspan="3" class="smallfont tdtoppadd1">Mass:</td>
+                                    <td class="smallfont tdtoppadd1">Website:</td>
                                 </tr>
-                                @foreach ($wtArr[0] as $wtMassArrKey => $wtMass)
-                                    @if ( !empty ( $wtMass ) )
-                                    <tr>
-                                        @if ( $wtMassArrKey == $today )
-                                            <td class="activeweekdays_reli daysWith">{{$wtMassArrKey}}</td>
-                                        @else
-                                            <td class="inactiveweekdays daysWith">{{$wtMassArrKey}}</td>
-                                        @endif    
-                                        @foreach ($wtMass as $massKey => $mass)
-                                            @foreach ($mass as $massTimeKey => $massTime)
-                                                @if ( $wtMassArrKey == $today )
-                                                    <td class="activeweekdays_reli">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                                @else
-                                                    <td class="inactiveweekdays">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                                @endif                                              
-                                            @endforeach
-                                        @endforeach
-                                    </tr>
-                                    @endif                           
-                                @endforeach   
-                            </table>                     
-                        @elseif($wtKey == "Confession"  && count($wtArr) >0)
-                            <table>
                                 <tr>
-                                    <td colspan="3" class="smallfont tdtoppadd1">Confession:</td>
+                                    <td><a href="http://{{ $religion['website'] }}" target="_blank"><h2 class="h21">{{ $religion['website'] }}</h2></a></td>
+                                </tr>   
+                            @endif                          
+                            <tr>
+                                <td class="smallfont tdtoppadd1">Located In:</td>
+                            </tr>
+                            <tr>
+                                <td><h3>{{ $religion['city'] }}</h3></td>
+                            </tr>
+                            @if (isset($distance) && $distance)
+                                <tr>
+                                    <td class="smallfont tdtoppadd1">Distance:</td>
                                 </tr>
-                                @foreach ($wtArr[0] as $wtConfArrKey => $wtConf)
-                                    @if ( !empty ( $wtConf ) )
+                                <tr>
+                                    <td>{{ $distance }}</td>
+                                </tr>
+                            @endif
+                        </table>
+                        @if($workingTimes)
+                        @if ($religion['religionName'] == 'Christianity')
+                            @foreach ($workingTimes as $wtKey => $wtArr)
+                                @if($wtKey == "Mass" && count($wtArr) >0)
+                                    <table>
                                         <tr>
-                                            @if ( $wtConfArrKey == $today )
-                                                <td class="activeweekdays_reli daysWith">{{$wtConfArrKey}}</td>
-                                            @else
-                                                <td class="inactiveweekdays daysWith">{{$wtConfArrKey}}</td>
-                                            @endif                                             
-                                            @foreach ($wtConf as $confession)
-                                                @foreach ($confession as $confessionTimeKey => $confessionTime)
-                                                    @if ( $wtConfArrKey == $today )
-                                                        <td class="activeweekdays_reli">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                                    @else
-                                                        <td class="inactiveweekdays">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                                    @endif  
-                                                @endforeach
-                                            @endforeach
+                                            <td colspan="3" class="smallfont tdtoppadd1">Mass:</td>
                                         </tr>
-                                    @endif                           
-                                @endforeach
-                            </table>                                 
-                        @elseif($wtKey == "Adoration"  && count($wtArr) >0)
-                            <table>
-                                <tr>
-                                    <td colspan="3" class="smallfont tdtoppadd1">Adoration:</td>
-                                </tr>
-                                @foreach ($wtArr[0] as $wtAdoArrKey => $wtAdo)
-                                    @if ( !empty ( $wtAdo ) )
-                                        <tr>
-                                            @if ( $wtAdoArrKey == $today )
-                                                <td class="activeweekdays_reli daysWith">{{$wtAdoArrKey}}</td>
-                                            @else
-                                                <td class="inactiveweekdays daysWith">{{$wtAdoArrKey}}</td>
-                                            @endif                                          
-                                            @foreach ($wtAdo as $adoration)
-                                                @foreach ($adoration as $adorationTimeKey => $adorationTime)
-                                                    @if ( $wtAdoArrKey == $today )
-                                                        <td class="activeweekdays_reli">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                                    @else
-                                                        <td class="inactiveweekdays">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                                    @endif 
+                                        @foreach ($wtArr[0] as $wtMassArrKey => $wtMass)
+                                            @if ( !empty ( $wtMass ) )
+                                            <tr>
+                                                @if ( $wtMassArrKey == $today )
+                                                    <td class="activeweekdays_reli daysWith">{{$wtMassArrKey}}</td>
+                                                @else
+                                                    <td class="inactiveweekdays daysWith">{{$wtMassArrKey}}</td>
+                                                @endif    
+                                                @foreach ($wtMass as $massKey => $mass)
+                                                    @foreach ($mass as $massTimeKey => $massTime)
+                                                        @if ( $wtMassArrKey == $today )
+                                                            <td class="activeweekdays_reli">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                        @else
+                                                            <td class="inactiveweekdays">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                        @endif                                              
+                                                    @endforeach
                                                 @endforeach
-                                            @endforeach
-                                        </tr>                           
-                                    @endif                           
-                                @endforeach     
-                            </table>                                             
-                        @endif                       
-                    @endforeach                                               
-                @elseif ($religion['religionName'] == 'Hinduism')
-                    I have multiple records!
-                @elseif ($religion['religionName'] == 'Islam')
-                    I have multiple records!
-                @elseif ($religion['religionName'] == 'Judaism')
-                    I have multiple records!
-                @elseif ($religion['religionName'] == 'Buddhism')
-                    I have multiple records!                
-                @else
-                
-                @endif
-            @endif       
-            <div class="suggestionblock">
-                <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent22">Suggest an edit</a>   
-            </div>   
+                                            </tr>
+                                            @endif                           
+                                        @endforeach   
+                                    </table>                     
+                                @elseif($wtKey == "Confession"  && count($wtArr) >0)
+                                    <table>
+                                        <tr>
+                                            <td colspan="3" class="smallfont tdtoppadd1">Confession:</td>
+                                        </tr>
+                                        @foreach ($wtArr[0] as $wtConfArrKey => $wtConf)
+                                            @if ( !empty ( $wtConf ) )
+                                                <tr>
+                                                    @if ( $wtConfArrKey == $today )
+                                                        <td class="activeweekdays_reli daysWith">{{$wtConfArrKey}}</td>
+                                                    @else
+                                                        <td class="inactiveweekdays daysWith">{{$wtConfArrKey}}</td>
+                                                    @endif                                             
+                                                    @foreach ($wtConf as $confession)
+                                                        @foreach ($confession as $confessionTimeKey => $confessionTime)
+                                                            @if ( $wtConfArrKey == $today )
+                                                                <td class="activeweekdays_reli">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                            @else
+                                                                <td class="inactiveweekdays">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                            @endif  
+                                                        @endforeach
+                                                    @endforeach
+                                                </tr>
+                                            @endif                           
+                                        @endforeach
+                                    </table>                                 
+                                @elseif($wtKey == "Adoration"  && count($wtArr) >0)
+                                    <table>
+                                        <tr>
+                                            <td colspan="3" class="smallfont tdtoppadd1">Adoration:</td>
+                                        </tr>
+                                        @foreach ($wtArr[0] as $wtAdoArrKey => $wtAdo)
+                                            @if ( !empty ( $wtAdo ) )
+                                                <tr>
+                                                    @if ( $wtAdoArrKey == $today )
+                                                        <td class="activeweekdays_reli daysWith">{{$wtAdoArrKey}}</td>
+                                                    @else
+                                                        <td class="inactiveweekdays daysWith">{{$wtAdoArrKey}}</td>
+                                                    @endif                                          
+                                                    @foreach ($wtAdo as $adoration)
+                                                        @foreach ($adoration as $adorationTimeKey => $adorationTime)
+                                                            @if ( $wtAdoArrKey == $today )
+                                                                <td class="activeweekdays_reli">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                            @else
+                                                                <td class="inactiveweekdays">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
+                                                            @endif 
+                                                        @endforeach
+                                                    @endforeach
+                                                </tr>                           
+                                            @endif                           
+                                        @endforeach     
+                                    </table>                                             
+                                @endif                       
+                            @endforeach                                               
+                        @elseif ($religion['religionName'] == 'Hinduism')
+                            I have multiple records!
+                        @elseif ($religion['religionName'] == 'Islam')
+                            I have multiple records!
+                        @elseif ($religion['religionName'] == 'Judaism')
+                            I have multiple records!
+                        @elseif ($religion['religionName'] == 'Buddhism')
+                            I have multiple records!                
+                        @else
+                        
+                        @endif
+                    @endif       
+                    <div class="suggestionblock">
+                        <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent22">Suggest an edit</a>   
+                    </div>   
+                </div>
+            </div>
+            <div class="block22">
+                <div class="white_t space"><h2 class="titleh2 graycolor">{{ $religion['name'] }} Location</h2></div>
+                <div id="map" class="map"></div>
+            </div>
+            @if($photos)
+                <div class="blockk1">
+                <div class="block23">
+                    <div class="white_Photo space"><h2 class="titleh2 graycolor">{{ $religion['name'] }} Photos</h2></div>
+                </div>
+                <div class="block231">
+                    <div class="topdetail slideshow-container">
+                        <ul id="lightSlider">
+                        @foreach ($photos as $key => $photo)
+                                <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
+                                    <img src="{{ URL::to('/') }}/image/religion/{{$religion['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $religion['name'] }}" style="width:100%;height:100%" class="bottomarea">
+                                </li>
+                            @endforeach
+                        </ul>            
+                    </div>        
+                </div>
+                </div> 
+            @endif
+            <div class="row" id="related"></div>
+        </div>
+        <div class="rightcontainer">
+            <div class="ad300x600">ADVERTISE HERE</div>
         </div>
     </div>
-    <div class="block22">
-        <div class="white_t space"><h2 class="titleh2 graycolor">{{ $religion['name'] }} Location</h2></div>
-        <div id="map" class="map"></div>
-    </div>
-    @if($photos)
-        <div class="blockk1">
-        <div class="block23">
-            <div class="white_Photo space"><h2 class="titleh2 graycolor">{{ $religion['name'] }} Photos</h2></div>
-        </div>
-        <div class="block231">
-            <div class="topdetail slideshow-container">
-                <ul id="lightSlider">
-                @foreach ($photos as $key => $photo)
-                        <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
-                            <img src="{{ URL::to('/') }}/image/religion/{{$religion['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $religion['name'] }}" style="width:100%;height:100%" class="bottomarea">
-                        </li>
-                    @endforeach
-                </ul>            
-            </div>        
-        </div>
-        </div> 
-    @endif
-    <div class="row" id="related"></div>
-</div>
-<div class="rightcontainer">
-    <div class="ad300x600">ADVERTISE HERE</div>
-</div>
-</div>
 </div>
   
 
@@ -243,6 +243,7 @@
 <div class="loading-overlay">
     <div class="spin-loader"></div>
 </div>
+<script src="{{ asset('js/lightslider.js') }}"></script>
 <script>
     /*---------- Google Map ----------*/
     

@@ -197,7 +197,7 @@ class ReligionController extends Controller
                         'phone1'        => $religionVal['phone1'],
                         'phone2'        => $religionVal['phone2'],
                         'latitude'      => $religionVal['latitude'],
-                        'longitude'     => $religionVal['latitude'],                   
+                        'longitude'     => $religionVal['longitude'],                   
                     ]
             );
             if($religionVal['urlName'] != $religionVal['urlNameChk']){
@@ -249,6 +249,8 @@ class ReligionController extends Controller
                     $path                       = public_path('image/religion/'.$religionVal['id'].'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
                     $resizeImage->save($path); 
 
+                    $file->move(public_path().'/image/religion/'.$religionVal['id'], 'originalFile_main_'.$key.'.'.$extension); 
+
                     DB::table('photo')->insertGetId(
                         [
                             'photoName'         => $fileName,
@@ -275,7 +277,9 @@ class ReligionController extends Controller
                     $resizeImage->resize(128,95);
                     $path                       = public_path('image/religion/'.$religionVal['id'].'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
                     $resizeImage->save($path); 
-echo $path;exit();
+
+                    $file->move(public_path().'/image/religion/'.$religionVal['id'], 'originalFile_thumbnail_'.$key.'.'.$extension); 
+
                     DB::table('photo')->insertGetId(
                         [
                             'photoName'         => $fileName,
@@ -321,7 +325,7 @@ echo $path;exit();
                                                         'phone1'        => $religionVal['phone1'],
                                                         'phone2'        => $religionVal['phone2'],
                                                         'latitude'      => $religionVal['latitude'],
-                                                        'longitude'     => $religionVal['latitude'],
+                                                        'longitude'     => $religionVal['longitude'],
                                                     ]
                                                 );
             $urlId                          =   DB::table('url')->insertGetId(
@@ -375,7 +379,9 @@ echo $path;exit();
                     $resizeImage                = Image::make($file);
                     $resizeImage->resize(466,350);
                     $path                       = public_path('image/religion/'.$religionId.'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);                      
+                    $resizeImage->save($path);  
+                    
+                    $file->move(public_path().'/image/religion/'.$religionId, 'originalFile_main_'.$key.'.'.$extension); 
     
                     DB::table('photo')->insertGetId(
                         [
@@ -400,7 +406,9 @@ echo $path;exit();
                     $resizeImage                = Image::make($file);
                     $resizeImage->resize(128,95);
                     $path                       = public_path('image/religion/'.$religionId.'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);                      
+                    $resizeImage->save($path);    
+                    
+                    $file->move(public_path().'/image/religion/'.$religionId, 'originalFile_thumbnail_'.$key.'.'.$extension); 
     
                     DB::table('photo')->insertGetId(
                         [

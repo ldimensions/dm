@@ -181,7 +181,7 @@ class GroceryController extends Controller
                         'phone1'        => $groceryVal['phone1'],
                         'phone2'        => $groceryVal['phone2'],
                         'latitude'      => $groceryVal['latitude'],
-                        'longitude'     => $groceryVal['latitude'],                   
+                        'longitude'     => $groceryVal['longitude'],                   
                     ]
             );
             if($groceryVal['urlName'] != $groceryVal['urlNameChk']){
@@ -232,7 +232,8 @@ class GroceryController extends Controller
                 $resizeImage->resize(466,350);
                 $path                       = public_path('image/grocery/'.$groceryVal['id'].'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
                 $resizeImage->save($path);   
-                //$file->move(public_path().'/image/grocery/'.$groceryVal['id'], $fileName); 
+                
+                $file->move(public_path().'/image/grocery/'.$groceryVal['id'], 'originalFile_main_'.$key.'.'.$extension); 
 
                 DB::table('photo')->insertGetId(
                     [
@@ -258,7 +259,9 @@ class GroceryController extends Controller
                 $resizeImage                = Image::make($file);
                 $resizeImage->resize(128,95);
                 $path                       = public_path('image/grocery/'.$groceryVal['id'].'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                $resizeImage->save($path);                 
+                $resizeImage->save($path);    
+                
+                $file->move(public_path().'/image/grocery/'.$groceryVal['id'], 'originalFile_thumbnail_'.$key.'.'.$extension); 
                
                 DB::table('photo')->insertGetId(
                     [
@@ -304,7 +307,7 @@ class GroceryController extends Controller
                                                         'phone1'        => $groceryVal['phone1'],
                                                         'phone2'        => $groceryVal['phone2'],
                                                         'latitude'      => $groceryVal['latitude'],
-                                                        'longitude'     => $groceryVal['latitude'],
+                                                        'longitude'     => $groceryVal['longitude'],
                                                     ]
                                                 );
             $urlId                          =   DB::table('url')->insertGetId(
@@ -358,7 +361,9 @@ class GroceryController extends Controller
                     $resizeImage                = Image::make($file);
                     $resizeImage->resize(466,350);
                     $path                       = public_path('image/grocery/'.$groceryId.'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);                      
+                    $resizeImage->save($path);   
+                    
+                    $file->move(public_path().'/image/grocery/'.$groceryId, 'originalFile_main_'.$key.'.'.$extension); 
     
                     DB::table('photo')->insertGetId(
                         [
@@ -383,7 +388,9 @@ class GroceryController extends Controller
                     $resizeImage                = Image::make($file);
                     $resizeImage->resize(128,95);
                     $path                       = public_path('image/grocery/'.$groceryId.'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);                     
+                    $resizeImage->save($path);       
+                    
+                    $file->move(public_path().'/image/grocery/'.$groceryId, 'originalFile_thumbnail_'.$key.'.'.$extension); 
     
                     DB::table('photo')->insertGetId(
                         [

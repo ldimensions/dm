@@ -80,7 +80,6 @@
             responsive: true,
             'bSort': false,
             'aoColumns': [
-                    //{ sWidth: "15%", bSearchable: true, bSortable: false },
                     { bSearchable: true, bSortable: false },
                     { bSearchable: true, bSortable: false },
                     { bSearchable: true, bSortable: false },
@@ -88,9 +87,6 @@
                     { bSearchable: true, bSortable: false },
                     { bSearchable: true, bSortable: false },
             ],
-            //"scrollY":        "200px",
-            //"scrollCollapse": false,
-            //"info":           true,
             "paging":         true
         });
     });   

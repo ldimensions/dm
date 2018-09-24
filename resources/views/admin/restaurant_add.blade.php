@@ -40,7 +40,7 @@
                                     </li> 
                                 </ul>  
                                 <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="restaurant" style="position: relative;min-height: 600px;">
+                                    <div class="tab-pane fade in active" id="restaurant" style="position: relative;min-height: 690px;">
                                         <br/><br/>
                                         <div class="col-lg-6">
                                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -67,6 +67,20 @@
                                                     <option value="4" @if(old('ethnic', $restaurant['ethnic']) == 4) {{ 'selected' }} @endif>Telugu</option>
                                                 </select>
                                             </div>  
+                                            <div class="form-group{{ $errors->has('foodType') ? ' has-error' : '' }}">
+                                                <label>Food Type</label><br/>
+                                                <select id="foodType" multiple="multiple" name="foodType[]" class="form-control">
+                                                    @foreach ($foodTypes as $foodKey => $foodType)
+                                                        <option 
+                                                            value="{{$foodType['id']}}"   
+                                                            @if(in_array($foodType['id'], $resFoodTypes)) {{ 'selected' }} @endif   
+                                                            >
+                                                            {{$foodType['type']}}
+                                                        </option>
+                                                    @endforeach  
+                                                </select>
+                                                <small class="text-danger">{{ $errors->first('foodType') }}</small>
+                                            </div>                                              
                                             <div class="form-group">
                                                 <label>Premium</label>
                                                 <select name="premium" id="premium" class="form-control">
@@ -94,7 +108,18 @@
                                             <div class="form-group">
                                                 <label>Working Time</label>
                                                 <textarea name="workingTime" class="form-control" rows="8">{{ old('workingTime', $restaurant['workingTime']) }}</textarea>
-                                            </div>   
+                                            </div>  
+                                            <div class="form-group">
+                                                <label>Premium</label>
+                                                <select name="premium" id="premium" class="form-control">
+                                                    <option value="0" @if(old('premium', $restaurant['premium']) == 0) {{ 'selected' }} @endif >No</option>
+                                                    <option value="1" @if(old('premium', $restaurant['premium']) == 1) {{ 'selected' }} @endif >Yes</option>
+                                                </select>
+                                            </div>                                          
+                                            <div class="form-group">
+                                                <label>Order</label>
+                                                <input name="order" value="{{ old('order', $restaurant['order']) }}" id="order" maxlength="15" class="form-control">
+                                            </div>                                              
                                         </div>                                     
                                     </div>
                                     <div class="tab-pane fade" id="address" style="position: relative;min-height: 455px;" >
@@ -266,6 +291,9 @@
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             responsive: true
+        });
+        $('#foodType').multiselect({
+            numberDisplayed: 6,
         });
     });  
     </script>

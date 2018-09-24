@@ -51,7 +51,7 @@ return [
         'dallas-kerala-grocery-store'           => 'dallas-kerala-grocery-store',
         'dallas-tamil-grocery-store'            => 'dallas-tamil-grocery-store',
         'indian-grocery-store'                  => 'indian-grocery-store',
-        'grocery-store-details'                 => 'dallas-grocery-store', 
+        'grocery-store-details'                 => 'dallas-indian-grocery-store', 
         'grocery-search'                        => 'grocery-search',
         'grocery-related'                       => 'grocery-related',
         'indian-grocery-store-in'               => 'indian-grocery-store-in-',

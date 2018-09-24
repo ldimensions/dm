@@ -8,6 +8,7 @@ use App\Http\Models\Restaurant;
 use App\Http\Models\Photo;
 use App\Http\Models\Url;
 use App\Http\Models\City;
+use App\Http\Models\RestaurantFoodType;
 
 class RestaurantController extends Controller
 {
@@ -68,8 +69,9 @@ class RestaurantController extends Controller
             $restaurantRs->where('restaurant.name', 'like', '%'.$keywordVal.'%');
         }           
 
-        $restaurantRs                       =   $restaurantRs->get();                                                
-        $restaurants                        =   $restaurantRs->toArray();
+        //$restaurantRs                       =   $restaurantRs->get();                                                
+        //$restaurants                        =   $restaurantRs->toArray();
+        $restaurants                          =   $restaurantRs->paginate(20);
 
         // if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){            
         //     foreach($restaurants as $key => $restaurant) {    
@@ -169,21 +171,37 @@ class RestaurantController extends Controller
     
             $photoRs                        =   Photo::select('photo.photoId', 'photo.photoName', 
                                                     'photo.is_primary', 'photo.order')
-                                                ->where('photo.is_deleted', '=', '0')
-                                                ->where('photo.is_primary', '=', '0')
-                                                ->where('photo.is_disabled', '=', '0')
-                                                ->where('photo.restaurantId', '=', $restaurantId)
-                                                ->orderBy('photo.order', 'asc') 
-                                                ->get();        
+                                                    ->where('photo.is_deleted', '=', '0')
+                                                    ->where('photo.is_primary', '=', '0')
+                                                    ->where('photo.is_disabled', '=', '0')
+                                                    ->where('photo.restaurantId', '=', $restaurantId)
+                                                    ->orderBy('photo.order', 'asc') 
+                                                    ->get();        
             
             $photo                          =   $photoRs->toArray();  
+
+            $foodTypeRs                     =   RestaurantFoodType::select('food_type.id', 'food_type.type')
+                                                    ->leftjoin('food_type','food_type.id', '=', 'restaurant_food_type.foodTypeId')
+                                                    ->where('restaurant_food_type.restaurantId', '=', $restaurantId)
+                                                    ->get();        
+
+            $foodType                       =   $foodTypeRs->toArray();   
+            $foodTypeStr                    =   "";  
+            if(count($foodType) > 0){
+                $foodTypeArr                =   array();  
+                for($i = 0; $i < count($foodType); $i++){
+                    $foodTypeArr[$i]       =   $foodType[$i]['type'];
+                }
+                $foodTypeStr                    =   implode(", ",$foodTypeArr);
+            }
+            
 
             $commonCtrl->setMeta($request->path(),2);
             //echo $todaysWorkingTime;
             // echo "<pre>";
             // print_r($workingTimes);
             $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($restaurant['description']));
-            return view('restaurant_details',['restaurant' => $restaurant, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate, 'todaysWorkingTime' => $todaysWorkingTime, 'descriptionHeight' => $descriptionHeight]);
+            return view('restaurant_details',['restaurant' => $restaurant, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate, 'todaysWorkingTime' => $todaysWorkingTime, 'descriptionHeight' => $descriptionHeight, 'foodTypeStr' => $foodTypeStr]);
         }else{
             return redirect()->back();
         }

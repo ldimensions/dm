@@ -74,8 +74,10 @@
                         @endif                 
                 </div>
             @endforeach
-        </div>
 
+            {{ $restaurant->links() }}
+
+        </div>
 
         <div class="rightcontainer">
             <div class="ad250x250">ADVERTISE HERE</div>

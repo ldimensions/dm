@@ -85,6 +85,8 @@
         </div>
     @endforeach
     
+    {{ $religion->links() }}
+
     </div>
     <div class="rightcontainer">
         <div class="ad240x400">ADVERTISE HERE</div>    

@@ -73,8 +73,9 @@ class ReligionController extends Controller
             $religionRs->where('religion.name', 'like', '%'.$keywordVal.'%');
         }           
 
-        $religionRs                         =   $religionRs->get();
-        $religions                          =   $religionRs->toArray();  
+        // $religionRs                         =   $religionRs->get();
+        // $religions                          =   $religionRs->toArray();  
+        $religions                          =   $religionRs->paginate(20);
 
         // if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
         //     foreach($religions as $key => $religion) {    

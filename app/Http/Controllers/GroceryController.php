@@ -129,8 +129,9 @@ class GroceryController extends Controller
             $groceryRs->where('grocery.name', 'like', '%'.$keywordVal.'%');
         }           
 
-        $groceryRs                       =   $groceryRs->get();
-        $grocerys                        =   $groceryRs->toArray();
+        // $groceryRs                       =   $groceryRs->get();
+        // $grocerys                        =   $groceryRs->toArray();
+        $grocerys                       =   $groceryRs->paginate(10);
 
         // if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){            
         //     foreach($grocerys as $key => $grocery) {    
@@ -155,6 +156,7 @@ class GroceryController extends Controller
         
         // echo "<pre>";
         // print_r($grocerys);
+        // exit();
         
         return view('grocery',['grocery' => $grocerys, 'cities' => $cities, 'type' => $type, 'cityVal' => $cityVal, 'keyword' => $keyword]);        
     }    
