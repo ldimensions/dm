@@ -30,20 +30,6 @@
         <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
         <link href="<?php echo e(asset('css/lightslider.css')); ?>" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="<?php echo e(asset('js/lightslider.js')); ?>" ></script>
-        <script src="<?php echo e(asset('js/common.js')); ?>" ></script>  
-
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126021205-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-126021205-1');
-        </script>
-
     </head>
     <body>
         <div class="container">
@@ -75,16 +61,25 @@
                             <a href="#" class="<?php echo e((CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu'); ?>">Events </a> 
                             <a href="#" class="<?php echo e((CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu'); ?>">Movies </a>                      -->
                         </div>
-                    </div
+                    </div>
                 </div>
             </div>
-        </div>
-
             <?php echo $__env->yieldContent('content'); ?>
+        </div>
          <div class="footerh nopadding"> Copyright 2018 Ldimensions. All rights reserved.</div>
 
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" defer="defer"></script>
+         <script src="<?php echo e(asset('js/common.js')); ?>" defer="defer"></script> 
 
-        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126021205-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-126021205-1');
+        </script>
+
     </body>
 </html>
 

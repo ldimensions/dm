@@ -62,20 +62,17 @@
                 <?php else: ?>
                     <img src="<?php echo e(URL::to('/')); ?>/image/noimage.svg" alt="<?php echo e($loop->index); ?><?php echo e($rel['name']); ?>" style="width:100%;height:100%"></div>
                 <?php endif; ?>         
-                     
-                
-                    <?php if($rel['religionName'] == 'Christianity'): ?>
-                        <a href="<?php echo e(URL::to('/')); ?>/<?php echo e(config('app.defaultBaseURL.dallas-christian-church')); ?>/<?php echo e($rel['urlName']); ?>"><h2 class="content4 colorh1"> <?php echo e($rel['name']); ?></h2></a>
-                    <?php elseif($rel['religionName'] == 'Hinduism'): ?>
-                        <a href="<?php echo e(URL::to('/')); ?>/<?php echo e(config('app.defaultBaseURL.dallas-hindu-temple')); ?>/<?php echo e($rel['urlName']); ?>"><h2 class="content4 colorh1"> <?php echo e($rel['name']); ?></h2></a>
-                    <?php elseif($rel['religionName'] == 'Judaism'): ?>
-                        <!-- <a href="<?php echo e(URL::to('/')); ?>/<?php echo e(config('app.defaultBaseURL.dallas-malayali-temple')); ?>/<?php echo e($rel['urlName']); ?>" ><h2 class="content4 colorh1"> <?php echo e($rel['name']); ?></h2></a> -->
-                    <?php elseif($rel['religionName'] == 'Buddhism'): ?>
-                        <!-- <a href="<?php echo e(URL::to('/')); ?>/<?php echo e(config('app.defaultBaseURL.dallas-malayali-temple')); ?>/<?php echo e($rel['urlName']); ?>"><h2 class="content4 colorh1"> <?php echo e($rel['name']); ?></h2></a> -->
-                    <?php elseif($rel['religionName'] == 'Islam'): ?>
-                        <a href="<?php echo e(URL::to('/')); ?>/<?php echo e(config('app.defaultBaseURL.dallas-islan-mosque')); ?>/<?php echo e($rel['urlName']); ?>"><h2 class="content4 colorh1"> <?php echo e($rel['name']); ?></h2></a>                                                          
-                    <?php endif; ?>
-                </h2>
+                <?php if($rel['religionName'] == 'Christianity'): ?>
+                    <a href="<?php echo e(URL::to('/')); ?>/<?php echo e(config('app.defaultBaseURL.dallas-christian-church')); ?>/<?php echo e($rel['urlName']); ?>"><h2 class="content4 colorh1"> <?php echo e($rel['name']); ?></h2></a>
+                <?php elseif($rel['religionName'] == 'Hinduism'): ?>
+                    <a href="<?php echo e(URL::to('/')); ?>/<?php echo e(config('app.defaultBaseURL.dallas-hindu-temple')); ?>/<?php echo e($rel['urlName']); ?>"><h2 class="content4 colorh1"> <?php echo e($rel['name']); ?></h2></a>
+                <?php elseif($rel['religionName'] == 'Judaism'): ?>
+                    <!-- <a href="<?php echo e(URL::to('/')); ?>/<?php echo e(config('app.defaultBaseURL.dallas-malayali-temple')); ?>/<?php echo e($rel['urlName']); ?>" ><h2 class="content4 colorh1"> <?php echo e($rel['name']); ?></h2></a> -->
+                <?php elseif($rel['religionName'] == 'Buddhism'): ?>
+                    <!-- <a href="<?php echo e(URL::to('/')); ?>/<?php echo e(config('app.defaultBaseURL.dallas-malayali-temple')); ?>/<?php echo e($rel['urlName']); ?>"><h2 class="content4 colorh1"> <?php echo e($rel['name']); ?></h2></a> -->
+                <?php elseif($rel['religionName'] == 'Islam'): ?>
+                    <a href="<?php echo e(URL::to('/')); ?>/<?php echo e(config('app.defaultBaseURL.dallas-islan-mosque')); ?>/<?php echo e($rel['urlName']); ?>"><h2 class="content4 colorh1"> <?php echo e($rel['name']); ?></h2></a>                                                          
+                <?php endif; ?>
                 <?php if($rel['latitude'] && $rel['longitude']): ?>
                     <a href="https://www.google.com/maps/dir/<?php echo e($rel['latitude']); ?>,<?php echo e($rel['longitude']); ?>" target="_blank" class="mapicon"><img src="<?php echo e(URL::to('/')); ?>/image/map1.svg" alt="<?php echo e($loop->index); ?><?php echo e($rel['name']); ?>"/></a>
                 <?php endif; ?>  
@@ -87,6 +84,9 @@
         </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     
+    <?php echo e($religion->links()); ?>
+
+
     </div>
     <div class="rightcontainer">
         <div class="ad240x400">ADVERTISE HERE</div>    
