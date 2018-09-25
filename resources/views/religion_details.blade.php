@@ -49,21 +49,21 @@
                         @endif  
                             @if (isset($religion['website']) && $religion['website'])
                                 <tr>
-                                    <td class="smallfont tdtoppadd1">Website:</td>
+                                    <td class="smallfont tdtoppadd1">Website</td>
                                 </tr>
                                 <tr>
                                     <td><a href="http://{{ $religion['website'] }}" target="_blank"><h2 class="h21">{{ $religion['website'] }}</h2></a></td>
                                 </tr>   
                             @endif                          
                             <tr>
-                                <td class="smallfont tdtoppadd1">Located In:</td>
+                                <td class="smallfont tdtoppadd1">Located In</td>
                             </tr>
                             <tr>
                                 <td><h3>{{ $religion['city'] }}</h3></td>
                             </tr>
                             @if (isset($distance) && $distance)
                                 <tr>
-                                    <td class="smallfont tdtoppadd1">Distance:</td>
+                                    <td class="smallfont tdtoppadd1">Distance</td>
                                 </tr>
                                 <tr>
                                     <td>{{ $distance }}</td>
@@ -76,7 +76,7 @@
                                 @if($wtKey == "Mass" && count($wtArr) >0)
                                     <table>
                                         <tr>
-                                            <td colspan="3" class="smallfont tdtoppadd1">Mass:</td>
+                                            <td colspan="3" class="smallfont tdtoppadd1">Mass</td>
                                         </tr>
                                         @foreach ($wtArr[0] as $wtMassArrKey => $wtMass)
                                             @if ( !empty ( $wtMass ) )
@@ -102,7 +102,7 @@
                                 @elseif($wtKey == "Confession"  && count($wtArr) >0)
                                     <table>
                                         <tr>
-                                            <td colspan="3" class="smallfont tdtoppadd1">Confession:</td>
+                                            <td colspan="3" class="smallfont tdtoppadd1">Confession</td>
                                         </tr>
                                         @foreach ($wtArr[0] as $wtConfArrKey => $wtConf)
                                             @if ( !empty ( $wtConf ) )
@@ -128,7 +128,7 @@
                                 @elseif($wtKey == "Adoration"  && count($wtArr) >0)
                                     <table>
                                         <tr>
-                                            <td colspan="3" class="smallfont tdtoppadd1">Adoration:</td>
+                                            <td colspan="3" class="smallfont tdtoppadd1">Adoration</td>
                                         </tr>
                                         @foreach ($wtArr[0] as $wtAdoArrKey => $wtAdo)
                                             @if ( !empty ( $wtAdo ) )

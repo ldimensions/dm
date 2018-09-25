@@ -4,9 +4,9 @@
 <div class="mcontainer">
 <div class="maincontainer">
     <div class="leftcontainer">
-    <div class="col-md-12 searchbar hiddepadding"> <a href="#" class="selocation"></a>
+    <div class="col-md-12 searchbar hiddepadding"> <!--<a href="#" class="selocation"></a>-->
         <form>
-            <input name="Location" type="text" class="text locationimage" id="Location" placeholder="Location" readonly="readonly" >
+            <!-- <input name="Location" type="text" class="text locationimage" id="Location" placeholder="Location" readonly="readonly" > -->
             <select name="type" class="select" id="type">
                 <option 
                     value="{{config('app.defaultBaseURL.dallas-indian-religion')}}" 

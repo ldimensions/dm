@@ -57,14 +57,14 @@
                         </tr>  
                     @endif              
                         <tr>
-                            <td class="smallfont tdtoppadd1">Located In:</td>
+                            <td class="smallfont tdtoppadd1">Located In</td>
                         </tr>
                         <tr>
                             <td><h3>{{ $restaurant['city'] }}</h3></td>
                         </tr>
                         @if (isset($distance) && $distance)
                         <tr>
-                            <td class="smallfont tdtoppadd1">Distance:</td>
+                            <td class="smallfont tdtoppadd1">Distance</td>
                         </tr>
                         <tr>
                             <td>{{ $distance }}</td>
@@ -76,7 +76,7 @@
                             @if($wtKey == "default")
                                 <table>
                                     <tr>
-                                        <td colspan="3" class="smallfont tdtoppadd1">Working Time:</td>
+                                        <td colspan="3" class="smallfont tdtoppadd1">Working Time</td>
                                     </tr>
                                     @foreach ($wtArr[0] as $wtArrKey => $wtRs)
                                         @if ( !empty ( $wtRs ) )
