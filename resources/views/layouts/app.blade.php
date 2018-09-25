@@ -67,7 +67,7 @@
         </div>
          <div class="footerh nopadding"> Copyright 2018 Ldimensions. All rights reserved.</div>
 
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" defer="defer"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
          <script src="{{ asset('js/common.js') }}" defer="defer"></script> 
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
