@@ -388,7 +388,7 @@ table {
 	background-color:#FFF;
 	height:auto;
 	width:306px;
-	height:291px;
+	height:301px;
 	border:1px solid #E1E1E1;
 	border-radius:5px;
 	margin-left:15px;
@@ -415,7 +415,7 @@ input[type=text], select{
     margin: 13px 10px 10px 0 !important;
 }
 .text1{
-    width: 23.3% !important;
+    width: 46.8% !important;
     padding: 11px 10px;
     margin: 13px 10px 10px 0 !important;
 }
@@ -544,9 +544,9 @@ input[type=text], select{
 	float:left;
 	position:relative;
 	width:93%;
-	height:7px;
+	height:10px;
 	margin-left:10px;
-	border-bottom:1px solid #e1e1e1;
+	border-bottom:5px solid #F1F1F1;
 }
 	.gro_block3bottom{
 	position:absolute;
@@ -963,6 +963,11 @@ h4{
 .space{
 	padding-top:15px;
 	padding-bottom:15px;
+
+}
+.space1{
+	margin-top:15px;
+	margin-bottom:15px;
 
 }
 .suggestionblock{

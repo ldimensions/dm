@@ -2,8 +2,8 @@
 @section('content')
 <div class="mcontainer">
     <div class="maincontainer">
-        <div class="leftcontainer">
-            <div class="col-md-12 searchbar hiddepadding">
+        <div class="leftcontainer space1">
+            <!-- <div class="col-md-12 searchbar hiddepadding">
                 <a href="#" class="selocation"></a>
                 <form>
                     <input name="Location" type="text" class="text locationimage" id="Location" placeholder="Location" readonly="readonly" >
@@ -14,7 +14,7 @@
                     <input type="text" id="Keywords" name="Keywords" placeholder="Keywords">
                     <a href="#" class="search">Search</a>
                 </form>
-            </div>
+            </div> -->
             <div class="col-md-4 block3">
                 <div class="gro_block3">Top 3 Groceries</div>
                     @foreach ($grocery as $key => $rel)
