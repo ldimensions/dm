@@ -260,12 +260,12 @@ class RestaurantController extends Controller
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
                     //$file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $fileName); 
-                    $resizeImage                = Image::make($file);
-                    $resizeImage->resize(466,350);
-                    $path                       = public_path('image/restaurant/'.$restaurantVal['id'].'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path); 
+                    //$resizeImage                = Image::make($file);
+                    //$resizeImage->resize(466,350);
+                    //$path                       = public_path('image/restaurant/'.$restaurantVal['id'].'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    //$resizeImage->save($path); 
 
-                    $file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], 'originalFile_main_'.$key.'.'.$extension); 
+                    $file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
 
                     DB::table('photo')->insertGetId(
                         [
@@ -288,12 +288,12 @@ class RestaurantController extends Controller
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
                     //$file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $fileName); 
-                    $resizeImage                = Image::make($file);
-                    $resizeImage->resize(128,95);
-                    $path                       = public_path('image/restaurant/'.$restaurantVal['id'].'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);      
+                    //$resizeImage                = Image::make($file);
+                    //$resizeImage->resize(128,95);
+                    //$path                       = public_path('image/restaurant/'.$restaurantVal['id'].'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    //$resizeImage->save($path);      
                     
-                    $file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], 'originalFile_thumbnail_'.$key.'.'.$extension); 
+                    $file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
 
                     DB::table('photo')->insertGetId(
                         [
@@ -399,12 +399,12 @@ class RestaurantController extends Controller
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
                     //$file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $fileName); 
-                    $resizeImage                = Image::make($file);
-                    $resizeImage->resize(466,350);
-                    $path                       = public_path('image/restaurant/'.$restaurantId.'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);    
+                    //$resizeImage                = Image::make($file);
+                    //$resizeImage->resize(466,350);
+                    //$path                       = public_path('image/restaurant/'.$restaurantId.'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    //$resizeImage->save($path);    
                     
-                    $file->move(public_path().'/image/restaurant/'.$restaurantId, 'originalFile_main_'.$key.'.'.$extension); 
+                    $file->move(public_path().'/image/restaurant/'.$restaurantId, $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
     
                     DB::table('photo')->insertGetId(
                         [
@@ -426,12 +426,12 @@ class RestaurantController extends Controller
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
                     //$file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $fileName); 
-                    $resizeImage                = Image::make($file);
-                    $resizeImage->resize(128,95);
-                    $path                       = public_path('image/restaurant/'.$restaurantId.'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);    
+                    //$resizeImage                = Image::make($file);
+                    //$resizeImage->resize(128,95);
+                    //$path                       = public_path('image/restaurant/'.$restaurantId.'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    //$resizeImage->save($path);    
                     
-                    $file->move(public_path().'/image/restaurant/'.$restaurantId, 'originalFile_thumbnail_'.$key.'.'.$extension); 
+                    $file->move(public_path().'/image/restaurant/'.$restaurantId, $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
     
                     DB::table('photo')->insertGetId(
                         [

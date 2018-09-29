@@ -153,7 +153,7 @@ class RestaurantController extends Controller
                             foreach($dayWorkingTime as $keys => $times) {
                                 foreach($times as $key => $time) {
                                     $oldKey                     =   "";
-                                    $workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'] = date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time']));
+                                    $workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'] = date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time']));
                                     if($dayKey == $todaysDate){
                                         if($oldKey != $key){
                                             $todaysWorkingTime      .=   ' - '.$workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'];                            

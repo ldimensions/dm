@@ -211,7 +211,7 @@ class GroceryController extends Controller
                         foreach($subWorkingTime as $dayKey => $dayWorkingTime) {
                             foreach($dayWorkingTime as $key => $time) {
                                 $oldKey                     =   "";
-                                $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'] = date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                                $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'] = date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
                                 if($dayKey == $todaysDate){
                                     if($oldKey != $key){
                                         $todaysWorkingTime      .=   ' - '.$workingTimes[$rootKey][$subkey][$dayKey][$key]['time'];                            

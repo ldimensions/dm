@@ -47,6 +47,14 @@
                                 </td>
                             </tr>
                         @endif  
+                            @if (isset($religion['denominationName']) && $religion['denominationName'])
+                                <tr>
+                                    <td class="smallfont tdtoppadd1">Denomination</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ $religion['denominationName'] }}</td>
+                                </tr>   
+                            @endif                         
                             @if (isset($religion['website']) && $religion['website'])
                                 <tr>
                                     <td class="smallfont tdtoppadd1">Website</td>
@@ -275,7 +283,7 @@
     
     /*---------- Image Slider End----------*/
     $( document ).ready(function() {
-        $.get("<?php echo URL::to('/');?>/religion-related/<?php echo $religion['denominationName'];?>/<?php echo $religion['id'];?>", function(data, status){
+        $.get("<?php echo URL::to('/');?>/religion-related/<?php echo $religion['denominationId'];?>/<?php echo $religion['id'];?>", function(data, status){
             if(status=="success"){
                 document.getElementById("related").innerHTML = data;
             }

@@ -51,7 +51,7 @@ $this->get('/'.config('app.defaultBaseURL.religion-search').'/{type?}/{city?}/{k
 $this->get('/'.config('app.defaultBaseURL.dallas-christian-church').'/{url}', 'ReligionController@getDetails')->name('religionDetails')->where('url', '[A-Za-z-+0-9]+');
 $this->get('/'.config('app.defaultBaseURL.dallas-hindu-temple').'/{url}', 'ReligionController@getDetails')->name('religionDetails')->where('url', '[A-Za-z-+0-9]+');
 $this->get('/'.config('app.defaultBaseURL.dallas-islan-mosque').'/{url}', 'ReligionController@getDetails')->name('religionDetails')->where('url', '[A-Za-z-+0-9]+');
-$this->get('/religion-related/{denomination}/{id}', 'ReligionController@getRelated')->name('religionDetails')->where(['denomination' => '[0-9]+', 'id' => '[0-9]+']);
+$this->get('/religion-related/{denomination}/{id}', 'ReligionController@getRelated')->name('religionDetails')->where(['denomination' => '[A-Za-z-+0-9]+', 'id' => '[0-9]+']);
 
 //$this->get('/'.config('app.defaultBaseURL.dallas-indian-travels'), 'TravelController@index')->name('travels');
 

@@ -123,7 +123,8 @@ class ReligionController extends Controller
                                                 'city.city', 'address.state',
                                                 'address.phone1', 'address.latitude',
                                                 'address.longitude','religion_type.religionName',
-                                                'denomination.denominationName')
+                                                'denomination.denominationName',
+                                                'denomination.id as denominationId')
                                             ->leftjoin('religion','url.religionId', '=', 'religion.id')
                                             ->leftjoin('religion_type','religion_type.id', '=', 'religion.religionTypeId')                                                
                                             ->leftjoin('denomination','denomination.id', '=', 'religion.denominationId')                                                
@@ -152,13 +153,13 @@ class ReligionController extends Controller
                     foreach($workingTime as $subkey => $subWorkingTime) {
                         foreach($subWorkingTime as $dayKey => $dayWorkingTime) {                          
                             foreach($dayWorkingTime as $key => $time) {
-                                $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'] = date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                                $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'] = date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
                                 if($dayKey == $todaysDate && $rootKey == "Mass"){
-                                    $todaysMassTime             .=   ($todaysMassTime)?', '.date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                                    $todaysMassTime             .=   ($todaysMassTime)?', '.date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
                                 }elseif($dayKey == $todaysDate && $rootKey == "Confession"){
-                                    $todaysConfessionTime       .=   ($todaysConfessionTime)?', '.date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                                    $todaysConfessionTime       .=   ($todaysConfessionTime)?', '.date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
                                 }else if($dayKey == $todaysDate && $rootKey == "Adoration"){
-                                    $todaysAdorationTime        .=   ($todaysAdorationTime)?', '.date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                                    $todaysAdorationTime        .=   ($todaysAdorationTime)?', '.date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
                                 }
                             }
                         }
@@ -209,7 +210,7 @@ class ReligionController extends Controller
         }
     }
 
-    public function getRelated(Request $request, $denominationName,$id){
+    public function getRelated(Request $request, $denominationId=null,$id){
         
         $distance                       =   "";
         $commonCtrl                     =   new CommonController;        
@@ -234,7 +235,7 @@ class ReligionController extends Controller
                                             ->where('religion.is_disabled', '=', '0')
                                             ->where('site.siteId', '=', $siteId)
                                             ->where('religion.id', '!=', $id)
-                                            //->where('denomination.denominationName', '=', $denominationName)
+                                            //->where('denomination.id', '=', $denominationId)
                                             ->where('photo.is_primary', '=', '1')
                                             ->where('religion.is_deleted', '=', '0')
                                             ->where('religion.is_disabled', '=', '0')                                            

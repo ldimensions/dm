@@ -46,12 +46,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        // if ($exception->getStatusCode() == 403) {
-        //     return redirect('/login'); 
-        // }
-        // if ($exception->getStatusCode() == 404 || $exception->getStatusCode() == 405) {
-        //     return redirect('/'); 
-        // }
+        if ($exception->getStatusCode() == 403) {
+            return redirect('/login'); 
+        }
+        if ($exception->getStatusCode() == 404 || $exception->getStatusCode() == 405) {
+            return redirect('/'); 
+        }
 
         return parent::render($request, $exception);
     }

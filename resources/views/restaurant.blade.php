@@ -65,7 +65,7 @@
                         @endif                 
                         <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-restaurant')}}/{{ $rel['urlName'] }}" ><h2 class="content1 colorh1"> {{ $rel['name'] }}</h2></a>                                                           
                         @if ($rel['latitude'] && $rel['longitude'])
-                            <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
+                            <a href="https://www.google.com/maps/dir//{{ $rel['urlName'] }}/%40{{$rel['latitude']}},{{$rel['longitude']}},12z" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
                         @endif  
                         <div class="content2">{{ $rel['address1'] }} {{ $rel['address2'] }}, {{ $rel['city'] }}, {{ $rel['state'] }} {{ $rel['zip'] }}</div>
                         <a href="tel:{{ $rel['phone1'] }}" class="content3 h21">{{ $rel['phone1'] }}</a>

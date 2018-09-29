@@ -20,7 +20,7 @@
                     @foreach ($grocery as $key => $rel)
                         <div class="main_block">
                             <a href="../{{config('app.defaultBaseURL.grocery-store-details')}}/{{ $rel['urlName'] }}"class="block_txtblock"><h1 class="text2">{{ $rel['name'] }}</h2></a>                                                          
-                            <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img alt="{{$loop->index}}{{ $rel['name'] }}" src="image/map.svg" /></a>
+                            <a href="https://www.google.com/maps/dir//{{ $rel['urlName'] }}/%40{{$rel['latitude']}},{{$rel['longitude']}},12z" target="_blank" class="mapicon1"><img alt="{{$loop->index}}{{ $rel['name'] }}" src="image/map.svg" /></a>
                             <div class="block_kmblock">
                             <!-- @if (isset($rel['distance']) && $rel['distance'])
                                     <div class="gro_kmblock">{{$rel['distance']}}</div>
@@ -39,7 +39,7 @@
                     @foreach ($restaurants as $key => $rel)
                         <div class="main_block">
                             <a href="../{{config('app.defaultBaseURL.dallas-indian-restaurant')}}/{{ $rel['urlName'] }}" class="block_txtblock"><h1 class="text2">{{ $rel['name'] }}</h1></a>                                                          
-                            <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img alt="{{$loop->index}}{{ $rel['name'] }}" src="image/map.svg" /></a>
+                            <a href="https://www.google.com/maps/dir//{{ $rel['urlName'] }}/%40{{$rel['latitude']}},{{$rel['longitude']}},12z" target="_blank" class="mapicon1"><img alt="{{$loop->index}}{{ $rel['name'] }}" src="image/map.svg" /></a>
                             <div class="block_kmblock">
                             <!-- @if (isset($rel['distance']) && $rel['distance'])
                                     <div class="re_kmblock">{{$rel['distance']}}</div>
@@ -62,13 +62,13 @@
                             @elseif($rel['religionName'] == 'Hinduism')
                                 <a href="../{{config('app.defaultBaseURL.dallas-hindu-temple')}}/{{ $rel['urlName'] }}" class="block_txtblock"><h1 class="text2">{{ $rel['name'] }}</h1></a>
                             @elseif($rel['religionName'] == 'Judaism')
-                                <a href="../{{config('app.defaultBaseURL.dallas-hindu-temple')}}/{{ $rel['urlName'] }}" class="class="block_txtblock"><h1 class="text2">{{ $rel['name'] }}</h1></a>
+                                <a href="../{{config('app.defaultBaseURL.dallas-hindu-temple')}}/{{ $rel['urlName'] }}" class="block_txtblock"><h1 class="text2">{{ $rel['name'] }}</h1></a>
                             @elseif($rel['religionName'] == 'Buddhism')
                                 <a href="../{{config('app.defaultBaseURL.dallas-hindu-temple')}}/{{ $rel['urlName'] }}" class="block_txtblock"><h1 class="text2">{{ $rel['name'] }}</h1></a>
                             @elseif($rel['religionName'] == 'Islam')
                                 <a href="../{{config('app.defaultBaseURL.dallas-islan-mosque')}}/{{ $rel['urlName'] }}" class="block_txtblock"><h1 class="text2">{{ $rel['name'] }}</h1></a>                                                          
                             @endif
-                            <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon1"><img alt="{{$loop->index}}{{ $rel['name'] }}" src="image/map.svg" /></a>
+                            <a href="https://www.google.com/maps/dir//{{ $rel['urlName'] }}/%40{{$rel['latitude']}},{{$rel['longitude']}},12z" target="_blank" class="mapicon1"><img alt="{{$loop->index}}{{ $rel['name'] }}" src="image/map.svg" /></a>
                             <div class="block_kmblock">
                                 <!-- @if (isset($rel['distance']) && $rel['distance'])
                                     <div class="reli_kmblock">{{$rel['distance']}}</div>

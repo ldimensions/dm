@@ -244,12 +244,12 @@ class ReligionController extends Controller
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
                     //$file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
-                    $resizeImage                = Image::make($file);
-                    $resizeImage->resize(466,350);
-                    $path                       = public_path('image/religion/'.$religionVal['id'].'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path); 
+                    //$resizeImage                = Image::make($file);
+                    //$resizeImage->resize(466,350);
+                    //$path                       = public_path('image/religion/'.$religionVal['id'].'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    //$resizeImage->save($path); 
 
-                    $file->move(public_path().'/image/religion/'.$religionVal['id'], 'originalFile_main_'.$key.'.'.$extension); 
+                    $file->move(public_path().'/image/religion/'.$religionVal['id'], $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
 
                     DB::table('photo')->insertGetId(
                         [
@@ -273,12 +273,12 @@ class ReligionController extends Controller
                     $fileName                   = $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
                     //$file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
 
-                    $resizeImage                = Image::make($file);
-                    $resizeImage->resize(128,95);
-                    $path                       = public_path('image/religion/'.$religionVal['id'].'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path); 
+                    //$resizeImage                = Image::make($file);
+                    //$resizeImage->resize(128,95);
+                    //$path                       = public_path('image/religion/'.$religionVal['id'].'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    //$resizeImage->save($path); 
 
-                    $file->move(public_path().'/image/religion/'.$religionVal['id'], 'originalFile_thumbnail_'.$key.'.'.$extension); 
+                    $file->move(public_path().'/image/religion/'.$religionVal['id'], $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
 
                     DB::table('photo')->insertGetId(
                         [
@@ -376,12 +376,12 @@ class ReligionController extends Controller
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
                     //$file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
-                    $resizeImage                = Image::make($file);
-                    $resizeImage->resize(466,350);
-                    $path                       = public_path('image/religion/'.$religionId.'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);  
+                    //$resizeImage                = Image::make($file);
+                    //$resizeImage->resize(466,350);
+                    //$path                       = public_path('image/religion/'.$religionId.'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    //$resizeImage->save($path);  
                     
-                    $file->move(public_path().'/image/religion/'.$religionId, 'originalFile_main_'.$key.'.'.$extension); 
+                    $file->move(public_path().'/image/religion/'.$religionId, $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
     
                     DB::table('photo')->insertGetId(
                         [
@@ -403,12 +403,12 @@ class ReligionController extends Controller
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
                     //$file->move(public_path().'/image/religion/'.$religionVal['id'], $fileName); 
-                    $resizeImage                = Image::make($file);
-                    $resizeImage->resize(128,95);
-                    $path                       = public_path('image/religion/'.$religionId.'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);    
+                    //$resizeImage                = Image::make($file);
+                    //$resizeImage->resize(128,95);
+                    //$path                       = public_path('image/religion/'.$religionId.'/'.$religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    //$resizeImage->save($path);    
                     
-                    $file->move(public_path().'/image/religion/'.$religionId, 'originalFile_thumbnail_'.$key.'.'.$extension); 
+                    $file->move(public_path().'/image/religion/'.$religionId, $religionVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
     
                     DB::table('photo')->insertGetId(
                         [

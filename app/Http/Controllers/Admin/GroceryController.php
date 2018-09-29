@@ -228,12 +228,12 @@ class GroceryController extends Controller
                 $extension                  = $file->getClientOriginalExtension();                
                 $fileName                   = $groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
 
-                $resizeImage                = Image::make($file);
-                $resizeImage->resize(466,350);
-                $path                       = public_path('image/grocery/'.$groceryVal['id'].'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                $resizeImage->save($path);   
+                //$resizeImage                = Image::make($file);
+                //$resizeImage->resize(466,350);
+                //$path                       = public_path('image/grocery/'.$groceryVal['id'].'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                //$resizeImage->save($path);   
                 
-                $file->move(public_path().'/image/grocery/'.$groceryVal['id'], 'originalFile_main_'.$key.'.'.$extension); 
+                $file->move(public_path().'/image/grocery/'.$groceryVal['id'], $groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
 
                 DB::table('photo')->insertGetId(
                     [
@@ -256,12 +256,12 @@ class GroceryController extends Controller
                 $extension                  = $file->getClientOriginalExtension();                
                 $fileName                   = $groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
                 //$file->move(public_path().'/image/grocery/'.$groceryVal['id'], $fileName); 
-                $resizeImage                = Image::make($file);
-                $resizeImage->resize(128,95);
-                $path                       = public_path('image/grocery/'.$groceryVal['id'].'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                $resizeImage->save($path);    
+                //$resizeImage                = Image::make($file);
+                //$resizeImage->resize(128,95);
+                //$path                       = public_path('image/grocery/'.$groceryVal['id'].'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                //$resizeImage->save($path);    
                 
-                $file->move(public_path().'/image/grocery/'.$groceryVal['id'], 'originalFile_thumbnail_'.$key.'.'.$extension); 
+                $file->move(public_path().'/image/grocery/'.$groceryVal['id'], $groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
                
                 DB::table('photo')->insertGetId(
                     [
@@ -358,12 +358,12 @@ class GroceryController extends Controller
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
                     //$file->move(public_path().'/image/grocery/'.$groceryVal['id'], $fileName); 
-                    $resizeImage                = Image::make($file);
-                    $resizeImage->resize(466,350);
-                    $path                       = public_path('image/grocery/'.$groceryId.'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);   
+                    //$resizeImage                = Image::make($file);
+                    //$resizeImage->resize(466,350);
+                    //$path                       = public_path('image/grocery/'.$groceryId.'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    //$resizeImage->save($path);   
                     
-                    $file->move(public_path().'/image/grocery/'.$groceryId, 'originalFile_main_'.$key.'.'.$extension); 
+                    $file->move(public_path().'/image/grocery/'.$groceryId, $groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
     
                     DB::table('photo')->insertGetId(
                         [
@@ -385,12 +385,12 @@ class GroceryController extends Controller
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
                     //$file->move(public_path().'/image/grocery/'.$groceryVal['id'], $fileName); 
-                    $resizeImage                = Image::make($file);
-                    $resizeImage->resize(128,95);
-                    $path                       = public_path('image/grocery/'.$groceryId.'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);       
+                    //$resizeImage                = Image::make($file);
+                    //$resizeImage->resize(128,95);
+                    //$path                       = public_path('image/grocery/'.$groceryId.'/'.$groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    //$resizeImage->save($path);       
                     
-                    $file->move(public_path().'/image/grocery/'.$groceryId, 'originalFile_thumbnail_'.$key.'.'.$extension); 
+                    $file->move(public_path().'/image/grocery/'.$groceryId, $groceryVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
     
                     DB::table('photo')->insertGetId(
                         [
