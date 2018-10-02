@@ -179,7 +179,10 @@
                 </div>
             </div>
             <div class="block22">
-                <div class="white_t space"><h2 class="titleh2 graycolor">{{ $religion['name'] }} Location</h2></div>
+                <div class="white_t1 space">
+                    <h2 class="titleh2 graycolor1">{{ $religion['name'] }} Location</h2>
+                    <a href="#" title="" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
+                </div>
                 <div id="map" class="map"></div>
             </div>
             @if($photos)
