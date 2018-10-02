@@ -71,7 +71,7 @@ class RestaurantController extends Controller
 
         //$restaurantRs                       =   $restaurantRs->get();                                                
         //$restaurants                        =   $restaurantRs->toArray();
-        $restaurants                          =   $restaurantRs->paginate(20);
+        $restaurants                          =   $restaurantRs->paginate(16);
 
         // if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){            
         //     foreach($restaurants as $key => $restaurant) {    
@@ -120,7 +120,7 @@ class RestaurantController extends Controller
                                                     'address.zip', 'address.county',
                                                     'address.phone1', 'address.latitude',
                                                     'address.longitude', 'ethnic.ethnicName',
-                                                    'ethnic.id as ethnicId')
+                                                    'ethnic.id as ethnicId', 'url.urlName')
                                                     ->leftjoin('url','url.restaurantId', '=', 'restaurant.id')
                                                     ->leftjoin('address','address.id', '=', 'restaurant.addressId')
                                                     ->leftjoin('ethnic','ethnic.id', '=', 'restaurant.ethnicId')

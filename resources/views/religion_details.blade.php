@@ -181,7 +181,7 @@
             <div class="block22">
                 <div class="white_t1 space">
                     <h2 class="titleh2 graycolor1">{{ $religion['name'] }} Location</h2>
-                    <a href="#" title="" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
+                    <a href="https://www.google.com/maps/dir//{{ $religion['urlName'] }}/%40{{$religion['latitude']}},{{$religion['longitude']}},12z" title="{{ $religion['name'] }}" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $religion['name'] }}"/></a>
                 </div>
                 <div id="map" class="map"></div>
             </div>

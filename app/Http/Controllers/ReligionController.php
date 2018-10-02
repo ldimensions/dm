@@ -75,7 +75,7 @@ class ReligionController extends Controller
 
         // $religionRs                         =   $religionRs->get();
         // $religions                          =   $religionRs->toArray();  
-        $religions                          =   $religionRs->paginate(20);
+        $religions                          =   $religionRs->paginate(16);
 
         // if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
         //     foreach($religions as $key => $religion) {    
@@ -124,7 +124,7 @@ class ReligionController extends Controller
                                                 'address.phone1', 'address.latitude',
                                                 'address.longitude','religion_type.religionName',
                                                 'denomination.denominationName',
-                                                'denomination.id as denominationId')
+                                                'denomination.id as denominationId', 'url.urlName')
                                             ->leftjoin('religion','url.religionId', '=', 'religion.id')
                                             ->leftjoin('religion_type','religion_type.id', '=', 'religion.religionTypeId')                                                
                                             ->leftjoin('denomination','denomination.id', '=', 'religion.denominationId')                                                

@@ -131,7 +131,7 @@ class GroceryController extends Controller
 
         // $groceryRs                       =   $groceryRs->get();
         // $grocerys                        =   $groceryRs->toArray();
-        $grocerys                       =   $groceryRs->paginate(10);
+        $grocerys                       =   $groceryRs->paginate(16);
 
         // if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){            
         //     foreach($grocerys as $key => $grocery) {    
@@ -179,7 +179,7 @@ class GroceryController extends Controller
                                                 'address.zip', 'address.county',
                                                 'address.phone1', 'address.latitude',
                                                 'address.longitude', 'ethnic.ethnicName',
-                                                'ethnic.id as ethnicId')
+                                                'ethnic.id as ethnicId', 'url.urlName')
                                             ->leftjoin('url','url.groceryId', '=', 'grocery.id')
                                             ->leftjoin('address','address.id', '=', 'grocery.addressId')
                                             ->leftjoin('ethnic','ethnic.id', '=', 'grocery.ethnicId')

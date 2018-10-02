@@ -140,22 +140,22 @@ Route::group(['middleware' => ['role:Admin']], function () {
             
         $citys                                  =   DB::select('select cityId, value from city ORDER BY city ASC'); 
 
-        foreach ($citys as $city) {
-            //Grocery    
-            $sitemap->add(URL::to(config('app.defaultBaseURL.grocery-search').'/'.config('app.defaultBaseURL.dallas-indian-grocery-store').'-2/'.config('app.defaultBaseURL.indian-grocery-store-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');
-            $sitemap->add(URL::to(config('app.defaultBaseURL.grocery-search').'/'.config('app.defaultBaseURL.dallas-kerala-grocery-store').'-1/'.config('app.defaultBaseURL.kerala-grocery-store-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');
-            $sitemap->add(URL::to(config('app.defaultBaseURL.grocery-search').'/'.config('app.defaultBaseURL.dallas-tamil-grocery-store').'-3/'.config('app.defaultBaseURL.tamil-grocery-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');        
+        // foreach ($citys as $city) {
+        //     //Grocery    
+        //     $sitemap->add(URL::to(config('app.defaultBaseURL.grocery-search').'/'.config('app.defaultBaseURL.dallas-indian-grocery-store').'-2/'.config('app.defaultBaseURL.indian-grocery-store-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');
+        //     $sitemap->add(URL::to(config('app.defaultBaseURL.grocery-search').'/'.config('app.defaultBaseURL.dallas-kerala-grocery-store').'-1/'.config('app.defaultBaseURL.kerala-grocery-store-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');
+        //     $sitemap->add(URL::to(config('app.defaultBaseURL.grocery-search').'/'.config('app.defaultBaseURL.dallas-tamil-grocery-store').'-3/'.config('app.defaultBaseURL.tamil-grocery-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');        
         
-            //Restaurant
-            $sitemap->add(URL::to(config('app.defaultBaseURL.restaurant-search').'/'.config('app.defaultBaseURL.dallas-indian-restaurant').'-2/'.config('app.defaultBaseURL.indian-restaurant-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');
-            $sitemap->add(URL::to(config('app.defaultBaseURL.restaurant-search').'/'.config('app.defaultBaseURL.dallas-kerala-restaurant').'-1/'.config('app.defaultBaseURL.kerala-restaurant-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');
-            $sitemap->add(URL::to(config('app.defaultBaseURL.restaurant-search').'/'.config('app.defaultBaseURL.dallas-tamil-restaurant').'-3/'.config('app.defaultBaseURL.tamil-restaurant-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');        
+        //     //Restaurant
+        //     $sitemap->add(URL::to(config('app.defaultBaseURL.restaurant-search').'/'.config('app.defaultBaseURL.dallas-indian-restaurant').'-2/'.config('app.defaultBaseURL.indian-restaurant-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');
+        //     $sitemap->add(URL::to(config('app.defaultBaseURL.restaurant-search').'/'.config('app.defaultBaseURL.dallas-kerala-restaurant').'-1/'.config('app.defaultBaseURL.kerala-restaurant-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');
+        //     $sitemap->add(URL::to(config('app.defaultBaseURL.restaurant-search').'/'.config('app.defaultBaseURL.dallas-tamil-restaurant').'-3/'.config('app.defaultBaseURL.tamil-restaurant-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');        
 
-            //Religion
-            $sitemap->add(URL::to(config('app.defaultBaseURL.religion-search').'/'.config('app.defaultBaseURL.dallas-christian-church').'-1/'.config('app.defaultBaseURL.christian-church-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');
-            $sitemap->add(URL::to(config('app.defaultBaseURL.religion-search').'/'.config('app.defaultBaseURL.dallas-hindu-temple').'-2/'.config('app.defaultBaseURL.hindu-temple-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');
-            $sitemap->add(URL::to(config('app.defaultBaseURL.religion-search').'/'.config('app.defaultBaseURL.dallas-islan-mosque').'-5/'.config('app.defaultBaseURL.islam-mosque-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');                
-        }
+        //     //Religion
+        //     $sitemap->add(URL::to(config('app.defaultBaseURL.religion-search').'/'.config('app.defaultBaseURL.dallas-christian-church').'-1/'.config('app.defaultBaseURL.christian-church-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');
+        //     $sitemap->add(URL::to(config('app.defaultBaseURL.religion-search').'/'.config('app.defaultBaseURL.dallas-hindu-temple').'-2/'.config('app.defaultBaseURL.hindu-temple-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');
+        //     $sitemap->add(URL::to(config('app.defaultBaseURL.religion-search').'/'.config('app.defaultBaseURL.dallas-islan-mosque').'-5/'.config('app.defaultBaseURL.islam-mosque-in').$city->value.'-'.$city->cityId), $date, '1.0', 'daily');                
+        // }
 
         //Grocery    
         $grocerys                                  =   DB::select('select url.urlName from grocery left join url on url.groceryId = grocery.id where grocery.is_deleted = 0 and grocery.is_disabled = 0');

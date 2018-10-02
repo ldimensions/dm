@@ -300,7 +300,8 @@ class CommonController extends Controller
     public static function activeMenu($type){
         $isActive           =   false;
         $hostName           =   $_SERVER['REQUEST_URI'];
-        $hostNameArr        =   explode("/",$hostName);
+        $hostNameArr1       =   explode("?",$hostName);
+        $hostNameArr        =   explode("/",$hostNameArr1[0]);
 
         $groceryArr         =   array('dallas-indian-grocery-store','dallas-grocery-store','grocery-search');
         $restaurantArr      =   array('dallas-indian-restaurant','restaurant-search');
@@ -313,7 +314,7 @@ class CommonController extends Controller
                 }
                 break;            
             case 'grocery':
-                foreach($groceryArr as $grocery){
+                foreach($groceryArr as $index => $grocery){
                     if (in_array($grocery, $hostNameArr)){
                         $isActive = true;
                     }

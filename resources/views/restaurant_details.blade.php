@@ -117,7 +117,7 @@
             <div class="block22">
             <div class="white_t1 space">
                 <h2 class="titleh2 graycolor1">{{$restaurant['name']}} Location</h2>
-                <a href="#" title="" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
+                <a href="https://www.google.com/maps/dir//{{ $restaurant['urlName'] }}/%40{{$restaurant['latitude']}},{{$restaurant['longitude']}},12z" title="{{ $restaurant['name'] }}" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $restaurant['name'] }}"/></a>
             </div>
                 <div id="map" class="map"></div>
             </div>
