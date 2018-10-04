@@ -89,7 +89,7 @@
 
     </div>
     <div class="rightcontainer">
-        <div class="ad240x400">ADVERTISE HERE</div>    
+    <div class="ad250x250"><img alt="ad"  width="100%" height="100%" src="{{ URL::to('/') }}/image/sideBanner.svg"/></div>
     </div>
 </div>
 </div>

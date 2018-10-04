@@ -46,7 +46,7 @@
                             @endif                         
                             <a href="#"  class="location"><img alt="{{config('app.siteId')}}" src="{{ URL::to('/') }}/image/location.svg" />Dallas</a>  -->
                             <img alt="DallasIndianPortal" class="hDlOGO" src="{{ URL::to('/') }}/image/dallasLogo.svg"/>
-                            <div class="headerad">ADVERTISE HERE</div>
+                            <div class="headerad"><img alt="ad"  width="100%" height="100%" src="{{ URL::to('/') }}/image/topBanner.svg"/></div>
                         </div>
                     </div>    
                     <div class="menumain">
