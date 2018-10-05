@@ -1265,7 +1265,7 @@ h4{
 	float: left;
 	background-color:#FFF;
 	height:auto;
-	width:98.3%;
+	width:98.8%;
 	height:301px;
 	border:1px solid #E1E1E1;
 	border-radius:5px;
@@ -1319,6 +1319,172 @@ h4{
 	border-radius: 5px;
 
 }
+.block1{
+	float:left;
+	position:relative;
+	background-color:#FFF;
+	height:106px;
+	border:1px solid #E1E1E1;
+	margin-bottom:10px;
+	border-radius:5px;
+	margin-left:5px;
+	width:98.7%;
+
+}
+.content1{
+	float:left;
+	position:relative;
+	width:60%;
+	margin-top:21px;
+	padding-left:15px;
+	font-size: 20px;
+	color: #323232;
+	white-space: nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.content2{
+	float:left;
+	position:relative;
+	width:60%;
+	padding-left:15px;
+	padding-top:1px;
+	white-space: nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+
+}
+.smallImage{
+	float:left;
+	position:relative;
+	width:101px;
+	height:75px;
+	background-color:#F6F6F6;
+	margin-top:15px;
+	border:1px solid #e1e1e1;
+}
+.text1{
+    width: 37% !important;
+    padding: 11px 10px;
+    margin: 13px 10px 15px 0 !important;
+}
+.searchbar{
+	background-color:#FFF;
+	height:auto;
+	border:1px solid #E1E1E1;
+	margin-top:10px;
+	border-radius:5px;
+	margin-left:5px;
+	margin-right:5px;
+	margin-bottom:10px;
+	width:98.8%;
+	}
+	.search{
+		float:right;
+		width:79px;
+		box-sizing: border-box;
+		border:1px solid #E1E1E1;
+		color:#646464;
+		line-height:auto;
+		border-radius:0px 5px 5px 0px;
+		background-color:#009BFF;
+		color:#FFF;
+		text-align:center;
+	}
+	.search:hover{
+		float:right;
+		width:79px;
+		box-sizing: border-box;
+		border:1px solid #E1E1E1;
+		color:#646464;
+		line-height:auto;
+		border-radius:0px 5px 5px 0px;
+		background-color:#28ABFF;
+		color:#FFFFFF !important;
+		text-decoration:none !important;
+		text-align:center;
+	}
+	.content4{
+		float:left;
+		position:relative;
+		width:70%;
+		margin-top:21px;
+		padding-left:15px;
+		font-size: 20px;
+		color: #323232;
+		white-space: nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+	}
+	.content2{
+		float:left;
+		position:relative;
+		width:70%;
+		padding-left:15px;
+		padding-top:1px;
+		white-space: nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+	
+	}
+	.content3{
+		float:left;
+		position:relative;
+		width:70%;
+		padding-left:15px;
+		padding-top:1px;
+	
+	}
+	.content1{
+		float:left;
+		position:relative;
+		width:70%;
+		margin-top:21px;
+		padding-left:15px;
+		font-size: 20px;
+		color: #323232;
+		white-space: nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+	}
+}
+@media only screen and (max-width: 568px) {
+	.text1{
+		width: 97.5% !important;
+		padding: 11px 10px;
+		margin: 13px 10px 15px 0 !important;
+	}
+	.searchbar{
+		background-color:#FFF;
+		height:auto;
+		border:1px solid #E1E1E1;
+		margin-top:10px;
+		border-radius:5px;
+		margin-left:5px;
+		margin-right:5px;
+		margin-bottom:10px;
+		width:98%;
+		}
+		.block1{
+			float:left;
+			position:relative;
+			background-color:#FFF;
+			height:106px;
+			border:1px solid #E1E1E1;
+			margin-bottom:10px;
+			border-radius:5px;
+			margin-left:5px;
+			width:98.2%;
+		
+		}
+		.bottomborder{
+			float:left;
+			position:relative;
+			width:94.7%;
+			height:10px;
+			margin-left:15px;
+			border-bottom:5px solid #F1F1F1;
+		}
 }
 @media only screen and (max-width: 1024px) {
 
@@ -1328,11 +1494,12 @@ h4{
 }
 
 @media only screen and (max-width: 480px) {
+
 	.block3{
 		float: left;
 		background-color:#FFF;
 		height:auto;
-		width:96.8%;
+		width:98%;
 		height:301px;
 		border:1px solid #E1E1E1;
 		border-radius:5px;
@@ -1378,10 +1545,63 @@ h4{
 	.bottomborder{
 		float:left;
 		position:relative;
-		width:90.2%;
+		width:93.5%!important;
 		height:10px;
 		margin-left:15px;
 		border-bottom:5px solid #F1F1F1;
 	}
-}
+.block1{
+	float:left;
+	position:relative;
+	background-color:#FFF;
+	height:106px;
+	border:1px solid #E1E1E1;
+	margin-bottom:10px;
+	border-radius:5px;
+	margin-left:5px;
+	width:98%;
 
+}
+	.content1{
+		float:left;
+		position:relative;
+		width:60%;
+		margin-top:21px;
+		padding-left:15px;
+		font-size: 20px;
+		color: #323232;
+		white-space: nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+	}
+	.content2{
+		float:left;
+		position:relative;
+		width:60%;
+		padding-left:15px;
+		padding-top:1px;
+		white-space: nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+	
+	}
+	.searchbar{
+		background-color:#FFF;
+		height:auto;
+		border:1px solid #E1E1E1;
+		margin-top:10px;
+		border-radius:5px;
+		margin-left:5px;
+		margin-right:5px;
+		margin-bottom:10px;
+		width:98%;
+		}
+		.bottomborder {
+			float: left;
+			position: relative;
+			width: 91%;
+			height: 10px;
+			margin-left: 15px;
+			border-bottom: 5px solid #F1F1F1;
+		}
+}
