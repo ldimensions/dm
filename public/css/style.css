@@ -1447,7 +1447,15 @@ h4{
 		overflow:hidden;
 		text-overflow:ellipsis;
 	}
+	.pagination {
+		display: inline-block;
+		padding-left: 0;
+		margin: 0 0 15px 5px;
+		border-radius: 4px;
+		width: 90%;
+	}
 }
+
 @media only screen and (max-width: 568px) {
 	.text1{
 		width: 97.5% !important;
