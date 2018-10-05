@@ -17,16 +17,18 @@ a:hover{text-decoration: none; cursor: pointer;}
 	min-height: 100%;
 	margin-bottom: -62px;
 }
-.hDlOGO
-{
+.hDlOGO{
+position: relative;
 float: left;
-margin-top: 10px;	
+margin-top: 12px;	
+margin-bottom: 12px;
+margin-right: 357px;
 }
 .headerad{
 	position: relative;
-	float: right;
+	float: left;
 	width:728px;
-	height:90px;
+	height:auto;
 	background-color: #FAFAFA;
 	margin-top: 3px;
 }
@@ -42,11 +44,15 @@ margin-top: 10px;
     margin-bottom: 0px;
 }
 .headerh{
-	height:143px;
+	position: relative;
+	float: left;
+	height:auto;
+	width: 100%;
 	background-color:#F8F8F8;
 	background-image:url(../image/shadow_bottom.gif) ;
 	background-position:bottom ;
 	background-repeat:repeat-x;
+	padding-bottom: 3px;
 }
 .footerh{
 	float: left;
@@ -61,7 +67,10 @@ margin-top: 10px;
 }
 
 .headercontainer{
+	position: relative;
+	float: left;
 	width:100%;
+	height: auto;
 	background-position:bottom;
 	background-image:url(../image/shadow_bottom.gif);
 	background-repeat:repeat-x;
@@ -70,7 +79,7 @@ margin-top: 10px;
 .header{
 position: relative;
 width: 1280px;
-height:100px;
+height:auto;
 margin:auto;
 /* padding-right:150px; */
 }
@@ -79,15 +88,18 @@ table {
 	border:0;
 }
 .menumain{
-	margin: auto;
-	width:1280px;
+	position: relative;
+	float: left;
+	width:100%;
+	height:auto;
 	background-color:#F8F8F8;
 }
 .menu{
-	position: relative;
- width:1250px;
- height:40px;
- margin-left: 15px;
+position: relative;
+ width:1280px;
+ height:auto;
+margin: auto;
+padding-left: 15px;
 }
 
 .signinbutton{
@@ -971,7 +983,6 @@ h4{
 .space1{
 	margin-top:15px;
 	margin-bottom:15px;
-
 }
 .suggestionblock{
 	float: right;
@@ -1170,7 +1181,10 @@ h4{
 /*------------ End Loading Wheel ----*/
 @media only screen and (max-width: 768px) {
 	.headerh{
-		height:192px;
+		position: relative;
+		float: left;
+		width: 100%;
+		height:auto;
 		background-color:#F8F8F8;
 		background-image:url(../image/shadow_bottom.gif) ;
 		background-position:bottom ;
@@ -1178,34 +1192,42 @@ h4{
 	}
 	.header{
 		position: relative;
+		float: left;
 		width: 100%;
-		height:149px;
+		height:auto;
 		margin:auto;
 		/* padding-right:150px; */
 }
 		.hDlOGO{
-		float: left;
-		margin-top: 0px;
-		height:50px;	
+			position: relative;
+			float: left;
+			margin-top: 0px!important;	
+			margin-bottom: 0px!important;
+			height: 50px;
 }
 .headerad{
 	position: relative;
-	float: right;
+	float: left;
 	width:100%;
 	height:auto;
 	background-color: #FAFAFA;
-	margin-top: 3px;
+	margin-bottom: 6px;
 }
+
+
 .menumain{
-	margin: auto;
+	position: relative;
+	float: left;
 	width:100%;
+	height:auto;
 	background-color:#F8F8F8;
 }
 .menu{
 	position: relative;
  width:100%;
- height:40px;
+ height:auto;
  margin-left: 0!important;
+ padding-left: 0!important;
 }
 .mcontainer{
 	margin: auto;
@@ -1221,8 +1243,12 @@ h4{
 	position;: relative;
 	width: 100%;
 	min-height:725px;
-	padding:0px !important;
+	padding:0px!important;
 
+}
+.space1{
+	margin-top:10px;
+	margin-bottom:0px!important;
 }
 .rightcontainer{
 	float: left;
@@ -1233,18 +1259,18 @@ h4{
 	margin-top: 0px!important;
 	background-color: #FFF;
 	border:1px solid #E1E1E1;
-	margin-bottom:15px;
+	margin-bottom:10px;
 }
 .block3{
 	float: left;
 	background-color:#FFF;
 	height:auto;
-	width:96%;
+	width:98.3%;
 	height:301px;
 	border:1px solid #E1E1E1;
 	border-radius:5px;
-	margin-left:15px;
-	margin-bottom:15px;
+	margin-left:5px;
+	margin-bottom:10px;
 	padding:0px !important;
 }
 .block_txtblock{
@@ -1282,11 +1308,7 @@ h4{
 	margin-left:15px;
 	border-bottom:5px solid #F1F1F1;
 }
-.space1{
-	margin-top:15px;
-	margin-bottom:0px!mportant;
 
-}
 .ad250x250{
 	margin: auto;
 	margin-top:15px;
@@ -1304,3 +1326,19 @@ h4{
 @media only screen and (max-width: 1279px) {
 
 }
+
+@media only screen and (max-width: 480px) {
+	.block3{
+		float: left;
+		background-color:#FFF;
+		height:auto;
+		width:97.8%;
+		height:301px;
+		border:1px solid #E1E1E1;
+		border-radius:5px;
+		margin-left:5px;
+		margin-bottom:10px;
+		padding:0px !important;
+	}
+}
+
