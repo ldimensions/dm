@@ -1332,13 +1332,56 @@ h4{
 		float: left;
 		background-color:#FFF;
 		height:auto;
-		width:97.8%;
+		width:96.8%;
 		height:301px;
 		border:1px solid #E1E1E1;
 		border-radius:5px;
 		margin-left:5px;
 		margin-bottom:10px;
 		padding:0px !important;
+	}
+	.block_txtblock{
+		float:left;
+		position:relative;
+		width:87%;
+		height:30px;
+		padding-left:15px;
+		padding-top: 10px;
+	}
+	.block_txtblock:hover{
+		float:left;
+		position:relative;
+		width:87%;
+		height:30px;
+		padding-left:15px;
+		padding-top: 10px;
+	}
+	.txtblock{
+		float:left;
+		position:relative;
+		width:87%;
+		padding-left:15px;
+		color:#646464;
+		margin-top:2px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.txtblock1{
+		float:left;
+		position:relative;
+		width:87%;
+		padding-left:15px;
+		color:#646464;
+		margin-top:2px;
+	}
+	.bottomborder{
+		float:left;
+		position:relative;
+		width:90.2%;
+		height:10px;
+		margin-left:15px;
+		border-bottom:5px solid #F1F1F1;
 	}
 }
 
