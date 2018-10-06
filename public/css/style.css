@@ -1265,7 +1265,7 @@ h4{
 	float: left;
 	background-color:#FFF;
 	height:auto;
-	width:98.8%;
+	width:98.7%;
 	height:301px;
 	border:1px solid #E1E1E1;
 	border-radius:5px;
@@ -1303,7 +1303,7 @@ h4{
 .bottomborder{
 	float:left;
 	position:relative;
-	width:96.1%!important;
+	width:96.1%;
 	height:10px;
 	margin-left:15px;
 	border-bottom:5px solid #F1F1F1;
@@ -1464,13 +1464,13 @@ h4{
         width: 98.5%!important;
     }
     .bottomborder {
-        width: 95.1%!important;
+        width: 95.1%;
         height: 10px;
         margin-left: 15px;
         border-bottom: 5px solid #F1F1F1
     }
     .block3 {
-        width: 98.5%!important;
+        width: 98.5%;
     }
 }
 @media only screen and (max-width: 568px) {
@@ -1480,12 +1480,12 @@ h4{
 		margin: 0px 10px 0px 0 !important;
     }
     .block3 {
-        width: 98.2%!important;
+        width: 98.2%;
 	}
 	.bottomborder {
 		float: left;
 		position: relative;
-		width: 94.7%!important;
+		width: 94.7%;
 		height: 10px;
 		margin-left: 15px;
 		border-bottom: 5px solid #F1F1F1;
@@ -1501,7 +1501,7 @@ h4{
 @media only screen and (max-width: 480px) {
 
 	.block3{
-		width:97.9%!important;
+		width:97.9%;
 	}
 	.block_txtblock{
 		width:87%;
@@ -1556,7 +1556,7 @@ h4{
 		height:88px;
 	}
 	.block3{
-		width:97.5%!important;
+		width:97.5%;
 	}
 	.content1{
 		width:70%;
@@ -1589,12 +1589,12 @@ h4{
 		width:97.4%!important;
 		}
 		.block3{
-		width:97.4%!important;
+		width:97.4%;
 		}
 		.bottomborder {
 			float: left;
 			position: relative;
-			width: 91.9%!important;
+			width: 91.8%!important;
 			height: 10px;
 			margin-left: 15px;
 			border-bottom: 5px solid #F1F1F1;
@@ -1602,12 +1602,21 @@ h4{
 }
 
 @media only screen and (max-width:360px) {
-    .block1 {
-        width: 97.1%!important;
-    }
     .searchbar {
-        width: 97.1%!important;
-    }
+        width: 96.2%;
+	}
+	.block1{
+		background-color:#FFF;
+		height:126px;
+		border:1px solid #E1E1E1;
+		margin-bottom:15px;
+		border-radius:5px;
+		margin-left:15px;
+		width:467px;
+	}
+	.block3{
+		width:97.1%;
+		}
 }
 @media only screen and (max-width: 320px) {
 	.block1{
@@ -1617,12 +1626,12 @@ h4{
 		width:97%!important;
 		}
 		.block3{
-		width:97%!important;
+		width:97%;
 		}
 		.bottomborder {
 			float: left;
 			position: relative;
-			width: 90.2%!important;
+			width: 90.3%!important;
 			height: 10px;
 			margin-left: 15px;
 			border-bottom: 5px solid #F1F1F1;
