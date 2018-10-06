@@ -1328,7 +1328,7 @@ h4{
 	margin-bottom:10px;
 	border-radius:5px;
 	margin-left:5px;
-	width:98.8%;
+	width:98.7%;
 
 }
 .content1{
@@ -1377,7 +1377,7 @@ h4{
 	margin-left:5px;
 	margin-right:5px;
 	margin-bottom:10px;
-	width:98.8%;
+	width:98.7%;
 	}
 	.search{
 		float:right;
@@ -1458,10 +1458,10 @@ h4{
 @media only screen and (max-width: 640px) {
 
     .block1 {
-        width: 98.5%!important;
+        width: 98.5%;
     }
     .searchbar {
-        width: 98.5%!important;
+        width: 98.5%;
     }
     .bottomborder {
         width: 95.1%;
@@ -1490,6 +1490,12 @@ h4{
 		margin-left: 15px;
 		border-bottom: 5px solid #F1F1F1;
 	}
+    .block1 {
+        width: 98.3%;
+	}
+	.searchbar{
+		width:98.3%;
+		}
 }
 @media only screen and (max-width: 1024px) {
 
@@ -1516,7 +1522,7 @@ h4{
 		width:87%;
 	}
 .block1{
-	width:97.9%!important;
+	width:97.9%;
 }
 	.content1{
 		width:63%;
@@ -1531,7 +1537,7 @@ h4{
 		width:63%;
 	}
 	.searchbar{
-		width:97.9%!important;
+		width:97.9%;
 		}
 		.bottomborder {
 			float: left;
@@ -1552,7 +1558,7 @@ h4{
 		border-bottom: 5px solid #F1F1F1;
 	}
 	.block1{
-		width:97.5%!important;
+		width:97.5%;
 		height:88px;
 	}
 	.block3{
@@ -1583,10 +1589,10 @@ h4{
 }
 @media only screen and (max-width: 375px) {
 	.block1{
-		width:97.4%!important;
+		width:97.4%;
 	}
 	.searchbar{
-		width:97.4%!important;
+		width:97.4%;
 		}
 		.block3{
 		width:97.4%;
@@ -1603,16 +1609,10 @@ h4{
 
 @media only screen and (max-width:360px) {
     .searchbar {
-        width: 96.2%;
+        width: 97.2%;
 	}
 	.block1{
-		background-color:#FFF;
-		height:126px;
-		border:1px solid #E1E1E1;
-		margin-bottom:15px;
-		border-radius:5px;
-		margin-left:15px;
-		width:467px;
+		width:97.2%;
 	}
 	.block3{
 		width:97.1%;
@@ -1620,10 +1620,10 @@ h4{
 }
 @media only screen and (max-width: 320px) {
 	.block1{
-		width:97%!important;
+		width:97%;
 	}
 	.searchbar{
-		width:97%!important;
+		width:97%;
 		}
 		.block3{
 		width:97%;
