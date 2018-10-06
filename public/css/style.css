@@ -263,6 +263,8 @@ padding-left: 15px;
 	padding-right:0px !important;
 }
 .searchbar{
+	float: left;
+	position: relative;
 	background-color:#FFF;
 	height:70px;
 	border:1px solid #E1E1E1;
@@ -1474,11 +1476,7 @@ h4{
     }
 }
 @media only screen and (max-width: 568px) {
-	.text1{
-		width: 97.5% !important;
-		padding: 11px 10px;
-		margin: 0px 10px 0px 0 !important;
-    }
+
     .block3 {
         width: 98.2%;
 	}
@@ -1495,6 +1493,44 @@ h4{
 	}
 	.searchbar{
 		width:98.3%;
+		padding:15px;
+		}
+		.text1{
+			width: 97.1% !important;
+			padding: 11px 10px;
+			margin: 0px 10px 0px 0 !important;
+		}
+		.select{
+			width: 97.1% !important;
+			padding: 11px 10px;
+			margin: 0px 10px 13px 0;
+		}
+		.search{
+			float:left;
+			width:97.3%;
+			line-height:40px;
+			border:1px solid #E1E1E1;
+			color:#646464;
+			border-radius:5px;
+			background-color:#009BFF;
+			color:#FFF;
+			text-align:center;
+			margin-top: 14px;
+			margin-bottom: 1px;
+
+		}
+		.search:hover{
+			float:left;
+			width:97.8%;
+			line-height:40px;
+			border:1px solid #E1E1E1;
+			color:#646464;
+			border-radius:5px;
+			background-color:#28ABFF;
+			color:#FFF;
+			text-align:center;
+			margin-top: 14px;
+			margin-bottom: 1px;
 		}
 }
 @media only screen and (max-width: 1024px) {
@@ -1505,6 +1541,44 @@ h4{
 }
 
 @media only screen and (max-width: 480px) {
+
+	.text1{
+		width: 96.6% !important;
+		padding: 11px 10px;
+		margin: 0px 10px 0px 0 !important;
+	}
+	.select{
+		width: 96.6% !important;
+		padding: 11px 10px;
+		margin: 0px 10px 13px 0;
+	}
+	.search{
+		float:left;
+		width:96.6%;
+		line-height:40px;
+		border:1px solid #E1E1E1;
+		color:#646464;
+		border-radius:5px;
+		background-color:#009BFF;
+		color:#FFF;
+		text-align:center;
+		margin-top: 13px;
+		margin-bottom: 1px;
+
+	}
+	.search:hover{
+		float:left;
+		width:96.6%;
+		line-height:40px;
+		border:1px solid #E1E1E1;
+		color:#646464;
+		border-radius:5px;
+		background-color:#28ABFF;
+		color:#FFF;
+		text-align:center;
+		margin-top: 13px;
+		margin-bottom: 1px;
+	}
 
 	.block3{
 		width:97.9%;
@@ -1605,6 +1679,43 @@ h4{
 			margin-left: 15px;
 			border-bottom: 5px solid #F1F1F1;
 		}
+		.text1{
+			width: 96% !important;
+			padding: 11px 10px;
+			margin: 0px 10px 0px 0 !important;
+		}
+		.select{
+			width: 96% !important;
+			padding: 11px 10px;
+			margin: 0px 10px 13px 0;
+		}
+		.search{
+			float:left;
+			width:96.2%;
+			line-height:40px;
+			border:1px solid #E1E1E1;
+			color:#646464;
+			border-radius:5px;
+			background-color:#009BFF;
+			color:#FFF;
+			text-align:center;
+			margin-top: 13px;
+			margin-bottom: 1px;
+	
+		}
+		.search:hover{
+			float:left;
+			width:96.2%;
+			line-height:40px;
+			border:1px solid #E1E1E1;
+			color:#646464;
+			border-radius:5px;
+			background-color:#28ABFF;
+			color:#FFF;
+			text-align:center;
+			margin-top: 13px;
+			margin-bottom: 1px;
+		}
 }
 
 @media only screen and (max-width:360px) {
@@ -1616,6 +1727,44 @@ h4{
 	}
 	.block3{
 		width:97.1%;
+		}
+
+		.text1{
+			width: 95.8% !important;
+			padding: 11px 10px;
+			margin: 0px 10px 0px 0 !important;
+		}
+		.select{
+			width: 95.8% !important;
+			padding: 11px 10px;
+			margin: 0px 10px 13px 0;
+		}
+		.search{
+			float:left;
+			width:96%;
+			line-height:40px;
+			border:1px solid #E1E1E1;
+			color:#646464;
+			border-radius:5px;
+			background-color:#009BFF;
+			color:#FFF;
+			text-align:center;
+			margin-top: 13px;
+			margin-bottom: 1px;
+	
+		}
+		.search:hover{
+			float:left;
+			width:96%;
+			line-height:40px;
+			border:1px solid #E1E1E1;
+			color:#646464;
+			border-radius:5px;
+			background-color:#28ABFF;
+			color:#FFF;
+			text-align:center;
+			margin-top: 13px;
+			margin-bottom: 1px;
 		}
 }
 @media only screen and (max-width: 320px) {
@@ -1648,5 +1797,41 @@ h4{
 		}
 		.content1{
 			width:65%;
+		}
+		.text1{
+			width: 95.2% !important;
+			padding: 11px 10px;
+			margin: 0px 10px 0px 0 !important;
+		}
+		.select{
+			width: 95.2% !important;
+			padding: 11px 10px;
+			margin: 0px 10px 13px 0;
+		}
+		.search{
+			float:left;
+			width:95.4%;
+			line-height:40px;
+			border:1px solid #E1E1E1;
+			color:#646464;
+			border-radius:5px;
+			background-color:#009BFF;
+			color:#FFF;
+			text-align:center;
+			margin-top: 13px;
+	
+		}
+		.search:hover{
+			float:left;
+			width:96%;
+			line-height:40px;
+			border:1px solid #E1E1E1;
+			color:#646464;
+			border-radius:5px;
+			background-color:#28ABFF;
+			color:#FFF;
+			text-align:center;
+			margin-top: 13px;
+			margin-bottom: 1px;
 		}
 }
