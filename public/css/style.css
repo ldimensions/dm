@@ -1481,39 +1481,15 @@ h4{
     }
     .block3 {
         width: 98.2%!important;
-    }
-}
-	.searchbar{
-		background-color:#FFF;
-		height:auto;
-		border:1px solid #E1E1E1;
-		margin-top:10px;
-		border-radius:5px;
-		margin-left:5px;
-		margin-right:5px;
-		margin-bottom:10px;
-		width:98.5%!important;
-		}
-		.block1{
-			float:left;
-			position:relative;
-			background-color:#FFF;
-			height:106px;
-			border:1px solid #E1E1E1;
-			margin-bottom:10px;
-			border-radius:5px;
-			margin-left:5px;
-			width: 98.5%!important;
-		
-		}
-		.bottomborder{
-			float:left;
-			position:relative;
-			width:94.3%!important;
-			height:10px;
-			margin-left:15px;
-			border-bottom:5px solid #F1F1F1;
-		}
+	}
+	.bottomborder {
+		float: left;
+		position: relative;
+		width: 94.7%!important;
+		height: 10px;
+		margin-left: 15px;
+		border-bottom: 5px solid #F1F1F1;
+	}
 }
 @media only screen and (max-width: 1024px) {
 
@@ -1558,12 +1534,22 @@ h4{
 		width:97.9%!important;
 		}
 		.bottomborder {
-			width: 93%;
+			float: left;
+			position: relative;
+			width: 93.6%!important;
+			height: 10px;
+			margin-left: 15px;
+			border-bottom: 5px solid #F1F1F1;
 		}
 }
 @media only screen and (max-width: 414px) {
 	.bottomborder {
-		width: 92.5%;
+		float: left;
+		position: relative;
+		width: 92.5%!important;
+		height: 10px;
+		margin-left: 15px;
+		border-bottom: 5px solid #F1F1F1;
 	}
 	.block1{
 		width:97.5%!important;
@@ -1606,7 +1592,12 @@ h4{
 		width:97.4%!important;
 		}
 		.bottomborder {
-			width: 92%;
+			float: left;
+			position: relative;
+			width: 91.9%!important;
+			height: 10px;
+			margin-left: 15px;
+			border-bottom: 5px solid #F1F1F1;
 		}
 }
 
@@ -1629,7 +1620,12 @@ h4{
 		width:97%!important;
 		}
 		.bottomborder {
-			width: 90.5%;
+			float: left;
+			position: relative;
+			width: 90.2%!important;
+			height: 10px;
+			margin-left: 15px;
+			border-bottom: 5px solid #F1F1F1;
 		}
 		.content4{
 			width:65%;
