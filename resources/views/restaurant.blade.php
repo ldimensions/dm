@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<div role="tabpanel" class="tab-pane" id="restaurants">
+
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer">
@@ -82,6 +84,8 @@
         <div class="ad250x250"><img alt="ad"  width="100%" height="100%" src="{{ URL::to('/') }}/image/sideBanner.svg"/></div>
         </div>
     </div>
+</div>
+
 </div>
 <script>
 
