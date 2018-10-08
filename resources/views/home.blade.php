@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+<div role="tabpanel" class="tab-pane active" id="home">
+
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer space1">
@@ -89,4 +91,6 @@
         </div>
     </div>
 </div>    
+
+</div>
 @endsection

@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<div role="tabpanel" class="tab-pane" id="restaurants">
+
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer">
              <div class="col-md-12 searchbar hiddepadding"> <!--<a href="#" class="selocation"></a> -->
                 <form>
-                    <!-- <input name="Location" type="text" class="text locationimage" id="Location" placeholder="Location" readonly="readonly" > -->
                     <select name="type" class="select" id="type">
                         <option 
                             value="{{config('app.defaultBaseURL.dallas-indian-restaurant')}}-2"
@@ -83,6 +84,8 @@
         <div class="ad250x250"><img alt="ad"  width="100%" height="100%" src="{{ URL::to('/') }}/image/sideBanner.svg"/></div>
         </div>
     </div>
+</div>
+
 </div>
 <script>
 

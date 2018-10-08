@@ -1,11 +1,12 @@
 @extends('layouts.app')
 @section('content')
+<div role="tabpanel" class="tab-pane" id="groceries">
+
 <div class="mcontainer">
 <div class="maincontainer">
     <div class="leftcontainer">
         <div class="col-md-12 searchbar hiddepadding"> <!-- <a href="#" class="selocation"></a> -->
             <form>
-                <!-- <input name="Location" type="text" class="text locationimage" id="Location" placeholder="Location" readonly="readonly" > -->
                 <select name="type" class="select" id="type">
                     <option 
                         value="{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}-2" 
@@ -83,6 +84,8 @@
     </div>  
 </div>    
 </div> 
+
+</div>
     
     
     <script>
