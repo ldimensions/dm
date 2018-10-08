@@ -32,6 +32,11 @@
         <link href="{{ asset('css/style.css') }}?version=6.1" rel="stylesheet">
         <link href="{{ asset('css/lightslider.css') }}?version=6.1" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
+        <script src="{{ asset('js/swipe.js') }}" defer="defer"></script> 
+
     </head>
     <body>
         <div class="container">
@@ -61,10 +66,10 @@
                     <a href="#" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Events </a> 
                     <a href="#" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Movies </a>                      -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
-                        <li role="presentation"><a href="{{ route('grocery') }}" aria-controls="groceries" role="tab" data-toggle="tab">Groceries</a></li>
-                        <li role="presentation"><a href="{{ route('restaurant') }}" aria-controls="restaurants" role="tab" data-toggle="tab">Restaurants</a></li>
-                        <li role="presentation"><a href="{{ route('religion') }}" aria-controls="religions" role="tab" data-toggle="tab">Religions</a></li>
+                        <li role="presentation" class="active"><a href="#" role="tab" data-toggle="tab">&nbsp;Home&nbsp;</a></li>
+                        <li role="presentation"><a href="#" aria-controls="groceries" role="tab" data-toggle="tab">&nbsp;Groceries&nbsp;</a></li>
+                        <li role="presentation"><a href="#" aria-controls="restaurants" role="tab" data-toggle="tab">&nbsp;Restaurants&nbsp;</a></li>
+                        <li role="presentation"><a href="#" aria-controls="religions" role="tab" data-toggle="tab">&nbsp;Religions&nbsp;</a></li>
                     </ul>
                     
                 <div class="tab-content">
@@ -77,10 +82,7 @@
          <div class="footerh nopadding"> Copyright 2018 LDimensions. All rights reserved.</div>
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
-         <script src="{{ asset('js/common.js') }}" defer="defer"></script> 
+        <script src="{{ asset('js/common.js') }}" defer="defer"></script> 
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126021205-1"></script>
