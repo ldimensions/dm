@@ -83,19 +83,32 @@
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
-
+                            @hasanyrole('Admin')
                             <li>
                                 <a href="{{ url('/admin/dashboard') }}"> Dashboard</a>
                             </li>
+                            @endhasanyrole
+                            @hasanyrole('Admin')
                             <li>
                                 <a href="{{ url('/admin/grocery') }}"> Grocery</a>
                             </li>
+                            @endhasanyrole
+                            @hasanyrole('Admin')
                             <li>
                                 <a href="{{ url('/admin/restaurant') }}"> Restarunt</a>
                             </li> 
+                            @endhasanyrole
+                            @hasanyrole('Editor')
+                            <li>
+                                <a href="{{ url('/editor/restaurant') }}"> Restarunt</a>
+                            </li> 
+                            @endhasanyrole                            
+                            @hasanyrole('Admin')
                             <li>
                                 <a href="{{ url('/admin/religion') }}"> Religion</a>
                             </li>  
+                            @endhasanyrole
+                            @hasanyrole('Admin')
                             <li>
                                 <a href="#"> Events<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -107,6 +120,8 @@
                                     </li>                                
                                 </ul>                                
                             </li>
+                            @endhasanyrole
+                            @hasanyrole('Admin')
                             <li>
                                 <a href="#"> Movies<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -117,7 +132,9 @@
                                         <a href="{{ url('/admin/theatre') }}">Theatre</a>
                                     </li>                                
                                 </ul>
-                            </li>                                                                                                                                          
+                            </li>   
+                            @endhasanyrole 
+                            @hasanyrole('Admin')                                                                                                                                      
                             <li>
                                 <a href="#"> Messages<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -126,9 +143,12 @@
                                     </li>                                
                                 </ul>
                             </li> 
+                            @endhasanyrole
+                            @hasanyrole('Admin')
                             <li>
                                 <a href="{{ url('/admin/seo') }}"> SEO</a>
-                            </li>                                                        
+                            </li>   
+                            @endhasanyrole                                                     
                         </ul>
                     </div>
                     <!-- /.sidebar-collapse -->

@@ -21,8 +21,12 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="panel-body">                                          
-                            <form name="restaurant" action="{{ url('/admin/restaurant_add') }}" method="POST" role="form" enctype="multipart/form-data">
+                    
+                        <div class="panel-body">    
+                            @if($restaurant['status'] == 4) 
+                                <div class="alert alert-danger" style="white-space: pre-wrap;">{{$restaurant['statusMsg']}}</div><br/>                               
+                            @endif                                   
+                            <form name="restaurant" action="{{ url('/editor/restaurant_add') }}" method="POST" role="form" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="id" value="{{ $restaurant['id'] }}" id="id">
                                 <input type="hidden" name="addressId" value="{{ $restaurant['addressId'] }}" id="addressId">
@@ -83,7 +87,7 @@
                                             </div>                                                                                       
                                             <div class="form-group">
                                                 <label>Order</label>
-                                                <input name="order" type="number" min="0" step="1" value="{{ old('order', $restaurant['order']) }}" id="order" maxlength="15" class="form-control">
+                                                <input type="number" min="0" step="1" name="order" value="{{ old('order', $restaurant['order']) }}" id="order" maxlength="15" class="form-control">
                                             </div>                                 
                                             <div class="form-group">
                                                 <label>Is Disabled</label>
@@ -240,7 +244,7 @@
                                                 @foreach ($photos as $key => $photo)
                                                     @if($photo['is_primary'] == 1)
                                                         <div class="smallImage">
-                                                            <img src="{{ URL::to('/') }}/image/restaurant/{{$restaurant['id']}}/{{$photo['photoName']}}"  style="width:100px;height:100px">
+                                                            <img src="{{ URL::to('/') }}/image/restaurant/{{$restaurant['id']}}_tmp/{{$photo['photoName']}}"  style="width:100px;height:100px">
                                                         </div>
                                                     @endif
                                                 @endforeach
@@ -251,7 +255,7 @@
                                                 @foreach ($photos as $key => $photo)
                                                     @if($photo['is_primary'] == 0)
                                                         <div class="smallImage" style="float:left;padding:10px;">
-                                                            <img src="{{ URL::to('/') }}/image/restaurant/{{$restaurant['id']}}/{{$photo['photoName']}}"  style="width:100px;height:100px">
+                                                            <img src="{{ URL::to('/') }}/image/restaurant/{{$restaurant['id']}}_tmp/{{$photo['photoName']}}"  style="width:100px;height:100px">
                                                         </div>                                                    
                                                     @endif
                                                 @endforeach
@@ -261,7 +265,7 @@
                                 </div>
                                 <div style="position:relative;widht:100%">                                  
                                     <button type="submit" class="btn btn-default">Submit</button>
-                                    <a href="{{ url('/admin/restaurant') }}"><button type="button" class="btn btn-default">Cancel</button></a>                                                              
+                                    <a href="{{ url('/editor/restaurant') }}"><button type="button" class="btn btn-default">Cancel</button></a>                                                              
                                 </div>
                             </form>
                         </div>

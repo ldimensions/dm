@@ -75,6 +75,9 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::get('/admin/restaurant_add/{id?}', 'Admin\RestaurantController@addRestaurantView')->name('grocery_add')->where(['id' => '[0-9]+']);
     Route::post('/admin/restaurant_add', 'Admin\RestaurantController@addRestaurant');
     Route::get('admin/restaurant/delete/{id}', 'Admin\RestaurantController@deleteRestaurant')->where(['id' => '[0-9]+']);
+    Route::post('/admin/rejectRestarunt', 'Admin\RestaurantController@rejectRestarunt');
+    Route::get('/admin/restaurant/approve/{id?}', 'Admin\RestaurantController@approveRestarunt')->where(['id' => '[0-9]+']);
+    
     
     Route::get('/admin/religion', 'Admin\ReligionController@index')->name('religion_listing');
     Route::get('/admin/religion_add/{id?}', 'Admin\ReligionController@addReligionView')->name('religion_add')->where(['id' => '[0-9]+']);
@@ -95,7 +98,6 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::post('/admin/events_category_add', 'Admin\EventsController@addEventsCategory');
     Route::get('/admin/events_category/delete/{id}', 'Admin\EventsController@deleteCategory')->where(['id' => '[0-9]+']);
     
-
     Route::get('/admin/theatre', 'Admin\MovieController@theatreListing')->name('theatre_listing');
     Route::get('/admin/theatre_add/{id?}', 'Admin\MovieController@addtheatreView')->name('add_theatre_view')->where(['id' => '[0-9]+']);
     Route::post('/admin/theatre_add', 'Admin\MovieController@addTheatre');
@@ -111,11 +113,23 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::post('/admin/seo_add', 'Admin\SEOController@addSeo');
     Route::get('/admin/seo/delete/{id}', 'Admin\SEOController@deleteEvent')->where(['id' => '[0-9]+']);
     
-
-
-
     Route::get('/admin/dbBackup', 'Admin\DashboardController@dbBackUp');
     
+});
+
+Route::group(['middleware' => ['role:Editor']], function () {
+
+    //Route::get('/admin/dashboard', 'Admin\DashboardController@dashboard')->name('dashboard');    
+
+    Route::get('/editor/restaurant', 'Editor\RestaurantController@index')->name('restaurant_listing');
+    Route::get('/editor/restaurant_add/{id?}', 'Editor\RestaurantController@addRestaurantView')->name('grocery_add')->where(['id' => '[0-9]+']);
+    Route::post('/editor/restaurant_add', 'Editor\RestaurantController@addRestaurant');
+    Route::get('/editor/restaurant/delete/{id}', 'Editor\RestaurantController@deleteRestaurant')->where(['id' => '[0-9]+']);
+    
+});
+
+Route::group(['middleware' => ['role:Admin|Editor']], function () {
+    $this->get('/review/{type}/{url}', 'CommonController@review')->where(['type' => '[A-Za-z]+', 'url' => '[A-Za-z-+0-9]+' ]);    
 });
 
 

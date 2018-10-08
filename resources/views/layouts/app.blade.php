@@ -39,14 +39,14 @@
                 <div class="headerh nopadding">
                     <div class="headercontainer">
                         <div class="header"> 
-                            <!-- @if ( Auth::guest() )
-                                <a href="{{ url('/login') }}"  class="signinbutton">Login</a> 
-                                <a href="{{ url('/register') }}"  class="signinbutton">Sign Up</a>                            
+                            @if ( Auth::guest() )
+                                <!-- <a href="{{ url('/login') }}"  class="signinbutton">Login</a> 
+                                <a href="{{ url('/register') }}"  class="signinbutton">Sign Up</a>                             -->
                             @else
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"  class="signinbutton">Logout</a> 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>                            
                             @endif                         
-                            <a href="#"  class="location"><img alt="{{config('app.siteId')}}" src="{{ URL::to('/') }}/image/location.svg" />Dallas</a>  -->
+                            <!-- <a href="#"  class="location"><img alt="{{config('app.siteId')}}" src="{{ URL::to('/') }}/image/location.svg" />Dallas</a> --> 
                             <img alt="DallasIndianPortal" class="hDlOGO" src="{{ URL::to('/') }}/image/dallasLogo.svg"/>
                             <div class="headerad"><img alt="ad"  width="100%" height="100%" src="{{ URL::to('/') }}/image/topBanner.svg"/></div>
                         </div>

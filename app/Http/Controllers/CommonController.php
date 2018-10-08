@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Models\Url;
 use App\Http\Models\Seo;
+use App\Http\Models\RestaurantTemp;
+use App\Http\Models\PhotoTmp;
+use App\Http\Models\RestaurantFoodTypeTmp;
+
 
 use SEOMeta;
 use OpenGraph;
@@ -392,5 +396,110 @@ class CommonController extends Controller
         else{
             return 80;
         }
+    }
+
+    function review(Request $request, $type, $url){
+        
+        if($type == 'restaurant'){
+            $distance                       =   "";
+            $todaysWorkingTime              =   "";
+            $descriptionHeight              =   "20";
+            $commonCtrl                     =   new CommonController;
+    
+            $seoUrl                         =   $commonCtrl->seoUrl($request->path(),3);        
+    
+            $siteId                         =   config('app.siteId');
+            $restaurantRs                   =   RestaurantTemp::select('restaurant_tmp.id', 'restaurant_tmp.name', 
+                                                        'restaurant_tmp.description', 'restaurant_tmp.workingTime',
+                                                        'address_tmp.address1', 'address_tmp.address2',
+                                                        'restaurant_tmp.website',                                                
+                                                        'city.city', 'address_tmp.state',
+                                                        'address_tmp.zip', 'address_tmp.county',
+                                                        'address_tmp.phone1', 'address_tmp.latitude',
+                                                        'address_tmp.longitude', 'ethnic.ethnicName',
+                                                        'ethnic.id as ethnicId', 'url.urlName')
+                                                        ->leftjoin('url','url.restaurantTempId', '=', 'restaurant_tmp.id')
+                                                        ->leftjoin('address_tmp','address_tmp.id', '=', 'restaurant_tmp.addressId')
+                                                        ->leftjoin('ethnic','ethnic.id', '=', 'restaurant_tmp.ethnicId')
+                                                        ->leftjoin('site','site.siteId', '=', 'restaurant_tmp.siteId')
+                                                        ->leftjoin('city','city.cityId', '=', 'address_tmp.city')                                                                                       
+                                                        ->where('site.siteId', '=', $siteId)
+                                                        ->where('url.urlName', '=', $url)
+                                                        ->where('restaurant_tmp.is_deleted', '=', '0')
+                                                        ->where('restaurant_tmp.is_disabled', '=', '0')
+                                                        ->get()->first();
+
+            $restaurant                         =   $restaurantRs->toArray(); 
+    
+            if($restaurant){
+                $restaurantId                   =   $restaurant['id'];
+                
+                $lat                            =   ($restaurant['latitude'])?$restaurant['latitude']:'';
+                $long                           =   ($restaurant['longitude'])?$restaurant['longitude']:'';
+        
+                $workingTimes                   =   json_decode($restaurant['workingTime'], true);
+                $todaysDate                     =   date("l");   
+                if($workingTimes){
+                    foreach($workingTimes as $rootKey => $workingTime) {
+                        foreach($workingTime as $subkey => $subWorkingTime) {
+                            foreach($subWorkingTime as $dayKey => $dayWorkingTime) {
+                                foreach($dayWorkingTime as $keys => $times) {
+                                    foreach($times as $key => $time) {
+                                        $oldKey                     =   "";
+                                        $workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'] = date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time']));
+                                        if($dayKey == $todaysDate){
+                                            if($oldKey != $key){
+                                                $todaysWorkingTime      .=   ' - '.$workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'];                            
+                                            }else{
+                                                $todaysWorkingTime      .=   ($todaysWorkingTime)?', '.$workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time']: $workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'];
+                                            }
+                                        }
+                                        $oldKey                         =  $key; 
+                                    }                                
+                                }
+                            }
+                        }
+                    }
+                }
+        
+                $photoRs                        =   PhotoTmp::select('photo_tmp.photoId', 'photo_tmp.photoName', 
+                                                        'photo_tmp.is_primary', 'photo_tmp.order')
+                                                        ->where('photo_tmp.is_deleted', '=', '0')
+                                                        ->where('photo_tmp.is_primary', '=', '0')
+                                                        ->where('photo_tmp.is_disabled', '=', '0')
+                                                        ->where('photo_tmp.restaurantId', '=', $restaurantId)
+                                                        ->orderBy('photo_tmp.order', 'asc') 
+                                                        ->get();        
+                
+                $photo                          =   $photoRs->toArray();  
+    
+                $foodTypeRs                     =   RestaurantFoodTypeTmp::select('food_type.id', 'food_type.type')
+                                                        ->leftjoin('food_type','food_type.id', '=', 'restaurant_food_type_tmp.foodTypeId')
+                                                        ->where('restaurant_food_type_tmp.restaurantId', '=', $restaurantId)
+                                                        ->get();        
+    
+                $foodType                       =   $foodTypeRs->toArray();   
+                $foodTypeStr                    =   "";  
+                if(count($foodType) > 0){
+                    $foodTypeArr                =   array();  
+                    for($i = 0; $i < count($foodType); $i++){
+                        $foodTypeArr[$i]       =   $foodType[$i]['type'];
+                    }
+                    $foodTypeStr                    =   implode(", ",$foodTypeArr);
+                }
+                
+    
+                $commonCtrl->setMeta($request->path(),2);
+                $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($restaurant['description']));
+                return view('restaurant_details',['restaurant' => $restaurant, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate, 'todaysWorkingTime' => $todaysWorkingTime, 'descriptionHeight' => $descriptionHeight, 'foodTypeStr' => $foodTypeStr]);
+            }else{
+                return redirect()->back();
+            }
+        }else if($type == ''){
+
+        }else if($type == ''){
+            
+        }
+
     }
 }

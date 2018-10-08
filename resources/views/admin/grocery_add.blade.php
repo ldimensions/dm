@@ -76,7 +76,7 @@
                                             </div>                                          
                                             <div class="form-group">
                                                 <label>Order</label>
-                                                <input name="order" value="{{ old('order', $grocery['order']) }}" id="order" maxlength="15" class="form-control">
+                                                <input type="number" min="0" step="1" name="order" value="{{ old('order', $grocery['order']) }}" id="order" maxlength="15" class="form-control">
                                             </div>                                 
                                             <div class="form-group">
                                                 <label>Is Disabled</label>
