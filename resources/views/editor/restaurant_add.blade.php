@@ -28,6 +28,7 @@
                             @endif                                   
                             <form name="restaurant" action="{{ url('/editor/restaurant_add') }}" method="POST" role="form" enctype="multipart/form-data">
                                 {{ csrf_field() }}
+                                <input type="hidden" name="ref_id" value="{{ $restaurant['ref_id'] }}" id="ref_id">
                                 <input type="hidden" name="id" value="{{ $restaurant['id'] }}" id="id">
                                 <input type="hidden" name="addressId" value="{{ $restaurant['addressId'] }}" id="addressId">
                                 <input type="hidden" name="urlId" value="{{ $restaurant['urlId'] }}" id="urlId">
@@ -54,7 +55,7 @@
                                             </div>
                                             <div class="form-group{{ $errors->has('urlName') ? ' has-error' : '' }}">
                                                 <label>URL</label>
-                                                <input name="urlName" value="{{ old('urlName', $restaurant['urlName']) }}" id="urlName" maxlength="180" class="form-control" >
+                                                <input name="urlName" @if($restaurant['ref_id'] || $restaurant['referenceId']) {{ 'readonly' }} @endif value="{{ old('urlName', $restaurant['urlName']) }}" id="urlName" maxlength="180" class="form-control" >
                                                 <input type="hidden" name="urlNameChk" value="{{ $restaurant['urlName'] }}" id="urlNameChk" class="form-control" >
                                                 <small class="text-danger">{{ $errors->first('urlName') }}</small>                                            
                                             </div> 

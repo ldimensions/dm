@@ -77,7 +77,7 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::get('admin/restaurant/delete/{id}', 'Admin\RestaurantController@deleteRestaurant')->where(['id' => '[0-9]+']);
     Route::post('/admin/rejectRestarunt', 'Admin\RestaurantController@rejectRestarunt');
     Route::get('/admin/restaurant/approve/{id?}', 'Admin\RestaurantController@approveRestarunt')->where(['id' => '[0-9]+']);
-    
+    Route::get('/admin/restaurant_tmp/delete/{id}', 'Admin\RestaurantController@deleteTmpRestaurant')->where(['id' => '[0-9]+']);    
     
     Route::get('/admin/religion', 'Admin\ReligionController@index')->name('religion_listing');
     Route::get('/admin/religion_add/{id?}', 'Admin\ReligionController@addReligionView')->name('religion_add')->where(['id' => '[0-9]+']);
@@ -123,6 +123,7 @@ Route::group(['middleware' => ['role:Editor']], function () {
 
     Route::get('/editor/restaurant', 'Editor\RestaurantController@index')->name('restaurant_listing');
     Route::get('/editor/restaurant_add/{id?}', 'Editor\RestaurantController@addRestaurantView')->name('grocery_add')->where(['id' => '[0-9]+']);
+    Route::get('/editor/restaurant_add_duplicate/{id?}', 'Editor\RestaurantController@addRestauranDuplicatetView')->name('grocery_add_duplicate')->where(['id' => '[0-9]+']);
     Route::post('/editor/restaurant_add', 'Editor\RestaurantController@addRestaurant');
     Route::get('/editor/restaurant/delete/{id}', 'Editor\RestaurantController@deleteRestaurant')->where(['id' => '[0-9]+']);
     

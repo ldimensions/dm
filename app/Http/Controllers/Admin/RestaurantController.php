@@ -528,110 +528,265 @@ class RestaurantController extends Controller
                                                             
         $restaurantTmpArr               =   $restaurantTmpRs->toArray(); 
 
-        $addressId                      =   DB::table('address')->insertGetId(
-                                                [
-                                                    'address1'      => $restaurantTmpArr['address1'],
-                                                    'address2'      => $restaurantTmpArr['address2'],
-                                                    'city'          => $restaurantTmpArr['city'],
-                                                    'state'         => $restaurantTmpArr['state'],
-                                                    'zip'           => $restaurantTmpArr['zip'],
-                                                    'county'        => $restaurantTmpArr['county'],
-                                                    'phone1'        => $restaurantTmpArr['phone1'],
-                                                    'phone2'        => $restaurantTmpArr['phone2'],
-                                                    'latitude'      => $restaurantTmpArr['latitude'],
-                                                    'longitude'     => $restaurantTmpArr['longitude'],
-                                                ]
-                                            );        
+        if($restaurantTmpArr['referenceId']){
 
-        $restaurantId                      =   DB::table('restaurant')->insertGetId(
-                                                    [
-                                                        'name'          => $restaurantTmpArr['name'],
-                                                        'description'   => $restaurantTmpArr['description'],
-                                                        'workingTime'   => $restaurantTmpArr['workingTime'],
-                                                        'ethnicId'      => $restaurantTmpArr['ethnicId'],
-                                                        'siteId'        => config('app.siteId'),
-                                                        'website'       => $restaurantTmpArr['website'],
-                                                        'order'         => ($restaurantTmpArr['order'])?$restaurantTmpArr['order']:0,
-                                                        'premium'       => $restaurantTmpArr['premium'],
-                                                        'is_disabled'   => $restaurantTmpArr['is_disabled'],
-                                                        'urlId'         => $restaurantTmpArr['urlId'],
-                                                        'addressId'     => $addressId,
-                                                        'updated_by'    => $restaurantTmpArr['updated_by'],
-                                                        'created_at'  => $restaurantTmpArr['created_at'],
-                                                        'updated_at'  => $restaurantTmpArr['updated_at']
-                                                    ]
-                                                );
+            $restaurantRs                   =   Restaurant::select('restaurant.urlId', 'restaurant.addressId')
+                                                            ->where('restaurant.id', '=', $restaurantTmpArr['referenceId'])->get()->first();                                                   
 
-        DB::table('url')
-            ->where('id', $restaurantTmpArr['urlId'])
+            $restaurants                     =   $restaurantRs->toArray();            
+
+            DB::table('restaurant')
+            ->where('id', $restaurantTmpArr['referenceId'])
             ->update(
                 [
-                    'restaurantId'          => $restaurantId,
-                    'restaurantTempId'      => 0
+                    'name'          => $restaurantTmpArr['name'],
+                    'description'   => $restaurantTmpArr['description'],
+                    'workingTime'   => $restaurantTmpArr['workingTime'],
+                    'ethnicId'      => $restaurantTmpArr['ethnic'],
+                    'website'       => $restaurantTmpArr['website'],
+                    'order'         => ($restaurantTmpArr['order'])?$restaurantTmpArr['order']:0,
+                    'premium'       => $restaurantTmpArr['premium'],
+                    'is_disabled'   => $restaurantTmpArr['is_disabled'],
+                    'updated_by'    => Auth::user()->id,
+                    'updated_at'    => date("Y-m-d H:i:s")                    
+                ]
+            );
+            DB::table('address')
+                ->where('id', $restaurants['addressId'])
+                ->update(
+                    [
+                        'address1'      => $restaurantTmpArr['address1'],
+                        'address2'      => $restaurantTmpArr['address2'],
+                        'city'          => $restaurantTmpArr['city'],
+                        'state'         => $restaurantTmpArr['state'],
+                        'zip'           => $restaurantTmpArr['zip'],
+                        'county'        => $restaurantTmpArr['county'],
+                        'phone1'        => $restaurantTmpArr['phone1'],
+                        'phone2'        => $restaurantTmpArr['phone2'],
+                        'latitude'      => $restaurantTmpArr['latitude'],
+                        'longitude'     => $restaurantTmpArr['longitude'],                   
+                    ]
+            );
+            DB::table('url')
+                ->where('id', $restaurants['urlId'])
+                ->update(
+                    [
+                        'restaurantTempId'    => 0                
+                    ]
+                );
+            DB::table('seo')
+                ->where('urlId', $restaurants['urlId'])
+                ->update(
+                    [
+                        'SEOMetaTitle'                      => $restaurantTmpArr['SEOMetaTitle'],
+                        'SEOMetaDesc'                       => $restaurantTmpArr['SEOMetaDesc'],
+                        'SEOMetaPublishedTime'              => $restaurantTmpArr['SEOMetaPublishedTime'],
+                        'SEOMetaKeywords'                   => $restaurantTmpArr['SEOMetaKeywords'],
+                        'OpenGraphTitle'                    => $restaurantTmpArr['OpenGraphTitle'],
+                        'OpenGraphDesc'                     => $restaurantTmpArr['OpenGraphDesc'],
+                        'OpenGraphUrl'                      => $restaurantTmpArr['OpenGraphUrl'],
+                        'OpenGraphPropertyType'             => $restaurantTmpArr['OpenGraphPropertyType'],
+                        'OpenGraphPropertyLocale'           => $restaurantTmpArr['OpenGraphPropertyLocale'],
+                        'OpenGraphPropertyLocaleAlternate'  => $restaurantTmpArr['OpenGraphPropertyLocaleAlternate'],
+                        'OpenGraph'                         => $restaurantTmpArr['OpenGraph'],
+                        'updated_at'                        => date("Y-m-d H:i:s")
+                    ]
+                ); 
+
+            if($restaurantVal['foodType']){
+                DB::table('restaurant_food_type')->where('restaurantId', $restaurantTmpArr['referenceId'])->delete();
+                for($i =0; $i < count($restaurantVal['foodType']); $i++){
+                    DB::table('restaurant_food_type')->insert([
+                        ['foodTypeId' => $restaurantVal['foodType'][$i], 
+                        'restaurantId' => $restaurantVal['id']]
+                    ]);  
+                }
+            }                  
+
+            if($request->hasFile('photos')){
+                $files                          = $request->file('photos');
+                
+                DB::table('photo')->where('restaurantId', $restaurantVal['id'])->where('is_primary', 0)->delete();
+                
+            
+                foreach($files as $key=> $file){
+                    $filename                   = $file->getClientOriginalName();
+                    $rand                       = (rand(10,100));
+                    $extension                  = $file->getClientOriginalExtension();                
+                    $fileName                   = $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
+
+                    $file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
+
+                    DB::table('photo')->insertGetId(
+                        [
+                            'photoName'         => $fileName,
+                            'order'             => $key,
+                            'restaurantId'      => $restaurantVal['id'],
+                            'updated_at'  => date("Y-m-d H:i:s")
+                        ]
+                    );
+                }
+            }
+            if($request->hasFile('thumbnail')){
+                $files                          = $request->file('thumbnail');
+                
+                DB::table('photo')->where('restaurantId', $restaurantVal['id'])->where('is_primary', 1)->delete();
+            
+                foreach($files as $key=> $file){
+                    $filename                   = $file->getClientOriginalName();
+                    $rand                       = (rand(10,1000));
+                    $extension                  = $file->getClientOriginalExtension();                
+                    $fileName                   = $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;      
+                    
+                    $file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
+
+                    DB::table('photo')->insertGetId(
+                        [
+                            'photoName'         => $fileName,
+                            'order'             => $key,
+                            'restaurantId'      => $restaurantVal['id'],
+                            'is_primary'        => 1,
+                            'updated_at'  => date("Y-m-d H:i:s")
+                        ]
+                    );
+                }
+            }            
+        }else{
+            $addressId                      =   DB::table('address')->insertGetId(
+                [
+                    'address1'      => $restaurantTmpArr['address1'],
+                    'address2'      => $restaurantTmpArr['address2'],
+                    'city'          => $restaurantTmpArr['city'],
+                    'state'         => $restaurantTmpArr['state'],
+                    'zip'           => $restaurantTmpArr['zip'],
+                    'county'        => $restaurantTmpArr['county'],
+                    'phone1'        => $restaurantTmpArr['phone1'],
+                    'phone2'        => $restaurantTmpArr['phone2'],
+                    'latitude'      => $restaurantTmpArr['latitude'],
+                    'longitude'     => $restaurantTmpArr['longitude'],
+                ]
+            );        
+
+            $restaurantId                      =   DB::table('restaurant')->insertGetId(
+                                [
+                                    'name'          => $restaurantTmpArr['name'],
+                                    'description'   => $restaurantTmpArr['description'],
+                                    'workingTime'   => $restaurantTmpArr['workingTime'],
+                                    'ethnicId'      => $restaurantTmpArr['ethnicId'],
+                                    'siteId'        => config('app.siteId'),
+                                    'website'       => $restaurantTmpArr['website'],
+                                    'order'         => ($restaurantTmpArr['order'])?$restaurantTmpArr['order']:0,
+                                    'premium'       => $restaurantTmpArr['premium'],
+                                    'is_disabled'   => $restaurantTmpArr['is_disabled'],
+                                    'urlId'         => $restaurantTmpArr['urlId'],
+                                    'addressId'     => $addressId,
+                                    'updated_by'    => $restaurantTmpArr['updated_by'],
+                                    'created_at'  => $restaurantTmpArr['created_at'],
+                                    'updated_at'  => $restaurantTmpArr['updated_at']
+                                ]
+                            );
+
+            DB::table('url')
+                ->where('id', $restaurantTmpArr['urlId'])
+                ->update(
+                [
+                'restaurantId'          => $restaurantId,
+                'restaurantTempId'      => 0
                 ]
             );  
 
-        $seoId                          =   DB::table('seo')->insertGetId(
-            [
-                'urlId'                             => $restaurantTmpArr['urlId'],
-                'SEOMetaTitle'                      => $restaurantTmpArr['SEOMetaTitle'],
-                'SEOMetaDesc'                       => $restaurantTmpArr['SEOMetaDesc'],
-                'SEOMetaPublishedTime'              => $restaurantTmpArr['SEOMetaPublishedTime'],
-                'SEOMetaKeywords'                   => $restaurantTmpArr['SEOMetaKeywords'],
-                'OpenGraphTitle'                    => $restaurantTmpArr['OpenGraphTitle'],
-                'OpenGraphDesc'                     => $restaurantTmpArr['OpenGraphDesc'],
-                'OpenGraphUrl'                      => $restaurantTmpArr['OpenGraphUrl'],
-                'OpenGraphPropertyType'             => $restaurantTmpArr['OpenGraphPropertyType'],
-                'OpenGraphPropertyLocale'           => $restaurantTmpArr['OpenGraphPropertyLocale'],
-                'OpenGraphPropertyLocaleAlternate'  => $restaurantTmpArr['OpenGraphPropertyLocaleAlternate'],
-                'OpenGraph'                         => $restaurantTmpArr['OpenGraph'],
-                'created_at'                        => $restaurantTmpArr['OpenGraph'],
-                'updated_at'                        => $restaurantTmpArr['OpenGraph']
-            ]
-        );             
-            
-        $foodTypeRs                     =   RestaurantFoodTypeTmp::select('restaurant_food_type_tmp.foodTypeId')
-                                                                ->where('restaurant_food_type_tmp.restaurantId', '=', $id)
-                                                                ->get();    
+            $seoId                          =   DB::table('seo')->insertGetId(
+                                                        [
+                                                        'urlId'                             => $restaurantTmpArr['urlId'],
+                                                        'SEOMetaTitle'                      => $restaurantTmpArr['SEOMetaTitle'],
+                                                        'SEOMetaDesc'                       => $restaurantTmpArr['SEOMetaDesc'],
+                                                        'SEOMetaPublishedTime'              => $restaurantTmpArr['SEOMetaPublishedTime'],
+                                                        'SEOMetaKeywords'                   => $restaurantTmpArr['SEOMetaKeywords'],
+                                                        'OpenGraphTitle'                    => $restaurantTmpArr['OpenGraphTitle'],
+                                                        'OpenGraphDesc'                     => $restaurantTmpArr['OpenGraphDesc'],
+                                                        'OpenGraphUrl'                      => $restaurantTmpArr['OpenGraphUrl'],
+                                                        'OpenGraphPropertyType'             => $restaurantTmpArr['OpenGraphPropertyType'],
+                                                        'OpenGraphPropertyLocale'           => $restaurantTmpArr['OpenGraphPropertyLocale'],
+                                                        'OpenGraphPropertyLocaleAlternate'  => $restaurantTmpArr['OpenGraphPropertyLocaleAlternate'],
+                                                        'OpenGraph'                         => $restaurantTmpArr['OpenGraph'],
+                                                        'created_at'                        => $restaurantTmpArr['OpenGraph'],
+                                                        'updated_at'                        => $restaurantTmpArr['OpenGraph']
+                                                        ]
+                                                );             
 
-        $foodTypeRs                     =   $foodTypeRs->toArray();      
-        foreach($foodTypeRs as $foodType){
-            DB::table('restaurant_food_type')->insert([
-                ['foodTypeId' => $foodType['foodTypeId'], 
-                'restaurantId' => $restaurantId]
-            ]); 
-        }   
+            $foodTypeRs                     =   RestaurantFoodTypeTmp::select('restaurant_food_type_tmp.foodTypeId')
+                                                    ->where('restaurant_food_type_tmp.restaurantId', '=', $id)
+                                                    ->get();    
 
-        $photoTypeRs                     =   PhotoTmp::select('photo_tmp.photoName', 'photo_tmp.is_primary', 'photo_tmp.order')
-                                                                ->where('photo_tmp.restaurantId', '=', $id)
-                                                                ->get();    
+            $foodTypeRs                     =   $foodTypeRs->toArray();      
+            foreach($foodTypeRs as $foodType){
+                DB::table('restaurant_food_type')->insert([
+                    ['foodTypeId' => $foodType['foodTypeId'], 
+                    'restaurantId' => $restaurantId]
+                ]); 
+            }   
 
-        $photoTypeArr                    =   $photoTypeRs->toArray();      
-        foreach($photoTypeArr as $photoType){
-            DB::table('photo')->insert([
-                ['photoName' => $photoType['photoName'], 
-                'is_primary' => $photoType['is_primary'], 
-                'order' => $photoType['order'], 
-                'restaurantId' => $restaurantId]
-            ]); 
-        }   
-        if(count($photoTypeArr) > 0){
-            // if (is_dir(public_path().'/image/restaurant/'.$restaurantId)) {
-            //     rmdir(public_path().'/image/restaurant/'.$restaurantId);
-            // }
-            if (is_dir(public_path().'/image/restaurant/'.$id.'_tmp')) {
-                rename (public_path().'/image/restaurant/'.$id.'_tmp', public_path().'/image/restaurant/'.$restaurantId);     
-            }               
+            $photoTypeRs                     =   PhotoTmp::select('photo_tmp.photoName', 'photo_tmp.is_primary', 'photo_tmp.order')
+                                                        ->where('photo_tmp.restaurantId', '=', $id)
+                                                        ->get();    
+
+            $photoTypeArr                    =   $photoTypeRs->toArray();      
+            foreach($photoTypeArr as $photoType){
+                DB::table('photo')->insert([
+                    ['photoName' => $photoType['photoName'], 
+                    'is_primary' => $photoType['is_primary'], 
+                    'order' => $photoType['order'], 
+                    'restaurantId' => $restaurantId]
+                ]); 
+            }   
+            if(count($photoTypeArr) > 0){
+                if (is_dir(public_path().'/image/restaurant/'.$id.'_tmp')) {
+                    rename (public_path().'/image/restaurant/'.$id.'_tmp', public_path().'/image/restaurant/'.$restaurantId);     
+                }               
+            }
+
+            DB::table('restaurant_tmp')->where('id', $id)->delete();
+            DB::table('address_tmp')->where('id', $restaurantTmpArr['id'])->delete();
+            DB::table('seo_tmp')->where('urlId', $restaurantTmpArr['urlId'])->delete();        
+            DB::table('restaurant_food_type_tmp')->where('restaurantId', $id)->delete();
+            DB::table('photo_tmp')->where('restaurantId', $id)->delete();
         }
 
-        DB::table('restaurant_tmp')->where('id', $id)->delete();
-        DB::table('address_tmp')->where('id', $restaurantTmpArr['id'])->delete();
-        DB::table('seo_tmp')->where('urlId', $restaurantTmpArr['urlId'])->delete();        
-        DB::table('restaurant_food_type_tmp')->where('restaurantId', $id)->delete();
-        DB::table('photo_tmp')->where('restaurantId', $id)->delete();
+
                                                      
         return redirect('/admin/restaurant')->with('status', 'Restaurant Approved!');
         
+    }
+
+    public function deleteTmpRestaurant($id){
+        if($id){
+
+            $restaurantRs                   =   RestaurantTemp::select('restaurant_tmp.urlId', 'restaurant_tmp.addressId', 'restaurant_tmp.referenceId')
+                                                        ->where('restaurant_tmp.id', '=', $id)
+                                                        ->get()->first();
+
+            $restaurant                         =   $restaurantRs->toArray(); 
+
+            DB::table('restaurant_tmp')->where('id', $id)->delete();
+            DB::table('address_tmp')->where('id', $restaurant['addressId'])->delete();
+            DB::table('restaurant_food_type_tmp')->where('restaurantId', $id)->delete();
+            DB::table('seo_tmp')->where('urlId', $restaurant['urlId'])->delete();
+            DB::table('photo_tmp')->where('restaurantId', $id)->delete();            
+            if($restaurant['referenceId']){
+                DB::table('url')
+                    ->where('id', $restaurant['urlId'])
+                    ->update(
+                        [
+                            'restaurantTempId'       => 0,
+                        ]
+                    );
+            }else{
+                DB::table('url')->where('restaurantTempId', $id)->delete();                
+            }
+            return redirect('/admin/restaurant')->with('status', 'Restaurant deleted!');
+        }else{
+            return redirect('/admin/restaurant')->with('status', 'Error!');            
+        }
     }
 }
 

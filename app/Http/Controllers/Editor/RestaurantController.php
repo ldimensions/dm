@@ -72,7 +72,7 @@ class RestaurantController extends Controller
         $resFoodTypes                       =   array();
         
         if($id){
-            $restaurantRs                   =   RestaurantTemp::select('restaurant_tmp.id', 'restaurant_tmp.name', 
+            $restaurantRs                   =   RestaurantTemp::select('restaurant_tmp.id', 'restaurant_tmp.name', 'restaurant_tmp.referenceId',
                                                         'restaurant_tmp.description', 'restaurant_tmp.workingTime',
                                                         'restaurant_tmp.premium', 'restaurant_tmp.order','restaurant_tmp.is_disabled', 
                                                         'address_tmp.address1', 'address_tmp.address2', 'address_tmp.id as addressId',
@@ -99,6 +99,7 @@ class RestaurantController extends Controller
                                                     ->get()->first(); 
 
             $restaurant                     =   $restaurantRs->toArray(); 
+            $restaurant['ref_id']           =   "";
 
             $photoArr                       =   PhotoTmp::select('photoName','is_primary')
                                                         ->orderBy('order', 'desc')
@@ -115,6 +116,7 @@ class RestaurantController extends Controller
                 }
             }
         }else{
+            $restaurant['ref_id']              =   "";
             $restaurant['id']                  =   "";
             $restaurant['addressId']           =   "";
             $restaurant['urlId']               =   "";
@@ -168,6 +170,111 @@ class RestaurantController extends Controller
         return view('editor.restaurant_add',['restaurant' => $restaurant, 'cities' => $cities, 'photos' => $photoRs, 'foodTypes' => $foodType, 'resFoodTypes' => $resFoodTypes]); 
     }
 
+    public function addRestauranDuplicatetView($id){
+        $resFoodTypes                       =   array();
+        
+        if($id){
+            $restaurantRs                   =   Restaurant::select('restaurant.id', 'restaurant.name', 
+                                                        'restaurant.description', 'restaurant.workingTime',
+                                                        'restaurant.premium', 'restaurant.order','restaurant.is_disabled', 
+                                                        'address.address1', 'address.address2', 'address.id as addressId',
+                                                        'restaurant.website',  'url.urlName', 'url.id as urlId',                                              
+                                                        'address.state', 'address.city as city',
+                                                        'address.zip', 'address.county',
+                                                        'address.phone1', 'address.phone2', 'address.latitude',
+                                                        'address.longitude', 'ethnic.ethnicName',
+                                                        'ethnic.id as ethnic',
+                                                        'seo.seoId', 'seo.SEOMetaTitle',
+                                                        'seo.SEOMetaDesc', 'seo.SEOMetaPublishedTime',
+                                                        'seo.SEOMetaKeywords', 'seo.OpenGraphTitle',
+                                                        'seo.OpenGraphDesc', 'seo.OpenGraphUrl',
+                                                        'seo.OpenGraphPropertyType', 'seo.OpenGraphPropertyLocale',
+                                                        'seo.OpenGraphPropertyLocaleAlternate', 'seo.OpenGraph')
+                                                    ->leftjoin('url','url.restaurantId', '=', 'restaurant.id')
+                                                    ->leftjoin('address','address.id', '=', 'restaurant.addressId')
+                                                    ->leftjoin('ethnic','ethnic.id', '=', 'restaurant.ethnicId')
+                                                    ->leftjoin('site','site.siteId', '=', 'restaurant.siteId')
+                                                    ->leftjoin('city','city.cityId', '=', 'address.city')   
+                                                    ->leftjoin('seo','seo.urlId', '=', 'url.id')                                                    
+                                                    ->where('restaurant.id', '=', $id)
+                                                    ->get()->first(); 
+
+            $restaurant                     =   $restaurantRs->toArray(); 
+            $restaurant['status']           =   "";
+            $restaurant['ref_id']           =   $restaurant['id'];
+            $restaurant['id']               =   "";
+            $restaurant['addressId']        =   "";
+            $restaurant['seoId']            =   "";
+
+            $photoArr                       =   Photo::select('photoName','is_primary')
+                                                        ->orderBy('order', 'desc')
+                                                        ->where('restaurantId', '=', $id)
+                                                        ->get();  
+            $photoRs                        =   $photoArr->toArray();    
+            
+            $resFoodTypeRs                  =   RestaurantFoodType::select('foodTypeId')
+                                                    ->where('restaurantId', '=', $id)
+                                                    ->get();  
+            $resFoodTypes1                  =   $resFoodTypeRs->toArray(); 
+            if(count($resFoodTypes1) > 0){
+                for($i = 0; $i < count($resFoodTypes1); $i++){
+                    $resFoodTypes[$i]       =   $resFoodTypes1[$i]['foodTypeId'];
+                }
+            }
+        }else{
+            $restaurant['ref_id']              =   "";
+            $restaurant['id']                  =   "";
+            $restaurant['addressId']           =   "";
+            $restaurant['urlId']               =   "";
+            $restaurant['name']                =   "";
+            $restaurant['description']         =   "";
+            $restaurant['workingTime']         =   "";
+            $restaurant['address1']            =   "";
+            $restaurant['address2']            =   "";
+            $restaurant['website']             =   "";
+            $restaurant['urlName']             =   "";
+            $restaurant['city']                =   "";
+            $restaurant['state']               =   "";
+            $restaurant['zip']                 =   "";
+            $restaurant['county']              =   "";
+            $restaurant['phone1']              =   "";
+            $restaurant['phone2']              =   "";
+            $restaurant['latitude']            =   "";
+            $restaurant['longitude']           =   "";
+            $restaurant['ethnic']              =   "";
+            $restaurant['premium']             =   "";
+            $restaurant['is_disabled']         =   "";
+            $restaurant['order']               =   ""; 
+            $restaurant['status']              =   "";             
+            $restaurant['seoId']                               =   ""; 
+            $restaurant['SEOMetaTitle']                        =   ""; 
+            $restaurant['SEOMetaDesc']                         =   ""; 
+            $restaurant['SEOMetaPublishedTime']                =   ""; 
+            $restaurant['SEOMetaKeywords']                     =   ""; 
+            $restaurant['OpenGraphTitle']                      =   ""; 
+            $restaurant['OpenGraphDesc']                       =   ""; 
+            $restaurant['OpenGraphUrl']                        =   ""; 
+            $restaurant['OpenGraphPropertyType']               =   ""; 
+            $restaurant['OpenGraphPropertyLocale']             =   ""; 
+            $restaurant['OpenGraphPropertyLocaleAlternate']    =   ""; 
+            $restaurant['OpenGraph']                           =   "";  
+            
+            $photoRs                        =   array();
+        }
+
+        $cityRs                             =   City::select('cityId','city', 'value')
+                                                    ->orderBy('city', 'asc')
+                                                    ->get();  
+        $cities                             =   $cityRs->toArray();  
+
+        $foodTypeRs                         =   FoodType::select('id','type')
+                                                    ->orderBy('type', 'asc')
+                                                    ->get();  
+        $foodType                           =   $foodTypeRs->toArray(); 
+
+        return view('editor.restaurant_add',['restaurant' => $restaurant, 'cities' => $cities, 'photos' => $photoRs, 'foodTypes' => $foodType, 'resFoodTypes' => $resFoodTypes]);         
+    }
+
     public function addRestaurant(Request $request)
     {
 
@@ -191,11 +298,13 @@ class RestaurantController extends Controller
         if ($validator->fails()) {
             if($restaurantVal['id']){
                 return redirect('/editor/restaurant_add/'.$restaurantVal['id'])->withErrors($validator)->withInput();
+            }else if($restaurantVal['ref_id']){
+                return redirect('/editor/restaurant_add_duplicate/'.$restaurantVal['ref_id'])->withErrors($validator)->withInput();                
             }else{
                 return redirect('/editor/restaurant_add')->withErrors($validator)->withInput();
             }
         }
-        
+
         if($restaurantVal['id']){
             
             DB::table('restaurant_tmp')
@@ -339,6 +448,7 @@ class RestaurantController extends Controller
                                                     [
                                                         'name'          => $restaurantVal['name'],
                                                         'description'   => $restaurantVal['description'],
+                                                        'referenceId'   => ($restaurantVal['ref_id'])?$restaurantVal['ref_id']:0,
                                                         'status'        => 2,
                                                         'workingTime'   => $restaurantVal['workingTime'],
                                                         'ethnicId'      => $restaurantVal['ethnic'],
@@ -378,26 +488,38 @@ class RestaurantController extends Controller
                                                         'longitude'     => $restaurantVal['longitude'],
                                                     ]
                                                 );
-            $urlId                          =   DB::table('url')->insertGetId(
-                                                    [
-                                                        'urlName'       => $restaurantVal['urlName'],
-                                                        'restaurantTempId'  => $restaurantId,
-                                                        'created_at'    => date("Y-m-d H:i:s"),
-                                                        'updated_at'    => date("Y-m-d H:i:s")
-                                                    ]
-                                                ); 
+
+            if($restaurantVal['ref_id'] && $restaurantVal['urlId']){
+                DB::table('url')
+                    ->where('id', $restaurantVal['urlId'])
+                    ->update(
+                        [
+                            'restaurantTempId'       => $restaurantId,
+                        ]
+                    );  
+            }else{
+                $urlId                          =   DB::table('url')->insertGetId(
+                    [
+                        'urlName'       => $restaurantVal['urlName'],
+                        'restaurantTempId'  => $restaurantId,
+                        'created_at'    => date("Y-m-d H:i:s"),
+                        'updated_at'    => date("Y-m-d H:i:s")
+                    ]
+                );  
+            }                                               
+
             DB::table('restaurant_tmp')
                 ->where('id', $restaurantId)
                 ->update(
                     [
-                        'urlId'             => $urlId,
+                        'urlId'             => ($restaurantVal['urlId'])?$restaurantVal['urlId']:$urlId,
                         'addressId'         => $addressId
                     ]
                 );
 
             $seoId                          =   DB::table('seo_tmp')->insertGetId(
                                                     [
-                                                        'urlId'                             => $urlId,
+                                                        'urlId'                             => ($restaurantVal['urlId'])?$restaurantVal['urlId']:$urlId,
                                                         'SEOMetaTitle'                      => $restaurantVal['SEOMetaTitle'],
                                                         'SEOMetaDesc'                       => $restaurantVal['SEOMetaDesc'],
                                                         'SEOMetaPublishedTime'              => $restaurantVal['SEOMetaPublishedTime'],
@@ -412,11 +534,14 @@ class RestaurantController extends Controller
                                                         'created_at'                        => date("Y-m-d H:i:s"),
                                                         'updated_at'                        => date("Y-m-d H:i:s")
                                                     ]
-                                                );   
-
-            if (!file_exists(public_path().'/image/restaurant/'.$restaurantId.'_tmp')) {
-                mkdir(public_path().'/image/restaurant/'.$restaurantId.'_tmp', 0777, true);
-            }                                                
+                                                ); 
+                                                
+            if(!$restaurantVal['ref_id']){
+                if (!file_exists(public_path().'/image/restaurant/'.$restaurantId.'_tmp')) {
+                    mkdir(public_path().'/image/restaurant/'.$restaurantId.'_tmp', 0777, true);
+                }  
+            }
+                                              
             if($request->hasFile('photos')){
                 $files                          = $request->file('photos');
                
@@ -430,8 +555,12 @@ class RestaurantController extends Controller
                     //$resizeImage->resize(466,350);
                     //$path                       = public_path('image/restaurant/'.$restaurantId.'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
                     //$resizeImage->save($path);    
-                    
-                    $file->move(public_path().'/image/restaurant/'.$restaurantId.'_tmp', $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
+
+                    if(!$restaurantVal['ref_id']){
+                        $file->move(public_path().'/image/restaurant/'.$restaurantId.'_tmp', $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);                         
+                    }else{
+                        $file->move(public_path().'/image/restaurant/'.$restaurantId, $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);                         
+                    }
     
                     DB::table('photo_tmp')->insertGetId(
                         [
@@ -458,8 +587,11 @@ class RestaurantController extends Controller
                     //$path                       = public_path('image/restaurant/'.$restaurantId.'/'.$restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
                     //$resizeImage->save($path);    
                     
-                    $file->move(public_path().'/image/restaurant/'.$restaurantId.'_tmp', $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
-    
+                    if(!$restaurantVal['ref_id']){
+                        $file->move(public_path().'/image/restaurant/'.$restaurantId.'_tmp', $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
+                    }else{
+                        $file->move(public_path().'/image/restaurant/'.$restaurantId, $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);                         
+                    }
                     DB::table('photo_tmp')->insertGetId(
                         [
                             'photoName'         => $fileName,
@@ -479,17 +611,28 @@ class RestaurantController extends Controller
     public function deleteRestaurant($id){
         if($id){
 
-            $restaurantRs                   =   RestaurantTemp::select('restaurant_tmp.urlId', 'restaurant_tmp.addressId')
+            $restaurantRs                   =   RestaurantTemp::select('restaurant_tmp.urlId', 'restaurant_tmp.addressId', 'restaurant_tmp.referenceId')
                                                         ->where('restaurant_tmp.id', '=', $id)
                                                         ->get()->first();
 
             $restaurant                         =   $restaurantRs->toArray(); 
 
             DB::table('restaurant_tmp')->where('id', $id)->delete();
-            DB::table('address')->where('id', $restaurant['addressId'])->delete();
-            DB::table('url')->where('restaurantTempId', $id)->delete();
-            DB::table('restaurant_food_type')->where('restaurantTempId', $id)->delete();
-
+            DB::table('address_tmp')->where('id', $restaurant['addressId'])->delete();
+            DB::table('restaurant_food_type_tmp')->where('restaurantId', $id)->delete();
+            DB::table('seo_tmp')->where('urlId', $restaurant['urlId'])->delete();
+            DB::table('photo_tmp')->where('restaurantId', $id)->delete();            
+            if($restaurant['referenceId']){
+                DB::table('url')
+                    ->where('id', $restaurant['urlId'])
+                    ->update(
+                        [
+                            'restaurantTempId'       => 0,
+                        ]
+                    );
+            }else{
+                DB::table('url')->where('restaurantTempId', $id)->delete();                
+            }
             return redirect('/editor/restaurant')->with('status', 'Restaurant deleted!');
         }else{
             return redirect('/editor/restaurant')->with('status', 'Error!');            

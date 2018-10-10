@@ -122,9 +122,9 @@
                                             <td width="150px;">{{ $rel['updated_at'] }}</td>
                                             <td width="150px;">{{ $rel['updatedBy'] }}</td>
                                             <td width="75px;">
-                                                <!-- @if (!$rel['referenceId'])   
-                                                    <a href="{{ url('/editor/restaurant_add') }}/{{$rel['restaurantId']}}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></button></a>
-                                                @endif -->
+                                                @if (!$rel['referenceId'])   
+                                                    <a href="{{ url('/editor/restaurant_add_duplicate') }}/{{$rel['restaurantId']}}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></button></a>
+                                                @endif
                                             </td>                                         
                                         </tr>
                                 @endforeach

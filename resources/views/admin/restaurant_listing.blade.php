@@ -122,8 +122,8 @@
                                                 <td width="150px;">{{ $rel['updated_at'] }}</td>
                                                 <td width="150px;">{{ $rel['updatedBy'] }}</td>
                                                 <td width="150px;">
-                                                    <a href="{{ url('/admin/restaurant_add') }}/{{$rel['restaurantId']}}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></button></a>
-                                                    <button type="button" class="btn btn-default btn-sm" onClick="deleteRestaurant({{$rel['restaurantId']}})"><i class="fa fa-trash-o"></i></button>
+                                                    <!-- <a href="{{ url('/admin/restaurant_add') }}/{{$rel['restaurantId']}}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></button></a> -->
+                                                    <button type="button" class="btn btn-default btn-sm" onClick="deleteTempRestaurant({{$rel['restaurantId']}})"><i class="fa fa-trash-o"></i></button>
                                                     <button type="button" class="btn btn-default btn-sm" onClick="approveRestaurant({{$rel['restaurantId']}})"><i class="fa fa-thumbs-up"></i></button>
                                                     <button data-toggle="modal" data-target="#myModal" data-val="{{$rel['restaurantId']}}"  data-whatever="@mdo" class="btn btn-default btn-sm"><i class="fa fa-thumbs-down"></i></button>                                                    
                                                 </td>                                         
@@ -225,6 +225,13 @@
             window.location.href = "/admin/restaurant/delete/"+id;
         }
     }  
+    function deleteTempRestaurant(id) {
+        var txt;
+        var r = confirm("Are you sure to delete");
+        if (r == true) {
+            window.location.href = "/admin/restaurant_tmp/delete/"+id;
+        }
+    }    
     function approveRestaurant(id){
         var r = confirm("Are you sure to approve");
         if (r == true) {
