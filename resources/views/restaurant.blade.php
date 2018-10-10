@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div role="tabpanel" class="tab-pane" id="restaurants">
 
 <div class="mcontainer">
     <div class="maincontainer">
@@ -86,7 +85,6 @@
     </div>
 </div>
 
-</div>
 <script>
 
     function restaurantSearch() {
