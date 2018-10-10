@@ -273,7 +273,7 @@ padding-left: 15px;
 	margin-left:15px;
 	margin-right:15px;
 	margin-bottom:15px;
-	width:97.2%;
+	width:97%;
 	}
 .paggination{
 	float: left;
@@ -299,6 +299,8 @@ padding-left: 15px;
 	line-height:50px;
 }
 .block1{
+	position: relative;
+	float: left;
 	background-color:#FFF;
 	height:126px;
 	border:1px solid #E1E1E1;
@@ -306,7 +308,6 @@ padding-left: 15px;
 	border-radius:5px;
 	margin-left:15px;
 	width:467px;
-
 }
 .block2{
 	float: left;
@@ -397,7 +398,7 @@ input[type=text], select{
     margin: 13px 10px 10px 0 !important;
 }
 .text1{
-    width: 47.2% !important;
+    width: 46.5% !important;
     padding: 11px 10px;
     margin: 13px 10px 10px 0 !important;
 }
@@ -1180,7 +1181,412 @@ h4{
 	border-radius: 4px;
 	width: 950px;
 }
-/*------------ End Loading Wheel ----*/
+@media only screen and (max-width: 1280px) {
+	.header{
+	position: relative;
+	width: 100%;
+	height:auto;
+	margin:auto;
+	}
+	.hDlOGO {
+	position: relative;
+	float: left;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	margin-right: 10%;
+	}
+	.menu{
+	position: relative;
+    width:100%;
+	height:auto;
+	margin: auto;
+	padding-left: 15px;
+	}
+	.mcontainer{
+	margin: auto;
+	width: 100%;
+	}
+	.maincontainer {
+	position: relative;
+	width: 100%;
+	}
+	.leftcontainer{
+	float: left;
+	position;: relative;
+	width: 75%;
+	min-height:725px;
+	padding:0px !important;
+	/* border:1px solid #FF0000; */
+	}
+	.block3{
+	position: relative;
+	float: left;
+	background-color:#FFF;
+	height:auto;
+	width:31.2%;
+	height:301px;
+	border:1px solid #E1E1E1;
+	border-radius:5px;
+	margin-left:15px;
+	margin-bottom:15px;
+	padding:0px !important;
+	}
+	.block_txtblock{
+		float:left;
+		position:relative;
+		width:80%;
+		height:30px;
+		padding-left:15px;
+		padding-top: 10px;
+	}
+	.block_txtblock:hover{
+		float:left;
+		position:relative;
+		width:80%;
+		height:30px;
+		padding-left:15px;
+		padding-top: 10px;
+	}
+	.txtblock{
+		float:left;
+		position:relative;
+		width:80%;
+		padding-left:15px;
+		color:#646464;
+		margin-top:2px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.txtblock1{
+		float:left;
+		position:relative;
+		width:62%;
+		padding-left:15px;
+		color:#646464;
+		margin-top:2px;
+	}
+	.rightcontainer{
+		float: left;
+		position: relative;
+		width: 23.8%;
+		height:auto;
+		border-radius:5px;
+		margin-top: 15px;
+		background-color: #FFF;
+		border:1px solid #E1E1E1;
+		margin-bottom:62px;
+	}
+	.bottomborder{
+		float:left;
+		position:relative;
+		width:89.8%;
+		height:10px;
+		margin-left:15px;
+		border-bottom:5px solid #F1F1F1;
+	}
+	.text1{
+		width: 37% !important;
+		padding: 11px 10px;
+		margin: 13px 10px 15px 0 !important;
+	}
+	.block1{
+		float: left;
+		position: relative;
+		background-color:#FFF;
+		height:126px;
+		border:1px solid #E1E1E1;
+		margin-bottom:15px;
+		border-radius:5px;
+		margin-left:15px;
+		width:47.6%;
+	}
+	.content1{
+		float:left;
+		position:relative;
+		width:55%;
+		margin-top:30px;
+		padding-left:15px;
+		font-size: 20px;
+		color: #323232;
+		white-space: nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+	}
+	.content2{
+		float:left;
+		position:relative;
+		width:55%;
+		padding-left:15px;
+		padding-top:1px;
+		white-space: nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+	}
+	.searchbar{
+		background-color:#FFF;
+		height:auto;
+		border:1px solid #E1E1E1;
+		margin-top:15px;
+		border-radius:5px;
+		margin-left:15px;
+		margin-right:15px;
+		margin-bottom:15px;
+		width:96.8%;
+		}
+	
+}
+@media only screen and (max-width: 1080px) {
+	.header{
+	position: relative;
+	width: 100%;
+	height:auto;
+	margin:auto;
+	}
+	.hDlOGO {
+	position: relative;
+	float: left;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	margin-right:0;
+	}
+	.menu{
+	position: relative;
+    width:100%;
+	height:auto;
+	margin: auto;
+	padding-left: 15px;
+	}
+	.mcontainer{
+	margin: auto;
+	width: 100%;
+	}
+	.maincontainer {
+	position: relative;
+	width: 100%;
+	}
+	.leftcontainer{
+	float: left;
+	position: relative;
+	width: 100%;
+	min-height:725px;
+	padding:0px !important;
+	/* border:1px solid #FF0000; */
+	}
+	.block3{
+	position: relative;
+	float: left;
+	background-color:#FFF;
+	height:auto;
+	width:31.5%;
+	height:301px;
+	border:1px solid #E1E1E1;
+	border-radius:5px;
+	margin-left:15px;
+	margin-bottom:15px;
+	padding:0px !important;
+	}
+	.block_txtblock{
+		float:left;
+		position:relative;
+		width:80%;
+		height:30px;
+		padding-left:15px;
+		padding-top: 10px;
+	}
+	.block_txtblock:hover{
+		float:left;
+		position:relative;
+		width:80%;
+		height:30px;
+		padding-left:15px;
+		padding-top: 10px;
+	}
+	.txtblock{
+		float:left;
+		position:relative;
+		width:80%;
+		padding-left:15px;
+		color:#646464;
+		margin-top:2px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.txtblock1{
+		float:left;
+		position:relative;
+		width:62%;
+		padding-left:15px;
+		color:#646464;
+		margin-top:2px;
+	}
+	.rightcontainer{
+		float: left;
+		position: relative;
+		width: 100%;
+		height:auto;
+		border-radius:0px!important;
+		margin-top: 0px!important;
+		background-color: #FFF;
+		border:1px solid #E1E1E1;
+		margin-bottom:10px;
+	}
+	.bottomborder{
+		float:left;
+		position:relative;
+		width:91.4%;
+		height:10px;
+		margin-left:15px;
+		border-bottom:5px solid #F1F1F1;
+	}
+	.block1{
+		float: left;
+		position: relative;
+		background-color:#FFF;
+		height:126px;
+		border:1px solid #E1E1E1;
+		margin-bottom:15px;
+		border-radius:5px;
+		margin-left:15px;
+		width:47.8%;
+	}
+	.searchbar{
+		background-color:#FFF;
+		height:auto;
+		border:1px solid #E1E1E1;
+		margin-top:15px;
+		border-radius:5px;
+		margin-left:15px;
+		margin-right:15px;
+		margin-bottom:15px;
+		width:97.2%;
+		}
+	
+}
+@media only screen and (max-width: 960px) {
+	.block3{
+		position: relative;
+		float: left;
+		background-color:#FFF;
+		height:auto;
+		width:47.6%;
+		height:301px;
+		border:1px solid #E1E1E1;
+		border-radius:5px;
+		margin-left:15px;
+		margin-bottom:15px;
+		padding:0px !important;
+		}
+		.bottomborder{
+			float:left;
+			position:relative;
+			width:92.8%;
+			height:10px;
+			margin-left:15px;
+			border-bottom:5px solid #F1F1F1;
+		}
+		.hDlOGO{
+			position: relative;
+			float: left;
+			margin-top: 0px!important;	
+			margin-bottom: 0px!important;
+			height: 50px;
+}
+.headerad{
+	position: relative;
+	float: left;
+	width:100%;
+	height:auto;
+	background-color: #FAFAFA;
+	margin-bottom: 6px;
+}
+.leftcontainer{
+	float: left;
+	position;: relative;
+	width: 100%;
+	min-height:725px;
+	padding:0px!important;
+}
+.rightcontainer{
+	float: left;
+	position: relative;
+	width: 100%;
+	height:auto;
+	border-radius:0px!important;
+	margin-top: 0px!important;
+	background-color: #FFF;
+	border:1px solid #E1E1E1;
+	margin-bottom:10px;
+}	
+.block1{
+	float: left;
+	position: relative;
+	background-color:#FFF;
+	height:126px;
+	border:1px solid #E1E1E1;
+	margin-bottom:15px;
+	border-radius:5px;
+	margin-left:15px;
+	width:47.5%;
+}
+.searchbar{
+	background-color:#FFF;
+	height:auto;
+	border:1px solid #E1E1E1;
+	margin-top:15px;
+	border-radius:5px;
+	margin-left:15px;
+	margin-right:15px;
+	margin-bottom:15px;
+	width:96.7%;
+	}
+}
+@media only screen and (max-width: 800px) {
+	.bottomborder{
+		float:left;
+		position:relative;
+		width:92%;
+		height:10px;
+		margin-left:15px;
+		border-bottom:5px solid #F1F1F1;
+	}
+	.block3{
+		position: relative;
+		float: left;
+		background-color:#FFF;
+		height:auto;
+		width:47%;
+		height:301px;
+		border:1px solid #E1E1E1;
+		border-radius:5px;
+		margin-left:15px;
+		margin-bottom:15px;
+		padding:0px !important;
+		}
+		.block1{
+			float: left;
+			position: relative;
+			background-color:#FFF;
+			height:126px;
+			border:1px solid #E1E1E1;
+			margin-bottom:15px;
+			border-radius:5px;
+			margin-left:15px;
+			width:47.2%;
+		}
+		.searchbar{
+			background-color:#FFF;
+			height:auto;
+			border:1px solid #E1E1E1;
+			margin-top:15px;
+			border-radius:5px;
+			margin-left:15px;
+			margin-right:15px;
+			margin-bottom:15px;
+			width:96.4%;
+			}
+} 
 @media only screen and (max-width: 768px) {
 	.headerh{
 		position: relative;
@@ -1354,7 +1760,6 @@ h4{
 	white-space: nowrap;
 	overflow:hidden;
 	text-overflow:ellipsis;
-
 }
 .smallImage{
 	float:left;
@@ -1432,7 +1837,7 @@ h4{
 	.content3{
 		float:left;
 		position:relative;
-		width:70%;
+		width:65%;
 		padding-left:15px;
 		padding-top:1px;
 	
@@ -1533,13 +1938,6 @@ h4{
 			margin-bottom: 1px;
 		}
 }
-@media only screen and (max-width: 1024px) {
-
-}
-@media only screen and (max-width: 1279px) {
-
-}
-
 @media only screen and (max-width: 480px) {
 
 	.text1{
@@ -1717,7 +2115,6 @@ h4{
 			margin-bottom: 1px;
 		}
 }
-
 @media only screen and (max-width:360px) {
     .searchbar {
         width: 97.2%;
