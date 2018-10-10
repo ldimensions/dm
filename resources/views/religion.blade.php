@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div role="tabpanel" class="tab-pane" id="religions">
 
 
 <div class="mcontainer">
@@ -96,7 +95,6 @@
 </div>
 </div>
 
-</div>
 
 <script>
         function religionSearch() {
