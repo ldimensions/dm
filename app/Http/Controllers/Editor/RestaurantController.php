@@ -117,6 +117,7 @@ class RestaurantController extends Controller
             }
         }else{
             $restaurant['ref_id']              =   "";
+            $restaurant['referenceId']         =   "";
             $restaurant['id']                  =   "";
             $restaurant['addressId']           =   "";
             $restaurant['urlId']               =   "";
@@ -632,6 +633,10 @@ class RestaurantController extends Controller
                     );
             }else{
                 DB::table('url')->where('restaurantTempId', $id)->delete();                
+            }
+            
+            if (is_dir(public_path().'/image/restaurant/'.$id.'_tmp')) {
+                rmdir (public_path().'/image/restaurant/'.$id.'_tmp');     
             }
             return redirect('/editor/restaurant')->with('status', 'Restaurant deleted!');
         }else{

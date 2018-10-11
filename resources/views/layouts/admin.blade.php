@@ -87,28 +87,15 @@
                             <li>
                                 <a href="{{ url('/admin/dashboard') }}"> Dashboard</a>
                             </li>
-                            @endhasanyrole
-                            @hasanyrole('Admin')
                             <li>
                                 <a href="{{ url('/admin/grocery') }}"> Grocery</a>
-                            </li>
-                            @endhasanyrole
-                            @hasanyrole('Admin')
+                            </li> 
                             <li>
                                 <a href="{{ url('/admin/restaurant') }}"> Restarunt</a>
-                            </li> 
-                            @endhasanyrole
-                            @hasanyrole('Editor')
-                            <li>
-                                <a href="{{ url('/editor/restaurant') }}"> Restarunt</a>
-                            </li> 
-                            @endhasanyrole                            
-                            @hasanyrole('Admin')
+                            </li>                                                      
                             <li>
                                 <a href="{{ url('/admin/religion') }}"> Religion</a>
-                            </li>  
-                            @endhasanyrole
-                            @hasanyrole('Admin')
+                            </li> 
                             <li>
                                 <a href="#"> Events<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -120,8 +107,6 @@
                                     </li>                                
                                 </ul>                                
                             </li>
-                            @endhasanyrole
-                            @hasanyrole('Admin')
                             <li>
                                 <a href="#"> Movies<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -133,8 +118,6 @@
                                     </li>                                
                                 </ul>
                             </li>   
-                            @endhasanyrole 
-                            @hasanyrole('Admin')                                                                                                                                      
                             <li>
                                 <a href="#"> Messages<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -143,12 +126,18 @@
                                     </li>                                
                                 </ul>
                             </li> 
-                            @endhasanyrole
-                            @hasanyrole('Admin')
                             <li>
                                 <a href="{{ url('/admin/seo') }}"> SEO</a>
-                            </li>   
-                            @endhasanyrole                                                     
+                            </li>  
+                            @endhasanyrole                                                            
+                            @hasanyrole('Editor')
+                            <li>
+                                <a href="{{ url('/editor/restaurant') }}"> Restarunt</a>
+                            </li> 
+                            <li>
+                                <a href="{{ url('/editor/religion') }}"> Religion</a>
+                            </li>                             
+                            @endhasanyrole                            
                         </ul>
                     </div>
                     <!-- /.sidebar-collapse -->

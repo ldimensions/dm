@@ -48,7 +48,7 @@ class CommonController extends Controller
         return $url[$index-1];
     }
 
-    function setMeta($url, $index=null, $keyValue=null){
+    function setMeta($url, $index=null, $keyValue=null,$tmp=null){
 
         $seoUrl                             =   "";
         if($url == '/'){
@@ -58,17 +58,29 @@ class CommonController extends Controller
             $seoUrl                         =   $url[$index-1];
         }
 
-        // Check the URL and Index
+        // check the review  - get it from temp table
+        if($tmp){
+            $seoRs                              =   Url::select('seo_tmp.SEOMetaTitle', 'seo_tmp.SEOMetaDesc', 
+                                                                'seo_tmp.SEOMetaPublishedTime','seo_tmp.SEOMetaKeywords',
+                                                                'seo_tmp.OpenGraphTitle','seo_tmp.OpenGraphDesc',
+                                                                'seo_tmp.OpenGraphUrl','seo_tmp.OpenGraphPropertyType',
+                                                                'seo_tmp.OpenGraphPropertyLocale','seo_tmp.OpenGraphPropertyLocaleAlternate',
+                                                                'seo_tmp.OpenGraph')
+                                                        ->join('seo_tmp','seo_tmp.urlId', '=', 'url.id')
+                                                        ->where('url.urlName', '=', $seoUrl)
+                                                        ->get()->first();  
+        }else{
+            $seoRs                              =   Url::select('seo.SEOMetaTitle', 'seo.SEOMetaDesc', 
+                                                                'seo.SEOMetaPublishedTime','seo.SEOMetaKeywords',
+                                                                'seo.OpenGraphTitle','seo.OpenGraphDesc',
+                                                                'seo.OpenGraphUrl','seo.OpenGraphPropertyType',
+                                                                'seo.OpenGraphPropertyLocale','seo.OpenGraphPropertyLocaleAlternate',
+                                                                'seo.OpenGraph')
+                                                        ->join('seo','seo.urlId', '=', 'url.id')
+                                                        ->where('url.urlName', '=', $seoUrl)
+                                                        ->get()->first();  
+        }
 
-        $seoRs                              =   Url::select('seo.SEOMetaTitle', 'seo.SEOMetaDesc', 
-                                                'seo.SEOMetaPublishedTime','seo.SEOMetaKeywords',
-                                                'seo.OpenGraphTitle','seo.OpenGraphDesc',
-                                                'seo.OpenGraphUrl','seo.OpenGraphPropertyType',
-                                                'seo.OpenGraphPropertyLocale','seo.OpenGraphPropertyLocaleAlternate',
-                                                'seo.OpenGraph')
-                                                ->join('seo','seo.urlId', '=', 'url.id')
-                                                ->where('url.urlName', '=', $seoUrl)
-                                                ->get()->first();  
         if($seoRs){
             $seo                            =   $seoRs->toArray();
             SEOMeta::setTitle($seo['SEOMetaTitle']);
@@ -489,7 +501,7 @@ class CommonController extends Controller
                 }
                 
     
-                $commonCtrl->setMeta($request->path(),2);
+                $commonCtrl->setMeta($request->path(),3,'','tmp');
                 $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($restaurant['description']));
                 return view('restaurant_details',['restaurant' => $restaurant, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate, 'todaysWorkingTime' => $todaysWorkingTime, 'descriptionHeight' => $descriptionHeight, 'foodTypeStr' => $foodTypeStr]);
             }else{

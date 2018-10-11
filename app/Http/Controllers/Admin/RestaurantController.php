@@ -507,6 +507,7 @@ class RestaurantController extends Controller
                                                                 'restaurant_tmp.website', 'restaurant_tmp.workingTime', 'restaurant_tmp.is_disabled',
                                                                 'restaurant_tmp.order', 'restaurant_tmp.premium', 'restaurant_tmp.updated_by',
                                                                 'restaurant_tmp.created_at', 'restaurant_tmp.updated_at',
+                                                                'address_tmp.id as addressTempId', 'seo_tmp.seoId as seoTempId',
                                                                 'address_tmp.address1', 'address_tmp.address2','address_tmp.id',
                                                                 'address_tmp.city', 'address_tmp.state',
                                                                 'address_tmp.zip', 'address_tmp.county',
@@ -519,7 +520,7 @@ class RestaurantController extends Controller
                                                                 'seo_tmp.OpenGraphUrl', 'seo_tmp.OpenGraphPropertyType', 
                                                                 'seo_tmp.OpenGraphPropertyLocale', 'seo_tmp.OpenGraphPropertyLocaleAlternate', 
                                                                 'seo_tmp.OpenGraph', 'seo_tmp.created_at',
-                                                                'seo_tmp.updated_at'
+                                                                'seo_tmp.updated_at', 'restaurant_tmp.updated_by'
                                                                 )     
                                                             ->leftjoin('address_tmp','address_tmp.id', '=', 'restaurant_tmp.addressId')   
                                                             ->leftjoin('seo_tmp','seo_tmp.urlId', '=', 'restaurant_tmp.urlId')   
@@ -536,18 +537,18 @@ class RestaurantController extends Controller
             $restaurants                     =   $restaurantRs->toArray();            
 
             DB::table('restaurant')
-            ->where('id', $restaurantTmpArr['referenceId'])
-            ->update(
+                ->where('id', $restaurantTmpArr['referenceId'])
+                ->update(
                 [
                     'name'          => $restaurantTmpArr['name'],
                     'description'   => $restaurantTmpArr['description'],
                     'workingTime'   => $restaurantTmpArr['workingTime'],
-                    'ethnicId'      => $restaurantTmpArr['ethnic'],
+                    'ethnicId'      => $restaurantTmpArr['ethnicId'],
                     'website'       => $restaurantTmpArr['website'],
                     'order'         => ($restaurantTmpArr['order'])?$restaurantTmpArr['order']:0,
                     'premium'       => $restaurantTmpArr['premium'],
                     'is_disabled'   => $restaurantTmpArr['is_disabled'],
-                    'updated_by'    => Auth::user()->id,
+                    'updated_by'    => $restaurantTmpArr['updated_by'],
                     'updated_at'    => date("Y-m-d H:i:s")                    
                 ]
             );
@@ -591,66 +592,47 @@ class RestaurantController extends Controller
                         'OpenGraph'                         => $restaurantTmpArr['OpenGraph'],
                         'updated_at'                        => date("Y-m-d H:i:s")
                     ]
-                ); 
+            ); 
 
-            if($restaurantVal['foodType']){
+            $resFoodTypeRs                  =   RestaurantFoodTypeTmp::select('foodTypeId')
+                                                        ->where('restaurantId', '=', $id)
+                                                        ->get();  
+            $resFoodTypes1                  =   $resFoodTypeRs->toArray(); 
+            if(count($resFoodTypes1) >0){
                 DB::table('restaurant_food_type')->where('restaurantId', $restaurantTmpArr['referenceId'])->delete();
-                for($i =0; $i < count($restaurantVal['foodType']); $i++){
+                for($i =0; $i < count($resFoodTypes1); $i++){
                     DB::table('restaurant_food_type')->insert([
-                        ['foodTypeId' => $restaurantVal['foodType'][$i], 
-                        'restaurantId' => $restaurantVal['id']]
+                        ['foodTypeId' => $resFoodTypes1[$i]['foodTypeId'], 
+                        'restaurantId' => $restaurantTmpArr['referenceId']]
                     ]);  
                 }
-            }                  
-
-            if($request->hasFile('photos')){
-                $files                          = $request->file('photos');
-                
-                DB::table('photo')->where('restaurantId', $restaurantVal['id'])->where('is_primary', 0)->delete();
-                
+            } 
             
-                foreach($files as $key=> $file){
-                    $filename                   = $file->getClientOriginalName();
-                    $rand                       = (rand(10,100));
-                    $extension                  = $file->getClientOriginalExtension();                
-                    $fileName                   = $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-
-                    $file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
-
-                    DB::table('photo')->insertGetId(
-                        [
-                            'photoName'         => $fileName,
-                            'order'             => $key,
-                            'restaurantId'      => $restaurantVal['id'],
-                            'updated_at'  => date("Y-m-d H:i:s")
-                        ]
-                    );
-                }
-            }
-            if($request->hasFile('thumbnail')){
-                $files                          = $request->file('thumbnail');
-                
-                DB::table('photo')->where('restaurantId', $restaurantVal['id'])->where('is_primary', 1)->delete();
+            $photoArr                       =   PhotoTmp::select('photoName','is_primary', 'order', 'is_deleted', 'is_disabled')
+                                                        ->orderBy('order', 'asc')
+                                                        ->where('restaurantId', '=', $id)
+                                                        ->get();  
+            $photoRs                        =   $photoArr->toArray();    
             
-                foreach($files as $key=> $file){
-                    $filename                   = $file->getClientOriginalName();
-                    $rand                       = (rand(10,1000));
-                    $extension                  = $file->getClientOriginalExtension();                
-                    $fileName                   = $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;      
-                    
-                    $file->move(public_path().'/image/restaurant/'.$restaurantVal['id'], $restaurantVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
-
-                    DB::table('photo')->insertGetId(
-                        [
-                            'photoName'         => $fileName,
-                            'order'             => $key,
-                            'restaurantId'      => $restaurantVal['id'],
-                            'is_primary'        => 1,
-                            'updated_at'  => date("Y-m-d H:i:s")
-                        ]
-                    );
+            if(count($photoRs) >0){
+                DB::table('restaurant_food_type')->where('restaurantId', $restaurantTmpArr['referenceId'])->delete();
+                for($i =0; $i < count($photoRs); $i++){
+                    DB::table('photo_tmp')->insert([
+                        ['photoName' => $photoRs[$i]['photoName'], 
+                        'is_primary' => $photoRs[$i]['is_primary'], 
+                        'order' => $photoRs[$i]['order'], 
+                        'is_deleted' => $photoRs[$i]['is_deleted'], 
+                        'is_disabled' => $photoRs[$i]['is_disabled'], 
+                        'restaurantId' => $restaurantTmpArr['referenceId']]
+                    ]);  
                 }
-            }            
+            }  
+            DB::table('restaurant_tmp')->where('id', $id)->delete();
+            DB::table('address_tmp')->where('id', $restaurantTmpArr['addressTempId'])->delete();
+            DB::table('seo_tmp')->where('urlId', $restaurantTmpArr['urlId'])->delete();        
+            DB::table('restaurant_food_type_tmp')->where('restaurantId', $id)->delete();
+            DB::table('photo_tmp')->where('restaurantId', $id)->delete();    
+                                   
         }else{
             $addressId                      =   DB::table('address')->insertGetId(
                 [
@@ -739,11 +721,11 @@ class RestaurantController extends Controller
                     'restaurantId' => $restaurantId]
                 ]); 
             }   
-            if(count($photoTypeArr) > 0){
+            // if(count($photoTypeArr) > 0){
                 if (is_dir(public_path().'/image/restaurant/'.$id.'_tmp')) {
                     rename (public_path().'/image/restaurant/'.$id.'_tmp', public_path().'/image/restaurant/'.$restaurantId);     
                 }               
-            }
+            // }
 
             DB::table('restaurant_tmp')->where('id', $id)->delete();
             DB::table('address_tmp')->where('id', $restaurantTmpArr['id'])->delete();
@@ -752,10 +734,7 @@ class RestaurantController extends Controller
             DB::table('photo_tmp')->where('restaurantId', $id)->delete();
         }
 
-
-                                                     
-        return redirect('/admin/restaurant')->with('status', 'Restaurant Approved!');
-        
+        return redirect('/admin/restaurant')->with('status', 'Restaurant Approved!');        
     }
 
     public function deleteTmpRestaurant($id){
@@ -783,6 +762,11 @@ class RestaurantController extends Controller
             }else{
                 DB::table('url')->where('restaurantTempId', $id)->delete();                
             }
+
+            if (is_dir(public_path().'/image/restaurant/'.$id.'_tmp')) {
+                rmdir (public_path().'/image/restaurant/'.$id.'_tmp');     
+            }             
+
             return redirect('/admin/restaurant')->with('status', 'Restaurant deleted!');
         }else{
             return redirect('/admin/restaurant')->with('status', 'Error!');            
