@@ -122,7 +122,7 @@ Route::group(['middleware' => ['role:Admin']], function () {
 
 Route::group(['middleware' => ['role:Editor']], function () {
 
-    //Route::get('/admin/dashboard', 'Admin\DashboardController@dashboard')->name('dashboard');    
+    Route::get('/editor/dashboard', 'Editor\DashboardController@dashboard')->name('dashboard');    
 
     Route::get('/editor/restaurant', 'Editor\RestaurantController@index')->name('restaurant_listing');
     Route::get('/editor/restaurant_add/{id?}', 'Editor\RestaurantController@addRestaurantView')->name('grocery_add')->where(['id' => '[0-9]+']);
