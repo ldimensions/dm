@@ -323,7 +323,8 @@ class CommonController extends Controller
         $groceryArr         =   array('dallas-indian-grocery-store','dallas-grocery-store','grocery-search');
         $restaurantArr      =   array('dallas-indian-restaurant','restaurant-search');
         $religionArr        =   array('dallas-indian-religion','religion-search','dallas-malayali-church','dallas-christian-church','dallas-hindu-temple','dallas-islan-mosque');
-        $travelsArr         =   array('dallas-indian-travels','travels-search');        
+        $travelsArr         =   array('dallas-indian-travels','travels-search');    
+        $moviesArr          =   array('dallas-indian-movies');      
         switch($type){
             case 'home':
                 if(count(array_filter($hostNameArr))  ==  0){
@@ -358,7 +359,13 @@ class CommonController extends Controller
                     }
                 }
                 break;
-                
+            case 'movies':
+                foreach($moviesArr as $movies){
+                    if (in_array($movies, $hostNameArr)){
+                        $isActive = true;
+                    }
+                }
+                break;                
         }
         return $isActive;
     }

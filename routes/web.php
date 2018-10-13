@@ -59,7 +59,9 @@ $this->post('/suggessionForEdit', 'SuggessionForEditController@suggessionForEdit
     
 Route::get('/getSuggessionNotification', 'SuggessionForEditController@getSuggessionNotification');
 
-$this->get('/'.config('app.defaultBaseURL.dallas-indian-movie'), 'MovieController@index')->name('movie');
+$this->get('/'.config('app.defaultBaseURL.dallas-indian-movie'), 'MovieController@index')->name('movies');
+$this->get('/'.config('app.defaultBaseURL.dallas-indian-movie').'/{url}', 'MovieController@getDetails')->name('movie_details')->where('url', '[A-Za-z-+0-9]+');
+
 
 
 Route::group(['middleware' => ['role:Admin']], function () {
@@ -75,7 +77,7 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::get('/admin/restaurant_add/{id?}', 'Admin\RestaurantController@addRestaurantView')->name('grocery_add')->where(['id' => '[0-9]+']);
     Route::post('/admin/restaurant_add', 'Admin\RestaurantController@addRestaurant');
     Route::get('admin/restaurant/delete/{id}', 'Admin\RestaurantController@deleteRestaurant')->where(['id' => '[0-9]+']);
-    Route::post('/admin/rejectRestarunt', 'Admin\RestaurantController@rejectRestarunt');
+    Route::post('/admin/restaurant/rejectRestarunt', 'Admin\RestaurantController@rejectRestarunt');
     Route::get('/admin/restaurant/approve/{id?}', 'Admin\RestaurantController@approveRestarunt')->where(['id' => '[0-9]+']);
     Route::get('/admin/restaurant_tmp/delete/{id}', 'Admin\RestaurantController@deleteTmpRestaurant')->where(['id' => '[0-9]+']);    
     
@@ -83,7 +85,7 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::get('/admin/religion_add/{id?}', 'Admin\ReligionController@addReligionView')->name('religion_add')->where(['id' => '[0-9]+']);
     Route::post('/admin/religion_add', 'Admin\ReligionController@addReligion');
     Route::get('admin/religion/delete/{id}', 'Admin\ReligionController@deleteReligion')->where(['id' => '[0-9]+']);
-    Route::post('/admin/rejectReligion', 'Admin\ReligionController@rejectReligion');
+    Route::post('/admin/religion/rejectReligion', 'Admin\ReligionController@rejectReligion');
     Route::get('/admin/religion/approve/{id?}', 'Admin\ReligionController@approveReligion')->where(['id' => '[0-9]+']);
     Route::get('/admin/religion_tmp/delete/{id}', 'Admin\ReligionController@deleteTmpReligion')->where(['id' => '[0-9]+']);    
     

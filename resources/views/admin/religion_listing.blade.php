@@ -205,7 +205,7 @@
             id = document.getElementById("id").value;
             if(reason.length && id){
                 $.ajax({
-                    url: "/admin/rejectReligion",
+                    url: "/admin/religion/rejectReligion",
                     type: "POST",
                     headers: {
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
@@ -249,14 +249,14 @@
             window.location.href = "/admin/religion/approve/"+id;
         }
     }  
-    function rejectReligion(id){
-        var reason = prompt("Please enter your reason:", "");
-        if (reason == null || reason == "") {
+    // function rejectReligion(id){
+    //     var reason = prompt("Please enter your reason:", "");
+    //     if (reason == null || reason == "") {
             
-        } else {
-            //window.location.href = "/admin/restaurant/approve/"+id;
-        }
-    }         
+    //     } else {
+    //         window.location.href = "/admin/religion/rejectReligion/"+id;
+    //     }
+    // }         
     </script> 
 @endsection
   

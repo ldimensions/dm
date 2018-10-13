@@ -76,7 +76,7 @@ return [
         'hindu-temple-in'                       => 'hindu-temple-in-',
         'islam-mosque-in'                       => 'islam-mosque-in-',        
         
-        'dallas-indian-movie'                   => 'dallas-indian-movie',
+        'dallas-indian-movie'                   => 'dallas-indian-movies',
 
         'dallas-indian-travels'                 => 'dallas-indian-travels',        
         

@@ -21,7 +21,7 @@
                                 @endif                            
                                 Grocery Submitted                               
                             </a>  
-                            <a href="{{ url('/editor/restaurant') }}" class="list-group-item">
+                            <a href="{{ url('/admin/restaurant') }}" class="list-group-item">
                                 <i class="fa fa-shopping-cart fa-fw"></i>
                                 @if ($restaurantSubmitted > 0)
                                     <span style="color:#337ab;font-weight: bold;">{{$restaurantSubmitted}}</span>
@@ -30,7 +30,7 @@
                                 @endif
                                 Restaurant Submitted    
                             </a>    
-                            <a href="{{ url('/editor/religion') }}" class="list-group-item">
+                            <a href="{{ url('/admin/religion') }}" class="list-group-item">
                                 <i class="fa fa-shopping-cart fa-fw"></i> 
                                 @if ($religionSubmitted > 0)
                                     <span style="color:#337ab;font-weight: bold;">{{$religionSubmitted}}</span>
@@ -60,7 +60,7 @@
                                 @endif
                                 Grocery Rejected                             
                             </a>  
-                            <a href="{{ url('/editor/restaurant') }}" class="list-group-item">
+                            <a href="{{ url('/admin/restaurant') }}" class="list-group-item">
                                 <i class="fa fa-warning fa-fw"></i>
                                 @if ($restaurantRejected > 0)
                                     <span style="color:red;font-weight: bold;">{{$restaurantRejected}}</span>
@@ -69,7 +69,7 @@
                                 @endif
                                 Restaurant Rejected
                             </a>   
-                            <a href="{{ url('/editor/religion') }}" class="list-group-item">
+                            <a href="{{ url('/admin/religion') }}" class="list-group-item">
                                 <i class="fa fa-warning fa-fw"></i>
                                 @if ($religionRejected > 0)
                                     <span style="color:red;font-weight: bold;">{{$religionRejected}}</span>

@@ -17,9 +17,12 @@ class MovieController extends Controller
 
     public function index(Request $request,$type,$city=null,$keyword=null){
 
-        $typeVal                            =   "";
-        $cityVal                            =   "";
-        $keywordVal                         =   "";
+        $typeVal                        =   "";
+        $cityVal                        =   "";
+        $keywordVal                     =   ""; 
+        $setSeo                         =   false;       
+        $siteId                         =   config('app.siteId');
+        $commonCtrl                     =   new CommonController;
 
         if($type){
             $typeArr                        =   explode("-",$type);
@@ -54,51 +57,56 @@ class MovieController extends Controller
             
         $movieRs                            =   $movieRs->get();
         $movies                             =   $movieRs->toArray();
-        echo "<pre>";
-        print_r($movies);
+
+        $cityRs                             =   City::select('cityId','city', 'value')
+                                                        ->orderBy('city', 'asc')
+                                                        ->get();  
+        $cities                             =   $cityRs->toArray();          
+
+        return view('movies',['cities' => $cities, 'cityVal' => $cityVal, 'keyword' => $keyword]);
     }
 
     public function getDetails(Request $request,$url){
         
-        $distance                           =   "";
-        $commonCtrl                         =   new CommonController;
+        // $distance                           =   "";
+        // $commonCtrl                         =   new CommonController;
 
-        $seoUrl                             =   $commonCtrl->seoUrl($request->path(),2);        
+        // $seoUrl                             =   $commonCtrl->seoUrl($request->path(),2);        
 
-        $siteId                             =   config('app.siteId');
-        $movieRs                            =   Movie::select()
-                                                    ->leftjoin('url','url.movieId', '=', 'movie.id')
-                                                    ->leftjoin('site','site.siteId', '=', 'movie.siteId')
-                                                    ->where('site.siteId', '=', $siteId)
-                                                    ->where('url.urlName', '=', $url)
-                                                    ->where('movie.is_deleted', '=', '0')
-                                                    ->where('movie.is_disabled', '=', '0')
-                                                    ->get()->first();
+        // $siteId                             =   config('app.siteId');
+        // $movieRs                            =   Movie::select()
+        //                                             ->leftjoin('url','url.movieId', '=', 'movie.id')
+        //                                             ->leftjoin('site','site.siteId', '=', 'movie.siteId')
+        //                                             ->where('site.siteId', '=', $siteId)
+        //                                             ->where('url.urlName', '=', $url)
+        //                                             ->where('movie.is_deleted', '=', '0')
+        //                                             ->where('movie.is_disabled', '=', '0')
+        //                                             ->get()->first();
 
-        $movie                              =   $movieRs->toArray(); 
+        // $movie                              =   $movieRs->toArray(); 
 
-        if($movie){
-            $movieId                        =   $movie['id'];
+        // if($movie){
+        //     $movieId                        =   $movie['id'];
             
-            $photoRs                        =   Photo::select('photo.photoId', 'photo.photoName', 
-                                                    'photo.is_primary', 'photo.order')
-                                                        ->where('photo.is_deleted', '=', '0')
-                                                        ->where('photo.is_primary', '=', '0')
-                                                        ->where('photo.is_disabled', '=', '0')
-                                                        ->where('photo.movieId', '=', $movieId)
-                                                        ->orderBy('photo.order', 'asc') 
-                                                        ->get();        
+        //     $photoRs                        =   Photo::select('photo.photoId', 'photo.photoName', 
+        //                                             'photo.is_primary', 'photo.order')
+        //                                                 ->where('photo.is_deleted', '=', '0')
+        //                                                 ->where('photo.is_primary', '=', '0')
+        //                                                 ->where('photo.is_disabled', '=', '0')
+        //                                                 ->where('photo.movieId', '=', $movieId)
+        //                                                 ->orderBy('photo.order', 'asc') 
+        //                                                 ->get();        
             
-            $photo                          =   $photoRs->toArray();  
+        //     $photo                          =   $photoRs->toArray();  
 
-            $commonCtrl->setMeta($request->path(),2);
+        //     $commonCtrl->setMeta($request->path(),2);
 
-            $todaysDate =   date("l");     
+        //     $todaysDate =   date("l");     
             
-            return view('movie_details',['movie' => $movie, 'photos' => $photo, 'today' => $todaysDate]);
-        }else{
-            return redirect()->back();
-        }
+            return view('movie_details');
+        // }else{
+        //     return redirect()->back();
+        // }
     }
 
 

@@ -194,7 +194,7 @@
             id = document.getElementById("id").value;
             if(reason.length && id){
                 $.ajax({
-                    url: "/admin/rejectRestarunt",
+                    url: "/admin/restaurant/rejectRestarunt",
                     type: "POST",
                     headers: {
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
@@ -238,14 +238,14 @@
             window.location.href = "/admin/restaurant/approve/"+id;
         }
     }  
-    function rejectRestaurant(id){
-        var reason = prompt("Please enter your reason:", "");
-        if (reason == null || reason == "") {
+    // function rejectRestaurant(id){
+    //     var reason = prompt("Please enter your reason:", "");
+    //     if (reason == null || reason == "") {
             
-        } else {
-            //window.location.href = "/admin/restaurant/approve/"+id;
-        }
-    }      
+    //     } else {
+    //         window.location.href = "/admin/restaurant/rejectRestarunt/"+id;
+    //     }
+    // }      
     </script> 
 @endsection
   
