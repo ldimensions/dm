@@ -615,7 +615,6 @@ class RestaurantController extends Controller
             $photoRs                        =   $photoArr->toArray();    
             
             if(count($photoRs) >0){
-                DB::table('restaurant_food_type')->where('restaurantId', $restaurantTmpArr['referenceId'])->delete();
                 for($i =0; $i < count($photoRs); $i++){
                     DB::table('photo_tmp')->insert([
                         ['photoName' => $photoRs[$i]['photoName'], 

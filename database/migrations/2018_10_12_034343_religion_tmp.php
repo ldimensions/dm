@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RestaurantTemp extends Migration
+class ReligionTmp extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,25 @@ class RestaurantTemp extends Migration
      */
     public function up()
     {
-        Schema::create('restaurant_tmp', function (Blueprint $table) {
+        Schema::create('religion_tmp', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('referenceId')->default(0);
             $table->string('name');
+            $table->integer('referenceId')->default(0);
             $table->text('description')->nullable();
+            $table->string('shortDescription',500)->nullable();
             $table->integer('urlId');
-            $table->integer('ethnicId');
+            $table->integer('religionTypeId');
+            $table->integer('denominationId');
             $table->integer('addressId');
             $table->integer('siteId');
-            $table->integer('status')->comment('1 = Save, 2 = Submitted', '3 = Appproved', '4 = Rejected');
             $table->string('website',100)->nullable();            
             $table->text('workingTime')->nullable();
+            $table->integer('status')->comment('1 = Save, 2 = Submitted', '3 = Appproved', '4 = Rejected');            
             $table->integer('order')->default(0);
             $table->integer('premium')->default(0);
             $table->boolean('is_deleted',1)->default(0);
             $table->boolean('is_disabled',1)->default(0);
-            $table->text('statusMsg')->nullable();            
+            $table->text('statusMsg')->nullable();                        
             $table->integer('updated_by')->unassigned();
             $table->timestamps();
         });
@@ -42,6 +44,8 @@ class RestaurantTemp extends Migration
      */
     public function down()
     {
-        Schema::drop('restaurant_tmp');
+        Schema::drop('religion');
     }
 }
+
+

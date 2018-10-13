@@ -276,8 +276,7 @@ class RestaurantController extends Controller
         return view('editor.restaurant_add',['restaurant' => $restaurant, 'cities' => $cities, 'photos' => $photoRs, 'foodTypes' => $foodType, 'resFoodTypes' => $resFoodTypes]);         
     }
 
-    public function addRestaurant(Request $request)
-    {
+    public function addRestaurant(Request $request){
 
         $restaurantVal                      =   $request->post();
         $user                               =   Auth::user();

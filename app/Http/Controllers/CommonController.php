@@ -8,6 +8,7 @@ use App\Http\Models\Seo;
 use App\Http\Models\RestaurantTemp;
 use App\Http\Models\PhotoTmp;
 use App\Http\Models\RestaurantFoodTypeTmp;
+use App\Http\Models\ReligionTmp;
 
 
 use SEOMeta;
@@ -507,8 +508,98 @@ class CommonController extends Controller
             }else{
                 return redirect()->back();
             }
-        }else if($type == ''){
-
+        }else if($type == 'religion'){
+            $distance                       =   "";
+            $todaysMassTime                 =   "";
+            $todaysConfessionTime           =   "";
+            $todaysAdorationTime            =   "";
+            $descriptionHeight              =   "20";
+            $commonCtrl                     =   new CommonController;
+    
+            $seoUrl                         =   $commonCtrl->seoUrl($request->path(),2);
+    
+            $siteId                         =   config('app.siteId');
+            $religionRs                     =   ReligionTmp::select('religion_tmp.id', 'religion_tmp.name', 
+                                                    'religion_tmp.description', 'religion_tmp.workingTime',
+                                                    'religion_tmp.website',
+                                                    'address_tmp.address1', 'address_tmp.address2',
+                                                    'address_tmp.zip', 'religion_tmp.shortDescription',
+                                                    'city.city', 'address_tmp.state',
+                                                    'address_tmp.phone1', 'address_tmp.latitude',
+                                                    'address_tmp.longitude','religion_type.religionName',
+                                                    'denomination.denominationName',
+                                                    'denomination.id as denominationId', 'url.urlName')
+                                                //->leftjoin('religion','url.religionId', '=', 'religion.id')
+                                                ->leftjoin('url','url.religionTempId', '=', 'religion_tmp.id')
+                                                ->leftjoin('religion_type','religion_type.id', '=', 'religion_tmp.religionTypeId')                                                
+                                                ->leftjoin('denomination','denomination.id', '=', 'religion_tmp.denominationId')                                                
+                                                ->leftjoin('address_tmp','address_tmp.id', '=', 'religion_tmp.addressId')
+                                                ->leftjoin('city','city.cityId', '=', 'address_tmp.city')         
+                                                ->where('religion_tmp.is_deleted', '=', '0')
+                                                ->where('religion_tmp.is_disabled', '=', '0')
+                                                ->where('url.urlName', '=', $url)
+                                                ->get()->first(); 
+            
+            if($religionRs){
+    
+                $lat                            =   ($religionRs['latitude'])?$religionRs['latitude']:'';
+                $long                           =   ($religionRs['longitude'])?$religionRs['longitude']:'';
+    
+                $workingTimes                   =   json_decode($religionRs['workingTime'], true);
+    
+                $todaysDate                     =   date("l");
+    
+                if($workingTimes){
+                    foreach($workingTimes as $rootKey => $workingTime) {
+                        foreach($workingTime as $subkey => $subWorkingTime) {
+                            foreach($subWorkingTime as $dayKey => $dayWorkingTime) {                          
+                                foreach($dayWorkingTime as $key => $time) {
+                                    $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'] = date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                                    if($dayKey == $todaysDate && $rootKey == "Mass"){
+                                        $todaysMassTime             .=   ($todaysMassTime)?', '.date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                                    }elseif($dayKey == $todaysDate && $rootKey == "Confession"){
+                                        $todaysConfessionTime       .=   ($todaysConfessionTime)?', '.date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                                    }else if($dayKey == $todaysDate && $rootKey == "Adoration"){
+                                        $todaysAdorationTime        .=   ($todaysAdorationTime)?', '.date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                                    }
+                                }
+                            }
+                        }
+                     }
+                }            
+                $religion                       =   $religionRs->toArray(); 
+                $religionId                     =   $religion['id'];
+        
+                $photoRs                        =   PhotoTmp::select('photo_tmp.photoId', 'photo_tmp.photoName', 
+                                                        'photo_tmp.is_primary', 'photo_tmp.order')
+                                                    ->where('photo_tmp.is_deleted', '=', '0')
+                                                    ->where('photo_tmp.is_primary', '=', '0')
+                                                    ->where('photo_tmp.is_disabled', '=', '0')
+                                                    ->where('photo_tmp.religionId', '=', $religionId)
+                                                    ->orderBy('photo_tmp.order', 'asc') 
+                                                    ->get();        
+                
+                $photo                          =   $photoRs->toArray();  
+    
+                $commonCtrl->setMeta($request->path(),3,'','tmp');
+            
+                $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($religionRs['description']));
+                
+                return view('religion_details',[
+                                                    'religion' => $religion, 
+                                                    'photos' => $photo, 
+                                                    'distance' => $distance, 
+                                                    'workingTimes' => $workingTimes, 
+                                                    'today' => $todaysDate,
+                                                    'todaysMassTime' =>$todaysMassTime,
+                                                    'todaysConfessionTime' => $todaysConfessionTime,
+                                                    'todaysAdorationTime' => $todaysAdorationTime,
+                                                    'descriptionHeight' => $descriptionHeight
+                                                ]
+                        );
+            }else{
+                return redirect()->back();
+            }
         }else if($type == ''){
             
         }

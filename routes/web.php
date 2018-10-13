@@ -83,6 +83,9 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::get('/admin/religion_add/{id?}', 'Admin\ReligionController@addReligionView')->name('religion_add')->where(['id' => '[0-9]+']);
     Route::post('/admin/religion_add', 'Admin\ReligionController@addReligion');
     Route::get('admin/religion/delete/{id}', 'Admin\ReligionController@deleteReligion')->where(['id' => '[0-9]+']);
+    Route::post('/admin/rejectReligion', 'Admin\ReligionController@rejectReligion');
+    Route::get('/admin/religion/approve/{id?}', 'Admin\ReligionController@approveReligion')->where(['id' => '[0-9]+']);
+    Route::get('/admin/religion_tmp/delete/{id}', 'Admin\ReligionController@deleteTmpReligion')->where(['id' => '[0-9]+']);    
     
     Route::get('/admin/suggession_for_edit', 'Admin\SuggessionForEditController@index')->name('suggession_for_edit');
     Route::get('/admin/suggession_for_edit/{id}', 'Admin\SuggessionForEditController@suggessionView')->name('suggessionView')->where(['id' => '[0-9]+']);
@@ -126,6 +129,12 @@ Route::group(['middleware' => ['role:Editor']], function () {
     Route::get('/editor/restaurant_add_duplicate/{id?}', 'Editor\RestaurantController@addRestauranDuplicatetView')->name('grocery_add_duplicate')->where(['id' => '[0-9]+']);
     Route::post('/editor/restaurant_add', 'Editor\RestaurantController@addRestaurant');
     Route::get('/editor/restaurant/delete/{id}', 'Editor\RestaurantController@deleteRestaurant')->where(['id' => '[0-9]+']);
+
+    Route::get('/editor/religion', 'Editor\ReligionController@index')->name('religion_listing');
+    Route::get('/editor/religion_add/{id?}', 'Editor\ReligionController@addReligionView')->name('religion_add')->where(['id' => '[0-9]+']);
+    Route::get('/editor/religion_add_duplicate/{id?}', 'Editor\ReligionController@addReligionDuplicatetView')->name('religion_add_duplicate')->where(['id' => '[0-9]+']);
+    Route::post('/editor/religion_add', 'Editor\ReligionController@addReligion');
+    Route::get('/editor/religion/delete/{id}', 'Editor\ReligionController@deleteReligion')->where(['id' => '[0-9]+']);
     
 });
 
