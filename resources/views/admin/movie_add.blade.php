@@ -368,13 +368,6 @@
         var theatreIdVal                    =   parseInt(document.getElementById("theatreCount").value)+1;
         document.getElementById("theatreCount").value = theatreIdVal;
 
-        // var dateIdVal;
-        // dateIdVal                           =   document.getElementById("dateCount").value;
-        // dateIdValSplit                      =   dateIdVal.split("_");
-        // dateId                              =   parseInt(dateIdValSplit[1])+1;
-        // dateNewVal                          =   dateIdValSplit[0]+"_"+dateId;        
-        // document.getElementById("dateCount").value     =   dateNewVal;
-
         $('#theatreDiv').append(`
                                     <div class="col-lg-12 col-xs-12 col-sm-12" id="theatre_div_`+theatreIdVal+`">  
                                         <div class="col-lg-6 col-xs-10 col-sm-10"> 

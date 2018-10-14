@@ -100,23 +100,7 @@ class MovieController extends Controller
             $movieBookingLinkArr                                =   array();
             foreach ($movieBookingLinkRs as $key => $movieBookingLink) {
                 $movieBookingLinkArr[$movieBookingLink['theatreId']]          =   $movieBookingLink['bookingLink'];  
-            }   
-
-            // $movieTimeRs1                           =   array();
-            // $movieTimeRs1['1']['dateTime'][0]       =   date('Y-m-d\TH:i',  strtotime('2018-01-01 01:20:10'));
-            // $movieTimeRs1['1']['dateTime'][1]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 02:20:20'));
-            // $movieTimeRs1['1']['dateTime'][3]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 03:20:20'));
-            // $movieTimeRs1['1']['dateTime'][4]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 04:20:20'));
-            // $movieTimeRs1['1']['dateTime'][5]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 05:20:20'));
-            // $movieTimeRs1['1']['dateTime'][6]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 06:20:20'));            
-            // $movieTimeRs1['2']['dateTime'][0]       =   date('Y-m-d\TH:i',  strtotime('2018-01-01 03:22:30'));
-            // $movieTimeRs1['2']['dateTime'][1]       =   date('Y-m-d\TH:i',  strtotime('2018-02-01 03:22:30'));
-            // $movieTimeRs1['3']['dateTime'][0]       =   date('Y-m-d\TH:i',  strtotime('2018-01-02 04:23:40'));            
-            
-            //$movieTimeRs['theatreId']['1']  =   
-            // echo "<pre>";
-            // print_r($movieBookingLinkArr);
-            // exit();
+            }              
         }else{
             $movie['id']                    =   "";
             $movie['addressId']             =   "";
@@ -150,6 +134,7 @@ class MovieController extends Controller
             $photoRs                        =   array();
             $movieTheatreAggr               =   array();
             $movieBookingLink               =   array();
+            $movieBookingLinkArr            =   array();
         }
 
         $theatreRs                          =   Theatre::select('theatre.id', 'theatre.name', 'city.city as cityName')
