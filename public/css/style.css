@@ -1089,7 +1089,7 @@ h4{
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:14px;
 	color:#CD0096;
-	font-weight:bold;
+	/* font-weight:bold; */
 	padding-top:3px;
 }
 .activeweekdays_res{
@@ -1108,8 +1108,8 @@ h4{
 .activeweekdays_reli{
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:14px;
-	color:#c;
-	font-weight:bold;
+	color:#FFC72F;
+	/* font-weight:bold; */
 	padding-top:3px;
 }
 
@@ -1124,8 +1124,10 @@ h4{
 .fullWidth{
 	width: 100%;
 }
-.daysWith{
-	width: 80px;
+.daysWith {
+    width: 35px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 /*---------- Image Slider ----------*/
@@ -1611,8 +1613,14 @@ h4{
             overflow:hidden;
             text-overflow:ellipsis;
         }
-		
-		@media only screen and (max-width: 1024px) {	
+        .blockk1{
+            float: left;
+            position:relative;
+            width:48%;
+            min-height:350px;
+        }
+}		
+@media only screen and (max-width: 1024px) {	
 .block2{
 	float: left;
 	position: relative;
@@ -1673,6 +1681,12 @@ h4{
 }
 }
 @media only screen and (max-width: 960px) {
+    .blockk1{
+        float: left;
+        position:relative;
+        width:47.1%;
+        min-height:350px;
+    }
 	.block3{
 		position: relative;
 		float: left;
@@ -1931,7 +1945,13 @@ h4{
 				border-radius:5px 5px;
 				margin-bottom:15px;
 			
-			}
+            }
+            .blockk1{
+                float: left;
+                position:relative;
+                width:47.6%;
+                min-height:350px;
+            }
 } 
 @media only screen and (max-width: 768px) {
     .navbar-toggle {
@@ -2342,8 +2362,8 @@ h4{
     .blockk1{
         float: left;
         position:relative;
-        width:468px;
-        /* min-height:350px; */
+        width:47.6%;
+        min-height:0px;
     }
 }
 @media only screen and (max-width: 720px) {
@@ -2426,7 +2446,13 @@ h4{
 		border-radius:5px 5px;
 		margin-bottom:15px;
 	
-	}
+    }
+    .blockk1{
+        float: left;
+        position:relative;
+        width:47.6%;
+        min-height:0px;
+    }
 }
 @media only screen and (max-width: 640px) {
     .menumain{
@@ -3291,5 +3317,29 @@ h4{
 			border-radius:5px 5px;
 			margin-bottom:15px;
 		
-		}
-}
+        }
+        .activeweekdays{
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:13px;
+            color:#CD0096;
+            padding-top:3px;
+        }
+        .activeweekdays_res{
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:13px;
+            color:#4FBC4E;
+            padding-top:3px;
+        }
+        .activeweekdays_reli{
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:13px;
+            color:#FFC72F;
+            padding-top:3px;
+        }
+        .inactiveweekdays{
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:13px;
+            color:#646464;
+            padding-top:3px;
+        }
+    }
