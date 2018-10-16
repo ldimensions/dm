@@ -28,7 +28,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
-        <link href="{{ asset('css/style.css') }}?version=6.2" rel="stylesheet">
+        <link href="{{ asset('css/style.css') }}?version=6.3" rel="stylesheet">
         <link href="{{ asset('css/lightslider.css') }}?version=6.2" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     </head>
@@ -49,10 +49,17 @@
                             <!-- <a href="#"  class="location"><img alt="{{config('app.siteId')}}" src="{{ URL::to('/') }}/image/location.svg" />Dallas</a> --> 
                             <img alt="DallasIndianPortal" class="hDlOGO" src="{{ URL::to('/') }}/image/dallasLogo.svg"/>
                             <div class="headerad"><img alt="ad"  width="100%" height="100%" src="{{ URL::to('/') }}/image/topBanner.svg"/></div>
+
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>                        
+                                </button>
+                                
                         </div>
                     </div>    
-                    <div class="menumain">
-                        <div class="menu"> 
+                    <div class="menumain" id="myNavbar">
+                        <div class="menu" > 
                             <a href="{{ url('/') }}" class="{{ (CommonController::activeMenu('home')) ? 'activemenu' : 'inactivemenu' }}">Home</a> 
                             <a href="{{ route('grocery') }}" class="{{ (CommonController::activeMenu('grocery')) ? 'activemenu' : 'inactivemenu' }}">Groceries</a>                         
                             <a href="{{ route('restaurant') }}" class="{{ (CommonController::activeMenu('restaurant')) ? 'activemenu' : 'inactivemenu' }}">Restaurants </a> 
