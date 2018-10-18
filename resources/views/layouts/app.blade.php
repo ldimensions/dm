@@ -47,7 +47,7 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>                            
                             @endif                         
                             <!-- <a href="#"  class="location"><img alt="{{config('app.siteId')}}" src="{{ URL::to('/') }}/image/location.svg" />Dallas</a> --> 
-                            <img alt="DallasIndianPortal" class="hDlOGO" src="{{ URL::to('/') }}/image/dallasLogo.svg"/>
+                            <a href="{{ url('/') }}"><img alt="DallasIndianPortal" class="hDlOGO" src="{{ URL::to('/') }}/image/dallasLogo.svg"/></a>
                             <div class="headerad"><img alt="ad"  width="100%" height="100%" src="{{ URL::to('/') }}/image/topBanner.svg"/></div>
 
                                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
