@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+<?php use App\Http\Controllers\CommonController;?>
+
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer">
@@ -90,9 +92,9 @@
                                             @if ( !empty ( $wtMass ) )
                                             <tr>
                                                 @if ( $wtMassArrKey == $today )
-                                                    <td class="activeweekdays_reli daysWith">{{$wtMassArrKey}}</td>
+                                                    <td class="activeweekdays_reli daysWith">{{CommonController::getDaysShort($wtMassArrKey)}}</td>
                                                 @else
-                                                    <td class="inactiveweekdays daysWith">{{$wtMassArrKey}}</td>
+                                                    <td class="inactiveweekdays daysWith">{{CommonController::getDaysShort($wtMassArrKey)}}</td>
                                                 @endif    
                                                 @foreach ($wtMass as $massKey => $mass)
                                                     @foreach ($mass as $massTimeKey => $massTime)
@@ -116,9 +118,9 @@
                                             @if ( !empty ( $wtConf ) )
                                                 <tr>
                                                     @if ( $wtConfArrKey == $today )
-                                                        <td class="activeweekdays_reli daysWith">{{$wtConfArrKey}}</td>
+                                                        <td class="activeweekdays_reli daysWith">{{CommonController::getDaysShort($wtConfArrKey)}}</td>
                                                     @else
-                                                        <td class="inactiveweekdays daysWith">{{$wtConfArrKey}}</td>
+                                                        <td class="inactiveweekdays daysWith">{{CommonController::getDaysShort($wtConfArrKey)}}</td>
                                                     @endif                                             
                                                     @foreach ($wtConf as $confession)
                                                         @foreach ($confession as $confessionTimeKey => $confessionTime)
@@ -142,9 +144,9 @@
                                             @if ( !empty ( $wtAdo ) )
                                                 <tr>
                                                     @if ( $wtAdoArrKey == $today )
-                                                        <td class="activeweekdays_reli daysWith">{{$wtAdoArrKey}}</td>
+                                                        <td class="activeweekdays_reli daysWith">{{CommonController::getDaysShort($wtAdoArrKey)}}</td>
                                                     @else
-                                                        <td class="inactiveweekdays daysWith">{{$wtAdoArrKey}}</td>
+                                                        <td class="inactiveweekdays daysWith">{{CommonController::getDaysShort($wtAdoArrKey)}}</td>
                                                     @endif                                          
                                                     @foreach ($wtAdo as $adoration)
                                                         @foreach ($adoration as $adorationTimeKey => $adorationTime)

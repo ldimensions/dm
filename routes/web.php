@@ -72,7 +72,10 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::get('/admin/grocery_add/{id?}', 'Admin\GroceryController@addGroceryView')->name('grocery_add')->where(['id' => '[0-9]+']);
     Route::post('/admin/grocery_add', 'Admin\GroceryController@addGrocery');
     Route::get('admin/grocery/delete/{id}', 'Admin\GroceryController@deleteGrocery')->where(['id' => '[0-9]+']);
-    
+    Route::post('/admin/grocery/rejectGrocery', 'Admin\GroceryController@rejectGrocery');
+    Route::get('/admin/grocery/approve/{id?}', 'Admin\GroceryController@approveGrocery')->where(['id' => '[0-9]+']);
+    Route::get('/admin/grocery_tmp/delete/{id}', 'Admin\GroceryController@deleteTmpGrocery')->where(['id' => '[0-9]+']);    
+
     Route::get('/admin/restaurant', 'Admin\RestaurantController@index')->name('restaurant_listing');
     Route::get('/admin/restaurant_add/{id?}', 'Admin\RestaurantController@addRestaurantView')->name('grocery_add')->where(['id' => '[0-9]+']);
     Route::post('/admin/restaurant_add', 'Admin\RestaurantController@addRestaurant');
@@ -137,7 +140,14 @@ Route::group(['middleware' => ['role:Editor']], function () {
     Route::get('/editor/religion_add_duplicate/{id?}', 'Editor\ReligionController@addReligionDuplicatetView')->name('religion_add_duplicate')->where(['id' => '[0-9]+']);
     Route::post('/editor/religion_add', 'Editor\ReligionController@addReligion');
     Route::get('/editor/religion/delete/{id}', 'Editor\ReligionController@deleteReligion')->where(['id' => '[0-9]+']);
+
+    Route::get('/editor/grocery', 'Editor\GroceryController@index')->name('grocery_listing');
+    Route::get('/editor/grocery_add/{id?}', 'Editor\GroceryController@addGroceryView')->name('grocery_add')->where(['id' => '[0-9]+']);
+    Route::get('/editor/grocery_add_duplicate/{id?}', 'Editor\GroceryController@addGroceryDuplicatetView')->name('grocery_add_duplicate')->where(['id' => '[0-9]+']);
+    Route::post('/editor/grocery_add', 'Editor\GroceryController@addGrocery');
+    Route::get('/editor/grocery/delete/{id}', 'Editor\GroceryController@deleteGrocery')->where(['id' => '[0-9]+']);
     
+
 });
 
 Route::group(['middleware' => ['role:Admin|Editor']], function () {

@@ -28,11 +28,11 @@
                             @endif                                   
                             <form name="restaurant" action="{{ url('/editor/restaurant_add') }}" method="POST" role="form" enctype="multipart/form-data">
                                 {{ csrf_field() }}
-                                <input type="text" name="ref_id" value="{{ $restaurant['ref_id'] }}" id="ref_id">
-                                <input type="text" name="id" value="{{ $restaurant['id'] }}" id="id">
-                                <input type="text" name="addressId" value="{{ $restaurant['addressId'] }}" id="addressId">
-                                <input type="text" name="urlId" value="{{ $restaurant['urlId'] }}" id="urlId">
-                                <input type="text" name="seoId" value="{{ $restaurant['seoId'] }}" id="seoId">  
+                                <input type="hidden" name="ref_id" value="{{ $restaurant['ref_id'] }}" id="ref_id">
+                                <input type="hidden" name="id" value="{{ $restaurant['id'] }}" id="id">
+                                <input type="hidden" name="addressId" value="{{ $restaurant['addressId'] }}" id="addressId">
+                                <input type="hidden" name="urlId" value="{{ $restaurant['urlId'] }}" id="urlId">
+                                <input type="hidden" name="seoId" value="{{ $restaurant['seoId'] }}" id="seoId">  
                                 
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#restaurant" data-toggle="tab">Restaurant</a>

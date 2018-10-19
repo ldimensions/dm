@@ -9,7 +9,7 @@ use App\Http\Models\RestaurantTemp;
 use App\Http\Models\PhotoTmp;
 use App\Http\Models\RestaurantFoodTypeTmp;
 use App\Http\Models\ReligionTmp;
-
+use App\Http\Models\GroceryTmp;
 
 use SEOMeta;
 use OpenGraph;
@@ -607,9 +607,114 @@ class CommonController extends Controller
             }else{
                 return redirect()->back();
             }
-        }else if($type == ''){
+        }else if($type == 'grocery'){
+
+            $todaysWorkingTime              =   "";
+            $descriptionHeight              =   "20";
+            $commonCtrl                     =   new CommonController;
+    
+            $seoUrl                         =   $commonCtrl->seoUrl($request->path(),2);        
+    
+            $siteId                         =   config('app.siteId');
+            $groceryRs                      =   GroceryTmp::select('grocery_tmp.id', 'grocery_tmp.name', 
+                                                    'grocery_tmp.description', 'grocery_tmp.workingTime',
+                                                    'address_tmp.address1', 'address_tmp.address2',
+                                                    'grocery_tmp.website',                                                
+                                                    'city.city', 'address_tmp.state',
+                                                    'address_tmp.zip', 'address_tmp.county',
+                                                    'address_tmp.phone1', 'address_tmp.latitude',
+                                                    'address_tmp.longitude', 'ethnic.ethnicName',
+                                                    'ethnic.id as ethnicId', 'url.urlName')
+                                                ->leftjoin('url','url.groceryTempId', '=', 'grocery_tmp.id')
+                                                ->leftjoin('address_tmp','address_tmp.id', '=', 'grocery_tmp.addressId')
+                                                ->leftjoin('ethnic','ethnic.id', '=', 'grocery_tmp.ethnicId')
+                                                ->leftjoin('site','site.siteId', '=', 'grocery_tmp.siteId')
+                                                ->leftjoin('city','city.cityId', '=', 'address_tmp.city')                                                                                       
+                                                ->where('site.siteId', '=', $siteId)
+                                                ->where('url.urlName', '=', $url)
+                                                ->where('grocery_tmp.is_deleted', '=', '0')
+                                                ->where('grocery_tmp.is_disabled', '=', '0')
+                                                ->get()->first();
+    
+            $grocery                            =   $groceryRs->toArray(); 
+    
+            if($grocery){
+                $groceryId                      =   $grocery['id'];
+                
+                $lat                            =   ($grocery['latitude'])?$grocery['latitude']:'';
+                $long                           =   ($grocery['longitude'])?$grocery['longitude']:'';
+            
+                $workingTimes                   =   json_decode($grocery['workingTime'], true);
+                $todaysDate                     =   date("l");     
+                if($workingTimes){
+                    foreach($workingTimes as $rootKey => $workingTime) {
+                        foreach($workingTime as $subkey => $subWorkingTime) {
+                            foreach($subWorkingTime as $dayKey => $dayWorkingTime) {
+                                foreach($dayWorkingTime as $key => $time) {
+                                    $oldKey                     =   "";
+                                    $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'] = date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                                    if($dayKey == $todaysDate){
+                                        if($oldKey != $key){
+                                            $todaysWorkingTime      .=   ' - '.$workingTimes[$rootKey][$subkey][$dayKey][$key]['time'];                            
+                                        }else{
+                                            $todaysWorkingTime      .=   ($todaysWorkingTime)?', '.$workingTimes[$rootKey][$subkey][$dayKey][$key]['time']: $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'];
+                                        }
+                                    }
+                                    $oldKey                         =  $key; 
+                                }
+                            }
+                        }
+                    }            
+                }
+        
+                $photoRs                        =   PhotoTmp::select('photo_tmp.photoId', 'photo_tmp.photoName', 
+                                                        'photo_tmp.is_primary', 'photo_tmp.order')
+                                                    ->where('photo_tmp.is_deleted', '=', '0')
+                                                    ->where('photo_tmp.is_primary', '=', '0')
+                                                    ->where('photo_tmp.is_disabled', '=', '0')
+                                                    ->where('photo_tmp.groceryId', '=', $groceryId)
+                                                    ->orderBy('photo_tmp.order', 'asc') 
+                                                    ->get();        
+                
+                $photo                          =   $photoRs->toArray();  
+    
+                $commonCtrl->setMeta($request->path(),3,'','tmp');
+    
+                $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($grocery['description']));
+                
+                return view('grocery_details',[ 'grocery' => $grocery, 
+                                                'photos' => $photo, 
+                                                'workingTimes' => $workingTimes, 
+                                                'today' => $todaysDate, 
+                                                'todaysWorkingTime' => $todaysWorkingTime, 
+                                                'descriptionHeight' => $descriptionHeight
+                                            ]);
+            }else{
+                return redirect()->back();
+            }            
             
         }
 
+    }
+
+    public static function getDaysShort($day){
+        switch($day){
+            case 'Sunday':
+                return 'Sun';
+            case 'Monday':
+                return 'Mon';
+            case 'Tuesday':
+                return 'Tue';
+            case 'Wednesday':
+                return 'Wed';
+            case 'Thursday':
+                return 'Thu';
+            case 'Friday':
+                return 'Fri';
+            case 'Saturday':
+                return 'Sat';
+            default:  
+                return $day;                                                                                               
+        }
     }
 }

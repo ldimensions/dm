@@ -120,7 +120,7 @@
                                         <br/><br/>
                                         <div id="theatreDiv">
                                             @if($movie['id'] && count($movieTimes) >0) 
-                                                <input type="text" name="theatreCount" id="theatreCount" value="{{count($movieTimes)}}"/>
+                                                <input type="hidden" name="theatreCount" id="theatreCount" value="{{count($movieTimes)}}"/>
                                                 <span style="display:none">{{$index = 1}}</span>   
                                                 @foreach ($movieTimes as $theatreKey => $movieTime)
                                                 
@@ -150,7 +150,7 @@
                                                                             <input type="text" name="bookingLink_{{$index}}" id="boolingLink" value="{{(isset($movieBookingLink[$theatreKey]))?$movieBookingLink[$theatreKey]:''}}" class="form-control"/>
                                                                         </div>
                                                                         @foreach ($movieTime as $key => $timeRs) 
-                                                                            <input type="text" name="dateCount_{{$index}}" id="dateCount_{{$index}}" value="{{count($timeRs)}}"/>
+                                                                            <input type="hidden" name="dateCount_{{$index}}" id="dateCount_{{$index}}" value="{{count($timeRs)}}"/>
                                                                             <div id="dateDiv_{{$theatreKey}}" >
                                                                                 @foreach ($timeRs as $timeKey => $time) 
                                                                                     <div class="form-group" id="{{$theatreKey}}_{{$timeKey+1}}">
@@ -192,7 +192,7 @@
                                                             </div>                                                           
                                                         @else 
                                                             <div class="col-lg-6 col-xs-2 col-sm-2"> 
-                                                                --<button type="button" class="btn btn-default btn-sm" id="removeTheatre_{{$theatreKey}}"><i class="glyphicon glyphicon-remove"></i></button>
+                                                                <button type="button" class="btn btn-default btn-sm" id="removeTheatre_{{$theatreKey}}"><i class="glyphicon glyphicon-remove"></i></button>
                                                             </div> 
                                                             <script>
                                                                 $("#removeTheatre_"+{{$theatreKey}}).click(function(){
@@ -206,7 +206,7 @@
                                                     <span style="display:none">{{$index++}}</span>                                            
                                                 @endforeach                                            
                                             @else 
-                                                <input type="text" name="theatreCount" id="theatreCount" value="1"/>
+                                                <input type="hidden" name="theatreCount" id="theatreCount" value="1"/>
                                                 <div class="col-lg-12 col-xs-12 col-sm-12">  
                                                     <div class="col-lg-6 col-xs-10 col-sm-10"> 
                                                         <div class="panel panel-default">
@@ -240,7 +240,7 @@
                                                                     <input type="text" name="bookingLink_1" id="boolingLink" value="" class="form-control"/>
                                                                 </div>                                                                
                                                                 <div id="dateDiv">
-                                                                    <input type="text" name="dateCount_1" id="dateCount_1" value="1"/>
+                                                                    <input type="hidden" name="dateCount_1" id="dateCount_1" value="1"/>
                                                                     <div class="form-group">
                                                                         <input type="datetime-local" id="" name="dateTime_1[]" value="" /> 
                                                                         <button type="button" class="btn btn-default btn-sm" id="addDate"><i class="fa glyphicon-plus"></i></button>
@@ -390,7 +390,7 @@
                                                         <input type="text" name="bookingLink_`+theatreIdVal+`" id="boolingLink" value="" class="form-control"/>
                                                     </div>                                                     
                                                     <div id="dateDiv_`+theatreIdVal+`">
-                                                        <input type="text" name="dateCount_`+theatreIdVal+`" id="dateCount_`+theatreIdVal+`" value="1"/>
+                                                        <input type="hidden" name="dateCount_`+theatreIdVal+`" id="dateCount_`+theatreIdVal+`" value="1"/>
                                                             <div class="form-group">
                                                                 <input type="datetime-local" id="" name="dateTime_`+theatreIdVal+`[]" value="" /> 
                                                                 <button type="button" class="btn btn-default btn-sm" id="addDate_btn_`+theatreIdVal+`"><i class="fa glyphicon-plus"></i></button>
@@ -409,7 +409,6 @@
                             `); 
         $("#addDate_btn_"+theatreIdVal).click(function(){
             var dateCountVal;
-            //var theatreIdVal                            =   document.getElementById("theatreCount").value;
             dateCountVal                                =   document.getElementById("dateCount_"+theatreIdVal).value;
             dateCountId                                 =   parseInt(dateCountVal)+1;
             document.getElementById("dateCount_"+theatreIdVal).value     =   dateCountId;

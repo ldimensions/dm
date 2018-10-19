@@ -28,8 +28,8 @@
         <!-- Styles -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
-        <link href="{{ asset('css/style.css') }}?version=6.3" rel="stylesheet">
-        <link href="{{ asset('css/lightslider.css') }}?version=6.2" rel="stylesheet">
+        <link href="{{ asset('css/style.css') }}?version=6.4" rel="stylesheet">
+        <link href="{{ asset('css/lightslider.css') }}?version=6.4" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     </head>
     <body>

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+<?php use App\Http\Controllers\CommonController;?>
+
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer">
@@ -82,9 +84,9 @@
                                         @if ( !empty ( $wtRs ) )
                                         <tr>
                                             @if ( $wtArrKey == $today )
-                                                <td class="activeweekdays_res daysWith">{{$wtArrKey}}</td>
+                                                <td class="activeweekdays_res daysWith">{{CommonController::getDaysShort($wtArrKey)}}</td>
                                             @else
-                                                <td class="inactiveweekdays daysWith">{{$wtArrKey}}</td>
+                                                <td class="inactiveweekdays daysWith">{{CommonController::getDaysShort($wtArrKey)}}</td>
                                             @endif    
                                             @foreach ($wtRs as $key => $wt)
                                                 @foreach ($wt as $wtTimeKey => $wtTimes)

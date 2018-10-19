@@ -133,7 +133,10 @@
                             @hasanyrole('Editor')
                             <li>
                                 <a href="{{ url('/editor/dashboard') }}"> Dashboard</a>
-                            </li>                            
+                            </li>   
+                            <li>
+                                <a href="{{ url('/editor/grocery') }}"> Grocery</a>
+                            </li>                                                      
                             <li>
                                 <a href="{{ url('/editor/restaurant') }}"> Restarunt</a>
                             </li> 
