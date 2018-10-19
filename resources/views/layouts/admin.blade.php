@@ -50,7 +50,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ route('/') }}">Dallas Indian Portal</a>
+                    <a class="navbar-brand" href="{{ url('/') }}">Dallas Indian Portal</a>
                 </div>
                 <!-- /.navbar-header -->
 
