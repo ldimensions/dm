@@ -662,7 +662,7 @@ input[type=text], select{
 	padding-left:10px;
 }
 .titleblock{
-width: 437px;
+width: 400px;
 }
 .religin_txt{
 	color:#413100;
@@ -1209,7 +1209,21 @@ h4{
 	width:40%;
 }
 .modal fade in show{
-	padding-right: 0px;
+	padding-right: 0px!important;
+}
+.share{
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+.dropdown-menu>li>a {
+    display: block;
+    padding: 3px 15px 4px 15px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
 }
 @media only screen and (max-width: 1280px) {
 	.header{
@@ -1423,7 +1437,7 @@ h4{
         
         }
         .titleblock{
-            width: 95%;
+            width: 87%;
 			}
 			.related{
 				float: left;
@@ -3212,7 +3226,7 @@ h4{
 		width:100%;
 	}
 	.modal fade in show{
-		padding-right:0px;
+		padding-right:0px!important;
 	}
     .menumain{
         position: relative;
@@ -3384,4 +3398,4 @@ h4{
             color:#646464;
             padding-top:3px;
         }
-    }
+	}
