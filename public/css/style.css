@@ -1204,6 +1204,13 @@ h4{
 	border-radius: 4px;
 	width: 950px;
 }
+.modal-dialog{
+	margin: auto;
+	width:40%;
+}
+.modal fade in show{
+	padding-right: 0px;
+}
 @media only screen and (max-width: 1280px) {
 	.header{
 	position: relative;
@@ -1681,6 +1688,10 @@ h4{
 }
 }
 @media only screen and (max-width: 960px) {
+	.modal-dialog{
+		margin: auto;
+		width:60%;
+	}
     .blockk1{
         float: left;
         position:relative;
@@ -1806,6 +1817,10 @@ h4{
 
 }
 @media only screen and (max-width: 800px) {
+	.modal-dialog{
+		margin: auto;
+		width:65%;
+	}
 	.bottomborder{
 		float:left;
 		position:relative;
@@ -2554,6 +2569,10 @@ h4{
 	
 }
 @media only screen and (max-width: 568px) {
+	.modal-dialog{
+		margin: auto;
+		width:100%;
+	}
     .menumain{
         position: relative;
         float: left;
@@ -2693,6 +2712,10 @@ h4{
 
 }
 @media only screen and (max-width: 480px) {
+	.modal-dialog{
+		margin: auto;
+		width:100%;
+	}
     .menumain{
         position: relative;
         float: left;
@@ -2855,6 +2878,10 @@ h4{
 		}
 }
 @media only screen and (max-width: 414px) {
+	.modal-dialog{
+		margin: auto;
+		width:100%;
+	}
     .menumain{
         position: relative;
         float: left;
@@ -2974,6 +3001,10 @@ h4{
 		
 }
 @media only screen and (max-width: 375px) {
+	.modal-dialog{
+		margin: auto;
+		width:100%;
+	}
     .menumain{
         position: relative;
         float: left;
@@ -3059,6 +3090,10 @@ h4{
 		
 }
 @media only screen and (max-width:360px) {
+	.modal-dialog{
+		margin: auto;
+		width:100%;
+	}
     .searchbar {
         width: 97.2%;
 	}
@@ -3172,6 +3207,13 @@ h4{
 		
 }
 @media only screen and (max-width: 320px) {
+	.modal-dialog{
+		margin: auto;
+		width:100%;
+	}
+	.modal fade in show{
+		padding-right:0px;
+	}
     .menumain{
         position: relative;
         float: left;

@@ -47,7 +47,7 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>                            
                             @endif                         
                             <!-- <a href="#"  class="location"><img alt="{{config('app.siteId')}}" src="{{ URL::to('/') }}/image/location.svg" />Dallas</a> --> 
-                            <img alt="DallasIndianPortal" class="hDlOGO" src="{{ URL::to('/') }}/image/dallasLogo.svg"/>
+                            <a href="{{ url('/') }}"><img alt="DallasIndianPortal" class="hDlOGO" src="{{ URL::to('/') }}/image/dallasLogo.svg"/></a>
                             <div class="headerad"><img alt="ad"  width="100%" height="100%" src="{{ URL::to('/') }}/image/topBanner.svg"/></div>
 
                                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -66,8 +66,8 @@
                             <a href="{{ route('religion') }}" class="{{ (CommonController::activeMenu('religion')) ? 'activemenu' : 'inactivemenu' }}">Religions </a> 
                             <!-- <a href="#" class="{{ (CommonController::activeMenu('travels')) ? 'activemenu' : 'inactivemenu' }}">Travels </a> 
                             <a href="#" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Auto </a>     
-                            <a href="#" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Events </a>--> 
-                            <a href="{{ route('movies') }}" class="{{ (CommonController::activeMenu('movies')) ? 'activemenu' : 'inactivemenu' }}" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Movies </a>                      
+                            <a href="#" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Events </a>
+                            <a href="{{ route('movies') }}" class="{{ (CommonController::activeMenu('movies')) ? 'activemenu' : 'inactivemenu' }}" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Movies </a>-->                    
                         </div>
                     </div>
                 </div>
