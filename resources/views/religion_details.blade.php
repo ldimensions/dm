@@ -30,6 +30,14 @@
                                 </td>
                             </tr>   
                         @endif  
+                        <div class="share">
+                            <a href="#" class="dropdown" data-toggle="dropdown"><img src="{{ URL::to('/') }}/image/share_icon1.svg"/></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Facebook</a></li>
+                                <li><a href="#">Google +</a></li>
+                                <li><a href="#">Twitter</a></li>
+                            </ul>
+                        </div>
                     </table>    
                 </div>          
                 <div class="content">

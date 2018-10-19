@@ -6,7 +6,7 @@
 <div class="mcontainer">
 <div class="maincontainer">
     <div class="leftcontainer">
-    <div class="col-md-12 searchbar hiddepadding"> <!--<a href="#" class="selocation"></a>-->
+    <div class="col-md-12 searchbar hiddepadding">
         <form>
             <select name="type" class="select" id="type">
                 <option 
