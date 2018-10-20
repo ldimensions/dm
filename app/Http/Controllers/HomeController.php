@@ -22,6 +22,7 @@ class HomeController extends Controller
         $religionRs                     =   Religion::select('religion.id', 'religion.name', 
                                                 'religion.workingTime',
                                                 'address.address1',
+                                                'address.state', 
                                                 'address.zip', 
                                                 'city.city',
                                                 'address.phone1', 'address.latitude',

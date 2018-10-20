@@ -194,7 +194,7 @@
             <div class="block22">
                 <div class="white_t1 space">
                     <h2 class="titleh2 graycolor1">{{ $religion['name'] }} Location</h2>
-                    <a href="https://www.google.com/maps/dir//{{ $religion['address1'] }} {{ $religion['address2'] }}, {{ $religion['city'] }}, {{ $religion['state'] }}, {{ $religion['zip'] }}/%40{{$religion['latitude']}},{{$religion['longitude']}},12z" title="{{ $religion['name'] }}" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $religion['name'] }}"/></a>
+                    <a href="https://www.google.com/maps/dir//{{ $religion['name'] }} {{ $religion['address1'] }} {{ $religion['address2'] }}, {{ $religion['city'] }}, {{ $religion['state'] }}, {{ $religion['zip'] }}/%40{{$religion['latitude']}},{{$religion['longitude']}},12z" title="{{ $religion['name'] }}" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $religion['name'] }}"/></a>
                 </div>
                 <div id="map" class="map"></div>
             </div>
