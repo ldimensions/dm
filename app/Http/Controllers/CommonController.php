@@ -739,6 +739,17 @@ class CommonController extends Controller
 
         $imgUrl                             =   'http://'.$_SERVER['SERVER_NAME'];
         $currentUrl                         =   url()->current();
+        $getHashTags                        =   config('app.tweetHashTags');
+        $hashTags                           =   "";
+        print_r(config('app.tweetHashTags'));
+        
+        foreach($getHashTags as $key => $getHashTag){
+            if($key == 0){
+                $hashTags                    =   "&hashtags=".$getHashTag;
+            }else{
+                $hashTags                    .=   ",".$getHashTag;
+            }
+        }
         $share                              =   " <div class='share'>
                         <a href='#' class='dropdown' data-toggle='dropdown'>
                             <img src='".$imgUrl."/image/share_icon.svg'/>
@@ -747,8 +758,8 @@ class CommonController extends Controller
                             <li>
                                 <a href='https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&u=".$currentUrl."&display=popup&ref=plugin' target='_blank' title='Share by Facebook'>Facebook</a>
                             </li>                                
-                            <li><a href='#'>Google +</a></li>
-                            <li><a href='#'>Twitter</a></li>
+                            <li><a href='https://plus.google.com/share?url=".$currentUrl."' target='_blank' title='Share by Google +'>Google +</a></li>
+                            <li><a href='http://twitter.com/share?text=".$name."&url=".$currentUrl.$hashTags."' target='_blank' title='Share by Twitter +'>Twitter</a></li>
                             <li>
                                 <a href='mailto:?subject=".$name." | ".$imgUrl." &amp;body=Check out this site ".$currentUrl."' target='_blank' title='Share by Email'>Email</a>
                             </li>

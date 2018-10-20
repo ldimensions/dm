@@ -6,6 +6,7 @@ return [
     'siteLocatioin' => env('SITE_LOCATION', 'Dallas'),   // 1 - Dallas
     'fromEmail' =>  'lindosebastian@gmail.com',
     'toEmail' =>  'lindosebastian@gmail.com',
+    'tweetHashTags' => ['DallasIndianPortal'],
     'defaultSEO' => [
         '1' => [    // Dallas
             'SEOMetaTitle'                        => "Dallas Indian Portal | Dallas Indian Community - dallasindianportal.com",
