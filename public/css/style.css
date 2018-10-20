@@ -1225,6 +1225,9 @@ h4{
     color: #333;
     white-space: nowrap;
 }
+.dropdown-menu{
+left:-140px!important;
+}
 @media only screen and (max-width: 1280px) {
 	.header{
 	position: relative;
@@ -1455,7 +1458,11 @@ h4{
                 white-space: nowrap;
                 overflow:hidden;
                 text-overflow:ellipsis;
-            }
+			}
+			
+			.dropdown-menu{
+				left:-140px!important;
+				}
             
 
 	
@@ -1639,7 +1646,10 @@ h4{
             position:relative;
             width:48%;
             min-height:350px;
-        }
+		}
+		.dropdown-menu{
+			left:-140px!important;
+			}
 }		
 @media only screen and (max-width: 1024px) {	
 .block2{
@@ -1700,6 +1710,9 @@ h4{
     overflow:hidden;
     text-overflow:ellipsis;
 }
+.dropdown-menu{
+	left:-140px!important;
+	}
 }
 @media only screen and (max-width: 960px) {
 	.modal-dialog{
@@ -1827,7 +1840,10 @@ h4{
         white-space: nowrap;
         overflow:hidden;
         text-overflow:ellipsis;
-    }
+	}
+	.dropdown-menu{
+		left:-140px!important;
+		}
 
 }
 @media only screen and (max-width: 800px) {
@@ -1980,7 +1996,10 @@ h4{
                 position:relative;
                 width:47.6%;
                 min-height:350px;
-            }
+			}
+			.dropdown-menu{
+				left:-140px!important;
+				}
 } 
 @media only screen and (max-width: 768px) {
     .navbar-toggle {
@@ -2393,7 +2412,10 @@ h4{
         position:relative;
         width:47.6%;
         min-height:0px;
-    }
+	}
+	.dropdown-menu{
+		left:-140px!important;
+		}
 }
 @media only screen and (max-width: 720px) {
     .menumain{
@@ -2481,7 +2503,10 @@ h4{
         position:relative;
         width:47.6%;
         min-height:0px;
-    }
+	}
+	.dropdown-menu{
+		left:-68px!important;
+		}
 }
 @media only screen and (max-width: 640px) {
     .menumain{
@@ -2580,7 +2605,9 @@ h4{
 		margin-bottom:15px;
 	
 	}
-	
+	.dropdown-menu{
+		left:-68px!important;
+		}
 }
 @media only screen and (max-width: 568px) {
 	.modal-dialog{
@@ -2723,6 +2750,9 @@ h4{
 			margin-bottom:15px;
 		
 		}
+		.dropdown-menu{
+			left:-68px!important;
+			}
 
 }
 @media only screen and (max-width: 480px) {
@@ -2890,6 +2920,9 @@ h4{
 			margin-bottom:15px;
 		
 		}
+		.dropdown-menu{
+			left:-68px!important;
+			}
 }
 @media only screen and (max-width: 414px) {
 	.modal-dialog{
@@ -3012,6 +3045,9 @@ h4{
 			margin-bottom:15px;
 		
 		}
+		.dropdown-menu{
+			left:-68px!important;
+			}
 		
 }
 @media only screen and (max-width: 375px) {
@@ -3101,7 +3137,9 @@ h4{
 			margin-left:5px;
 			padding:0px !important;
 		}
-		
+		.dropdown-menu{
+			left:-68px!important;
+			}
 }
 @media only screen and (max-width:360px) {
 	.modal-dialog{
@@ -3218,6 +3256,9 @@ h4{
 			margin-bottom:15px;
 		
 		}
+		.dropdown-menu{
+			left:-68px!important;
+			}
 		
 }
 @media only screen and (max-width: 320px) {
@@ -3397,5 +3438,8 @@ h4{
             font-size:13px;
             color:#646464;
             padding-top:3px;
-        }
+		}
+		.dropdown-menu{
+			left:-68px!important;
+			}
 	}
