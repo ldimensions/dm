@@ -1,10 +1,10 @@
 <?php $__env->startSection('content'); ?>
+
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer">
-            <div class="col-md-12 searchbar hiddepadding"> <a href="#" class="selocation"></a>
+             <div class="col-md-12 searchbar hiddepadding">
                 <form>
-                    <input name="Location" type="text" class="text locationimage" id="Location" placeholder="Location" readonly="readonly" >
                     <select name="type" class="select" id="type">
                         <option 
                             value="<?php echo e(config('app.defaultBaseURL.dallas-indian-restaurant')); ?>-2"
@@ -64,7 +64,7 @@
                         <?php endif; ?>                 
                         <a href="<?php echo e(URL::to('/')); ?>/<?php echo e(config('app.defaultBaseURL.dallas-indian-restaurant')); ?>/<?php echo e($rel['urlName']); ?>" ><h2 class="content1 colorh1"> <?php echo e($rel['name']); ?></h2></a>                                                           
                         <?php if($rel['latitude'] && $rel['longitude']): ?>
-                            <a href="https://www.google.com/maps/dir/<?php echo e($rel['latitude']); ?>,<?php echo e($rel['longitude']); ?>" target="_blank" class="mapicon"><img src="<?php echo e(URL::to('/')); ?>/image/map1.svg" alt="<?php echo e($loop->index); ?><?php echo e($rel['name']); ?>"/></a>
+                            <a href="https://www.google.com/maps/dir//<?php echo e($rel['urlName']); ?>/%40<?php echo e($rel['latitude']); ?>,<?php echo e($rel['longitude']); ?>,12z" target="_blank" class="mapicon"><img src="<?php echo e(URL::to('/')); ?>/image/map1.svg" alt="<?php echo e($loop->index); ?><?php echo e($rel['name']); ?>"/></a>
                         <?php endif; ?>  
                         <div class="content2"><?php echo e($rel['address1']); ?> <?php echo e($rel['address2']); ?>, <?php echo e($rel['city']); ?>, <?php echo e($rel['state']); ?> <?php echo e($rel['zip']); ?></div>
                         <a href="tel:<?php echo e($rel['phone1']); ?>" class="content3 h21"><?php echo e($rel['phone1']); ?></a>
@@ -80,10 +80,11 @@
         </div>
 
         <div class="rightcontainer">
-            <div class="ad250x250">ADVERTISE HERE</div>
+        <div class="ad250x250"><img alt="ad"  width="100%" height="100%" src="<?php echo e(URL::to('/')); ?>/image/sideBanner.svg"/></div>
         </div>
     </div>
 </div>
+
 <script>
 
     function restaurantSearch() {

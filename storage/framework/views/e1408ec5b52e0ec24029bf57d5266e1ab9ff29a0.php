@@ -1,4 +1,6 @@
 <?php $__env->startSection('content'); ?>
+<?php use App\Http\Controllers\CommonController;?>
+
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer">
@@ -27,6 +29,15 @@
                                 </td>
                             </tr>   
                         <?php endif; ?>  
+                        <div class="share">
+                            <a href="#" class="dropdown" data-toggle="dropdown"><img src="<?php echo e(URL::to('/')); ?>/image/share_icon1.svg"/></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Facebook</a></li>
+                                <li><a href="#">Google +</a></li>
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="#">whatsapp</a></li>
+                            </ul>
+                        </div>
                     </table>    
                 </div>          
                 <div class="content">
@@ -46,23 +57,31 @@
                                 </td>
                             </tr>
                         <?php endif; ?>  
+                            <?php if(isset($religion['denominationName']) && $religion['denominationName']): ?>
+                                <tr>
+                                    <td class="smallfont tdtoppadd1">Denomination</td>
+                                </tr>
+                                <tr>
+                                    <td><?php echo e($religion['denominationName']); ?></td>
+                                </tr>   
+                            <?php endif; ?>                         
                             <?php if(isset($religion['website']) && $religion['website']): ?>
                                 <tr>
-                                    <td class="smallfont tdtoppadd1">Website:</td>
+                                    <td class="smallfont tdtoppadd1">Website</td>
                                 </tr>
                                 <tr>
                                     <td><a href="http://<?php echo e($religion['website']); ?>" target="_blank"><h2 class="h21"><?php echo e($religion['website']); ?></h2></a></td>
                                 </tr>   
                             <?php endif; ?>                          
                             <tr>
-                                <td class="smallfont tdtoppadd1">Located In:</td>
+                                <td class="smallfont tdtoppadd1">Located In</td>
                             </tr>
                             <tr>
                                 <td><h3><?php echo e($religion['city']); ?></h3></td>
                             </tr>
                             <?php if(isset($distance) && $distance): ?>
                                 <tr>
-                                    <td class="smallfont tdtoppadd1">Distance:</td>
+                                    <td class="smallfont tdtoppadd1">Distance</td>
                                 </tr>
                                 <tr>
                                     <td><?php echo e($distance); ?></td>
@@ -75,15 +94,15 @@
                                 <?php if($wtKey == "Mass" && count($wtArr) >0): ?>
                                     <table>
                                         <tr>
-                                            <td colspan="3" class="smallfont tdtoppadd1">Mass:</td>
+                                            <td colspan="3" class="smallfont tdtoppadd1">Mass</td>
                                         </tr>
                                         <?php $__currentLoopData = $wtArr[0]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $wtMassArrKey => $wtMass): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <?php if( !empty ( $wtMass ) ): ?>
                                             <tr>
                                                 <?php if( $wtMassArrKey == $today ): ?>
-                                                    <td class="activeweekdays_reli daysWith"><?php echo e($wtMassArrKey); ?></td>
+                                                    <td class="activeweekdays_reli daysWith"><?php echo e(CommonController::getDaysShort($wtMassArrKey)); ?></td>
                                                 <?php else: ?>
-                                                    <td class="inactiveweekdays daysWith"><?php echo e($wtMassArrKey); ?></td>
+                                                    <td class="inactiveweekdays daysWith"><?php echo e(CommonController::getDaysShort($wtMassArrKey)); ?></td>
                                                 <?php endif; ?>    
                                                 <?php $__currentLoopData = $wtMass; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $massKey => $mass): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <?php $__currentLoopData = $mass; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $massTimeKey => $massTime): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -101,15 +120,15 @@
                                 <?php elseif($wtKey == "Confession"  && count($wtArr) >0): ?>
                                     <table>
                                         <tr>
-                                            <td colspan="3" class="smallfont tdtoppadd1">Confession:</td>
+                                            <td colspan="3" class="smallfont tdtoppadd1">Confession</td>
                                         </tr>
                                         <?php $__currentLoopData = $wtArr[0]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $wtConfArrKey => $wtConf): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <?php if( !empty ( $wtConf ) ): ?>
                                                 <tr>
                                                     <?php if( $wtConfArrKey == $today ): ?>
-                                                        <td class="activeweekdays_reli daysWith"><?php echo e($wtConfArrKey); ?></td>
+                                                        <td class="activeweekdays_reli daysWith"><?php echo e(CommonController::getDaysShort($wtConfArrKey)); ?></td>
                                                     <?php else: ?>
-                                                        <td class="inactiveweekdays daysWith"><?php echo e($wtConfArrKey); ?></td>
+                                                        <td class="inactiveweekdays daysWith"><?php echo e(CommonController::getDaysShort($wtConfArrKey)); ?></td>
                                                     <?php endif; ?>                                             
                                                     <?php $__currentLoopData = $wtConf; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $confession): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                         <?php $__currentLoopData = $confession; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $confessionTimeKey => $confessionTime): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -127,15 +146,15 @@
                                 <?php elseif($wtKey == "Adoration"  && count($wtArr) >0): ?>
                                     <table>
                                         <tr>
-                                            <td colspan="3" class="smallfont tdtoppadd1">Adoration:</td>
+                                            <td colspan="3" class="smallfont tdtoppadd1">Adoration</td>
                                         </tr>
                                         <?php $__currentLoopData = $wtArr[0]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $wtAdoArrKey => $wtAdo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <?php if( !empty ( $wtAdo ) ): ?>
                                                 <tr>
                                                     <?php if( $wtAdoArrKey == $today ): ?>
-                                                        <td class="activeweekdays_reli daysWith"><?php echo e($wtAdoArrKey); ?></td>
+                                                        <td class="activeweekdays_reli daysWith"><?php echo e(CommonController::getDaysShort($wtAdoArrKey)); ?></td>
                                                     <?php else: ?>
-                                                        <td class="inactiveweekdays daysWith"><?php echo e($wtAdoArrKey); ?></td>
+                                                        <td class="inactiveweekdays daysWith"><?php echo e(CommonController::getDaysShort($wtAdoArrKey)); ?></td>
                                                     <?php endif; ?>                                          
                                                     <?php $__currentLoopData = $wtAdo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $adoration): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                         <?php $__currentLoopData = $adoration; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $adorationTimeKey => $adorationTime): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -170,7 +189,10 @@
                 </div>
             </div>
             <div class="block22">
-                <div class="white_t space"><h2 class="titleh2 graycolor"><?php echo e($religion['name']); ?> Location</h2></div>
+                <div class="white_t1 space">
+                    <h2 class="titleh2 graycolor1"><?php echo e($religion['name']); ?> Location</h2>
+                    <a href="https://www.google.com/maps/dir//<?php echo e($religion['urlName']); ?>/%40<?php echo e($religion['latitude']); ?>,<?php echo e($religion['longitude']); ?>,12z" title="<?php echo e($religion['name']); ?>" target="_blank" class="mapicon12"><img src="<?php echo e(URL::to('/')); ?>/image/map1.svg" alt="<?php echo e($religion['name']); ?>"/></a>
+                </div>
                 <div id="map" class="map"></div>
             </div>
             <?php if($photos): ?>
@@ -194,7 +216,7 @@
             <div class="row" id="related"></div>
         </div>
         <div class="rightcontainer">
-            <div class="ad300x600">ADVERTISE HERE</div>
+        <div class="ad250x250"><img alt="ad"  width="100%" height="100%" src="<?php echo e(URL::to('/')); ?>/image/sideBanner.svg"/></div>
         </div>
     </div>
 </div>
@@ -274,7 +296,7 @@
     
     /*---------- Image Slider End----------*/
     $( document ).ready(function() {
-        $.get("<?php echo URL::to('/');?>/religion-related/<?php echo $religion['denominationName'];?>/<?php echo $religion['id'];?>", function(data, status){
+        $.get("<?php echo URL::to('/');?>/religion-related/<?php echo $religion['denominationId'];?>/<?php echo $religion['id'];?>", function(data, status){
             if(status=="success"){
                 document.getElementById("related").innerHTML = data;
             }

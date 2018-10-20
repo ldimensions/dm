@@ -14,11 +14,13 @@
         <?php echo SEO::generate(true); ?>
 
 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <!-- CSRF Token -->
         <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
         <!-- Scripts -->
-        <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
+        <script src="<?php echo e(asset('js/app.js')); ?>?version=6.5" defer></script>
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -27,8 +29,8 @@
         <!-- Styles -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet"> -->
-        <link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
-        <link href="<?php echo e(asset('css/lightslider.css')); ?>" rel="stylesheet">
+        <link href="<?php echo e(asset('css/style.css')); ?>?version=6.5" rel="stylesheet">
+        <link href="<?php echo e(asset('css/lightslider.css')); ?>?version=6.5" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     </head>
     <body>
@@ -38,37 +40,44 @@
                 <div class="headerh nopadding">
                     <div class="headercontainer">
                         <div class="header"> 
-                            <!-- <?php if( Auth::guest() ): ?>
-                                <a href="<?php echo e(url('/login')); ?>"  class="signinbutton">Login</a> 
-                                <a href="<?php echo e(url('/register')); ?>"  class="signinbutton">Sign Up</a>                            
+                            <?php if( Auth::guest() ): ?>
+                                <!-- <a href="<?php echo e(url('/login')); ?>"  class="signinbutton">Login</a> 
+                                <a href="<?php echo e(url('/register')); ?>"  class="signinbutton">Sign Up</a>                             -->
                             <?php else: ?>
                                 <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"  class="signinbutton">Logout</a> 
                                 <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;"><?php echo e(csrf_field()); ?></form>                            
                             <?php endif; ?>                         
-                            <a href="#"  class="location"><img alt="<?php echo e(config('app.siteId')); ?>" src="<?php echo e(URL::to('/')); ?>/image/location.svg" />Dallas</a>  -->
-                            <img alt="DallasIndianPortal" class="hDlOGO" src="<?php echo e(URL::to('/')); ?>/image/dallasLogo.svg"/>
-                            <div class="headerad">ADVERTISE HERE</div>
+                            <!-- <a href="#"  class="location"><img alt="<?php echo e(config('app.siteId')); ?>" src="<?php echo e(URL::to('/')); ?>/image/location.svg" />Dallas</a> --> 
+                            <a href="<?php echo e(url('/')); ?>"><img alt="DallasIndianPortal" class="hDlOGO" src="<?php echo e(URL::to('/')); ?>/image/dallasLogo.svg"/></a>
+                            <div class="headerad"><img alt="ad"  width="100%" height="100%" src="<?php echo e(URL::to('/')); ?>/image/topBanner.svg"/></div>
+
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>                        
+                                </button>
+                                
                         </div>
                     </div>    
-                    <div class="menumain">
-                        <div class="menu"> 
+                    <div class="menumain" id="myNavbar">
+                        <div class="menu" > 
                             <a href="<?php echo e(url('/')); ?>" class="<?php echo e((CommonController::activeMenu('home')) ? 'activemenu' : 'inactivemenu'); ?>">Home</a> 
                             <a href="<?php echo e(route('grocery')); ?>" class="<?php echo e((CommonController::activeMenu('grocery')) ? 'activemenu' : 'inactivemenu'); ?>">Groceries</a>                         
                             <a href="<?php echo e(route('restaurant')); ?>" class="<?php echo e((CommonController::activeMenu('restaurant')) ? 'activemenu' : 'inactivemenu'); ?>">Restaurants </a> 
                             <a href="<?php echo e(route('religion')); ?>" class="<?php echo e((CommonController::activeMenu('religion')) ? 'activemenu' : 'inactivemenu'); ?>">Religions </a> 
                             <!-- <a href="#" class="<?php echo e((CommonController::activeMenu('travels')) ? 'activemenu' : 'inactivemenu'); ?>">Travels </a> 
                             <a href="#" class="<?php echo e((CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu'); ?>">Auto </a>     
-                            <a href="#" class="<?php echo e((CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu'); ?>">Events </a> 
-                            <a href="#" class="<?php echo e((CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu'); ?>">Movies </a>                      -->
+                            <a href="#" class="<?php echo e((CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu'); ?>">Events </a>
+                            <a href="<?php echo e(route('movies')); ?>" class="<?php echo e((CommonController::activeMenu('movies')) ? 'activemenu' : 'inactivemenu'); ?>" class="<?php echo e((CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu'); ?>">Movies </a>-->                    
                         </div>
                     </div>
                 </div>
             </div>
             <?php echo $__env->yieldContent('content'); ?>
         </div>
-         <div class="footerh nopadding"> Copyright 2018 Ldimensions. All rights reserved.</div>
+         <div class="footerh nopadding"> Copyright 2018 LDimensions. All rights reserved.</div>
 
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" defer="defer"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
          <script src="<?php echo e(asset('js/common.js')); ?>" defer="defer"></script> 
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -82,7 +91,3 @@
 
     </body>
 </html>
-
-
-
-
