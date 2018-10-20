@@ -9,6 +9,8 @@ use App\Http\Models\Photo;
 use App\Http\Models\Url;
 use App\Http\Models\City;
 
+use OpenGraph;
+
 class ReligionController extends Controller
 {
     public function index(Request $request,$type,$city=null,$keyword=null){
@@ -181,6 +183,8 @@ class ReligionController extends Controller
             $photo                          =   $photoRs->toArray();  
 
             $commonCtrl->setMeta($request->path(),2);
+            OpenGraph::addImage('http://'.$_SERVER['SERVER_NAME']."/image/religion/".$religionId."/".$photo[0]['photoName'], ['height' => 300, 'width' => 300]);    
+            
             
             // $now = strtotime("now");
             // $yourTime   =   strtotime('2018-06-22 11:04:00');

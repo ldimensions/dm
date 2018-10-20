@@ -9,6 +9,8 @@ use App\Http\Models\Photo;
 use App\Http\Models\Url;
 use App\Http\Models\City;
 
+use OpenGraph;
+
 class GroceryController extends Controller
 {
     public function __construct(){
@@ -236,9 +238,10 @@ class GroceryController extends Controller
                                                 ->get();        
             
             $photo                          =   $photoRs->toArray();  
-
             $commonCtrl->setMeta($request->path(),2);
-
+            
+            OpenGraph::addImage('http://'.$_SERVER['SERVER_NAME']."/image/grocery/".$groceryId."/".$photo[0]['photoName'], ['height' => 300, 'width' => 300]);    
+               
             $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($grocery['description']));
             
             return view('grocery_details',['grocery' => $grocery, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate, 'todaysWorkingTime' => $todaysWorkingTime, 'descriptionHeight' => $descriptionHeight]);

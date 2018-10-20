@@ -30,15 +30,7 @@
                         @else
                         <td class="smaextra_res">Working Time : Closed </td>
                         @endif  
-                        <div class="share">
-                            <a href="#" class="dropdown" data-toggle="dropdown"><img src="{{ URL::to('/') }}/image/share_icon.svg"/></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Facebook</a></li>
-                                <li><a href="#">Google +</a></li>
-                                <li><a href="#">Twitter</a></li>
-                                <li><a href="whatsapp://send?text={{ $restaurant['name'] }}" data-action="share/whatsapp/share">whatsapp</a></li>
-                            </ul>
-                        </div>
+                        {!!CommonController::share($restaurant['name'])!!}
                 </table>        
                 </div>
 

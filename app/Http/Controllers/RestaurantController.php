@@ -10,6 +10,8 @@ use App\Http\Models\Url;
 use App\Http\Models\City;
 use App\Http\Models\RestaurantFoodType;
 
+use OpenGraph;
+
 class RestaurantController extends Controller
 {
     public function index(Request $request,$type,$city=null,$keyword=null)
@@ -197,9 +199,8 @@ class RestaurantController extends Controller
             
 
             $commonCtrl->setMeta($request->path(),2);
-            //echo $todaysWorkingTime;
-            // echo "<pre>";
-            // print_r($workingTimes);
+            OpenGraph::addImage('http://'.$_SERVER['SERVER_NAME']."/image/restaurant/".$restaurantId."/".$photo[0]['photoName'], ['height' => 300, 'width' => 300]);    
+          
             $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($restaurant['description']));
             return view('restaurant_details',['restaurant' => $restaurant, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate, 'todaysWorkingTime' => $todaysWorkingTime, 'descriptionHeight' => $descriptionHeight, 'foodTypeStr' => $foodTypeStr]);
         }else{

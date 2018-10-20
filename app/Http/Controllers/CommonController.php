@@ -90,6 +90,13 @@ class CommonController extends Controller
             if($seo['SEOMetaPublishedTime']){
                 SEOMeta::addMeta('article:published_time', $seo['SEOMetaPublishedTime']->toW3CString(), 'property');
             }
+
+            OpenGraph::setDescription(($seo['OpenGraphDesc'])?$seo['OpenGraphDesc']:$seo['SEOMetaDesc']);
+            OpenGraph::setTitle(($seo['OpenGraphTitle'])?$seo['OpenGraphTitle']:$seo['SEOMetaTitle']);
+            OpenGraph::setUrl(($seo['OpenGraphUrl'])?$seo['OpenGraphUrl']:$url);
+            OpenGraph::addProperty('type', ($seo['OpenGraphPropertyLocale'])?$seo['OpenGraphPropertyLocale']:'article');
+            OpenGraph::addProperty('locale',' en_us');
+    
             return true;    
         }
 
@@ -113,6 +120,11 @@ class CommonController extends Controller
                 if($seo['SEOMetaPublishedTime']){
                     SEOMeta::addMeta('article:published_time', $seo['SEOMetaPublishedTime']->toW3CString(), 'property');
                 }
+                OpenGraph::setDescription(($seo['OpenGraphDesc'])?$seo['OpenGraphDesc']:$seo['SEOMetaDesc']);
+                OpenGraph::setTitle(($seo['OpenGraphTitle'])?$seo['OpenGraphTitle']:$seo['SEOMetaTitle']);
+                OpenGraph::setUrl(($seo['OpenGraphUrl'])?$seo['OpenGraphUrl']:$url);
+                OpenGraph::addProperty('type', ($seo['OpenGraphPropertyLocale'])?$seo['OpenGraphPropertyLocale']:'article');
+                OpenGraph::addProperty('locale',' en_us');                
                 return true;                    
             }                                                            
         }
@@ -136,6 +148,11 @@ class CommonController extends Controller
             if($seo['SEOMetaPublishedTime']){
                 SEOMeta::addMeta('article:published_time', $seo['SEOMetaPublishedTime']->toW3CString(), 'property');
             }
+            OpenGraph::setDescription(($seo['OpenGraphDesc'])?$seo['OpenGraphDesc']:$seo['SEOMetaDesc']);
+            OpenGraph::setTitle(($seo['OpenGraphTitle'])?$seo['OpenGraphTitle']:$seo['SEOMetaTitle']);
+            OpenGraph::setUrl(($seo['OpenGraphUrl'])?$seo['OpenGraphUrl']:$url);
+            OpenGraph::addProperty('type', ($seo['OpenGraphPropertyLocale'])?$seo['OpenGraphPropertyLocale']:'article');
+            OpenGraph::addProperty('locale',' en_us');            
             return true;                    
         }      
 
@@ -716,5 +733,30 @@ class CommonController extends Controller
             default:  
                 return $day;                                                                                               
         }
+    }
+
+    public static function share($name){
+
+        $imgUrl                             =   'http://'.$_SERVER['SERVER_NAME'];
+        $currentUrl                         =   url()->current();
+        $share                              =   " <div class='share'>
+                        <a href='#' class='dropdown' data-toggle='dropdown'>
+                            <img src='".$imgUrl."/image/share_icon.svg'/>
+                        </a>
+                        <ul class='dropdown-menu'>
+                            <li>
+                                <a href='https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&u=".$currentUrl."&display=popup&ref=plugin' target='_blank' title='Share by Facebook'>Facebook</a>
+                            </li>                                
+                            <li><a href='#'>Google +</a></li>
+                            <li><a href='#'>Twitter</a></li>
+                            <li>
+                                <a href='mailto:?subject=".$name." | ".$imgUrl." &amp;body=Check out this site ".$currentUrl."' target='_blank' title='Share by Email'>Email</a>
+                            </li>
+                            <li><a href='whatsapp://send?text=".$currentUrl."' title='Share by Whatsapp'>whatsapp</a></li>
+                        </ul>
+                    </div>";
+
+        return $share;
+        
     }
 }

@@ -30,17 +30,7 @@
                                 </td>
                             </tr>   
                         @endif  
-                        <div class="share">
-                            <a href="#" class="dropdown" data-toggle="dropdown"><img src="{{ URL::to('/') }}/image/share_icon1.svg"/></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Facebook</a></li>
-                                <li><a href="#">Google +</a></li>
-                                <li><a href="#">Twitter</a></li>
-                                <li><a href="whatsapp://send?text={{ $religion['name'] }} {{url()->current()}}">whatsapp</a></li>
-                                PeopleCelebratingDussehraIgnoredClosedLevel-Crossing,SaysRailways:Updates-NDTV https://www.ndtv.com/india-news/train-accident-near-amritsar-many-feared-dead-updates-1934615
-                                <a title="Share on WhatsApp" class="story__social-link whatsapp" href="whatsapp://send?text=People Celebrating Dussehra Ignored Closed Level-Crossing%2C Says Railways%3A Updates - NDTV%20https%3A%2F%2Fwww.ndtv.com%2Findia-news%2Ftrain-accident-near-amritsar-many-feared-dead-updates-1934615"><i class="story__social-icn vj-whatsapp"></i></a>
-                            </ul>
-                        </div>
+                        {!!CommonController::share($religion['name'])!!}
                     </table>    
                 </div>          
                 <div class="content">
