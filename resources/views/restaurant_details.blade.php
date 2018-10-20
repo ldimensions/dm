@@ -36,7 +36,7 @@
                                 <li><a href="#">Facebook</a></li>
                                 <li><a href="#">Google +</a></li>
                                 <li><a href="#">Twitter</a></li>
-                                <li><a href="#">whatsapp</a></li>
+                                <li><a href="whatsapp://send?text={{ $restaurant['name'] }}" data-action="share/whatsapp/share">whatsapp</a></li>
                             </ul>
                         </div>
                 </table>        
@@ -128,7 +128,7 @@
             <div class="block22">
             <div class="white_t1 space">
                 <h2 class="titleh2 graycolor1">{{$restaurant['name']}} Location</h2>
-                <a href="https://www.google.com/maps/dir//{{ $restaurant['urlName'] }}/%40{{$restaurant['latitude']}},{{$restaurant['longitude']}},12z" title="{{ $restaurant['name'] }}" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $restaurant['name'] }}"/></a>
+                <a href="https://www.google.com/maps/dir//{{ $restaurant['address1'] }} {{ $restaurant['address2'] }}, {{ $restaurant['city'] }}, {{ $restaurant['state'] }}, {{ $restaurant['zip'] }}/%40{{$restaurant['latitude']}},{{$restaurant['longitude']}},12z" title="{{ $restaurant['name'] }}" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $restaurant['name'] }}"/></a>
             </div>
                 <div id="map" class="map"></div>
             </div>

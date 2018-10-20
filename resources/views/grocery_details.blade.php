@@ -122,7 +122,7 @@
             <div class="block22">
             <div class="white_t1 space">
                 <h2 class="titleh2 graycolor1">{{$grocery['name']}} Location</h2>
-                <a href="https://www.google.com/maps/dir//{{ $grocery['urlName'] }}/%40{{$grocery['latitude']}},{{$grocery['longitude']}},12z" title="{{ $grocery['name'] }}" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $grocery['name'] }}"/></a>
+                <a href="https://www.google.com/maps/dir//{{ $grocery['address1'] }} {{ $grocery['address2'] }}, {{ $grocery['city'] }}, {{ $grocery['state'] }}, {{ $grocery['zip'] }}/%40{{$grocery['latitude']}},{{$grocery['longitude']}},12z" title="{{ $grocery['name'] }}" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $grocery['name'] }}"/></a>
                 </div>
                 <div id="map" class="map"></div>
             </div>
