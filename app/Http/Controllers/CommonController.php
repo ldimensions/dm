@@ -767,7 +767,7 @@ class CommonController extends Controller
                             <li>
                                 <a href='mailto:?subject=".$name." | ".$imgUrl." &amp;body=Check out this site ".$currentUrl."' target='_blank' title='Share by Email'>Email</a>
                             </li>
-                            <li><a href='whatsapp://send?text=".$currentUrl."' title='Share by Whatsapp'>whatsApp</a></li>
+                            <li class='whatsapp'><a href='whatsapp://send?text=".$currentUrl."' title='Share by Whatsapp'>whatsApp</a></li>
                         </ul>
                     </div>";
 
