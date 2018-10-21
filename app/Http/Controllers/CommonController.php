@@ -741,7 +741,6 @@ class CommonController extends Controller
         $currentUrl                         =   url()->current();
         $getHashTags                        =   config('app.tweetHashTags');
         $hashTags                           =   "";
-        print_r(config('app.tweetHashTags'));
         
         foreach($getHashTags as $key => $getHashTag){
             if($key == 0){
