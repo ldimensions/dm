@@ -5,7 +5,7 @@
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer">
-            <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-restaurant')}}" class="subcontent2 h21">Restaurant</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{ $restaurant['name'] }}</span></div>
+            <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-restaurant')}}" class="subcontent2 h21">Restaurants</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{ $restaurant['name'] }}</span></div>
             <div class="block2">
                 <div class="res_title toparea space">
                 <table class="fullWidth">

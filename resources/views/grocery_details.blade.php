@@ -4,7 +4,7 @@
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer">
-            <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}" class="subcontent2 h21">Grocery</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{ $grocery['name'] }}</span></div>
+            <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}" class="subcontent2 h21">Groceries</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{ $grocery['name'] }}</span></div>
             <div class="block2">
                 <div class="gro_title toparea space">
                     <table class="fullWidth">
