@@ -30,7 +30,7 @@
                                 </td>
                             </tr>   
                         @endif  
-                        {!!CommonController::share($religion['name'])!!}
+                        {!!CommonController::share($religion['name'],'1')!!}
                     </table>    
                 </div>          
                 <div class="content">

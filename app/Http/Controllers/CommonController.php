@@ -735,12 +735,17 @@ class CommonController extends Controller
         }
     }
 
-    public static function share($name){
+    public static function share($name,$shareIcone=null){
 
         $imgUrl                             =   'http://'.$_SERVER['SERVER_NAME'];
         $currentUrl                         =   url()->current();
         $getHashTags                        =   config('app.tweetHashTags');
         $hashTags                           =   "";
+        if($shareIcone == '1'){
+            $shareIconImg                   =   "share_icon1.svg";
+        }else{
+            $shareIconImg                   =   "share_icon.svg";
+        }
         
         foreach($getHashTags as $key => $getHashTag){
             if($key == 0){
@@ -751,7 +756,7 @@ class CommonController extends Controller
         }
         $share                              =   " <div class='share'>
                         <a href='#' class='dropdown' data-toggle='dropdown'>
-                            <img src='".$imgUrl."/image/share_icon.svg'/>
+                            <img src='".$imgUrl."/image/".$shareIconImg."'/>
                         </a>
                         <ul class='dropdown-menu'>
                             <li>
