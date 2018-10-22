@@ -5,7 +5,7 @@
         <div class="leftcontainer">
             <div class="paggination"><a href="#" class="subcontent2 h21">Movies</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Name</span></div>
             <div class="block2">
-                <div class="gro_title toparea space">
+                <div class="move_title toparea space">
                     <table class="fullWidth">
                         <tr>
                         <td><h1 class="titleblock">Name</h1></td>
@@ -86,43 +86,23 @@
                                             <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Sun</td>
                                         </tr>
                                         <tr>
-                                            <td class="inactiveweekdays_moive">09:00 am,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">12:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">03:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">06:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">09:00 pm,</td>
+                                            <td colspan="5"><div class="inactiveweekdays_moive">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</div></td>
                                         </tr>
                                         <tr>
-                                            <td class="inactiveweekdays_moive">09:00 am,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">12:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">03:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">06:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">09:00 pm,</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 21 Mon</td>
+                                            <td  colspan="5" class="smallfontMovie tdtoppadd2">Oct 20 Mon</td>
                                         </tr>
                                         <tr>
-                                            <td class="activeweekdays_movie">09:00 am,&nbsp;</td>
-                                            <td class="activeweekdays_movie">12:00 pm,&nbsp;</td>
-                                            <td class="activeweekdays_movie">03:00 pm,&nbsp;</td>
-                                            <td class="activeweekdays_movie">06:00 pm,&nbsp;</td>
-                                            <td class="activeweekdays_movie">09:00 pm,</td>
+                                            <td colspan="5"><div class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</div></td>
                                         </tr>
                                         <tr>
-                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 22 Tue</td>
+                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Tue</td>
                                         </tr>
                                         <tr>
-                                            <td class="inactiveweekdays_moive">09:00 am,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">12:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">03:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">06:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">09:00 pm,</td>
+                                            <td colspan="5"><div class="inactiveweekdays_moive">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</div></td>
                                         </tr>
-
-
-
                                     </table>  
                                     </td>
                                     </tr>    
@@ -149,46 +129,27 @@
                                     <tr>
                                     <td style="padding-top:10px;">
                                     <table>
-                                        <tr>
+                                    <tr>
                                             <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Sun</td>
                                         </tr>
                                         <tr>
-                                            <td class="inactiveweekdays_moive">09:00 am,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">12:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">03:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">06:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">09:00 pm,</td>
+                                            <td colspan="5"><div class="inactiveweekdays_moive">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</div></td>
                                         </tr>
                                         <tr>
-                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 21 Mon</td>
+                                            <td  colspan="5" class="smallfontMovie tdtoppadd2">Oct 20 Mon</td>
                                         </tr>
                                         <tr>
-                                            <td class="activeweekdays_movie">09:00 am,&nbsp;</td>
-                                            <td class="activeweekdays_movie">12:00 pm,&nbsp;</td>
-                                            <td class="activeweekdays_movie">03:00 pm,&nbsp;</td>
-                                            <td class="activeweekdays_movie">06:00 pm,&nbsp;</td>
-                                            <td class="activeweekdays_movie">09:00 pm,</td>
+                                            <td colspan="5"><div class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</div></td>
                                         </tr>
                                         <tr>
-                                            <td class="activeweekdays_movie">09:00 am,&nbsp;</td>
-                                            <td class="activeweekdays_movie">12:00 pm,&nbsp;</td>
-                                            <td class="activeweekdays_movie">03:00 pm,&nbsp;</td>
-                                            <td class="activeweekdays_movie">06:00 pm,&nbsp;</td>
-                                            <td class="activeweekdays_movie">09:00 pm,</td>
+                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Tue</td>
                                         </tr>
                                         <tr>
-                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 22 Tue</td>
+                                            <td colspan="5"><div class="inactiveweekdays_moive">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</div></td>
                                         </tr>
-                                        <tr>
-                                            <td class="inactiveweekdays_moive">09:00 am,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">12:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">03:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">06:00 pm,&nbsp;</td>
-                                            <td class="inactiveweekdays_moive">09:00 pm,</td>
-                                        </tr>
-
-
-
                                     </table>  
                                     </td>
                                     </tr>    
