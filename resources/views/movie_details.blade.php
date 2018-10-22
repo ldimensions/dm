@@ -3,7 +3,7 @@
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer">
-            <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-grocery-store')}}" class="subcontent2 h21">Grocery</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">name</span></div>
+            <div class="paggination"><a href="#" class="subcontent2 h21">Movies</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Name</span></div>
             <div class="block2">
                 <div class="gro_title toparea space">
                     <table class="fullWidth">
@@ -11,14 +11,8 @@
                         <td><h1 class="titleblock">Name</h1></td>
                         </tr>
                         <tr>
-                            <td><div class="titleblock white smaextra">address1</div></td>
-                        </tr>
-                        <tr>
-                            <td><a href="" class="titleblock white smaextra extra">phone1</a></td>
-                        </tr>
-                        <tr>
-                            <td class="smaextra">Working Time : </td>
-                        </tr>                         
+                            <td><div class="titleblock white smaextra">Language</div></td>
+                        </tr>                       
                     </table> 
                 </div>
                 <div class="content">
@@ -28,38 +22,203 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <div id="description" style="overflow: hidden;">description</div>
+                                Description
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Website</td>
+                            <td colspan="2" class="smallfont tdtoppadd1">Producer</td>
                         </tr>
                         <tr>
-                            <td colspan="2"><a href="" target="_blank"><h2 class="h21" >website</h2></a></td>
+                            <td colspan="2"><h3 class="h21" >Producer Name</h3></td>
                         </tr> 
                         <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Located In</td>
+                            <td colspan="2" class="smallfont tdtoppadd1">Director</td>
                         </tr>
                         <tr>
-                            <td colspan="2"><h3>city</h3></td>
+                            <td colspan="2"><h3 class="h21" >Director Name</h3></td>
+                        </tr> 
+                        <tr>
+                            <td colspan="2" class="smallfont tdtoppadd1">Cast</td>
                         </tr>
-                        
-                    </table>
-                    <div class="suggestionblock">
-                        <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent22">Suggest an edit</a>   
-                    </div>                                         
+                        <tr>
+                            <td colspan="2"><h3 class="h21" >Cast Name</h3></td>
+                        </tr> 
+                        <tr>
+                            <td colspan="2" class="smallfont tdtoppadd1">Music</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><h3 class="h21" >Name</h3></td>
+                        </tr> 
+                        <tr>
+                            <td colspan="2" class="smallfont tdtoppadd1">URL</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><a href="#" target="_blank"><h2 class="h21" >www.moviewebsite.com</h2></a></td>
+                        </tr>
+                    </table>  
                 </div>
+                <div class="movie">
+                    <table class="fullWidth">
+                        <tr>
+                            <td style="padding-bottom:15px;">
+                                <div class="theatreBlock">
+                                    <table>
+                                    <a href="#" title="" target="_blank" class="mapicon3"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
+                                    <a href="#" title="" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt=""/></a>
+
+                                    <tr>
+                                        <td colspan="2"><h1 class="titleblock1 colorh11">Theatre Name</h1></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">3311 Regent Blvd , Irving , TX, 75063</td>
+                                    </tr> 
+                                    <tr>
+                                        <td colspan="2"><a href="#" target="_blank"><h2 class="h21" >www.theatrewebsite.com</h2></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><a href="#" target="_blank" class="h21">Phone Number</td>
+                                    </tr>  
+                                    
+                                    <tr>
+                                    <td style="padding-top:10px;">
+                                    <table>
+                                        <tr>
+                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Sun</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="inactiveweekdays_moive">09:00 am,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">12:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">03:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">06:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">09:00 pm,</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="inactiveweekdays_moive">09:00 am,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">12:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">03:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">06:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">09:00 pm,</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 21 Mon</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="activeweekdays_movie">09:00 am,&nbsp;</td>
+                                            <td class="activeweekdays_movie">12:00 pm,&nbsp;</td>
+                                            <td class="activeweekdays_movie">03:00 pm,&nbsp;</td>
+                                            <td class="activeweekdays_movie">06:00 pm,&nbsp;</td>
+                                            <td class="activeweekdays_movie">09:00 pm,</td>
+                                        </tr>
+                                        <tr>
+                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 22 Tue</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="inactiveweekdays_moive">09:00 am,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">12:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">03:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">06:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">09:00 pm,</td>
+                                        </tr>
+
+
+
+                                    </table>  
+                                    </td>
+                                    </tr>    
+                                    </table> 
+                                </div>
+                                <div class="theatreBlock">
+                                <table class="fullWidth">
+                                    <a href="#" title="" target="_blank" class="mapicon3"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
+                                    <a href="#" title="" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt=""/></a>
+
+                                    <tr>
+                                        <td colspan="2"><h1 class="titleblock1 colorh11">Theatre Name</h1></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">3311 Regent Blvd , Irving , TX, 75063</td>
+                                    </tr> 
+                                    <tr>
+                                        <td colspan="2"><a href="#" target="_blank"><h2 class="h21" >www.theatrewebsite.com</h2></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><a href="#" target="_blank" class="h21">Phone Number</td>
+                                    </tr>  
+                                    
+                                    <tr>
+                                    <td style="padding-top:10px;">
+                                    <table>
+                                        <tr>
+                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Sun</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="inactiveweekdays_moive">09:00 am,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">12:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">03:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">06:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">09:00 pm,</td>
+                                        </tr>
+                                        <tr>
+                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 21 Mon</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="activeweekdays_movie">09:00 am,&nbsp;</td>
+                                            <td class="activeweekdays_movie">12:00 pm,&nbsp;</td>
+                                            <td class="activeweekdays_movie">03:00 pm,&nbsp;</td>
+                                            <td class="activeweekdays_movie">06:00 pm,&nbsp;</td>
+                                            <td class="activeweekdays_movie">09:00 pm,</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="activeweekdays_movie">09:00 am,&nbsp;</td>
+                                            <td class="activeweekdays_movie">12:00 pm,&nbsp;</td>
+                                            <td class="activeweekdays_movie">03:00 pm,&nbsp;</td>
+                                            <td class="activeweekdays_movie">06:00 pm,&nbsp;</td>
+                                            <td class="activeweekdays_movie">09:00 pm,</td>
+                                        </tr>
+                                        <tr>
+                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 22 Tue</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="inactiveweekdays_moive">09:00 am,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">12:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">03:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">06:00 pm,&nbsp;</td>
+                                            <td class="inactiveweekdays_moive">09:00 pm,</td>
+                                        </tr>
+
+
+
+                                    </table>  
+                                    </td>
+                                    </tr>    
+                                    </table> 
+                                </div>
+                            </td>
+                        </tr>
+                    </table>    
+                </div>
+                <div class="content">
+                    <table class="fullWidth">
+                    <tr>
+                        <td colspan="2">
+                            <div class="suggestionblock">
+                                <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent22">Suggest an edit</a>   
+                            </div> 
+                        </td>
+                    </tr> 
+                    </table>
+                </div>
+
             </div>
             <div class="block22">
             <div class="white_t1 space">
-                <h2 class="titleh2 graycolor1">Location</h2>
-                <a href="" title="" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
-                </div>
-                <div id="map" class="map"></div>
+                <h2 class="titleh2 graycolor1">Movie Name Trailer</h2></div>
+                <div id="video" class="video"></div>
             </div>
             <div class="blockk1">
                 <div class="block23">
-                    <div class="white_Photo space"><h2 class="titleh2 graycolor">Photos</h2></div>
+                    <div class="white_Photo space"><h2 class="titleh2 graycolor">Movie Name Photos</h2></div>
                 </div>
                 <div class="block231">
                     <div class="topdetail slideshow-container">
