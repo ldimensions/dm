@@ -4,7 +4,7 @@
 <div class="mcontainer">
 <div class="maincontainer">
     <div class="leftcontainer">
-        <div class="col-md-12 searchbar hiddepadding"> <!-- <a href="#" class="selocation"></a> -->
+        <div class="col-md-12 searchbar hiddepadding">
             <form>
                 <select name="type" class="select" id="type">
                     <option>
@@ -29,10 +29,8 @@
             <div class="col-md-12 block1">
                     <div class="smallImage">
                         <img src="{{ URL::to('/') }}/image/noimage.svg" alt="" style="width:100%;height:100%"></div>
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-movie')}}/hardcoded" title="" ><h2 class="content1 colorh1">Name</h2></a>                                                      
-                        <a href="#" title="" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
-                    <div class="content2">Address 1 </div>
-                    <a href="#" class="content3 h21">999-999-9999</a>
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-movie')}}/hardcoded" title="" ><h2 class="content11 colorh1">Name</h2></a>                                                      
+                    <div class="content2">Language</div>
             </div>
     
 
