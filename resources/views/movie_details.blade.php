@@ -61,48 +61,42 @@
                     <table class="fullWidth">
                         <tr>
                             <td style="padding-bottom:15px;">
-                                <div class="theatreBlock">
-                                    <table>
+                            <div class="theatreBlock">
+                                <table class="fullWidth">
                                     <a href="#" title="" target="_blank" class="mapicon3"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
                                     <a href="#" title="" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt=""/></a>
 
                                     <tr>
-                                        <td colspan="2"><h1 class="titleblock1"><a href="#" title="" class="colorh11">Theatre Name</a></h1></td>
+                                    <td colspan="2"><h1 class="space3 space2 titleblock1"><a href="#" alt="" class="colorh11">Theatre Name</a></h1></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">3311 Regent Blvd , Irving , TX, 75063</td>
+                                        <td colspan="2" class="space2">3311 Regent Blvd , Irving , TX, 75063</td>
                                     </tr> 
                                     <tr>
-                                        <td colspan="2"><h2><a href="#" target="_blank" class="h21" >www.theatrewebsite.com</a></h2></td>
+                                        <td colspan="2"><h2 class="space2"><a href="#" target="_blank" class="h21" >www.theatrewebsite.com</a></h2></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" style="padding-bottom:10px;"><a href="#" target="_blank" class="h21">Phone Number</td>
+                                    <td colspan="2" style="padding-bottom:10px;"><a href="#" target="_blank" class="space2 h21">Phone Number</td>
                                     </tr>  
                                     
                                     <tr>
                                     <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
                                     <table>
-                                        <tr>
-                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Sun</td>
+                                    <tr>
+                                            <td  colspan="5" class="space2 smallfont tdtoppadd2">Oct 20 Sun</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="5"><div class="inactiveweekdays_moive"><a href="#"target="_blank" class="h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></div></td>
+                                            <td colspan="5" class="space2"><a href="#"target="_blank" class=" inactiveweekdays_moive h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
                                         </tr>
                                         <tr>
-                                            <td  colspan="5" class="smallfontMovie tdtoppadd2">Oct 20 Mon</td>
+                                            <td  colspan="5" class="space2 smallfontMovie tdtoppadd2">Oct 20 Mon</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="5"><div class="activeweekdays_movie"><a href="#"target="_blank" class="h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></div></td>
+                                            <td colspan="5" class="space2 space4"><a href="#"target="_blank" class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
                                         </tr>
-                                        <tr>
-                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Tue</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5"><div class="inactiveweekdays_moive"><a href="#"target="_blank" class="h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></div></td>
-                                        </tr>
+
                                     </table>  
                                     </td>
                                     </tr>    
@@ -114,34 +108,34 @@
                                     <a href="#" title="" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt=""/></a>
 
                                     <tr>
-                                    <td colspan="2"><h1 class="titleblock1"><a href="#" alt="" class="colorh11">Theatre Name</a></h1></td>
+                                    <td colspan="2"><h1 class="space3 space2 titleblock1"><a href="#" alt="" class="colorh11">Theatre Name</a></h1></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">3311 Regent Blvd , Irving , TX, 75063</td>
+                                        <td colspan="2" class="space2">3311 Regent Blvd , Irving , TX, 75063</td>
                                     </tr> 
                                     <tr>
-                                        <td colspan="2"><h2><a href="#" target="_blank" class="h21" >www.theatrewebsite.com</a></h2></td>
+                                        <td colspan="2"><h2 class="space2"><a href="#" target="_blank" class="h21" >www.theatrewebsite.com</a></h2></td>
                                     </tr>
                                     <tr>
-                                    <td colspan="2" style="padding-bottom:10px;"><a href="#" target="_blank" class="h21">Phone Number</td>
+                                    <td colspan="2" style="padding-bottom:10px;"><a href="#" target="_blank" class="space2 h21">Phone Number</td>
                                     </tr>  
                                     
                                     <tr>
                                     <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
                                     <table>
                                     <tr>
-                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Sun</td>
+                                            <td  colspan="5" class="space2 smallfont tdtoppadd2">Oct 20 Sun</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="5"><div class="inactiveweekdays_moive"><a href="#"target="_blank" class="h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></div></td>
+                                            <td colspan="5" class="space2"><a href="#"target="_blank" class=" inactiveweekdays_moive h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
                                         </tr>
                                         <tr>
-                                            <td  colspan="5" class="smallfontMovie tdtoppadd2">Oct 20 Mon</td>
+                                            <td  colspan="5" class="space2 smallfontMovie tdtoppadd2">Oct 20 Mon</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="5"><div class="activeweekdays_movie"><a href="#"target="_blank" class="h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></div></td>
+                                            <td colspan="5" class="space2 space4"><a href="#"target="_blank" class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
                                         </tr>
 
                                     </table>  
