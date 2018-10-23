@@ -76,11 +76,11 @@
                                         <td colspan="2"><a href="#" target="_blank"><h2 class="h21" >www.theatrewebsite.com</h2></a></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><a href="#" target="_blank" class="h21">Phone Number</td>
+                                        <td colspan="2" style="padding-bottom:10px;"><a href="#" target="_blank" class="h21">Phone Number</td>
                                     </tr>  
                                     
                                     <tr>
-                                    <td style="padding-top:10px;">
+                                    <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
                                     <table>
                                         <tr>
                                             <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Sun</td>
@@ -123,11 +123,11 @@
                                         <td colspan="2"><a href="#" target="_blank"><h2 class="h21" >www.theatrewebsite.com</h2></a></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"><a href="#" target="_blank" class="h21">Phone Number</td>
+                                    <td colspan="2" style="padding-bottom:10px;"><a href="#" target="_blank" class="h21">Phone Number</td>
                                     </tr>  
                                     
                                     <tr>
-                                    <td style="padding-top:10px;">
+                                    <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
                                     <table>
                                     <tr>
                                             <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Sun</td>
