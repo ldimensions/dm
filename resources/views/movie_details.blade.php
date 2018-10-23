@@ -53,7 +53,7 @@
                             <td colspan="2" class="smallfont tdtoppadd1">URL</td>
                         </tr>
                         <tr>
-                            <td colspan="2"><a href="#" target="_blank"><h2 class="h21" >www.moviewebsite.com</h2></a></td>
+                            <td colspan="2"><h2><a href="#" target="_blank" class="h21" >www.moviewebsite.com</a></h2></td>
                         </tr>
                     </table>  
                 </div>
@@ -67,13 +67,13 @@
                                     <a href="#" title="" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt=""/></a>
 
                                     <tr>
-                                        <td colspan="2"><h1 class="titleblock1 colorh11">Theatre Name</h1></td>
+                                        <td colspan="2"><h1 class="titleblock1"><a href="#" title="" class="colorh11">Theatre Name</a></h1></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">3311 Regent Blvd , Irving , TX, 75063</td>
                                     </tr> 
                                     <tr>
-                                        <td colspan="2"><a href="#" target="_blank"><h2 class="h21" >www.theatrewebsite.com</h2></a></td>
+                                        <td colspan="2"><h2><a href="#" target="_blank" class="h21" >www.theatrewebsite.com</a></h2></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="padding-bottom:10px;"><a href="#" target="_blank" class="h21">Phone Number</td>
@@ -86,22 +86,22 @@
                                             <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Sun</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="5"><div class="inactiveweekdays_moive">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</div></td>
+                                            <td colspan="5"><div class="inactiveweekdays_moive"><a href="#"target="_blank" class="h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></div></td>
                                         </tr>
                                         <tr>
                                             <td  colspan="5" class="smallfontMovie tdtoppadd2">Oct 20 Mon</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="5"><div class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</div></td>
+                                            <td colspan="5"><div class="activeweekdays_movie"><a href="#"target="_blank" class="h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></div></td>
                                         </tr>
                                         <tr>
                                             <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Tue</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="5"><div class="inactiveweekdays_moive">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</div></td>
+                                            <td colspan="5"><div class="inactiveweekdays_moive"><a href="#"target="_blank" class="h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></div></td>
                                         </tr>
                                     </table>  
                                     </td>
@@ -114,13 +114,13 @@
                                     <a href="#" title="" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt=""/></a>
 
                                     <tr>
-                                        <td colspan="2"><h1 class="titleblock1 colorh11">Theatre Name</h1></td>
+                                    <td colspan="2"><h1 class="titleblock1"><a href="#" alt="" class="colorh11">Theatre Name</a></h1></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">3311 Regent Blvd , Irving , TX, 75063</td>
                                     </tr> 
                                     <tr>
-                                        <td colspan="2"><a href="#" target="_blank"><h2 class="h21" >www.theatrewebsite.com</h2></a></td>
+                                        <td colspan="2"><h2><a href="#" target="_blank" class="h21" >www.theatrewebsite.com</a></h2></td>
                                     </tr>
                                     <tr>
                                     <td colspan="2" style="padding-bottom:10px;"><a href="#" target="_blank" class="h21">Phone Number</td>
@@ -133,23 +133,17 @@
                                             <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Sun</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="5"><div class="inactiveweekdays_moive">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</div></td>
+                                            <td colspan="5"><div class="inactiveweekdays_moive"><a href="#"target="_blank" class="h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></div></td>
                                         </tr>
                                         <tr>
                                             <td  colspan="5" class="smallfontMovie tdtoppadd2">Oct 20 Mon</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="5"><div class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</div></td>
+                                            <td colspan="5"><div class="activeweekdays_movie"><a href="#"target="_blank" class="h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></div></td>
                                         </tr>
-                                        <tr>
-                                            <td  colspan="5" class="smallfont tdtoppadd2">Oct 20 Tue</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5"><div class="inactiveweekdays_moive">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</div></td>
-                                        </tr>
+
                                     </table>  
                                     </td>
                                     </tr>    
