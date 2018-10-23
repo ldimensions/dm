@@ -97,13 +97,19 @@
                                                 @else
                                                     <td class="inactiveweekdays daysWith">{{CommonController::getDaysShort($wtMassArrKey)}}</td>
                                                 @endif    
-                                                @foreach ($wtMass as $massKey => $mass)
-                                                    @foreach ($mass as $massTimeKey => $massTime)
-                                                        @if ( $wtMassArrKey == $today )
-                                                            <td class="activeweekdays_reli">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                                        @else
-                                                            <td class="inactiveweekdays">{{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                                        @endif                                              
+                                                @foreach ($wtMass as $massKey => $massRs)
+                                                    @foreach ($massRs as $massRsTimeKey => $mass)
+                                                        @foreach ($mass as $massTimeKey => $massTime)
+                                                            @if ( $wtMassArrKey == $today )
+                                                                <td class="activeweekdays_reli">
+                                                                    {{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if  ($loop->parent->index == $loop->count)&nbsp;@endif
+                                                                </td>
+                                                            @else
+                                                                <td class="inactiveweekdays">
+                                                                    {{$massTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if($loop->parent->count == $loop->parent->index+1 and $loop->parent->last == 1)&nbsp;@endif
+                                                                </td>
+                                                            @endif                                              
+                                                        @endforeach
                                                     @endforeach
                                                 @endforeach
                                             </tr>
@@ -123,13 +129,19 @@
                                                     @else
                                                         <td class="inactiveweekdays daysWith">{{CommonController::getDaysShort($wtConfArrKey)}}</td>
                                                     @endif                                             
-                                                    @foreach ($wtConf as $confession)
-                                                        @foreach ($confession as $confessionTimeKey => $confessionTime)
-                                                            @if ( $wtConfArrKey == $today )
-                                                                <td class="activeweekdays_reli">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                                            @else
-                                                                <td class="inactiveweekdays">{{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                                            @endif  
+                                                    @foreach ($wtConf as $confessionRs)
+                                                        @foreach ($confessionRs as $confessionRsTimeKey => $confession)
+                                                            @foreach ($confession as $confessionTimeKey => $confessionTime)
+                                                                @if ( $wtConfArrKey == $today )
+                                                                    <td class="activeweekdays_reli">
+                                                                        {{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if  ($loop->parent->index == $loop->count)&nbsp;@endif
+                                                                    </td>
+                                                                @else
+                                                                    <td class="inactiveweekdays">
+                                                                        {{$confessionTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if($loop->parent->count == $loop->parent->index+1 and $loop->parent->last == 1)&nbsp;@endif
+                                                                    </td>
+                                                                @endif  
+                                                            @endforeach
                                                         @endforeach
                                                     @endforeach
                                                 </tr>
@@ -149,13 +161,19 @@
                                                     @else
                                                         <td class="inactiveweekdays daysWith">{{CommonController::getDaysShort($wtAdoArrKey)}}</td>
                                                     @endif                                          
-                                                    @foreach ($wtAdo as $adoration)
-                                                        @foreach ($adoration as $adorationTimeKey => $adorationTime)
-                                                            @if ( $wtAdoArrKey == $today )
-                                                                <td class="activeweekdays_reli">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                                            @else
-                                                                <td class="inactiveweekdays">{{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count),&nbsp;@endif</td>
-                                                            @endif 
+                                                    @foreach ($wtAdo as $adorationRs)
+                                                        @foreach ($adorationRs as $adorationRsTimeKey => $adoration)
+                                                            @foreach ($adoration as $adorationTimeKey => $adorationTime)
+                                                                @if ( $wtAdoArrKey == $today )
+                                                                    <td class="activeweekdays_reli">
+                                                                        {{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if  ($loop->parent->index == $loop->count)&nbsp;@endif                                                                        
+                                                                    </td>
+                                                                @else
+                                                                    <td class="inactiveweekdays">
+                                                                        {{$adorationTime}}@if ($loop->parent->index+1 != $loop->parent->count)&nbsp;-&nbsp;@endif @if($loop->parent->count == $loop->parent->index+1 and $loop->parent->last == 1)&nbsp;@endif
+                                                                    </td>
+                                                                @endif 
+                                                            @endforeach
                                                         @endforeach
                                                     @endforeach
                                                 </tr>                           

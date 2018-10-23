@@ -154,14 +154,32 @@ class ReligionController extends Controller
                 foreach($workingTimes as $rootKey => $workingTime) {
                     foreach($workingTime as $subkey => $subWorkingTime) {
                         foreach($subWorkingTime as $dayKey => $dayWorkingTime) {                          
-                            foreach($dayWorkingTime as $key => $time) {
-                                $workingTimes[$rootKey][$subkey][$dayKey][$key]['time'] = date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
-                                if($dayKey == $todaysDate && $rootKey == "Mass"){
-                                    $todaysMassTime             .=   ($todaysMassTime)?', '.date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
-                                }elseif($dayKey == $todaysDate && $rootKey == "Confession"){
-                                    $todaysConfessionTime       .=   ($todaysConfessionTime)?', '.date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
-                                }else if($dayKey == $todaysDate && $rootKey == "Adoration"){
-                                    $todaysAdorationTime        .=   ($todaysAdorationTime)?', '.date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time'])):date("H:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$key]['time']));
+                            foreach($dayWorkingTime as $keys => $times) {
+                                foreach($times as $key => $time) {
+                                    if(!empty($time)){
+                                        $oldKey                     =   "";
+                                        $workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'] = date("g:i a", strtotime($workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time']));
+                                        if($dayKey == $todaysDate && $rootKey == "Mass"){
+                                            if($oldKey != $key){
+                                                $todaysMassTime      .=   ' - '.$workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'];              
+                                            }else{
+                                                $todaysMassTime      .=   ($todaysMassTime)?', '.$workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time']: $workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'];
+                                            }
+                                        }elseif($dayKey == $todaysDate && $rootKey == "Confession"){
+                                            if($oldKey != $key){
+                                                $todaysConfessionTime      .=   ' - '.$workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'];              
+                                            }else{
+                                                $todaysConfessionTime      .=   ($todaysConfessionTime)?', '.$workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time']: $workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'];
+                                            }                                        
+                                        }else if($dayKey == $todaysDate && $rootKey == "Adoration"){
+                                            if($oldKey != $key){
+                                                $todaysAdorationTime      .=   ' - '.$workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'];              
+                                            }else{
+                                                $todaysAdorationTime      .=   ($todaysAdorationTime)?', '.$workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time']: $workingTimes[$rootKey][$subkey][$dayKey][$keys][$key]['time'];
+                                            }                                         
+                                        }
+                                        $oldKey                         =  $key;  
+                                    }                               
                                 }
                             }
                         }
