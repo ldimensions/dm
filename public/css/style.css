@@ -386,7 +386,7 @@ padding-left: 15px;
 	border-left:1px solid #e1e1e1;
 	border-right:1px solid #e1e1e1;
 	border-bottom:1px solid #e1e1e1;
-	border-radius:5px 5px;
+	border-radius:0px 0px 5px 5px;
 	margin-bottom:15px;
 
 }
@@ -871,11 +871,13 @@ width: 400px;
 .mapicon3{
 	position: absolute;
 	right:15px;
+	top:15px;
 }
 .bookingIcon{
 	position:absolute;
 	right:0px;
 	padding-right: 45px;
+	padding-top: 15px;
 }
 	
 	
@@ -947,6 +949,10 @@ h1{
 .colorh11{	
 	font-size:18px;
 	color:#323232;
+}
+.colorh11:hover{	
+	font-size:18px;
+	color:#646464;
 }
 h2{
 	font-size:14px;
@@ -1055,6 +1061,12 @@ h4{
 .space2{
 	padding-left:15px;
 	padding-right:15px;
+}
+.space3{
+	margin-top:15px;
+}
+.space4{
+	padding-bottom:15px;
 }
 .suggestionblock{
 	float: right;
@@ -1179,6 +1191,11 @@ h4{
 	font-size:14px;
 	color:#ff3f3f;
 }
+.activeweekdays_movie:hover{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#ff3f3f;
+}
 
 .map{
 	float:left;
@@ -1195,6 +1212,7 @@ h4{
 	background-color:#f9f9f9;
 	width:100%;
 	font-size: 14px !important;
+	border-radius:0px 0px 5px 5px;
 }
 .fullWidth{
 	width: 100%;
@@ -1314,16 +1332,33 @@ left:-140px!important;
 .theatreBlock{
 	position: relative;
 	float: left;
-	width: 93.9%;
+	width: calc(100% - 30px);
 	height: auto;
 	background-color: #FFF;
 	border: 1px solid #e1e1e1;
 	margin-top:15px;
 	margin-left:15px;
 	margin-right:15px;
-	padding:15px;
+	padding:0px;
 }
+/* .commondiv{
+	float: left;
+	position: relative;
+	width: 100%;
+} */
 @media only screen and (max-width: 1280px) {
+	.theatreBlock{
+		position: relative;
+		float: left;
+		width: calc(100% - 30px);
+		height: auto;
+		background-color: #FFF;
+		border: 1px solid #e1e1e1;
+		margin-top:15px;
+		margin-left:15px;
+		margin-right:15px;
+		padding:0px;
+	}
 	.header{
 	position: relative;
 	width: 100%;
@@ -1542,7 +1577,7 @@ left:-140px!important;
             border-left:1px solid #e1e1e1;
             border-right:1px solid #e1e1e1;
             border-bottom:1px solid #e1e1e1;
-            border-radius:5px 5px;
+            border-radius:0px 0px 5px 5px;
             margin-bottom:15px;
         
         }
@@ -1579,6 +1614,18 @@ left:-140px!important;
 	
 }
 @media only screen and (max-width: 1080px) {
+	.theatreBlock{
+		position: relative;
+		float: left;
+		width: calc(100% - 30px);
+		height: auto;
+		background-color: #FFF;
+		border: 1px solid #e1e1e1;
+		margin-top:15px;
+		margin-left:15px;
+		margin-right:15px;
+		padding:0px;
+	}
 	.header{
 	position: relative;
 	width: 100%;
@@ -1763,6 +1810,18 @@ left:-140px!important;
 			}
 }		
 @media only screen and (max-width: 1024px) {	
+	.theatreBlock{
+		position: relative;
+		float: left;
+		width: calc(100% - 30px);
+		height: auto;
+		background-color: #FFF;
+		border: 1px solid #e1e1e1;
+		margin-top:15px;
+		margin-left:15px;
+		margin-right:15px;
+		padding:0px;
+	}
 .block2{
 	float: left;
 	position: relative;
@@ -1790,7 +1849,7 @@ left:-140px!important;
 	float: left;
 	position: relative;
 	height:auto;
-	width:100.8%;
+	width:100%;
 	margin-left:15px;
 	padding:0px !important;
 	border-left:1px solid #e1e1e1;
@@ -1805,13 +1864,13 @@ left:-140px!important;
 	position: relative;
 	background-color:#FFF;
 	height:auto;
-	width:100.8%;
+	width:100%;
 	margin-left:15px;
 	padding:0px !important;
 	border-left:1px solid #e1e1e1;
 	border-right:1px solid #e1e1e1;
 	border-bottom:1px solid #e1e1e1;
-	border-radius:5px 5px;
+	border-radius:0px 0px 5px 5px;
 	margin-bottom:15px;
 
 }
@@ -1826,6 +1885,18 @@ left:-140px!important;
 	}
 }
 @media only screen and (max-width: 960px) {
+	.theatreBlock{
+		position: relative;
+		float: left;
+		width: calc(100% - 30px);
+		height: auto;
+		background-color: #FFF;
+		border: 1px solid #e1e1e1;
+		margin-top:15px;
+		margin-left:15px;
+		margin-right:15px;
+		padding:0px;
+	}
 	.modal-dialog{
 		margin: auto;
 		width:60%;
@@ -1955,9 +2026,54 @@ left:-140px!important;
 	.dropdown-menu{
 		left:-140px!important;
 		}
+		.block23{
+			float: left;
+			position: relative;
+			height:auto;
+			width:100.8%;
+			margin-left:15px;
+			padding:0px !important;
+			border-left:1px solid #e1e1e1;
+			border-right:1px solid #e1e1e1;
+			border-top:1px solid #e1e1e1;
+			margin-top:15px;
+			background-color:#FFF;
+			border-radius:5px 5px 0px 0px;
+		}
+		.block231{
+			float: left;
+			position: relative;
+			background-color:#FFF;
+			height:auto;
+			width:100.8%;
+			margin-left:15px;
+			padding:0px !important;
+			border-left:1px solid #e1e1e1;
+			border-right:1px solid #e1e1e1;
+			border-bottom:1px solid #e1e1e1;
+			border-radius:0px 0px 5px 5px;
+			margin-bottom:15px;
+		
+		}
 
 }
 @media only screen and (max-width: 800px) {
+	.theatreBlock{
+		position: relative;
+		float: left;
+		width: calc(100% - 30px);
+		height: auto;
+		background-color: #FFF;
+		border: 1px solid #e1e1e1;
+		margin-top:15px;
+		margin-left:15px;
+		margin-right:15px;
+		padding:0px;
+	}
+	.titleblock1{
+		width: 275px;
+		padding-right: 15px;
+		}
 
     .whatsapp{
         display: block;
@@ -2102,7 +2218,7 @@ left:-140px!important;
 				border-left:1px solid #e1e1e1;
 				border-right:1px solid #e1e1e1;
 				border-bottom:1px solid #e1e1e1;
-				border-radius:5px 5px;
+				border-radius:0px 0px 5px 5px;
 				margin-bottom:15px;
 			
             }
@@ -2117,6 +2233,22 @@ left:-140px!important;
 				}
 } 
 @media only screen and (max-width: 768px) {
+	.theatreBlock{
+		position: relative;
+		float: left;
+		width: calc(100% - 30px);
+		height: auto;
+		background-color: #FFF;
+		border: 1px solid #e1e1e1;
+		margin-top:15px;
+		margin-left:15px;
+		margin-right:15px;
+		padding:0px;
+	}
+	.titleblock1{
+		width: 275px;
+		padding-right: 15px;
+		}
     .navbar-toggle {
         display: block!important;
     }
@@ -2509,7 +2641,7 @@ left:-140px!important;
 		border-left:1px solid #e1e1e1;
 		border-right:1px solid #e1e1e1;
 		border-bottom:1px solid #e1e1e1;
-		border-radius:5px 5px;
+		border-radius:0px 0px 5px 5px;
 		margin-bottom:15px;
 	
     }
@@ -2524,6 +2656,22 @@ left:-140px!important;
 		}
 }
 @media only screen and (max-width: 720px) {
+	.theatreBlock{
+		position: relative;
+		float: left;
+		width: calc(100% - 30px);
+		height: auto;
+		background-color: #FFF;
+		border: 1px solid #e1e1e1;
+		margin-top:15px;
+		margin-left:15px;
+		margin-right:15px;
+		padding:0px;
+	}
+	.titleblock1{
+		width: 332px;
+		padding-right: 15px;
+		}
     .menumain{
         position: relative;
         float: left;
@@ -2600,7 +2748,7 @@ left:-140px!important;
 		border-left:1px solid #e1e1e1;
 		border-right:1px solid #e1e1e1;
 		border-bottom:1px solid #e1e1e1;
-		border-radius:5px 5px;
+		border-radius:0px 0px 5px 5px;
 		margin-bottom:15px;
 	
     }
@@ -2615,6 +2763,22 @@ left:-140px!important;
 		}
 }
 @media only screen and (max-width: 640px) {
+	.theatreBlock{
+		position: relative;
+		float: left;
+		width: calc(100% - 30px);
+		height: auto;
+		background-color: #FFF;
+		border: 1px solid #e1e1e1;
+		margin-top:15px;
+		margin-left:15px;
+		margin-right:15px;
+		padding:0px;
+	}
+	.titleblock1{
+		width: 332px;
+		padding-right: 15px;
+		}
     .menumain{
         position: relative;
         float: left;
@@ -2707,7 +2871,7 @@ left:-140px!important;
 		border-left:1px solid #e1e1e1;
 		border-right:1px solid #e1e1e1;
 		border-bottom:1px solid #e1e1e1;
-		border-radius:5px 5px;
+		border-radius:0px 0px 5px 5px;
 		margin-bottom:15px;
 	
 	}
@@ -2716,6 +2880,22 @@ left:-140px!important;
 		}
 }
 @media only screen and (max-width: 568px) {
+	.theatreBlock{
+		position: relative;
+		float: left;
+		width: calc(100% - 30px);
+		height: auto;
+		background-color: #FFF;
+		border: 1px solid #e1e1e1;
+		margin-top:15px;
+		margin-left:15px;
+		margin-right:15px;
+		padding:0px;
+	}
+	.titleblock1{
+		width: 332px;
+		padding-right: 15px;
+		}
 	.modal-dialog{
 		margin: auto;
 		width:100%;
@@ -2852,7 +3032,7 @@ left:-140px!important;
 			border-left:1px solid #e1e1e1;
 			border-right:1px solid #e1e1e1;
 			border-bottom:1px solid #e1e1e1;
-			border-radius:5px 5px;
+            border-radius:0px 0px 5px 5px;
 			margin-bottom:15px;
 		
 		}
@@ -3025,7 +3205,7 @@ left:-140px!important;
 			border-left:1px solid #e1e1e1;
 			border-right:1px solid #e1e1e1;
 			border-bottom:1px solid #e1e1e1;
-			border-radius:5px 5px;
+            border-radius:0px 0px 5px 5px;
 			margin-bottom:15px;
 		
 		}
@@ -3154,7 +3334,7 @@ left:-140px!important;
 			border-left:1px solid #e1e1e1;
 			border-right:1px solid #e1e1e1;
 			border-bottom:1px solid #e1e1e1;
-			border-radius:5px 5px;
+            border-radius:0px 0px 5px 5px;
 			margin-bottom:15px;
 		
 		}
@@ -3255,6 +3435,22 @@ left:-140px!important;
 			}
 }
 @media only screen and (max-width:360px) {
+	.theatreBlock{
+		position: relative;
+		float: left;
+		width: calc(100% - 30px);
+		height: auto;
+		background-color: #FFF;
+		border: 1px solid #e1e1e1;
+		margin-top:15px;
+		margin-left:15px;
+		margin-right:15px;
+		padding:0px;
+	}
+	.titleblock1{
+		width: 301px;
+		padding-right: 15px;
+		}
 	.modal-dialog{
 		margin: auto;
 		width:100%;
@@ -3365,7 +3561,7 @@ left:-140px!important;
 			border-left:1px solid #e1e1e1;
 			border-right:1px solid #e1e1e1;
 			border-bottom:1px solid #e1e1e1;
-			border-radius:5px 5px;
+            border-radius:0px 0px 5px 5px;
 			margin-bottom:15px;
 		
 		}
@@ -3524,7 +3720,7 @@ left:-140px!important;
 			border-left:1px solid #e1e1e1;
 			border-right:1px solid #e1e1e1;
 			border-bottom:1px solid #e1e1e1;
-			border-radius:5px 5px;
+            border-radius:0px 0px 5px 5px;
 			margin-bottom:15px;
 		
         }
@@ -3549,7 +3745,12 @@ left:-140px!important;
 		.activeweekdays_movie{
             font-family:Arial, Helvetica, sans-serif;
             font-size:13px;
-            color:#FFC72F;
+            color:#ff3f3f;
+		}
+		.activeweekdays_movie:hover{
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:13px;
+            color:#ff3f3f;
         }
         .inactiveweekdays{
             font-family:Arial, Helvetica, sans-serif;
@@ -3565,4 +3766,20 @@ left:-140px!important;
 		.dropdown-menu{
 			left:-68px!important;
 			}
+			.theatreBlock{
+				position: relative;
+				float: left;
+				width: calc(100% - 30px);
+				height: auto;
+				background-color: #FFF;
+				border: 1px solid #e1e1e1;
+				margin-top:15px;
+				margin-left:15px;
+				margin-right:15px;
+				padding:0px;
+			}
+			.titleblock1{
+				width: 275px;
+				padding-right: 15px;
+				}
 	}
