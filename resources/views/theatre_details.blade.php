@@ -48,29 +48,29 @@
                             <td style="padding-bottom:15px;">
                             <div class="theatreBlock">
                                 <table class="fullWidth">
-
                                     <tr>
-                                    <td colspan="2"><h1 class="space3 space2 titleblock1  titleh2 darkcolor">Movie Name</h1></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" class="space2"  style="padding-bottom:10px;">Language</td>
+                                        <td>
+                                            <div class="smallImage1">
+                                                <img src="{{ URL::to('/') }}/image/noimage.svg" alt="" style="width:100%;height:100%">
+                                            </div>
+                                            <a href="#" title="" ><h2 class="content11 titletopmargin colorh11">Movie Name</h2></a>                                                      
+                                            <div class="content2 Subtitle">Language</div>
+                                        </td>
                                     </tr> 
-
-  
-                                    </table> 
+                                </table> 
                             </div>
                             <div class="theatreBlock">
                                 <table class="fullWidth">
-
                                     <tr>
-                                    <td colspan="2"><h1 class="space3 space2 titleblock1  titleh2 darkcolor">Movie Name</h1></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" class="space2"  style="padding-bottom:10px;">Language</td>
+                                        <td>
+                                            <div class="smallImage1">
+                                                <img src="{{ URL::to('/') }}/image/noimage.svg" alt="" style="width:100%;height:100%">
+                                            </div>
+                                            <a href="#" title="" ><h2 class="content11 titletopmargin colorh11">Movie Name</h2></a>                                                      
+                                            <div class="content2 Subtitle">Language</div>
+                                        </td>
                                     </tr> 
-                                   
-   
-                                    </table> 
+                                </table> 
                             </div>
                             </td>
                         </tr>
