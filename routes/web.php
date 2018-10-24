@@ -59,8 +59,9 @@ $this->post('/suggessionForEdit', 'SuggessionForEditController@suggessionForEdit
     
 Route::get('/getSuggessionNotification', 'SuggessionForEditController@getSuggessionNotification');
 
-$this->get('/'.config('app.defaultBaseURL.dallas-indian-movie'), 'MovieController@index')->name('movies');
-$this->get('/'.config('app.defaultBaseURL.dallas-indian-movie').'/{url}', 'MovieController@getDetails')->name('movie_details')->where('url', '[A-Za-z-+0-9]+');
+$this->get('/'.config('app.defaultBaseURL.indian-movie'), 'MovieController@index')->name('movies');
+$this->get('/'.config('app.defaultBaseURL.indian-movie').'/{url}', 'MovieController@getDetails')->name('movie_details')->where('url', '[A-Za-z-+0-9]+');
+$this->get('/'.config('app.defaultBaseURL.indian-theatre').'/{url}', 'MovieController@theatreDetails')->name('theatre_details')->where('url', '[A-Za-z-+0-9]+');
 
 
 

@@ -109,5 +109,9 @@ class MovieController extends Controller
         // }
     }
 
+    public function theatreDetails(Request $request,$url){
+        return view('theatre_details');
+    }
+
 
 }

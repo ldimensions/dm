@@ -29,7 +29,7 @@
             <div class="col-md-12 block1">
                     <div class="smallImage">
                         <img src="{{ URL::to('/') }}/image/noimage.svg" alt="" style="width:100%;height:100%"></div>
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-indian-movie')}}/hardcoded" title="" ><h2 class="content11 colorh1">Name</h2></a>                                                      
+                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-movie')}}/hardcoded" title="" ><h2 class="content11 colorh1">Name</h2></a>                                                      
                     <div class="content2">Language</div>
             </div>
     

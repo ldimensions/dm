@@ -3,12 +3,12 @@
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer">
-            <div class="paggination"><a href="#" class="subcontent2 h21">Movies</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Name</span></div>
+            <div class="paggination"><a href="#" class="subcontent2 h21">Movies</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Theatre</span>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Name</span></div>
             <div class="block2">
                 <div class="move_title toparea space">
                     <table class="fullWidth">
                         <tr>
-                        <td><h1 class="titleblock">Name</h1></td>
+                        <td><h1 class="titleblock">Theatre Name</h1></td>
                         </tr>
                         <tr>
                             <td><div class="titleblock white smaextra">Language</div></td>
@@ -67,7 +67,7 @@
                                     <a href="#" title="" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt=""/></a>
 
                                     <tr>
-                                    <td colspan="2"><h1 class="space3 space2 titleblock1"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-theatre')}}/hardcoded" alt="" class="colorh11">Theatre Name</a></h1></td>
+                                    <td colspan="2"><h1 class="space3 space2 titleblock1"><a href="#" alt="" class="colorh11">Film Name</a></h1></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" class="space2">3311 Regent Blvd , Irving , TX, 75063</td>
@@ -108,7 +108,7 @@
                                     <a href="#" title="" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt=""/></a>
 
                                     <tr>
-                                    <td colspan="2"><h1 class="space3 space2 titleblock1"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-theatre')}}/hardcoded" alt="" class="colorh11">Theatre Name</a></h1></td>
+                                    <td colspan="2"><h1 class="space3 space2 titleblock1"><a href="#" alt="" class="colorh11">Film Name</a></h1></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" class="space2">3311 Regent Blvd , Irving , TX, 75063</td>
