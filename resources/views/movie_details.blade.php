@@ -7,6 +7,7 @@
             <div class="block2">
                 <div class="move_title toparea space">
                     <table class="fullWidth">
+                    <a href="#" title="" class="share"><img src="{{ URL::to('/') }}/image/share_icon.svg" alt=""/></a>
                         <tr>
                         <td><h1 class="titleblock">Name</h1></td>
                         </tr>

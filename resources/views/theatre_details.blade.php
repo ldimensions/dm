@@ -3,16 +3,24 @@
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer">
-            <div class="paggination"><a href="#" class="subcontent2 h21">Movies</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Theatre</span>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Name</span></div>
+            <div class="paggination"><a href="#" class="subcontent2 h21">Movies</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Theatre Name</span></div>
             <div class="block2">
                 <div class="move_title toparea space">
                     <table class="fullWidth">
+                    <a href="#" title="" target="_blank" class="bookingIcon2"><img src="{{ URL::to('/') }}/image/calendar1.svg" alt=""/></a>
+                    <a href="#" title="" class="share"><img src="{{ URL::to('/') }}/image/share_icon.svg" alt=""/></a>
                         <tr>
                         <td><h1 class="titleblock">Theatre Name</h1></td>
                         </tr>
                         <tr>
-                            <td><div class="titleblock white smaextra">Language</div></td>
-                        </tr>                       
+                            <td><div class="titleblock white smaextra">7767, 3434 Forest Ln , Carrollton, TX, 75234
+</div></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="titleblock white smaextra extra">214-681-6188
+</a></td>
+                        </tr>  
+                                               
                     </table> 
                 </div>
                 <div class="content">
@@ -25,30 +33,7 @@
                                 Description
                             </td>
                         </tr>
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Producer</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><h3 class="h21" >Producer Name</h3></td>
-                        </tr> 
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Director</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><h3 class="h21" >Director Name</h3></td>
-                        </tr> 
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Cast</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><h3 class="h21" >Cast Name</h3></td>
-                        </tr> 
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Music</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><h3 class="h21" >Name</h3></td>
-                        </tr> 
+
                         <tr>
                             <td colspan="2" class="smallfont tdtoppadd1">URL</td>
                         </tr>
@@ -59,90 +44,34 @@
                 </div>
                 <div class="movie">
                     <table class="fullWidth">
-                        <tr>
+                    <tr>
                             <td style="padding-bottom:15px;">
                             <div class="theatreBlock">
                                 <table class="fullWidth">
-                                    <a href="#" title="" target="_blank" class="mapicon3"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
-                                    <a href="#" title="" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt=""/></a>
 
                                     <tr>
-                                    <td colspan="2"><h1 class="space3 space2 titleblock1"><a href="#" alt="" class="colorh11">Film Name</a></h1></td>
+                                    <td colspan="2"><h1 class="space3 space2 titleblock1  titleh2 darkcolor">Movie Name</h1></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" class="space2">3311 Regent Blvd , Irving , TX, 75063</td>
+                                        <td colspan="2" class="space2"  style="padding-bottom:10px;">Language</td>
                                     </tr> 
-                                    <tr>
-                                        <td colspan="2"><h2 class="space2"><a href="#" target="_blank" class="h21" >www.theatrewebsite.com</a></h2></td>
-                                    </tr>
-                                    <tr>
-                                    <td colspan="2" style="padding-bottom:10px;"><a href="#" target="_blank" class="space2 h21">Phone Number</td>
-                                    </tr>  
-                                    
-                                    <tr>
-                                    <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
-                                    <table>
-                                    <tr>
-                                            <td  colspan="5" class="space2 smallfont tdtoppadd2">Oct 20 Sun</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2"><a href="#"target="_blank" class=" inactiveweekdays_moive h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td  colspan="5" class="space2 smallfontMovie tdtoppadd2">Oct 20 Mon</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2 space4"><a href="#"target="_blank" class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
 
-                                    </table>  
-                                    </td>
-                                    </tr>    
+  
                                     </table> 
-                                </div>
-                                <div class="theatreBlock">
+                            </div>
+                            <div class="theatreBlock">
                                 <table class="fullWidth">
-                                    <a href="#" title="" target="_blank" class="mapicon3"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
-                                    <a href="#" title="" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt=""/></a>
 
                                     <tr>
-                                    <td colspan="2"><h1 class="space3 space2 titleblock1"><a href="#" alt="" class="colorh11">Film Name</a></h1></td>
+                                    <td colspan="2"><h1 class="space3 space2 titleblock1  titleh2 darkcolor">Movie Name</h1></td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" class="space2">3311 Regent Blvd , Irving , TX, 75063</td>
+                                        <td colspan="2" class="space2"  style="padding-bottom:10px;">Language</td>
                                     </tr> 
-                                    <tr>
-                                        <td colspan="2"><h2 class="space2"><a href="#" target="_blank" class="h21" >www.theatrewebsite.com</a></h2></td>
-                                    </tr>
-                                    <tr>
-                                    <td colspan="2" style="padding-bottom:10px;"><a href="#" target="_blank" class="space2 h21">Phone Number</td>
-                                    </tr>  
-                                    
-                                    <tr>
-                                    <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
-                                    <table>
-                                    <tr>
-                                            <td  colspan="5" class="space2 smallfont tdtoppadd2">Oct 20 Sun</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2"><a href="#"target="_blank" class=" inactiveweekdays_moive h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td  colspan="5" class="space2 smallfontMovie tdtoppadd2">Oct 20 Mon</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2 space4"><a href="#"target="_blank" class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-
-                                    </table>  
-                                    </td>
-                                    </tr>    
+                                   
+   
                                     </table> 
-                                </div>
+                            </div>
                             </td>
                         </tr>
                     </table>    
@@ -161,13 +90,15 @@
 
             </div>
             <div class="block22">
-            <div class="white_t1 space">
-                <h2 class="titleh2 graycolor1">Movie Name Trailer</h2></div>
-                <div id="video" class="video"></div>
+                <div class="white_t1 space">
+                    <h2 class="titleh2 graycolor1">Theatre Name Location</h2>
+                    <a href="#" title="" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
+                </div>
+                <div id="map" class="map"></div>
             </div>
             <div class="blockk1">
                 <div class="block23">
-                    <div class="white_Photo space"><h2 class="titleh2 graycolor">Movie Name Photos</h2></div>
+                    <div class="white_Photo space"><h2 class="titleh2 graycolor">Theatre Name Photos</h2></div>
                 </div>
                 <div class="block231">
                     <div class="topdetail slideshow-container">
