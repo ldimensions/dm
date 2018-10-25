@@ -57,6 +57,27 @@
                                             <div class="content2 Subtitle">Language</div>
                                         </td>
                                     </tr> 
+                                    <tr>
+                                    <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
+                                    <table>
+                                    <tr>
+                                            <td  colspan="5" class="space2 smallfont tdtoppadd2">Oct 20 Sun</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5" class="space2"><a href="#"target="_blank" class=" inactiveweekdays_moive h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td  colspan="5" class="space2 smallfontMovie tdtoppadd2">Oct 20 Mon</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5" class="space2 space4"><a href="#"target="_blank" class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
+                                        </tr>
+
+                                    </table>  
+                                    </td>
+                                    </tr>    
                                 </table> 
                             </div>
                             <div class="theatreBlock">
@@ -70,6 +91,27 @@
                                             <div class="content2 Subtitle">Language</div>
                                         </td>
                                     </tr> 
+                                    <tr>
+                                    <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
+                                    <table>
+                                    <tr>
+                                            <td  colspan="5" class="space2 smallfont tdtoppadd2">Oct 20 Sun</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5" class="space2"><a href="#"target="_blank" class=" inactiveweekdays_moive h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td  colspan="5" class="space2 smallfontMovie tdtoppadd2">Oct 20 Mon</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5" class="space2 space4"><a href="#"target="_blank" class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
+                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
+                                        </tr>
+
+                                    </table>  
+                                    </td>
+                                    </tr>    
                                 </table> 
                             </div>
                             </td>
