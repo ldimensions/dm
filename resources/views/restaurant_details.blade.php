@@ -49,7 +49,15 @@
                                     <span id="readMore"></span>
                                 @endif 
                             </td>
-                        </tr> 
+                        </tr>
+                        @if (isset($restaurant['website']) && $restaurant['website'])
+                                <tr>
+                                    <td class="smallfont tdtoppadd1">Website</td>
+                                </tr>
+                                <tr>
+                                    <td><h2><a href="http://{{ $restaurant['website'] }}" target="_blank" class="h21">{{ $restaurant['website'] }}</a></h2></td>
+                                </tr>   
+                            @endif   
                     @endif                                  
                     @if($restaurant['ethnicName']) 
                         <tr>

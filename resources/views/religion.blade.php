@@ -65,9 +65,9 @@
                     <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
                 @endif         
                 @if ($rel['religionName'] == 'Christianity')
-                    <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-christian-church')}}/{{ $rel['urlName'] }}"><h2 class="content4 colorh1"> {{ $rel['name'] }}</h2></a>
+                <h2 class="content4"> <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-christian-church')}}/{{ $rel['urlName'] }}" class="colorh1">{{ $rel['name'] }}</a></h2>
                 @elseif($rel['religionName'] == 'Hinduism')
-                    <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-hindu-temple')}}/{{ $rel['urlName'] }}"><h2 class="content4 colorh1"> {{ $rel['name'] }}</h2></a>
+                <h2 class="content4"> <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-hindu-temple')}}/{{ $rel['urlName'] }}" class="colorh1">{{ $rel['name'] }}</a></h2>
                 @elseif($rel['religionName'] == 'Judaism')
                     <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.dallas-malayali-temple')}}/{{ $rel['urlName'] }}" ><h2 class="content4 colorh1"> {{ $rel['name'] }}</h2></a> -->
                 @elseif($rel['religionName'] == 'Buddhism')
@@ -79,7 +79,7 @@
                     <a href="https://www.google.com/maps/dir//{{ $rel['name'] }} {{ $rel['address1'] }} {{ $rel['city'] }}, {{ $rel['state'] }} {{ $rel['zip'] }}/%40{{$rel['latitude']}},{{$rel['longitude']}},12z" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
                 @endif  
                 <div class="content2">{{ $rel['address1'] }} {{ $rel['address2'] }}, {{ $rel['city'] }}, {{ $rel['state'] }} {{ $rel['zip'] }}</div>
-                <a href="tel:{{ $rel['phone1'] }}" class="content3 h21">{{ $rel['phone1'] }}</a>
+                <span class="content3"><a href="tel:{{ $rel['phone1'] }}" class="h21">{{ $rel['phone1'] }}</a></span>
                 @if (isset($rel['distance']) && $rel['distance'])
                     <div class="reli_kmblock_list">{{ $rel['distance'] }}</div>
                 @endif                 

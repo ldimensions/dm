@@ -47,7 +47,7 @@
                                 <td colspan="2" class="smallfont tdtoppadd1">Website</td>
                             </tr>
                             <tr>
-                                <td colspan="2"><a href="http://{{ $grocery['website'] }}" target="_blank"><h2 class="h21" >{{ $grocery['website'] }}</h2></a></td>
+                                <td colspan="2"><h2><a href="http://{{ $grocery['website'] }}" target="_blank" class="h21">{{ $grocery['website'] }}</a></h2></td>
                             </tr> 
                         @endif 
                         @if($grocery['ethnicName']) 

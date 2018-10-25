@@ -494,30 +494,19 @@ input[type=text], select{
 	height:30px;
 	padding-left:15px;
 	padding-top: 10px;
-}
-.block_txtblock:hover{
-	float:left;
-	position:relative;
-	width:265px;
-	height:30px;
-	padding-left:15px;
-	padding-top: 10px;
+	font-size: 18px;
+	color:#323232;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .text2 {
     font-size: 18px;
     color: #323232;
-    text-decoration: none;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 .text2:hover {
     font-size: 18px;
     color: #646464;
-    text-decoration: none;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 
@@ -755,7 +744,7 @@ width: 400px;
 	float:left;
 	position:relative;
 	width:275px;
-	margin-top:27px;
+	margin-top:30px;
 	padding-left:15px;
 	font-size: 20px;
 	color: #323232;
@@ -1441,15 +1430,13 @@ left:-140px!important;
 		height:30px;
 		padding-left:15px;
 		padding-top: 10px;
+		font-size: 18px;
+		color:#323232;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
-	.block_txtblock:hover{
-		float:left;
-		position:relative;
-		width:80%;
-		height:30px;
-		padding-left:15px;
-		padding-top: 10px;
-	}
+
 	.txtblock{
 		float:left;
 		position:relative;
@@ -1708,15 +1695,13 @@ left:-140px!important;
 		height:30px;
 		padding-left:15px;
 		padding-top: 10px;
+		font-size: 18px;
+		color:#323232;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
-	.block_txtblock:hover{
-		float:left;
-		position:relative;
-		width:80%;
-		height:30px;
-		padding-left:15px;
-		padding-top: 10px;
-	}
+
 	.txtblock{
 		float:left;
 		position:relative;
@@ -2437,14 +2422,11 @@ left:-140px!important;
 	height:30px;
 	padding-left:15px;
 	padding-top: 10px;
-}
-.block_txtblock:hover{
-	float:left;
-	position:relative;
-	width:90%;
-	height:30px;
-	padding-left:15px;
-	padding-top: 10px;
+	font-size: 18px;
+	color:#323232;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .txtblock{
 	float:left;
@@ -3133,9 +3115,7 @@ left:-140px!important;
 	.block_txtblock{
 		width:87%;
 	}
-	.block_txtblock:hover{
-		width:87%;
-	}
+
 	.txtblock{
 		width:87%;
 	}

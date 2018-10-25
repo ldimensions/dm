@@ -53,7 +53,7 @@
                                             <div class="smallImage1">
                                                 <img src="{{ URL::to('/') }}/image/noimage.svg" alt="" style="width:100%;height:100%">
                                             </div>
-                                            <a href="#" title="" ><h2 class="content11 titletopmargin colorh11">Movie Name</h2></a>                                                      
+                                            <h2 class="content11 titletopmargin"> <a href="#" title="" class="colorh11">Movie Name</a></h2>                                                      
                                             <div class="content2 Subtitle">Language</div>
                                         </td>
                                     </tr> 
@@ -87,7 +87,7 @@
                                             <div class="smallImage1">
                                                 <img src="{{ URL::to('/') }}/image/noimage.svg" alt="" style="width:100%;height:100%">
                                             </div>
-                                            <a href="#" title="" ><h2 class="content11 titletopmargin colorh11">Movie Name</h2></a>                                                      
+                                           <h2 class="content11 titletopmargin"> <a href="#" title="" class="colorh11">Movie Name</a></h2>                                                      
                                             <div class="content2 Subtitle">Language</div>
                                         </td>
                                     </tr> 

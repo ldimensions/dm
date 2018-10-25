@@ -63,7 +63,7 @@
                                     <td class="smallfont tdtoppadd1">Website</td>
                                 </tr>
                                 <tr>
-                                    <td><a href="http://{{ $religion['website'] }}" target="_blank"><h2 class="h21">{{ $religion['website'] }}</h2></a></td>
+                                    <td><h2><a href="http://{{ $religion['website'] }}" target="_blank" class="h21">{{ $religion['website'] }}</a></h2></td>
                                 </tr>   
                             @endif                          
                             <tr>
