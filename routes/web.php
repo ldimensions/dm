@@ -63,6 +63,8 @@ $this->get('/'.config('app.defaultBaseURL.indian-movie'), 'MovieController@index
 $this->get('/'.config('app.defaultBaseURL.indian-movie').'/{url}', 'MovieController@getDetails')->name('movie_details')->where('url', '[A-Za-z-+0-9]+');
 $this->get('/'.config('app.defaultBaseURL.indian-theatre').'/{url}', 'MovieController@theatreDetails')->name('theatre_details')->where('url', '[A-Za-z-+0-9]+');
 
+$this->get('/'.config('app.defaultBaseURL.events'), 'EventsController@index')->name('indian-events');
+$this->get('/'.config('app.defaultBaseURL.events').'/{url}', 'EventsController@getDetails')->name('indian-events-details')->where('url', '[A-Za-z-+0-9]+');
 
 
 Route::group(['middleware' => ['role:Admin']], function () {

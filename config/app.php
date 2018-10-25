@@ -80,6 +80,8 @@ return [
         'indian-movie'                          => 'dallas-indian-movies',
         'indian-theatre'                        => 'dallas-theatre',
 
+        'events'                                => 'dallas-indian-events',
+
         'dallas-indian-travels'                 => 'dallas-indian-travels',        
         
     ],

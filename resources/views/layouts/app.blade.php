@@ -68,6 +68,8 @@
                             <a href="#" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Auto </a>     
                             <a href="#" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Events </a>--> 
                             <a href="{{ route('movies') }}" class="{{ (CommonController::activeMenu('movies')) ? 'activemenu' : 'inactivemenu' }}" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Movies </a>                   
+                            <a href="{{ route('indian-events') }}" class="{{ (CommonController::activeMenu('events')) ? 'activemenu' : 'inactivemenu' }}" class="{{ (CommonController::activeMenu('')) ? 'activemenu' : 'inactivemenu' }}">Events </a>               
+
                         </div>
                     </div>
                 </div>
