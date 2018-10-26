@@ -22,8 +22,8 @@
             <div class="col-md-12 block1">
                     <div class="smallImage">
                         <img src="{{ URL::to('/') }}/image/noimage.svg" alt="" style="width:100%;height:100%"></div>
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.events')}}/hardcoded" title="" ><h2 class="content11 colorh1">Event Name</h2></a>                                                      
-                    <div class="content2">Language</div>
+                        <h2 class="content11"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.events')}}/hardcoded" title="" class="colorh1">Event Name</a></h2>                                                      
+                    <div class="content2">Phone Number</div>
             </div>
     </div>
     <div class="col-md-3 rightcontainer nopadding">
