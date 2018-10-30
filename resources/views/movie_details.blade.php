@@ -1,18 +1,19 @@
 @extends('layouts.app')
 @section('content')
+<?php use App\Http\Controllers\CommonController;?>
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer">
-            <div class="paggination"><a href="#" class="subcontent2 h21">Movies</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Name</span></div>
+            <div class="paggination"><a href="{{ route('movies') }}" class="subcontent2 h21">Movies</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{$movie['name']}}</span></div>
             <div class="block2">
                 <div class="move_title toparea space">
                     <table class="fullWidth">
-                    <a href="#" title="" class="share"><img src="{{ URL::to('/') }}/image/share_icon.svg" alt=""/></a>
+                        {!!CommonController::share($movie['name'])!!}
                         <tr>
-                        <td><h1 class="titleblock">Name</h1></td>
+                        <td><h1 class="titleblock">{{ $movie['name'] }}</h1></td>
                         </tr>
                         <tr>
-                            <td><div class="titleblock white smaextra">Language</div></td>
+                            <td><div class="titleblock white smaextra">{{ CommonController::getLanguage($movie['language']) }}</div></td>
                         </tr>                       
                     </table> 
                 </div>
@@ -21,133 +22,120 @@
                         <tr>
                             <td colspan="2">&nbsp;</td>
                         </tr>
-                        <tr>
-                            <td colspan="2">
-                                Description
-                            </td>
-                        </tr>
+                        @if($movie['description']) 
+                            <tr>
+                                <td colspan="2">
+                                    <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($movie['description']) !!}</div>
+                                    @if(strlen($movie['description']) >= '220') 
+                                    <a id="readMore" class="read h21">Read more...</a>
+                                    @else
+                                        <span id="readMore"></span>
+                                    @endif 
+                                </td>
+                            </tr>
+                        @endif 
                         <tr>
                             <td colspan="2" class="smallfont tdtoppadd1">Producer</td>
                         </tr>
                         <tr>
-                            <td colspan="2"><h3 class="h21" >Producer Name</h3></td>
+                            <td colspan="2"><h3 class="h21" >{{ $movie['producer'] }}</h3></td>
                         </tr> 
                         <tr>
                             <td colspan="2" class="smallfont tdtoppadd1">Director</td>
                         </tr>
                         <tr>
-                            <td colspan="2"><h3 class="h21" >Director Name</h3></td>
+                            <td colspan="2"><h3 class="h21" >{{ $movie['director'] }}</h3></td>
                         </tr> 
                         <tr>
                             <td colspan="2" class="smallfont tdtoppadd1">Cast</td>
                         </tr>
                         <tr>
-                            <td colspan="2"><h3 class="h21" >Cast Name</h3></td>
+                            <td colspan="2"><h3 class="h21" >{{ $movie['cast'] }}</h3></td>
                         </tr> 
                         <tr>
                             <td colspan="2" class="smallfont tdtoppadd1">Music</td>
                         </tr>
                         <tr>
-                            <td colspan="2"><h3 class="h21" >Name</h3></td>
+                            <td colspan="2"><h3 class="h21" >{{ $movie['music'] }}</h3></td>
                         </tr> 
-                        <tr>
+                        <!-- <tr>
                             <td colspan="2" class="smallfont tdtoppadd1">URL</td>
                         </tr>
                         <tr>
-                            <td colspan="2"><h2><a href="#" target="_blank" class="h21" >www.moviewebsite.com</a></h2></td>
-                        </tr>
+                            <td colspan="2"><h2><a href="#" target="_blank" class="h21" >{{ $movie['name'] }}</a></h2></td>
+                        </tr> -->
                     </table>  
                 </div>
-                <div class="movie">
-                    <table class="fullWidth">
-                        <tr>
-                            <td style="padding-bottom:15px;">
-                            <div class="theatreBlock">
-                                <table class="fullWidth">
-                                    <a href="#" title="" target="_blank" class="mapicon3"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
-                                    <a href="#" title="" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt=""/></a>
-
-                                    <tr>
-                                    <td colspan="2"><h1 class="space3 space2 titleblock1"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-theatre')}}/hardcoded" alt="" class="colorh11">Theatre Name</a></h1></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" class="space2">3311 Regent Blvd , Irving , TX, 75063</td>
-                                    </tr> 
-                                    <tr>
-                                        <td colspan="2"><h2 class="space2"><a href="#" target="_blank" class="h21" >www.theatrewebsite.com</a></h2></td>
-                                    </tr>
-                                    <tr>
-                                    <td colspan="2" style="padding-bottom:10px;"><a href="#" target="_blank" class="space2 h21">Phone Number</td>
-                                    </tr>  
-                                    
-                                    <tr>
-                                    <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
-                                    <table>
-                                    <tr>
-                                            <td  colspan="5" class="space2 smallfont tdtoppadd2">Oct 20 Sun</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2"><a href="#"target="_blank" class=" inactiveweekdays_moive h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td  colspan="5" class="space2 smallfontMovie tdtoppadd2">Oct 20 Mon</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2 space4"><a href="#"target="_blank" class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-
-                                    </table>  
-                                    </td>
-                                    </tr>    
-                                    </table> 
-                                </div>
-                                <div class="theatreBlock">
-                                <table class="fullWidth">
-                                    <a href="#" title="" target="_blank" class="mapicon3"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
-                                    <a href="#" title="" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt=""/></a>
-
-                                    <tr>
-                                    <td colspan="2"><h1 class="space3 space2 titleblock1"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-theatre')}}/hardcoded" alt="" class="colorh11">Theatre Name</a></h1></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" class="space2">3311 Regent Blvd , Irving , TX, 75063</td>
-                                    </tr> 
-                                    <tr>
-                                        <td colspan="2"><h2 class="space2"><a href="#" target="_blank" class="h21" >www.theatrewebsite.com</a></h2></td>
-                                    </tr>
-                                    <tr>
-                                    <td colspan="2" style="padding-bottom:10px;"><a href="#" target="_blank" class="space2 h21">Phone Number</td>
-                                    </tr>  
-                                    
-                                    <tr>
-                                    <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
-                                    <table>
-                                    <tr>
-                                            <td  colspan="5" class="space2 smallfont tdtoppadd2">Oct 20 Sun</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2"><a href="#"target="_blank" class=" inactiveweekdays_moive h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td  colspan="5" class="space2 smallfontMovie tdtoppadd2">Oct 20 Mon</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2 space4"><a href="#"target="_blank" class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-
-                                    </table>  
-                                    </td>
-                                    </tr>    
-                                    </table> 
-                                </div>
-                            </td>
-                        </tr>
-                    </table>    
-                </div>
+                @if($movieTheatres)
+                    <div class="movie">
+                        <table class="fullWidth">
+                            <tr>
+                                <td style="padding-bottom:15px;">
+                                    @foreach ($movieTheatres as $key => $movieTheatre)
+                                        <div class="theatreBlock">
+                                            <table class="fullWidth">
+                                                <a href="https://www.google.com/maps/dir//{{ $movieTheatre['details']['name'] }} {{ $movieTheatre['details']['address1'] }} {{ $movieTheatre['details']['city'] }}, {{ $movieTheatre['details']['state'] }}, {{$movieTheatre['details']['zip'] }}/%40{{$movieTheatre['details']['latitude']}},{{$movieTheatre['details']['longitude']}},12z" title="{{$movieTheatre['details']['name']}}" target="_blank" class="mapicon3"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$movieTheatre['details']['name']}}"/></a>
+                                                <a href="http://{{ $movieTheatre['details']['bookingLink'] }}" title="{{ $movie['name'] }}" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt="{{ $movie['name'] }}"/></a>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <h1 class="space3 space2 titleblock1">
+                                                            <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-theatre')}}/{{$movieTheatre['details']['urlName']}}" alt="" class="colorh11">
+                                                                {{$movieTheatre['details']['name']}}
+                                                            </a>
+                                                        </h1>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" class="space2">
+                                                        {{$movieTheatre['details']['address1'].', '.$movieTheatre['details']['city'].', '.$movieTheatre['details']['state'].', '.$movieTheatre['details']['zip']}}
+                                                    </td>
+                                                </tr> 
+                                                <tr>
+                                                    <td colspan="2"><h2 class="space2"><a href="http://{{ $movieTheatre['details']['website'] }}" target="_blank" class="h21" >{{$movieTheatre['details']['website']}}</a></h2></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" style="padding-bottom:10px;"><a href="tel:{{ $movieTheatre['details']['phone1'] }}" target="_blank" class="space2 h21">{{$movieTheatre['details']['phone1']}}</td>
+                                                </tr>                                              
+                                                @foreach ($movieTheatre['dateTimeDetails'] as $key1 => $theatre)
+                                                    <tr>
+                                                        <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
+                                                            <table>                                                    
+                                                                <tr>
+                                                                    @if ( $theatre[0]['date'] == $today )
+                                                                        <td  colspan="5" class="space2 smallfontMovie tdtoppadd2">{{$theatre[0]['date']}}</td>
+                                                                    @else
+                                                                        <td  colspan="5" class="space2 smallfont tdtoppadd2">{{$theatre[0]['date']}}</td>
+                                                                    @endif    
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="5" class="space2 space4">
+                                                                        @if ( $theatre[0]['date'] == $today )
+                                                                            <a href="http://{{ $movieTheatre['details']['bookingLink'] }}" target="_blank" class="activeweekdays_movie">
+                                                                                @foreach ($theatre as $key1 => $time)
+                                                                                    {{$time['dateTime']}}@if(!$loop->last), @endif
+                                                                                @endforeach 
+                                                                            </a>
+                                                                        @else
+                                                                            <a href="http://{{ $movieTheatre['details']['bookingLink'] }}" target="_blank" class="inactiveweekdays_moive">
+                                                                                @foreach ($theatre as $key1 => $time)
+                                                                                    {{$time['dateTime']}}@if(!$loop->last), @endif
+                                                                                @endforeach 
+                                                                            </a>                                                                    
+                                                                        @endif 
+                                                                    </td>
+                                                                </tr>
+                                                            </table>  
+                                                        </td>
+                                                    </tr>  
+                                                @endforeach  
+                                            </table> 
+                                        </div>
+                                    @endforeach
+                                </td>
+                            </tr>
+                        </table>    
+                    </div>
+                @endif
                 <div class="content">
                     <table class="fullWidth">
                     <tr>
@@ -163,23 +151,29 @@
             </div>
             <div class="block22">
             <div class="white_t1 space">
-                <h2 class="titleh2 graycolor1">Movie Name Trailer</h2></div>
-                <div id="video" class="video"></div>
+                <h2 class="titleh2 graycolor1">{{ $movie['name'] }} Trailer</h2></div>
+                <div id="video" class="video">
+                    <iframe width="400" height="245" src="{{ $movie['trailer'] }}" frameborder="0"></iframe>
+                </div>
             </div>
-            <div class="blockk1">
-                <div class="block23">
-                    <div class="white_Photo space"><h2 class="titleh2 graycolor">Movie Name Photos</h2></div>
+            @if($photos)
+                <div class="blockk1">
+                    <div class="block23">
+                        <div class="white_Photo space"><h2 class="titleh2 graycolor">{{ $movie['name'] }} Photos</h2></div>
+                    </div>
+                    <div class="block231">
+                        <div class="topdetail slideshow-container">
+                            <ul id="lightSlider">
+                                @foreach ($photos as $key => $photo)
+                                    <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
+                                        <img src="{{ URL::to('/') }}/image/movie/{{$movie['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $movie['name'] }}" style="width:100%;height:100%" class="bottomarea">
+                                    </li>
+                                @endforeach                                                            
+                            </ul>            
+                        </div>        
+                    </div>
                 </div>
-                <div class="block231">
-                    <div class="topdetail slideshow-container">
-                        <ul id="lightSlider">
-                                <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
-                                    <img src="" alt="" style="width:100%;height:100%" class="bottomarea">
-                                </li>
-                        </ul>            
-                    </div>        
-                </div>
-            </div>    
+            @endif    
             <div class="row" id="related"></div>
         </div>
         <div class="col-md-3 rightcontainer nopadding">
@@ -221,7 +215,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <input type="hidden" class="form-control nup" id="type" name="type" value="1">
+                <input type="hidden" class="form-control nup" id="type" name="type" value="4">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="suggessionBtn">Submit</button>
             </div>            
@@ -234,7 +228,6 @@
 <script src="{{ asset('js/lightslider.js') }}"></script>
 <script>
 
- 
     /*---------- Image Slider ----------*/
     $('#lightSlider').lightSlider({
         gallery: true,
@@ -249,10 +242,9 @@
     document.querySelector('#readMore').addEventListener('click', function() {
         document.querySelector('#description').style.height= 'auto';
         this.style.display= 'none';
-    });      
+    }); 
+  
     
 </script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQJp0CkLijcKXd44Pyn6QWX0Da0PwPKtc&callback=initMap">
-</script>
+
 @endsection

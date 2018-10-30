@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<?php use App\Http\Controllers\CommonController;?>
 <div class="mcontainer">
 <div class="maincontainer">
     <div class="leftcontainer">
@@ -22,17 +22,22 @@
                     @endforeach
                 </select>
                 <input type="text" id="searchKeyword" value="{{$keyword}}" name="searchKeyword" placeholder="Keywords" class="text1" maxlength="50" pattern="(1[0-2]|0[1-9])\/(1[5-9]|2\d)">
-                <a href="JavaScript:void(0)" class="search" onclick="grocerySearch()">Search</a>
+                <a href="JavaScript:void(0)" class="search" onclick="movieSearch()">Search</a>
             </form>
         </div>
-       
+        @foreach ($movies as $key => $rel)
             <div class="col-md-12 block1">
-                    <div class="smallImage">
-                        <img src="{{ URL::to('/') }}/image/noimage.svg" alt="" style="width:100%;height:100%"></div>
-                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-movie')}}/hardcoded" title="" ><h2 class="content11 colorh1">Name</h2></a>                                                      
-                    <div class="content2">Language</div>
+                <div class="smallImage">
+                    @if (isset($rel['photoName']) && $rel['photoName'])
+                        <img src="{{ URL::to('/') }}/image/movie/{{$rel['movieId']}}/{{$rel['photoName']}}" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
+                    @else   
+                        <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
+                    @endif                     
+                    <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-movie')}}/{{ $rel['urlName'] }}" title="{{ $rel['name'] }}" ><h2 class="content11 colorh1">{{ $rel['name'] }}</h2></a>                                                      
+                <div class="content2">{{ CommonController::getLanguage($rel['language']) }}</div>
             </div>
-    
+        @endforeach
+
 
     </div>
     <div class="col-md-3 rightcontainer nopadding">
@@ -44,7 +49,7 @@
     
     
     <script>
-        function grocerySearch() {
+        function movieSearch() {
             var type        =   document.getElementById("type").value;
             var city        =   document.getElementById("city").value;
             var keyword     =   document.getElementById("searchKeyword").value;

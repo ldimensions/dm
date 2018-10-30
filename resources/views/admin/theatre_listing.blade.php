@@ -56,9 +56,7 @@
                                         <td>{{$rel['name']}}</td>
                                         <td class="ceter">{{ $rel['city'] }}</td>
                                         <td class="ceter" width="100px;">
-                                            <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.theatre-store-details')}}/{{ $rel['urlName'] }}" target="_blank" class="title">-->
-                                            Link
-                                        <!--</a>     -->
+                                            <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-theatre')}}/{{ $rel['urlName'] }}" target="_blank" class="title">Link</a>    
                                         <td width="75px;">
                                             <a href="{{ url('/admin/theatre_add') }}/{{$rel['theatreId']}}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></button></a>
                                             <button type="button" class="btn btn-default btn-sm" onClick="deleteTheatre({{$rel['theatreId']}})"><i class="fa fa-trash-o"></i></button>
@@ -83,15 +81,12 @@
             responsive: true,
             'bSort': false,
             'aoColumns': [
-                    //{ sWidth: "15%", bSearchable: true, bSortable: false },
                     { bSearchable: true, bSortable: false },
                     { bSearchable: true, bSortable: false },
                     { bSearchable: true, bSortable: false },
                     { bSearchable: true, bSortable: false },
             ],
-            //"scrollY":        "200px",
-            //"scrollCollapse": false,
-            //"info":           true,
+           
             "paging":         true
         });
     });

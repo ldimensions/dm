@@ -63,54 +63,140 @@ class MovieController extends Controller
                                                         ->get();  
         $cities                             =   $cityRs->toArray();          
 
-        return view('movies',['cities' => $cities, 'cityVal' => $cityVal, 'keyword' => $keyword]);
+        return view('movies',['movies' => $movies, 'cities' => $cities, 'cityVal' => $cityVal, 'keyword' => $keyword]);
     }
 
     public function getDetails(Request $request,$url){
         
-        // $distance                           =   "";
-        // $commonCtrl                         =   new CommonController;
+        $distance                           =   "";
+        $commonCtrl                         =   new CommonController;
 
-        // $seoUrl                             =   $commonCtrl->seoUrl($request->path(),2);        
+        $seoUrl                             =   $commonCtrl->seoUrl($request->path(),2);        
 
-        // $siteId                             =   config('app.siteId');
-        // $movieRs                            =   Movie::select()
-        //                                             ->leftjoin('url','url.movieId', '=', 'movie.id')
-        //                                             ->leftjoin('site','site.siteId', '=', 'movie.siteId')
-        //                                             ->where('site.siteId', '=', $siteId)
-        //                                             ->where('url.urlName', '=', $url)
-        //                                             ->where('movie.is_deleted', '=', '0')
-        //                                             ->where('movie.is_disabled', '=', '0')
-        //                                             ->get()->first();
+        $siteId                             =   config('app.siteId');
+        $movieRs                            =   Movie::select('movie.id','movie.name','movie.description','movie.language','movie.cast',
+                                                                'movie.music','movie.director','movie.producer','movie.trailer')
+                                                        ->leftjoin('url','url.movieId', '=', 'movie.id')
+                                                        ->leftjoin('site','site.siteId', '=', 'movie.siteId')
+                                                        ->where('site.siteId', '=', $siteId)
+                                                        ->where('url.urlName', '=', $url)
+                                                        ->where('movie.is_deleted', '=', '0')
+                                                        ->where('movie.is_disabled', '=', '0')
+                                                        ->get()->first();
 
-        // $movie                              =   $movieRs->toArray(); 
+        $movie                              =   $movieRs->toArray(); 
 
-        // if($movie){
-        //     $movieId                        =   $movie['id'];
+        if($movie){
+            $movieId                        =   $movie['id'];
+
+
+            $movieTheatreRs                 =   MovieTheatre::select('theatre.id','theatre.name','theatre.website',
+                                                                        'theatre.phone','url.urlName',
+                                                                        'movie_theatre.dateTime',
+                                                                        'address.address1','address.address2','address.city',
+                                                                        'address.state','address.zip','address.phone1',
+                                                                        'address.latitude','address.longitude',
+                                                                        'movie_booking.bookingLink',
+                                                                        'url.urlName'
+                                                                        )
+                                                                ->leftjoin('theatre','theatre.id', '=', 'movie_theatre.theatreId')
+                                                                ->leftjoin('address','address.id', '=', 'theatre.addressId')
+                                                                ->leftjoin('url','url.theatreId', '=', 'theatre.id')
+                                                                ->leftjoin('movie_booking','movie_booking.theatreId', '=', 'theatre.id')
+                                                                ->where('movie_theatre.movieId', '=', $movieId)
+                                                                ->where('movie_theatre.dateTime', '>=', date("Y-m-d") )     
+                                                                ->orderBy('theatre.id', 'asc')
+                                                                ->orderBy('movie_theatre.dateTime', 'asc')
+                                                                ->get();
+
+            $movieTheatre                   =   $movieTheatreRs->toArray();
+            $movieTheatreTimeArr            =   array();  
+            if($movieTheatre){
+                $movieTheatreArr                =   array();  
+                foreach($movieTheatre as $key => $movieTheatreVal) {   
+                    $movieTheatreArr[$movieTheatreVal['id']][]    =   $movieTheatreVal;
+                }   
+    
+                
+                foreach($movieTheatreArr as $key => $movieTheatreVal1) {   
+                    foreach($movieTheatreVal1 as $key1 => $movieTheatreVal2) {
+                        $movieTheatreVal2['date']       =  date("M d D", strtotime($movieTheatreVal2['dateTime']));   
+                        $movieTheatreVal2['dateTime']   =  date('G:ia', strtotime($movieTheatreVal2['dateTime']));   
+                        $movieTheatreTimeArr[$key]['dateTimeDetails'][$movieTheatreVal2['date']][]   =   $movieTheatreVal2; 
+                        $movieTheatreTimeArr[$key]['details']   =   $movieTheatreVal2;                           
+                        
+                    }
+                } 
+            }     
             
-        //     $photoRs                        =   Photo::select('photo.photoId', 'photo.photoName', 
-        //                                             'photo.is_primary', 'photo.order')
-        //                                                 ->where('photo.is_deleted', '=', '0')
-        //                                                 ->where('photo.is_primary', '=', '0')
-        //                                                 ->where('photo.is_disabled', '=', '0')
-        //                                                 ->where('photo.movieId', '=', $movieId)
-        //                                                 ->orderBy('photo.order', 'asc') 
-        //                                                 ->get();        
+            $photoRs                        =   Photo::select('photo.photoId', 'photo.photoName', 
+                                                    'photo.is_primary', 'photo.order')
+                                                        ->where('photo.is_deleted', '=', '0')
+                                                        ->where('photo.is_primary', '=', '0')
+                                                        ->where('photo.is_disabled', '=', '0')
+                                                        ->where('photo.movieId', '=', $movieId)
+                                                        ->orderBy('photo.order', 'asc') 
+                                                        ->get();        
             
-        //     $photo                          =   $photoRs->toArray();  
+            $photo                          =   $photoRs->toArray();  
 
-        //     $commonCtrl->setMeta($request->path(),2);
+            $commonCtrl->setMeta($request->path(),2);
 
-        //     $todaysDate =   date("l");     
+            $today =   date("M d D"); 
+
+            $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($movie['description']));
             
-            return view('movie_details');
-        // }else{
-        //     return redirect()->back();
-        // }
+            // echo '<pre>';
+            // print_r($movieTheatreTimeArr);
+            // exit();
+            
+            return view('movie_details',['movie' => $movie, 'movieTheatres' => $movieTheatreTimeArr, 'photos' => $photo, 'descriptionHeight' => $descriptionHeight, 'today' => $today]);
+        }else{
+            return redirect()->back();
+        }
     }
 
     public function theatreDetails(Request $request,$url){
-        return view('theatre_details');
+
+        $commonCtrl                         =   new CommonController;
+        
+        $theatreRs                          =   Theatre::select('theatre.id','theatre.name','theatre.website',
+                                                                'theatre.phone','url.urlName','theatre.description',
+                                                                'address.address1','address.address2','address.city',
+                                                                'address.state','address.zip','address.phone1',
+                                                                'address.latitude','address.longitude'
+                                                                )
+                                                        ->leftjoin('address','address.id', '=', 'theatre.addressId')
+                                                        ->leftjoin('url','url.theatreId', '=', 'theatre.id')
+                                                        ->where('url.urlName', '=', $url)
+                                                        ->orderBy('theatre.id', 'asc')
+                                                        ->get()->first();
+
+        $theatre                            =   $theatreRs->toArray();
+        $movieRs                            =   Movie::select('movie.id as movieId', 'movie.name', 'movie.language', 
+                                                                'url.urlName', 'photo.photoName')
+                                                                ->leftjoin('url','url.movieId', '=', 'movie.id')
+                                                                ->rightjoin('movie_theatre','movie_theatre.movieId', '=', 'movie.id')  
+                                                                ->leftJoin('photo', function($join){
+                                                                    $join->on('photo.movieId', '=', 'movie.id')
+                                                                        ->where('photo.is_primary','=',1);
+                                                                })                                                                                                      
+                                                                ->where('movie.is_deleted', '=', '0')
+                                                                ->where('movie_theatre.dateTime', '>=', date("Y-m-d H:i:s") )       
+                                                                ->where('movie_theatre.theatreId', '=', $theatre['id'])           
+                                                                ->groupBy('movie.id','movie.name','url.urlName','photo.photoName','movie.language')                                                                
+                                                                ->orderBy('movie.premium', 'DESC')
+                                                                ->orderBy('movie_theatre.dateTime', 'ASC')                                                 
+                                                                ->get();
+        $movies                             =   $movieRs->toArray();      
+
+        $descriptionHeight                  =   $commonCtrl->descriptionLength(strlen($theatre['description']));
+        $commonCtrl->setMeta($request->path(),2);
+        // echo '<pre>';
+        // print_r($movies);
+        // exit();
+
+        return view('theatre_details',['theatre' => $theatre, 'descriptionHeight' => $descriptionHeight, 'movies' => $movies]);
     }
 
 

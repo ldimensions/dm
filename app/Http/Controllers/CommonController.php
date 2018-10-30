@@ -341,7 +341,7 @@ class CommonController extends Controller
         $restaurantArr      =   array('dallas-indian-restaurant','restaurant-search');
         $religionArr        =   array('dallas-indian-religion','religion-search','dallas-malayali-church','dallas-christian-church','dallas-hindu-temple','dallas-islan-mosque');
         $travelsArr         =   array('dallas-indian-travels','travels-search');    
-        $moviesArr          =   array('dallas-indian-movies');      
+        $moviesArr          =   array('dallas-indian-movies','dallas-theatre');      
         switch($type){
             case 'home':
                 if(count(array_filter($hostNameArr))  ==  0){
@@ -774,4 +774,31 @@ class CommonController extends Controller
         return $share;
         
     }
+
+    public static function getLanguage($langId){
+        switch($langId){
+            case '1':
+                return 'Hindi';
+            case '2':
+                return 'Malayalam';
+            case '3':
+                return 'Tamil';
+            case '4':
+                return 'Telugu';
+            case '5':
+                return 'Kannada';
+            case '6':
+                return 'Punjabi';
+            case '7':
+                return 'Urdu';
+            case '8':
+                return 'Bengali';
+            case '9':
+                return 'Gujarathi';
+            case '10':
+                return 'Marathi';                                                
+            default:  
+                return 'Hindi';                                                                                             
+        }
+    }    
 }
