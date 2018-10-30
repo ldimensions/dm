@@ -148,8 +148,7 @@ class MovieController extends Controller
         return view('admin.movie_add',['movie' => $movie, 'theatres' => $theatres, 'photos' => $photoRs, 'movieTimes' => $movieTheatreAggr, 'movieBookingLink' => $movieBookingLinkArr]); 
     }
 
-    public function addMovie(Request $request)
-    {
+    public function addMovie(Request $request){
 
         $movieVal                           =   $request->post();
         
@@ -372,7 +371,7 @@ class MovieController extends Controller
                 }
                 if(isset($movieVal['bookingLink_'.$i])) {
                     DB::table('movie_booking')->insert([
-                        ['movieId' => $movieVal['id'], 
+                        ['movieId' => $movieId, 
                         'theatreId' => $movieVal['theatre_'.$i], 
                         'bookingLink' => $movieVal['bookingLink_'.$i]]
                     ]);     
@@ -551,8 +550,7 @@ class MovieController extends Controller
         return view('admin.theatre_add',['theatre' => $theatre, 'cities' => $cities]); 
     }
 
-    public function addTheatre(Request $request)
-    {
+    public function addTheatre(Request $request){
 
         $theatreVal                         =   $request->post();
 
