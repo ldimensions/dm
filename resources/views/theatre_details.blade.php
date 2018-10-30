@@ -154,6 +154,14 @@
 <script>
 
      /*---------- Google Map ----------*/
+
+     $( document ).ready(function() {
+        $.get("<?php echo URL::to('/');?>/theatre-related/<?php echo $theatre['id'];?>", function(data, status){
+            if(status=="success"){
+                document.getElementById("related").innerHTML = data;
+            }
+        });
+    });     
     
      function initMap() {
         var lat = parseFloat("{{ $theatre['latitude'] }}");
@@ -171,7 +179,6 @@
             title: label
         });
     }
-    /*---------- Image Slider ----------*/
     $('#lightSlider').lightSlider({
         gallery: true,
         item: 1,
@@ -180,12 +187,7 @@
         thumbItem: 9
     });
     
-    /*---------- Image Slider End----------*/
-
-    document.querySelector('#readMore').addEventListener('click', function() {
-        document.querySelector('#description').style.height= 'auto';
-        this.style.display= 'none';
-    });      
+      
     
 </script>
 <script async defer

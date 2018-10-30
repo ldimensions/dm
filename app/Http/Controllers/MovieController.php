@@ -24,9 +24,10 @@ class MovieController extends Controller
         $siteId                         =   config('app.siteId');
         $commonCtrl                     =   new CommonController;
 
-        if($type){
-            $typeArr                        =   explode("-",$type);
-            $typeVal                        =   $typeArr[count($typeArr)-1];
+        if($type && $type!="all"){
+            //$typeArr                        =   explode("-",$type);
+            //$typeVal                        =   $typeArr[count($typeArr)-1];
+            $typeVal                        =   $type;
         }
         if($city && $city !='all'){
             $cityArr                        =   explode("-",$city);
@@ -34,8 +35,8 @@ class MovieController extends Controller
         } 
         if($keyword){
             $keywordVal                     =   $keyword;
-        }         
-        
+        }      
+                
         $siteId                             =   config('app.siteId');        
 
         $movieRs                            =   Movie::select('movie.id as movieId', 'movie.name', 
@@ -53,7 +54,19 @@ class MovieController extends Controller
                                                         ->where('site.siteId', '=', $siteId)
                                                         ->groupBy('movie.id','movie.name','movie.cast', 'movie.language', 'movie.music','movie.director', 'movie.producer', 'url.urlName','photo.photoName')
                                                         ->orderBy('movie.premium', 'DESC')
-                                                        ->orderBy('movie.created_at', 'DESC');                                                  
+                                                        ->orderBy('movie.created_at', 'DESC');   
+
+        if($cityVal){
+            $movieRs->where('city.cityId', '=', $cityVal);
+        }
+        if($type){
+            $movieRs->where('movie.language', '=', $typeVal);
+        }      
+        if($keywordVal){
+            $movieRs->where('movie.name', 'like', '%'.$keywordVal.'%');
+        }       
+        
+        $movies                             =   $movieRs->paginate(16);        
             
         $movieRs                            =   $movieRs->get();
         $movies                             =   $movieRs->toArray();
@@ -63,7 +76,7 @@ class MovieController extends Controller
                                                         ->get();  
         $cities                             =   $cityRs->toArray();          
 
-        return view('movies',['movies' => $movies, 'cities' => $cities, 'cityVal' => $cityVal, 'keyword' => $keyword]);
+        return view('movies',['movies' => $movies, 'cities' => $cities, 'type' => $type, 'cityVal' => $cityVal, 'keyword' => $keyword]);
     }
 
     public function getDetails(Request $request,$url){
@@ -197,6 +210,63 @@ class MovieController extends Controller
         // exit();
 
         return view('theatre_details',['theatre' => $theatre, 'descriptionHeight' => $descriptionHeight, 'movies' => $movies]);
+    }
+
+    public function getRelated(Request $request,$language,$id){
+        
+        $distance                       =   "";
+        $commonCtrl                     =   new CommonController;        
+
+        $siteId                         =   config('app.siteId');
+
+        $relatedRs                      =   Movie::select('movie.id as movieId', 'movie.name', 
+                                                            'movie.cast', 'movie.language', 'movie.music', 
+                                                            'movie.director', 'movie.producer', 'url.urlName', 'photo.photoName')
+                                                            ->leftjoin('url','url.movieId', '=', 'movie.id')
+                                                            ->leftjoin('site','site.siteId', '=', 'movie.siteId')
+                                                            ->join('movie_theatre','movie_theatre.movieId', '=', 'movie.id')  
+                                                            ->leftJoin('photo', function($join){
+                                                                $join->on('photo.movieId', '=', 'movie.id')
+                                                                    ->where('photo.is_primary','=',1);
+                                                            })                                                                                                      
+                                                            ->where('movie.is_deleted', '=', '0')
+                                                            ->where('movie_theatre.dateTime', '>=', date("Y-m-d H:i:s") )                                                        
+                                                            ->where('site.siteId', '=', $siteId)
+                                                            ->where('movie.id', '!=', $id)
+                                                            ->where('movie.language', '=', $language)    
+                                                            ->groupBy('movie.id','movie.name','movie.cast', 'movie.language', 'movie.music','movie.director', 'movie.producer', 'url.urlName','photo.photoName')
+                                                            ->orderBy('movie.premium', 'DESC')
+                                                            ->orderBy('movie.created_at', 'DESC')
+                                                            ->take(10)->get();                                                
+            
+        $related                     =   $relatedRs->toArray();  
+
+        return view('related',['related' => $related, 'type' => 'movie']);
+    }  
+    
+    function getTheatreRelated(Request $request,$id){
+
+        $distance                       =   "";
+        $commonCtrl                     =   new CommonController;        
+
+        $siteId                         =   config('app.siteId');
+
+        $relatedRs                      =   Theatre::select('theatre.id','theatre.name',
+                                                                'theatre.phone','url.urlName',
+                                                                'address.address1','address.address2','city.city',
+                                                                'address.state','address.zip','address.phone1',
+                                                                'address.latitude','address.longitude'
+                                                                )
+                                                        ->leftjoin('address','address.id', '=', 'theatre.addressId')
+                                                        ->leftjoin('city','city.cityId', '=', 'address.city')  
+                                                        ->leftjoin('url','url.theatreId', '=', 'theatre.id')
+                                                        ->where('theatre.id', '!=', $id)
+                                                        ->orderBy('theatre.id', 'asc')
+                                                        ->take(10)->get();    
+        $related                        =   $relatedRs->toArray();  
+
+        return view('related',['related' => $related, 'type' => 'theatre']);                                                         
+
     }
 
 

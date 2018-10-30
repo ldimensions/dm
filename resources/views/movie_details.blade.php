@@ -33,6 +33,8 @@
                                     @endif 
                                 </td>
                             </tr>
+                        @else
+                        <span id="readMore"></span>
                         @endif 
                         <tr>
                             <td colspan="2" class="smallfont tdtoppadd1">Producer</td>
@@ -243,6 +245,14 @@
         document.querySelector('#description').style.height= 'auto';
         this.style.display= 'none';
     }); 
+
+    $( document ).ready(function() {
+        $.get("<?php echo URL::to('/');?>/movie-related/<?php echo $movie['language'];?>/<?php echo $movie['id'];?>", function(data, status){
+            if(status=="success"){
+                document.getElementById("related").innerHTML = data;
+            }
+        });
+    });    
   
     
 </script>

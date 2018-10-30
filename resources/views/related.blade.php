@@ -65,9 +65,35 @@
                 @if ($rel['latitude'] && $rel['longitude'])
                     <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" title="{{$rel['name']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
                 @endif 
-                <div class="content2">{{ $rel['address1'] }} {{ $rel['address2'] }}, {{ $rel['city'] }}, {{ $rel['state'] }} {{ $rel['zip'] }}</span> </div>
+                <div class="content2">{{ $rel['address1'] }}, {{ $rel['city'] }}, {{ $rel['state'] }} {{ $rel['zip'] }}</span> </div>
                 <a href="tel:{{ $rel['phone1'] }}" class="content3 h21">{{ $rel['phone1'] }}</a>              
-        @endif    
+        @endif  
+        @if (isset($type) && $type == 'movie')
+            <div class="smallImage">
+                @if (isset($rel['photoName']) && $rel['photoName'])
+                    <img src="{{ URL::to('/') }}/image/movie/{{$rel['movieId']}}/{{$rel['photoName']}}" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%">
+                @else
+                    <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%">
+                @endif  
+            </div> 
+            <a href="../{{config('app.defaultBaseURL.indian-movie')}}/{{ $rel['urlName'] }}" title="{{$rel['name']}}" ><h3 class="content1 colorh1">{{ $rel['name'] }}</h3></a>
+        @endif 
+        @if (isset($type) && $type == 'theatre')
+            <div class="smallImage">
+                @if (isset($rel['photoName']) && $rel['photoName'])
+                    <img src="{{ URL::to('/') }}/image/theatre/{{$rel['id']}}/{{$rel['photoName']}}" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%">
+                @else
+                    <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%">
+                @endif  
+            </div> 
+            <a href="../{{config('app.defaultBaseURL.indian-theatre')}}/{{ $rel['urlName'] }}" title="{{$rel['name']}}" ><h3 class="content1 colorh1">{{ $rel['name'] }}</h3></a>
+            @if ($rel['latitude'] && $rel['longitude'])
+                <a href="https://www.google.com/maps/dir/{{$rel['latitude']}},{{$rel['longitude']}}" target="_blank" class="mapicon"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$loop->index}}{{ $rel['name'] }}"/></a>
+            @endif  
+            <div class="content2">{{ $rel['address1'] }}, {{ $rel['city'] }}, {{ $rel['state'] }} {{ $rel['zip'] }}</div>
+            <a href="tel:{{ $rel['phone1'] }}" class="content3 h21">{{ $rel['phone1'] }}</a>
+            <!-- <div class="content2">Closed - Open 7 AM</div> -->
+        @endif                   
     </div>
     </div>
 @endforeach
