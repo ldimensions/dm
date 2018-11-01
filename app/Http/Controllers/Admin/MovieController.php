@@ -70,6 +70,7 @@ class MovieController extends Controller
             $photoRs                        =   $photoArr->toArray();   
 
             $movieTimeArr                   =   MovieTheatre::select('theatreId','dateTime')
+                                                        ->orderBy('dateTime', 'asc')
                                                         ->orderBy('theatreId', 'ASC')
                                                         ->where('movieId', '=', $id)
                                                         ->get();  
@@ -147,8 +148,7 @@ class MovieController extends Controller
         return view('admin.movie_add',['movie' => $movie, 'theatres' => $theatres, 'photos' => $photoRs, 'movieTimes' => $movieTheatreAggr, 'movieBookingLink' => $movieBookingLinkArr]); 
     }
 
-    public function addMovie(Request $request)
-    {
+    public function addMovie(Request $request){
 
         $movieVal                           =   $request->post();
         
@@ -176,7 +176,6 @@ class MovieController extends Controller
           
         // exit();
 
-        
         if($movieVal['id']){
             DB::table('movie')
                 ->where('id', $movieVal['id'])
@@ -270,10 +269,12 @@ class MovieController extends Controller
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
 
-                    $resizeImage                = Image::make($file);
-                    $resizeImage->resize(466,350);
-                    $path                       = public_path('image/movie/'.$movieVal['id'].'/'.$movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);   
+                    // $resizeImage                = Image::make($file);
+                    // $resizeImage->resize(466,350);
+                    // $path                       = public_path('image/movie/'.$movieVal['id'].'/'.$movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    // $resizeImage->save($path);   
+
+                    $file->move(public_path().'/image/movie/'.$movieVal['id'], $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);                     
 
                     DB::table('photo')->insertGetId(
                         [
@@ -295,10 +296,12 @@ class MovieController extends Controller
                     $rand                       = (rand(10,1000));
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
-                    $resizeImage                = Image::make($file);
-                    $resizeImage->resize(128,95);
-                    $path                       = public_path('image/movie/'.$movieVal['id'].'/'.$movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);                 
+                    // $resizeImage                = Image::make($file);
+                    // $resizeImage->resize(128,95);
+                    // $path                       = public_path('image/movie/'.$movieVal['id'].'/'.$movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    // $resizeImage->save($path);   
+                    
+                    $file->move(public_path().'/image/movie/'.$movieVal['id'], $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);                     
                 
                     DB::table('photo')->insertGetId(
                         [
@@ -368,7 +371,7 @@ class MovieController extends Controller
                 }
                 if(isset($movieVal['bookingLink_'.$i])) {
                     DB::table('movie_booking')->insert([
-                        ['movieId' => $movieVal['id'], 
+                        ['movieId' => $movieId, 
                         'theatreId' => $movieVal['theatre_'.$i], 
                         'bookingLink' => $movieVal['bookingLink_'.$i]]
                     ]);     
@@ -406,10 +409,12 @@ class MovieController extends Controller
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
                     //$file->move(public_path().'/image/movie/'.$movieVal['id'], $fileName); 
-                    $resizeImage                = Image::make($file);
-                    $resizeImage->resize(466,350);
-                    $path                       = public_path('image/movie/'.$movieId.'/'.$movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);                      
+                    // $resizeImage                = Image::make($file);
+                    // $resizeImage->resize(466,350);
+                    // $path                       = public_path('image/movie/'.$movieId.'/'.$movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    // $resizeImage->save($path);    
+                    
+                    $file->move(public_path().'/image/movie/'.$movieId, $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
     
                     DB::table('photo')->insertGetId(
                         [
@@ -431,10 +436,12 @@ class MovieController extends Controller
                     $extension                  = $file->getClientOriginalExtension();                
                     $fileName                   = $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension;
                     //$file->move(public_path().'/image/movie/'.$movieVal['id'], $fileName); 
-                    $resizeImage                = Image::make($file);
-                    $resizeImage->resize(128,95);
-                    $path                       = public_path('image/movie/'.$movieId.'/'.$movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
-                    $resizeImage->save($path);                     
+                    // $resizeImage                = Image::make($file);
+                    // $resizeImage->resize(128,95);
+                    // $path                       = public_path('image/movie/'.$movieId.'/'.$movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
+                    // $resizeImage->save($path);      
+                    
+                    $file->move(public_path().'/image/movie/'.$movieId, $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
     
                     DB::table('photo')->insertGetId(
                         [
@@ -543,8 +550,7 @@ class MovieController extends Controller
         return view('admin.theatre_add',['theatre' => $theatre, 'cities' => $cities]); 
     }
 
-    public function addTheatre(Request $request)
-    {
+    public function addTheatre(Request $request){
 
         $theatreVal                         =   $request->post();
 
@@ -596,7 +602,7 @@ class MovieController extends Controller
                         'phone1'        => $theatreVal['phone1'],
                         'phone2'        => $theatreVal['phone2'],
                         'latitude'      => $theatreVal['latitude'],
-                        'longitude'     => $theatreVal['latitude'],                   
+                        'longitude'     => $theatreVal['longitude'],                   
                     ]
             );
             if($theatreVal['urlName'] != $theatreVal['urlNameChk']){

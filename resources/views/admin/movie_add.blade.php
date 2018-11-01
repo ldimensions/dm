@@ -135,6 +135,7 @@
                                                                         <div class="form-group">
                                                                             <label>Theatre</label>
                                                                             <select name="theatre_{{$index}}" value="" id="theatre" class="form-control">
+                                                                                <option value="">Please select</option>
                                                                                 @foreach ($theatres as $timeKey => $theatre)
                                                                                     <option 
                                                                                         value="{{$theatre['id']}}"    
@@ -215,6 +216,7 @@
                                                                     <label>Theatre</label>
                                                                     @if($movie['id'])
                                                                         <select name="theatre_1" value="" id="theatre" class="form-control">
+                                                                            <option value="">Please select</option>
                                                                             @foreach ($theatres as $key => $theatre)
                                                                                 <option 
                                                                                     value="{{$theatre['id']}}">
@@ -224,6 +226,7 @@
                                                                         </select>
                                                                     @else 
                                                                         <select name="theatre_1" value="{{ old('theatre', $movie['theatre']) }}" id="theatre" class="form-control">
+                                                                            <option value="">Please select</option>
                                                                             @foreach ($theatres as $key => $theatre)
                                                                                 <option 
                                                                                     value="{{$theatre['id']}}"
@@ -376,6 +379,7 @@
                                                     <div class="form-group">
                                                         <label>Theatre</label>
                                                         <select name="theatre_`+theatreIdVal+`" value="" id="theatre" class="form-control">
+                                                            <option value="">Please select</option>
                                                             @foreach ($theatres as $key => $theatre)
                                                                 <option 
                                                                     value="{{$theatre['id']}}"
@@ -401,7 +405,7 @@
                                             </div> 
 
                                             <div class="col-lg-6 col-xs-2 col-sm-2"> 
-                                                -<button type="button" class="btn btn-default btn-sm" id="removeTheatre_`+theatreIdVal+`" ><i class="glyphicon glyphicon-remove"></i></button>
+                                                <button type="button" class="btn btn-default btn-sm" id="removeTheatre_`+theatreIdVal+`" ><i class="glyphicon glyphicon-remove"></i></button>
                                             </div>   
                                         </div>
                                     </div>                                                                          

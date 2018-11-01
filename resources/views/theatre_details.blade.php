@@ -1,26 +1,27 @@
 @extends('layouts.app')
 @section('content')
+<?php use App\Http\Controllers\CommonController;?>
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer">
-            <div class="paggination"><a href="#" class="subcontent2 h21">Movies</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Theatre Name</span></div>
+            <div class="paggination"><a href="{{ route('movies') }}" class="subcontent2 h21">Movies</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{$theatre['name']}}</span></div>
             <div class="block2">
                 <div class="move_title toparea space">
                     <table class="fullWidth">
-                    <a href="#" title="" target="_blank" class="bookingIcon2"><img src="{{ URL::to('/') }}/image/calendar1.svg" alt=""/></a>
-                    <a href="#" title="" class="share"><img src="{{ URL::to('/') }}/image/share_icon.svg" alt=""/></a>
+                        {!!CommonController::share($theatre['name'])!!}
                         <tr>
-                        <td><h1 class="titleblock">Theatre Name</h1></td>
+                        <td><h1 class="titleblock">{{$theatre['name']}}</h1></td>
                         </tr>
                         <tr>
-                            <td><div class="titleblock white smaextra">7767, 3434 Forest Ln , Carrollton, TX, 75234
-</div></td>
+                            <td>
+                                <div class="titleblock white smaextra">
+                                    {{$theatre['address1'].', '.$theatre['city'].', '.$theatre['state'].', '.$theatre['zip']}}
+                                </div>
+                            </td>
                         </tr>
                         <tr>
-                            <td><a href="#" class="titleblock white smaextra extra">214-681-6188
-</a></td>
+                            <td><a href="tel:{{ $theatre['phone1'] }}" class="titleblock white smaextra extra">{{$theatre['phone1']}}</a></td>
                         </tr>  
-                                               
                     </table> 
                 </div>
                 <div class="content">
@@ -28,17 +29,24 @@
                         <tr>
                             <td colspan="2">&nbsp;</td>
                         </tr>
-                        <tr>
-                            <td colspan="2">
-                                Description
-                            </td>
-                        </tr>
+                            @if($theatre['description']) 
+                            <tr>
+                                <td colspan="2">
+                                    <div id="description" style="overflow: hidden; height: {{$descriptionHeight}}px;">{!! nl2br($theatre['description']) !!}</div>
+                                    @if(strlen($theatre['description']) >= '220') 
+                                    <a id="readMore" class="read h21">Read more...</a>
+                                    @else
+                                        <span id="readMore"></span>
+                                    @endif 
+                                </td>
+                            </tr>
+                        @endif 
 
                         <tr>
                             <td colspan="2" class="smallfont tdtoppadd1">URL</td>
                         </tr>
                         <tr>
-                            <td colspan="2"><h2><a href="#" target="_blank" class="h21" >www.moviewebsite.com</a></h2></td>
+                            <td colspan="2"><h2><a href="http://{{ $theatre['website'] }}" target="_blank" class="h21" >{{$theatre['website']}}</a></h2></td>
                         </tr>
                     </table>  
                 </div>
@@ -133,25 +141,11 @@
             </div>
             <div class="block22">
                 <div class="white_t1 space">
-                    <h2 class="titleh2 graycolor1">Theatre Name Location</h2>
-                    <a href="#" title="" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
+                    <h2 class="titleh2 graycolor1">{{ $theatre['name'] }} Location</h2>
+                    <a href="https://www.google.com/maps/dir//{{ $theatre['name'] }} {{ $theatre['address1'] }} {{ $theatre['city'] }}, {{ $theatre['state'] }}, {{$theatre['zip'] }}/%40{{$theatre['latitude']}},{{$theatre['longitude']}},12z" title="{{$theatre['name']}}" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$theatre['name']}}"/></a>
                 </div>
                 <div id="map" class="map"></div>
-            </div>
-            <div class="blockk1">
-                <div class="block23">
-                    <div class="white_Photo space"><h2 class="titleh2 graycolor">Theatre Name Photos</h2></div>
-                </div>
-                <div class="block231">
-                    <div class="topdetail slideshow-container">
-                        <ul id="lightSlider">
-                                <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
-                                    <img src="" alt="" style="width:100%;height:100%" class="bottomarea">
-                                </li>
-                        </ul>            
-                    </div>        
-                </div>
-            </div>    
+            </div>             
             <div class="row" id="related"></div>
         </div>
         <div class="col-md-3 rightcontainer nopadding">
@@ -193,7 +187,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <input type="hidden" class="form-control nup" id="type" name="type" value="1">
+                <input type="hidden" class="form-control nup" id="type" name="type" value="5">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="suggessionBtn">Submit</button>
             </div>            
@@ -206,8 +200,32 @@
 <script src="{{ asset('js/lightslider.js') }}"></script>
 <script>
 
- 
-    /*---------- Image Slider ----------*/
+     /*---------- Google Map ----------*/
+
+     $( document ).ready(function() {
+        $.get("<?php echo URL::to('/');?>/theatre-related/<?php echo $theatre['id'];?>", function(data, status){
+            if(status=="success"){
+                document.getElementById("related").innerHTML = data;
+            }
+        });
+    });     
+    
+     function initMap() {
+        var lat = parseFloat("{{ $theatre['latitude'] }}");
+        var long = parseFloat("{{ $theatre['longitude'] }}");
+        console.log(lat+'#'+long);
+        var label = "{{ $theatre['name'] }}";
+        var myLatLng = {lat: lat, lng: long};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11,
+            center: myLatLng
+        });
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: label
+        });
+    }
     $('#lightSlider').lightSlider({
         gallery: true,
         item: 1,
@@ -216,12 +234,7 @@
         thumbItem: 9
     });
     
-    /*---------- Image Slider End----------*/
-
-    document.querySelector('#readMore').addEventListener('click', function() {
-        document.querySelector('#description').style.height= 'auto';
-        this.style.display= 'none';
-    });      
+      
     
 </script>
 <script async defer

@@ -56,9 +56,7 @@
                                         <td>{{$rel['name']}}</td>
                                         <td>{{config('app.movieLanguage.'.$rel["language"])}}</td>
                                         <td class="ceter" width="100px;">
-                                            <!-- <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.movie-store-details')}}/{{ $rel['urlName'] }}" target="_blank" class="title"> -->
-                                                Link
-                                            <!-- </a>     -->
+                                            <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-movie')}}/{{ $rel['urlName'] }}" target="_blank" class="title">Link</a>    
                                         <td width="65px;">
                                             <a href="{{ url('/admin/movie_add') }}/{{$rel['movieId']}}"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit"></i></button></a>
                                             <button type="button" class="btn btn-default btn-sm" onClick="deleteMovie({{$rel['movieId']}})"><i class="fa fa-trash-o"></i></button>

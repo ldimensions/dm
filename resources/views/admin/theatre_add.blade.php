@@ -54,7 +54,7 @@
                                             </div> 
                                             <div class="form-group">
                                                 <label>Website</label>
-                                                <input name="website" value="{{ old('website', $theatre['website']) }}" id="website" maxlength="50" class="form-control">
+                                                <input name="website" value="{{ old('website', $theatre['website']) }}" id="website" maxlength="200" class="form-control">
                                             </div>                                                 
                                             <div class="form-group">
                                                 <label>Premium</label>
