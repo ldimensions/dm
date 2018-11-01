@@ -68,9 +68,11 @@
         </div>
         @if (count($movies) == 0)
             <div class="col-md-12 block1">
-            Suggestions for improving the results:<br/>
-            Try a different location.<br/>
-            Check the spelling or try alternate spellings.<br/>
+                    <div class="smallImage">
+                        <img src="{{ URL::to('/') }}/image/noimage.svg" alt="" style="width:100%;height:100%"></div>
+                        <h2 class="content11"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-movie')}}/hardcoded" title="" class="colorh1">Name</a> </h2>                                                     
+                    <div class="content2">Language</div>
+
             </div>
         @endif         
         @foreach ($movies as $key => $rel)
