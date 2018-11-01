@@ -156,7 +156,7 @@
             <div class="white_t1 space">
                 <h2 class="titleh2 graycolor1">{{ $movie['name'] }} Trailer</h2></div>
                 <div id="video" class="video">
-                    <iframe width="400" height="245" src="{{ $movie['trailer'] }}" frameborder="0"></iframe>
+                    <iframe width="100%" height="100%" src="{{ $movie['trailer'] }}" frameborder="0"></iframe>
                 </div>
             </div>
             @if($photos)
