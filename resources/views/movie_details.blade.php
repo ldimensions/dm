@@ -13,7 +13,7 @@
                         <td><h1 class="titleblock">{{ $movie['name'] }}</h1></td>
                         </tr>
                         <tr>
-                            <td><div class="titleblock white smaextra">{{ CommonController::getLanguage($movie['language']) }}</div></td>
+                        <td><div class="titleblock white smaextra">{{ CommonController::getLanguage($movie['language']) }}</div></td>
                         </tr>                       
                     </table> 
                 </div>
@@ -60,12 +60,12 @@
                         <tr>
                             <td colspan="2"><h3 class="h21" >{{ $movie['music'] }}</h3></td>
                         </tr> 
-                        <!-- <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">URL</td>
+                         <tr>
+                            <td colspan="2" class="smallfont tdtoppadd1">Website</td>
                         </tr>
                         <tr>
-                            <td colspan="2"><h2><a href="#" target="_blank" class="h21" >{{ $movie['name'] }}</a></h2></td>
-                        </tr> -->
+                            <td colspan="2"><h2 class="h211"><a href="#" target="_blank" class="h21">{{ $movie['name'] }}</a></h2></td>
+                        </tr>
                     </table>  
                 </div>
                 @if($movieTheatres)
@@ -92,12 +92,13 @@
                                                         {{$movieTheatre['details']['address1'].', '.$movieTheatre['details']['city'].', '.$movieTheatre['details']['state'].', '.$movieTheatre['details']['zip']}}
                                                     </td>
                                                 </tr> 
+                                               
                                                 <tr>
-                                                    <td colspan="2"><h2 class="space2"><a href="http://{{ $movieTheatre['details']['website'] }}" target="_blank" class="h21" >{{$movieTheatre['details']['website']}}</a></h2></td>
-                                                </tr>
+                                                    <td colspan="2" style="padding-bottom:5px;"><a href="tel:{{ $movieTheatre['details']['phone1'] }}" target="_blank" class="space2 h21">{{$movieTheatre['details']['phone1']}}</td>
+                                                </tr>    
                                                 <tr>
-                                                    <td colspan="2" style="padding-bottom:10px;"><a href="tel:{{ $movieTheatre['details']['phone1'] }}" target="_blank" class="space2 h21">{{$movieTheatre['details']['phone1']}}</td>
-                                                </tr>                                              
+                                                    <td colspan="2" style="padding-bottom:10px;"><h2 class="space2 h211"><a href="http://{{ $movieTheatre['details']['website'] }}" target="_blank" class="h21" >{{$movieTheatre['details']['website']}}</a></h2></td>
+                                                </tr>                                          
                                                 @foreach ($movieTheatre['dateTimeDetails'] as $key1 => $theatre)
                                                     <tr>
                                                         <td style="padding-top:8px; border-top:1px solid #f1f1f1;">

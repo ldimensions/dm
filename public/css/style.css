@@ -982,6 +982,15 @@ h2{
 	color: #323232;
 	text-decoration: none;
 }
+.h211 {
+    font-size: 14px;
+	color: #646464;
+	white-space: nowrap;
+    overflow: hidden;
+	text-overflow: ellipsis;
+	width:250px;
+}
+
 .titleh2{
 	font-size:16px;
 }
