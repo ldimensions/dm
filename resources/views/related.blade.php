@@ -6,6 +6,10 @@
         <div class="related title">Related Restaurants</div>
     @elseif(isset($type) && $type == 'religion' && $key == 0)
         <div class="related title">Related Religions</div>
+    @elseif(isset($type) && $type == 'movie' && $key == 0)
+        <div class="related title">Related Movies</div>
+    @elseif(isset($type) && $type == 'theatre' && $key == 0)
+        <div class="related title">Related Theatres</div>
     @endif 
     <div class="col-md-12 block1">
         @if (isset($type) && $type == 'grocery')

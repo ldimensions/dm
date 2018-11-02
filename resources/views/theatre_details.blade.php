@@ -52,79 +52,30 @@
                 </div>
                 <div class="movie">
                     <table class="fullWidth">
-                    <tr>
+                        <tr>
                             <td style="padding-bottom:15px;">
-                            <div class="theatreBlock">
-                                <table class="fullWidth">
-                                    <tr>
-                                        <td>
-                                            <div class="smallImage1">
-                                                <img src="{{ URL::to('/') }}/image/noimage.svg" alt="" style="width:100%;height:100%">
-                                            </div>
-                                            <h2 class="content11 titletopmargin"> <a href="#" title="" class="colorh11">Movie Name</a></h2>                                                      
-                                            <div class="content2 Subtitle">Language</div>
-                                        </td>
-                                    </tr> 
-                                    <tr>
-                                    <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
-                                    <table>
-                                    <tr>
-                                            <td  colspan="5" class="space2 smallfont tdtoppadd2">Oct 20 Sun</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2"><a href="#"target="_blank" class=" inactiveweekdays_moive h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td  colspan="5" class="space2 smallfontMovie tdtoppadd2">Oct 20 Mon</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2 space4"><a href="#"target="_blank" class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-
-                                    </table>  
-                                    </td>
-                                    </tr>    
-                                </table> 
-                            </div>
-                            <div class="theatreBlock">
-                                <table class="fullWidth">
-                                    <tr>
-                                        <td>
-                                            <div class="smallImage1">
-                                                <img src="{{ URL::to('/') }}/image/noimage.svg" alt="" style="width:100%;height:100%">
-                                            </div>
-                                           <h2 class="content11 titletopmargin"> <a href="#" title="" class="colorh11">Movie Name</a></h2>                                                      
-                                            <div class="content2 Subtitle">Language</div>
-                                        </td>
-                                    </tr> 
-                                    <tr>
-                                    <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
-                                    <table>
-                                    <tr>
-                                            <td  colspan="5" class="space2 smallfont tdtoppadd2">Oct 20 Sun</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2"><a href="#"target="_blank" class=" inactiveweekdays_moive h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td  colspan="5" class="space2 smallfontMovie tdtoppadd2">Oct 20 Mon</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2 space4"><a href="#"target="_blank" class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-
-                                    </table>  
-                                    </td>
-                                    </tr>    
-                                </table> 
-                            </div>
+                                @foreach ($movies as $key => $movie)
+                                    <div class="theatreBlock">
+                                        <table class="fullWidth">
+                                            <tr>
+                                                <td>
+                                                    <div class="smallImage1">
+                                                        @if($movie['photoName'])
+                                                            <img src="{{ URL::to('/') }}/image/movie/{{$movie['id']}}/{{$movie['photoName']}}" alt="{{$movie['photoName']}}" style="width:100%;height:100%">
+                                                        @else
+                                                            <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$movie['photoName']}}" style="width:100%;height:100%">
+                                                        @endif                                                             
+                                                    </div>
+                                                    <a href="#" title="" ><h2 class="content11 titletopmargin colorh11">{{$movie['name']}}</h2></a>                                                      
+                                                    <div class="content2 Subtitle">{{ CommonController::getLanguage($movie['language']) }}</div>
+                                                </td>
+                                            </tr> 
+                                        </table> 
+                                    </div>
+                                @endforeach  
                             </td>
                         </tr>
-                    </table>    
+                    </table>       
                 </div>
                 <div class="content">
                     <table class="fullWidth">

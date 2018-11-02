@@ -52,7 +52,7 @@ class MovieController extends Controller
                                                         ->where('movie.is_deleted', '=', '0')
                                                         ->where('movie_theatre.dateTime', '>=', date("Y-m-d H:i:s") )                                                        
                                                         ->where('site.siteId', '=', $siteId)
-                                                        ->groupBy('movie.id','movie.name','movie.cast', 'movie.language', 'movie.music','movie.director', 'movie.producer', 'url.urlName','photo.photoName')
+                                                        ->groupBy('movie.id','movie.name','movie.cast', 'movie.language', 'movie.music','movie.director', 'movie.producer', 'url.urlName','photo.photoName','movie.created_at','movie.premium')
                                                         ->orderBy('movie.premium', 'DESC')
                                                         ->orderBy('movie.created_at', 'DESC');   
 
@@ -186,10 +186,10 @@ class MovieController extends Controller
                                                         ->get()->first();
 
         $theatre                            =   $theatreRs->toArray();
-        $movieRs                            =   Movie::select('movie.id as movieId', 'movie.name', 'movie.language', 
+        $movieRs                            =   Movie::select('movie.id as id', 'movie.name', 'movie.language', 
                                                                 'url.urlName', 'photo.photoName')
                                                                 ->leftjoin('url','url.movieId', '=', 'movie.id')
-                                                                ->rightjoin('movie_theatre','movie_theatre.movieId', '=', 'movie.id')  
+                                                                ->join('movie_theatre','movie_theatre.movieId', '=', 'movie.id')  
                                                                 ->leftJoin('photo', function($join){
                                                                     $join->on('photo.movieId', '=', 'movie.id')
                                                                         ->where('photo.is_primary','=',1);
@@ -197,7 +197,7 @@ class MovieController extends Controller
                                                                 ->where('movie.is_deleted', '=', '0')
                                                                 ->where('movie_theatre.dateTime', '>=', date("Y-m-d H:i:s") )       
                                                                 ->where('movie_theatre.theatreId', '=', $theatre['id'])           
-                                                                ->groupBy('movie.id','movie.name','url.urlName','photo.photoName','movie.language')                                                                
+                                                                ->groupBy('movie.id','movie.name','url.urlName','photo.photoName','movie.language','movie.premium','movie_theatre.dateTime')                                                                
                                                                 ->orderBy('movie.premium', 'DESC')
                                                                 ->orderBy('movie_theatre.dateTime', 'ASC')                                                 
                                                                 ->get();
@@ -234,7 +234,7 @@ class MovieController extends Controller
                                                             ->where('site.siteId', '=', $siteId)
                                                             ->where('movie.id', '!=', $id)
                                                             ->where('movie.language', '=', $language)    
-                                                            ->groupBy('movie.id','movie.name','movie.cast', 'movie.language', 'movie.music','movie.director', 'movie.producer', 'url.urlName','photo.photoName')
+                                                            ->groupBy('movie.id','movie.name','movie.cast', 'movie.language', 'movie.music','movie.director', 'movie.producer', 'url.urlName','photo.photoName','movie.created_at','movie.premium')
                                                             ->orderBy('movie.premium', 'DESC')
                                                             ->orderBy('movie.created_at', 'DESC')
                                                             ->take(10)->get();                                                

@@ -60,12 +60,6 @@
                         <tr>
                             <td colspan="2"><h3 class="h21" >{{ $movie['music'] }}</h3></td>
                         </tr> 
-                         <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Website</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><h2 class="h211"><a href="#" target="_blank" class="h21">{{ $movie['name'] }}</a></h2></td>
-                        </tr>
                     </table>  
                 </div>
                 @if($movieTheatres)
@@ -77,7 +71,9 @@
                                         <div class="theatreBlock">
                                             <table class="fullWidth">
                                                 <a href="https://www.google.com/maps/dir//{{ $movieTheatre['details']['name'] }} {{ $movieTheatre['details']['address1'] }} {{ $movieTheatre['details']['city'] }}, {{ $movieTheatre['details']['state'] }}, {{$movieTheatre['details']['zip'] }}/%40{{$movieTheatre['details']['latitude']}},{{$movieTheatre['details']['longitude']}},12z" title="{{$movieTheatre['details']['name']}}" target="_blank" class="mapicon3"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$movieTheatre['details']['name']}}"/></a>
-                                                <a href="http://{{ $movieTheatre['details']['bookingLink'] }}" title="{{ $movie['name'] }}" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt="{{ $movie['name'] }}"/></a>
+                                                @if($movieTheatre['details']['bookingLink'])
+                                                    <a href="{{ $movieTheatre['details']['bookingLink'] }}" title="{{ $movie['name'] }}" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt="{{ $movie['name'] }}"/></a>
+                                                @endif
                                                 <tr>
                                                     <td colspan="2">
                                                         <h1 class="space3 space2 titleblock1">
@@ -95,10 +91,12 @@
                                                
                                                 <tr>
                                                     <td colspan="2" style="padding-bottom:5px;"><a href="tel:{{ $movieTheatre['details']['phone1'] }}" target="_blank" class="space2 h21">{{$movieTheatre['details']['phone1']}}</td>
-                                                </tr>    
-                                                <tr>
-                                                    <td colspan="2" style="padding-bottom:10px;"><h2 class="space2 h211"><a href="http://{{ $movieTheatre['details']['website'] }}" target="_blank" class="h21" >{{$movieTheatre['details']['website']}}</a></h2></td>
-                                                </tr>                                          
+                                                </tr>  
+                                                @if($movieTheatre['details']['website'])  
+                                                    <tr>
+                                                        <td colspan="2" style="padding-bottom:10px;"><h2 class="space2 h211"><a href="{{ $movieTheatre['details']['website'] }}" target="_blank" class="h21" >{{$movieTheatre['details']['website']}}</a></h2></td>
+                                                    </tr>  
+                                                @endif                                       
                                                 @foreach ($movieTheatre['dateTimeDetails'] as $key1 => $theatre)
                                                     <tr>
                                                         <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
@@ -111,21 +109,39 @@
                                                                     @endif    
                                                                 </tr>
                                                                 <tr>
+                                                                @if($movieTheatre['details']['bookingLink'])  
                                                                     <td colspan="5" class="space2 space4">
                                                                         @if ( $theatre[0]['date'] == $today )
-                                                                            <a href="http://{{ $movieTheatre['details']['bookingLink'] }}" target="_blank" class="activeweekdays_movie">
+                                                                            <a href="{{ $movieTheatre['details']['bookingLink'] }}" target="_blank" class="activeweekdays_movie">
                                                                                 @foreach ($theatre as $key1 => $time)
                                                                                     {{$time['dateTime']}}@if(!$loop->last), @endif
                                                                                 @endforeach 
                                                                             </a>
                                                                         @else
-                                                                            <a href="http://{{ $movieTheatre['details']['bookingLink'] }}" target="_blank" class="inactiveweekdays_moive">
+                                                                            <a href="{{ $movieTheatre['details']['bookingLink'] }}" target="_blank" class="inactiveweekdays_moive">
                                                                                 @foreach ($theatre as $key1 => $time)
                                                                                     {{$time['dateTime']}}@if(!$loop->last), @endif
                                                                                 @endforeach 
                                                                             </a>                                                                    
                                                                         @endif 
                                                                     </td>
+                                                                @else
+                                                                    <td colspan="5" class="space2 space4">
+                                                                            @if ( $theatre[0]['date'] == $today )
+                                                                                <span class="activeweekdays_movie">
+                                                                                    @foreach ($theatre as $key1 => $time)
+                                                                                        {{$time['dateTime']}}@if(!$loop->last), @endif
+                                                                                    @endforeach 
+                                                                                </span>
+                                                                            @else
+                                                                                <span target="_blank" class="inactiveweekdays_moive">
+                                                                                    @foreach ($theatre as $key1 => $time)
+                                                                                        {{$time['dateTime']}}@if(!$loop->last), @endif
+                                                                                    @endforeach 
+                                                                                </span>                                                                    
+                                                                            @endif 
+                                                                    </td>
+                                                                @endif 
                                                                 </tr>
                                                             </table>  
                                                         </td>

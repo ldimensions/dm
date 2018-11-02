@@ -17,8 +17,7 @@ class GroceryController extends Controller
 
     }
 
-    public function index_old(Request $request)
-    {
+    public function index_old(Request $request){
         $siteId                         =   config('app.siteId');
         $commonCtrl                     =   new CommonController;
 
