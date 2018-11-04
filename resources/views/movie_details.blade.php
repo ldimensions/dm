@@ -36,30 +36,38 @@
                         @else
                         <span id="readMore"></span>
                         @endif 
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Producer</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><h3 class="h21" >{{ $movie['producer'] }}</h3></td>
-                        </tr> 
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Director</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><h3 class="h21" >{{ $movie['director'] }}</h3></td>
-                        </tr> 
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Cast</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><h3 class="h21" >{{ $movie['cast'] }}</h3></td>
-                        </tr> 
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Music</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><h3 class="h21" >{{ $movie['music'] }}</h3></td>
-                        </tr> 
+                        @if($movie['producer']) 
+                            <tr>
+                                <td colspan="2" class="smallfont tdtoppadd1">Producer</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><h3 class="h21" >{{ $movie['producer'] }}</h3></td>
+                            </tr> 
+                        @endif  
+                        @if($movie['director'])                        
+                            <tr>
+                                <td colspan="2" class="smallfont tdtoppadd1">Director</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><h3 class="h21" >{{ $movie['director'] }}</h3></td>
+                            </tr> 
+                        @endif  
+                        @if($movie['cast'])  
+                            <tr>
+                                <td colspan="2" class="smallfont tdtoppadd1">Cast</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><h3 class="h21" >{{ $movie['cast'] }}</h3></td>
+                            </tr> 
+                        @endif 
+                        @if($movie['music']) 
+                            <tr>
+                                <td colspan="2" class="smallfont tdtoppadd1">Music</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><h3 class="h21" >{{ $movie['music'] }}</h3></td>
+                            </tr> 
+                        @endif    
                     </table>  
                 </div>
                 @if($movieTheatres)

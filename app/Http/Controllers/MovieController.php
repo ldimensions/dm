@@ -205,9 +205,9 @@ class MovieController extends Controller
 
         $descriptionHeight                  =   $commonCtrl->descriptionLength(strlen($theatre['description']));
         $commonCtrl->setMeta($request->path(),2);
-        // echo '<pre>';
-        // print_r($movies);
-        // exit();
+        echo '<pre>';
+        print_r($movies);
+        exit();
 
         return view('theatre_details',['theatre' => $theatre, 'descriptionHeight' => $descriptionHeight, 'movies' => $movies]);
     }
