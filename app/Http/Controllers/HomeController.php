@@ -7,6 +7,7 @@ use App\Http\Models\Restaurant;
 use App\Http\Models\Grocery;
 use App\Http\Models\Photo;
 use App\Http\Models\Url;
+use App\Http\Models\Movie;
 use SEOMeta;
 use OpenGraph;
 use Twitter;
@@ -44,20 +45,20 @@ class HomeController extends Controller
                                             ->get(); 
         
         $religions                      =   $religionRs->toArray();  
-        if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
-            foreach($religions as $key => $religion) {    
-                $distance                       =   "";
-                $religions[$key]["distance"]    =   "";
-                $lat                            =   ($religion['latitude'])?$religion['latitude']:'';
-                $long                           =   ($religion['longitude'])?$religion['longitude']:'';
-                if($lat && $long){
-                    $dist                       =   $commonCtrl->distance($lat, $long, "M");
-                    if($dist){
-                        $religions[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
-                    }
-                }
-            }
-        }       
+        // if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
+        //     foreach($religions as $key => $religion) {    
+        //         $distance                       =   "";
+        //         $religions[$key]["distance"]    =   "";
+        //         $lat                            =   ($religion['latitude'])?$religion['latitude']:'';
+        //         $long                           =   ($religion['longitude'])?$religion['longitude']:'';
+        //         if($lat && $long){
+        //             $dist                       =   $commonCtrl->distance($lat, $long, "M");
+        //             if($dist){
+        //                 $religions[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
+        //             }
+        //         }
+        //     }
+        // }       
         // Top groceries
         
         $groceryRs                      =   Grocery::select('grocery.id', 'grocery.name', 
@@ -82,19 +83,19 @@ class HomeController extends Controller
                                             ->get(); 
         
         $grocerys                        =   $groceryRs->toArray();
-        foreach($grocerys as $key => $grocery) {    
-            if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
-                $distance                       =   "";
-                $lat                            =   ($grocery['latitude'])?$grocery['latitude']:'';
-                $long                           =   ($grocery['longitude'])?$grocery['longitude']:'';
-                if($lat && $long){
-                    $dist                       =   $commonCtrl->distance($lat, $long, "M");
-                    if($dist){
-                        $grocerys[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
-                    }
-                }
-            }
-        }
+        // foreach($grocerys as $key => $grocery) {    
+        //     if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){
+        //         $distance                       =   "";
+        //         $lat                            =   ($grocery['latitude'])?$grocery['latitude']:'';
+        //         $long                           =   ($grocery['longitude'])?$grocery['longitude']:'';
+        //         if($lat && $long){
+        //             $dist                       =   $commonCtrl->distance($lat, $long, "M");
+        //             if($dist){
+        //                 $grocerys[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
+        //             }
+        //         }
+        //     }
+        // }
         // Top restaurants
         $restaurantRs                   =   Restaurant::select('restaurant.id', 'restaurant.name', 
                                                     'restaurant.description', 'restaurant.workingTime',
@@ -118,24 +119,38 @@ class HomeController extends Controller
                                                 ->get(); 
         
         $restaurants                     =   $restaurantRs->toArray();
-        if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){            
-            foreach($restaurants as $key => $restaurant) {    
-                $distance                       =   "";
-                $lat                            =   ($restaurant['latitude'])?$restaurant['latitude']:'';
-                $long                           =   ($restaurant['longitude'])?$restaurant['longitude']:'';
-                if($lat && $long){
-                    $dist                       =   $commonCtrl->distance($lat, $long, "M");
-                    if($dist){
-                        $restaurants[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
-                    }
-                }
-            }
-        }
+        // if(isset($_COOKIE['lat']) && isset($_COOKIE['long'])){            
+        //     foreach($restaurants as $key => $restaurant) {    
+        //         $distance                       =   "";
+        //         $lat                            =   ($restaurant['latitude'])?$restaurant['latitude']:'';
+        //         $long                           =   ($restaurant['longitude'])?$restaurant['longitude']:'';
+        //         if($lat && $long){
+        //             $dist                       =   $commonCtrl->distance($lat, $long, "M");
+        //             if($dist){
+        //                 $restaurants[$key]["distance"]   =   number_format((float)$dist, 1, '.', '')." Miles";
+        //             }
+        //         }
+        //     }
+        // }
+
+        $movieRs                            =   Movie::select('movie.id as movieId', 'movie.name', 'movie.language', 'url.urlName')
+                                                                ->leftjoin('url','url.movieId', '=', 'movie.id')
+                                                                ->leftjoin('site','site.siteId', '=', 'movie.siteId')
+                                                                ->join('movie_theatre','movie_theatre.movieId', '=', 'movie.id')  
+                                                                ->where('movie.is_deleted', '=', '0')
+                                                                ->where('movie_theatre.dateTime', '>=', date("Y-m-d H:i:s") )                                                        
+                                                                ->where('site.siteId', '=', $siteId)
+                                                                ->groupBy('movie.id','movie.name','movie.language', 'url.urlName','movie.created_at','movie.premium')
+                                                                ->orderBy('movie.premium', 'DESC')
+                                                                ->orderBy('movie.created_at', 'DESC') 
+                                                                ->take(3)                                                                                                      
+                                                                ->get(); 
+        $movies                             =   $movieRs->toArray();                                                                        
         
         $commonCtrl->setMeta($request->path());
         //echo $request->path();
         
-        return view('home',['religion' => $religions, 'grocery' => $grocerys, 'restaurants' => $restaurants]);
+        return view('home',['religion' => $religions, 'grocery' => $grocerys, 'restaurants' => $restaurants,'movies' => $movies]);
     }
 
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<?php use App\Http\Controllers\CommonController;?>
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer space1">
@@ -82,6 +82,20 @@
                     @endforeach
                     <div class="reli_block3bottom"></div>
                 </div>
+
+                <div class="col-md-4 block3">
+                    <div class="re_block3">Top 3 Movies</div>
+                    @foreach ($movies as $key => $rel)
+                        <div class="main_block">
+                            <h1 class="block_txtblock"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-movie')}}/{{ $rel['urlName'] }}" title="{{ $rel['name'] }}"  class="text2">{{ $rel['name'] }}</a></h1>                                                        
+                            <div class="block_kmblock">
+                                <div class="txtblock">{{ CommonController::getLanguage($rel['language']) }}</div>
+                            </div>
+                            <div class="bottomborder"></div>
+                        </div>
+                    @endforeach                
+                    <div class="re_block3bottom"></div>
+                </div>                
 
 
             </div>

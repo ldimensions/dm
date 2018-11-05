@@ -24,14 +24,15 @@ class MovieController extends Controller
         $siteId                         =   config('app.siteId');
         $commonCtrl                     =   new CommonController;
 
-        if($type && $type!="all"){
+        if($type && $type != "all"){
             //$typeArr                        =   explode("-",$type);
             //$typeVal                        =   $typeArr[count($typeArr)-1];
             $typeVal                        =   $type;
         }
         if($city && $city !='all'){
-            $cityArr                        =   explode("-",$city);
-            $cityVal                        =   $cityArr[count($cityArr)-1];
+            //$cityArr                        =   explode("-",$city);
+            //$cityVal                        =   $cityArr[count($cityArr)-1];
+            $cityVal                        =   $city;
         } 
         if($keyword){
             $keywordVal                     =   $keyword;
@@ -48,7 +49,10 @@ class MovieController extends Controller
                                                         ->leftJoin('photo', function($join){
                                                             $join->on('photo.movieId', '=', 'movie.id')
                                                                 ->where('photo.is_primary','=',1);
-                                                        })                                                                                                      
+                                                        })  
+                                                        ->leftjoin('theatre','theatre.id', '=', 'movie_theatre.movieId')
+                                                        ->leftjoin('address','address.id', '=', 'theatre.addressId')
+                                                        ->leftjoin('city','city.cityId', '=', 'address.city')                                                                                                    
                                                         ->where('movie.is_deleted', '=', '0')
                                                         ->where('movie_theatre.dateTime', '>=', date("Y-m-d H:i:s") )                                                        
                                                         ->where('site.siteId', '=', $siteId)
@@ -59,7 +63,7 @@ class MovieController extends Controller
         if($cityVal){
             $movieRs->where('city.cityId', '=', $cityVal);
         }
-        if($type){
+        if($typeVal){
             $movieRs->where('movie.language', '=', $typeVal);
         }      
         if($keywordVal){
@@ -106,7 +110,7 @@ class MovieController extends Controller
             $movieTheatreRs                 =   MovieTheatre::select('theatre.id','theatre.name','theatre.website',
                                                                         'theatre.phone','url.urlName',
                                                                         'movie_theatre.dateTime',
-                                                                        'address.address1','address.address2','address.city',
+                                                                        'address.address1','address.address2','city.city',
                                                                         'address.state','address.zip','address.phone1',
                                                                         'address.latitude','address.longitude',
                                                                         'movie_booking.bookingLink',
@@ -116,6 +120,7 @@ class MovieController extends Controller
                                                                 ->leftjoin('address','address.id', '=', 'theatre.addressId')
                                                                 ->leftjoin('url','url.theatreId', '=', 'theatre.id')
                                                                 ->leftjoin('movie_booking','movie_booking.theatreId', '=', 'theatre.id')
+                                                                ->leftjoin('city','city.cityId', '=', 'address.city')     
                                                                 ->where('movie_theatre.movieId', '=', $movieId)
                                                                 ->where('movie_theatre.dateTime', '>=', date("Y-m-d") )     
                                                                 ->orderBy('theatre.id', 'asc')
@@ -205,9 +210,9 @@ class MovieController extends Controller
 
         $descriptionHeight                  =   $commonCtrl->descriptionLength(strlen($theatre['description']));
         $commonCtrl->setMeta($request->path(),2);
-        echo '<pre>';
-        print_r($movies);
-        exit();
+        // echo '<pre>';
+        // print_r($movies);
+        // exit();
 
         return view('theatre_details',['theatre' => $theatre, 'descriptionHeight' => $descriptionHeight, 'movies' => $movies]);
     }

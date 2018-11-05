@@ -56,7 +56,7 @@
                     <option value="all">All</option>
                     @foreach ($cities as $key => $city)
                         <option 
-                            value="{{$city['value']}}-{{$city['cityId']}}"
+                            value="{{$city['cityId']}}"
                             {{$city['cityId'] == $cityVal ? 'selected="selected"' : '' }}>
                             {{$city['city']}}
                         </option>
