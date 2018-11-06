@@ -84,17 +84,17 @@
                 </div>
 
                 <div class="col-md-4 block3">
-                    <div class="re_block3">Top 3 Movies</div>
+                    <div class="re_block4">Top 3 Movies</div>
                     @foreach ($movies as $key => $rel)
-                        <div class="main_block">
-                            <h1 class="block_txtblock"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-movie')}}/{{ $rel['urlName'] }}" title="{{ $rel['name'] }}"  class="text2">{{ $rel['name'] }}</a></h1>                                                        
-                            <div class="block_kmblock">
+                        <div class="main_block1">
+                            <h1 class="block_txtblock k_txtblock1"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-movie')}}/{{ $rel['urlName'] }}" title="{{ $rel['name'] }}"  class="text2">{{ $rel['name'] }}</a></h1>                                                        
+                            <div class="block_kmblock kmblock1">
                                 <div class="txtblock">{{ CommonController::getLanguage($rel['language']) }}</div>
                             </div>
                             <div class="bottomborder"></div>
                         </div>
                     @endforeach                
-                    <div class="re_block3bottom"></div>
+                    <div class="re_block4bottom"></div>
                 </div>                
 
 
