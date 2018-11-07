@@ -46,7 +46,7 @@
                             <td colspan="2" class="smallfont tdtoppadd1">URL</td>
                         </tr>
                         <tr>
-                            <td colspan="2"><h2 class="h211"><a href="http://{{ $theatre['website'] }}" target="_blank" class="h21" >{{$theatre['website']}}</a></h2></td>
+                            <td colspan="2"><h2 class="h211"><a href="{{ $theatre['website'] }}" target="_blank" class="h21" >{{$theatre['website']}}</a></h2></td>
                         </tr>
                     </table>  
                 </div>
