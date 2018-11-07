@@ -50,33 +50,35 @@
                         </tr>
                     </table>  
                 </div>
-                <div class="movie">
-                    <table class="fullWidth">
-                        <tr>
-                            <td style="padding-bottom:15px;">
-                                @foreach ($movies as $key => $movie)
-                                    <div class="theatreBlock">
-                                        <table class="fullWidth">
-                                            <tr>
-                                                <td>
-                                                    <div class="smallImage1">
-                                                        @if($movie['photoName'])
-                                                            <img src="{{ URL::to('/') }}/image/movie/{{$movie['id']}}/{{$movie['photoName']}}" alt="{{$movie['photoName']}}" style="width:100%;height:100%">
-                                                        @else
-                                                            <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$movie['photoName']}}" style="width:100%;height:100%">
-                                                        @endif                                                             
-                                                    </div>
-                                                    <a href="#" title="" ><h2 class="content11 titletopmargin colorh11">{{$movie['name']}}</h2></a>                                                      
-                                                    <div class="content2 Subtitle">{{ CommonController::getLanguage($movie['language']) }}</div>
-                                                </td>
-                                            </tr> 
-                                        </table> 
-                                    </div>
-                                @endforeach  
-                            </td>
-                        </tr>
-                    </table>       
-                </div>
+                @if($movies)
+                    <div class="movie">
+                        <table class="fullWidth">
+                            <tr>
+                                <td style="padding-bottom:15px;">
+                                    @foreach ($movies as $key => $movie)
+                                        <div class="theatreBlock">
+                                            <table class="fullWidth">
+                                                <tr>
+                                                    <td>
+                                                        <div class="smallImage1">
+                                                            @if($movie['photoName'])
+                                                                <img src="{{ URL::to('/') }}/image/movie/{{$movie['id']}}/{{$movie['photoName']}}" alt="{{$movie['photoName']}}" style="width:100%;height:100%">
+                                                            @else
+                                                                <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$movie['photoName']}}" style="width:100%;height:100%">
+                                                            @endif                                                             
+                                                        </div>
+                                                        <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-movie')}}/{{$movie['urlName']}}" title="{{$movie['photoName']}}" ><h2 class="content11 titletopmargin colorh11">{{$movie['name']}}</h2></a>                                                      
+                                                        <div class="content2 Subtitle">{{ CommonController::getLanguage($movie['language']) }}</div>
+                                                    </td>
+                                                </tr> 
+                                            </table> 
+                                        </div>
+                                    @endforeach  
+                                </td>
+                            </tr>
+                        </table>       
+                    </div>
+                @endif
                 <div class="content">
                     <table class="fullWidth">
                     <tr>
@@ -93,7 +95,7 @@
             <div class="block22">
                 <div class="white_t1 space">
                     <h2 class="titleh2 graycolor1">{{ $theatre['name'] }} Location</h2>
-                    <a href="https://www.google.com/maps/dir//{{ $theatre['name'] }} {{ $theatre['address1'] }} {{ $theatre['city'] }}, {{ $theatre['state'] }}, {{$theatre['zip'] }}/%40{{$theatre['latitude']}},{{$theatre['longitude']}},12z" title="{{$theatre['name']}}" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$theatre['name']}}"/></a>
+                    <a href="https://www.google.com/maps/dir//{{ $theatre['name'] }}, {{ $theatre['address1'] }}, {{ $theatre['city'] }}, {{ $theatre['state'] }}, {{$theatre['zip'] }}/%40{{$theatre['latitude']}},{{$theatre['longitude']}},12z" title="{{$theatre['name']}}" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{$theatre['name']}}"/></a>
                 </div>
                 <div id="map" class="map"></div>
             </div>             

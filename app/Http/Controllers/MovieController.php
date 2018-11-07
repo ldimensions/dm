@@ -180,12 +180,13 @@ class MovieController extends Controller
         
         $theatreRs                          =   Theatre::select('theatre.id','theatre.name','theatre.website',
                                                                 'theatre.phone','url.urlName','theatre.description',
-                                                                'address.address1','address.address2','address.city',
+                                                                'address.address1','address.address2','city.city',
                                                                 'address.state','address.zip','address.phone1',
                                                                 'address.latitude','address.longitude'
                                                                 )
                                                         ->leftjoin('address','address.id', '=', 'theatre.addressId')
                                                         ->leftjoin('url','url.theatreId', '=', 'theatre.id')
+                                                        ->leftjoin('city','city.cityId', '=', 'address.city')  
                                                         ->where('url.urlName', '=', $url)
                                                         ->orderBy('theatre.id', 'asc')
                                                         ->get()->first();

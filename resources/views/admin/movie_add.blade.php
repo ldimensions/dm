@@ -162,7 +162,6 @@
                                                                                                 $("#addDate_btn_"+{{$theatreKey}}).click(function(){
                                                                                                     console.log("#addDate_btn_"+{{$theatreKey}});
                                                                                                     var dateCountVal;
-                                                                                                    //var theatreIdVal                            =   document.getElementById("theatreCount").value;
                                                                                                     dateCountVal                                =   document.getElementById("dateCount_"+{{$index}}).value;
                                                                                                     dateCountId                                 =   parseInt(dateCountVal)+1;
                                                                                                     document.getElementById("dateCount_"+{{$index}}).value     =   dateCountId;

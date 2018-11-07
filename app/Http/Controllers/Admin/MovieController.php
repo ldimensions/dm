@@ -707,7 +707,22 @@ class MovieController extends Controller
         }
     }
     
+    public function deleteMovie($id){
+        if($id){
+            DB::table('movie')
+            ->where('id', $id)
+            ->update(
+                [
+                    'is_deleted'        => 1
+                ]
+            ); 
+        }
+        return redirect('/admin/movies')->with('status', 'Movie deleted!');
+    }
+
     public function deleteTheatre($id){
+        echo "test";
+        exit();
         if($id){
             DB::table('theatre')
             ->where('id', $id)
