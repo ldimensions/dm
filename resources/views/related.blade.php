@@ -80,7 +80,7 @@
                     <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%">
                 @endif  
             </div> 
-            <a href="../{{config('app.defaultBaseURL.indian-movie')}}/{{ $rel['urlName'] }}" title="{{$rel['name']}}" ><h3 class="content1 colorh1">{{ $rel['name'] }}</h3></a>
+            <a href="../{{config('app.defaultBaseURL.indian-movie')}}/{{ $rel['urlName'] }}" title="{{$rel['name']}}" ><h3 class="content11 colorh1">{{ $rel['name'] }}</h3></a>
         @endif 
         @if (isset($type) && $type == 'theatre')
             <div class="smallImage">
