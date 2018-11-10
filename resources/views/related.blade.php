@@ -1,4 +1,4 @@
- 
+<?php use App\Http\Controllers\CommonController;?>
 @foreach ($related as $key => $rel)
     @if (isset($type) && $type == 'grocery' && $key == 0)
         <div class="related title">Related Groceries</div>
@@ -80,7 +80,9 @@
                     <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%">
                 @endif  
             </div> 
+
             <a href="../{{config('app.defaultBaseURL.indian-movie')}}/{{ $rel['urlName'] }}" title="{{$rel['name']}}" ><h3 class="content11 colorh1">{{ $rel['name'] }}</h3></a>
+            <div class="content2">{{  CommonController::getLanguage($rel['language']) }}</div>
         @endif 
         @if (isset($type) && $type == 'theatre')
             <div class="smallImage">

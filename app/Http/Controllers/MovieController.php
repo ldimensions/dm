@@ -121,6 +121,7 @@ class MovieController extends Controller
                                                                 ->leftjoin('url','url.theatreId', '=', 'theatre.id')
                                                                 ->leftjoin('movie_booking','movie_booking.theatreId', '=', 'theatre.id')
                                                                 ->leftjoin('city','city.cityId', '=', 'address.city')     
+                                                                ->where('movie_booking.movieId', '=', $movieId)
                                                                 ->where('movie_theatre.movieId', '=', $movieId)
                                                                 ->where('movie_theatre.dateTime', '>=', date("Y-m-d") )     
                                                                 ->orderBy('theatre.id', 'asc')
@@ -207,7 +208,8 @@ class MovieController extends Controller
                                                                 ->orderBy('movie.premium', 'DESC')
                                                                 ->orderBy('movie_theatre.dateTime', 'ASC')                                                 
                                                                 ->get();
-        $movies                             =   $movieRs->toArray();      
+                                                               
+        $movies                             =   array_unique($movieRs->toArray(), SORT_REGULAR);      
 
         $descriptionHeight                  =   $commonCtrl->descriptionLength(strlen($theatre['description']));
         $commonCtrl->setMeta($request->path(),2);
