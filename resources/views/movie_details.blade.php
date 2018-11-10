@@ -85,7 +85,7 @@
                                                 <tr>
                                                     <td colspan="2">
                                                         <h1 class="space3 space2 titleblock1">
-                                                            <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-theatre')}}/{{$movieTheatre['details']['urlName']}}" alt="" class="colorh11">
+                                                            <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-theatre')}}/{{$movieTheatre['details']['urlName']}}" alt="{{ $movie['name'] }}" class="colorh11">
                                                                 {{$movieTheatre['details']['name']}}
                                                             </a>
                                                         </h1>

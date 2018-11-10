@@ -162,6 +162,7 @@
                                                                                                 $("#addDate_btn_"+{{$theatreKey}}).click(function(){
                                                                                                     console.log("#addDate_btn_"+{{$theatreKey}});
                                                                                                     var dateCountVal;
+                                                                                                    //var theatreIdVal                            =   document.getElementById("theatreCount").value;
                                                                                                     dateCountVal                                =   document.getElementById("dateCount_"+{{$index}}).value;
                                                                                                     dateCountId                                 =   parseInt(dateCountVal)+1;
                                                                                                     document.getElementById("dateCount_"+{{$index}}).value     =   dateCountId;
@@ -369,9 +370,11 @@
     $("#addTheatre").click(function(){
         var theatreIdVal                    =   parseInt(document.getElementById("theatreCount").value)+1;
         document.getElementById("theatreCount").value = theatreIdVal;
+        var now = Date.now();
+console.log(now);
 
         $('#theatreDiv').append(`
-                                    <div class="col-lg-12 col-xs-12 col-sm-12" id="theatre_div_`+theatreIdVal+`">  
+                                    <div class="col-lg-12 col-xs-12 col-sm-12" id="theatre_div_`+theatreIdVal+`_`+now+`">  
                                         <div class="col-lg-6 col-xs-10 col-sm-10"> 
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
@@ -392,11 +395,11 @@
                                                         <label>Booking Link</label>
                                                         <input type="text" name="bookingLink_`+theatreIdVal+`" id="boolingLink" value="" class="form-control"/>
                                                     </div>                                                     
-                                                    <div id="dateDiv_`+theatreIdVal+`">
+                                                    <div id="dateDiv_`+theatreIdVal+`_`+now+`">
                                                         <input type="hidden" name="dateCount_`+theatreIdVal+`" id="dateCount_`+theatreIdVal+`" value="1"/>
                                                             <div class="form-group">
                                                                 <input type="datetime-local" id="" name="dateTime_`+theatreIdVal+`[]" value="" /> 
-                                                                <button type="button" class="btn btn-default btn-sm" id="addDate_btn_`+theatreIdVal+`"><i class="fa glyphicon-plus"></i></button>
+                                                                <button type="button" class="btn btn-default btn-sm" id="addDate_btn_`+theatreIdVal+`_`+now+`"><i class="fa glyphicon-plus"></i></button>
                                                             </div>                                                                                                                           
                                                         </div>                                                             
                                                     </div> 
@@ -404,29 +407,28 @@
                                             </div> 
 
                                             <div class="col-lg-6 col-xs-2 col-sm-2"> 
-                                                <button type="button" class="btn btn-default btn-sm" id="removeTheatre_`+theatreIdVal+`" ><i class="glyphicon glyphicon-remove"></i></button>
+                                                <button type="button" class="btn btn-default btn-sm" id="removeTheatre_`+theatreIdVal+`_`+now+`"><i class="glyphicon glyphicon-remove"></i></button>
                                             </div>   
                                         </div>
                                     </div>                                                                          
                                 </div>                                   
                             `); 
-        $("#addDate_btn_"+theatreIdVal).click(function(){
+        $("#addDate_btn_"+theatreIdVal+"_"+now).click(function(){
             var dateCountVal;
             dateCountVal                                =   document.getElementById("dateCount_"+theatreIdVal).value;
             dateCountId                                 =   parseInt(dateCountVal)+1;
             document.getElementById("dateCount_"+theatreIdVal).value     =   dateCountId;
             
-            $("#dateDiv_"+theatreIdVal).append(`
-                                    <div class="form-group" id="`+dateCountId+`">
+            $("#dateDiv_"+theatreIdVal+"_"+now).append(`
+                                    <div class="form-group" id="`+dateCountId+`_`+now+`">
                                         <input type="datetime-local" id="" name="dateTime_`+theatreIdVal+`[]" value="" /> 
-                                        <button type="button" class="btn btn-default btn-sm" onClick="removeDate('`+dateCountId+`')"><i class="glyphicon glyphicon-remove"></i></button>
+                                        <button type="button" class="btn btn-default btn-sm" onClick="removeDate('`+dateCountId+`_`+now+`')"><i class="glyphicon glyphicon-remove"></i></button>
                                     </div>
                                 `); 
 
         });   
-        $("#removeTheatre_"+theatreIdVal).click(function(){
-            console.log(theatreIdVal);
-            $('#theatre_div_'+theatreIdVal).remove();
+        $("#removeTheatre_"+theatreIdVal+"_"+now).click(function(){
+            $('#theatre_div_'+theatreIdVal+"_"+now).remove();
         });
 
     });

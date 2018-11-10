@@ -145,6 +145,7 @@ class MovieController extends Controller
                                                     ->orderBy('name', 'asc')
                                                     ->get();  
         $theatres                           =   $theatreRs->toArray();  
+       
         return view('admin.movie_add',['movie' => $movie, 'theatres' => $theatres, 'photos' => $photoRs, 'movieTimes' => $movieTheatreAggr, 'movieBookingLink' => $movieBookingLinkArr]); 
     }
 
