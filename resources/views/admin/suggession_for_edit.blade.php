@@ -55,6 +55,18 @@
                                         @else    
                                             <td style="border:0;padding:5px;width:30px;font-weight:bold;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Religion">Re</td>                                        
                                         @endif
+                                    @elseif($rel['type'] == 4)
+                                        @if($rel['is_read'] == 1)
+                                            <td style="border:0;padding:5px;width:30px;font-weight:bold;border-left:3px solid gray;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Movie">Re</td>                                        
+                                        @else    
+                                            <td style="border:0;padding:5px;width:30px;font-weight:bold;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Movie">M</td>                                        
+                                        @endif
+                                    @elseif($rel['type'] == 5)
+                                        @if($rel['is_read'] == 1)
+                                            <td style="border:0;padding:5px;width:30px;font-weight:bold;border-left:3px solid gray;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Theatre">Re</td>                                        
+                                        @else    
+                                            <td style="border:0;padding:5px;width:30px;font-weight:bold;" data-toggle="tooltip" data-placement="top" title="" data-original-title="Theatre">T</td>                                        
+                                        @endif                                                                                
                                     @endif
                                     @if($rel['is_read'] == 1)
                                         <td style="border:0;padding:5px;width:25%;font-weight:bold;"><a href="{{ url('/admin/suggession_for_edit') }}/{{$rel['id']}}" style="color: black;text-decoration:none;">{{$rel['name']}}</a></td>
