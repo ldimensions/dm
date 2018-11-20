@@ -38,7 +38,16 @@
                                     <span>{{$religionSubmitted}}</span>
                                 @endif
                                  Religion Submitted    
-                            </a>                                                     
+                            </a>   
+                            <a href="{{ url('/editor/movies') }}" class="list-group-item">
+                                <i class="fa fa-shopping-cart fa-fw"></i> 
+                                @if ($movieSubmitted > 0)
+                                    <span style="color:#337ab;font-weight: bold;">{{$movieSubmitted}}</span>
+                                @else                                                  
+                                    <span>{{$movieSubmitted}}</span>
+                                @endif
+                                 Movie Submitted    
+                            </a>                                                                               
                         </div>                       
                     </div>
                 </div>
@@ -77,7 +86,16 @@
                                     <span>{{$religionRejected}}</span>
                                 @endif
                                 Religion Rejected
-                            </a>                                                      
+                            </a>       
+                            <a href="{{ url('/editor/movies') }}" class="list-group-item">
+                                <i class="fa fa-warning fa-fw"></i>
+                                @if ($movieRejected > 0)
+                                    <span style="color:red;font-weight: bold;">{{$movieRejected}}</span>
+                                @else                                                  
+                                    <span>{{$movieRejected}}</span>
+                                @endif
+                                Movie Rejected
+                            </a>                                                                            
                         </div>                       
                     </div>
                 </div>

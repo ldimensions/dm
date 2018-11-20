@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Models\ReligionTmp;
 use App\Http\Models\RestaurantTemp;
 use App\Http\Models\GroceryTmp;
+use App\Http\Models\MovieTmp;
 
 class DashboardController extends Controller
 {
@@ -22,6 +23,8 @@ class DashboardController extends Controller
         $restaurantRejected                 =   0;
         $grocerySubmitted                   =   0;
         $groceryRejected                    =   0;
+        $movieSubmitted                     =   0;
+        $movieRejected                      =   0;        
         
         $religionSubmitted                  =   ReligionTmp::select('religion_tmp.id')                                                                                                                               
                                                     ->where('religion_tmp.status', '=', '2')->get()->count();
@@ -39,14 +42,22 @@ class DashboardController extends Controller
                                                     ->where('grocery_tmp.status', '=', '2')->get()->count();
 
         $groceryRejected                    =   GroceryTmp::select('grocery_tmp.id')                                                                                                                               
-                                                    ->where('grocery_tmp.status', '=', '4')->get()->count();                                                      
+                                                    ->where('grocery_tmp.status', '=', '4')->get()->count();     
+                                                    
+        $movieSubmitted                     =   MovieTmp::select('movie_tmp.id')                                                                                                                               
+                                                    ->where('movie_tmp.status', '=', '2')->get()->count();
+
+        $movieRejected                      =   MovieTmp::select('movie_tmp.id')                                                                                                                               
+                                                    ->where('movie_tmp.status', '=', '4')->get()->count();                                                       
 
         return view('admin.dashboard',['religionSubmitted' => $religionSubmitted, 
                                         'religionRejected' => $religionRejected,
                                         'restaurantSubmitted' => $restaurantSubmitted,
                                         'restaurantRejected' => $restaurantRejected,
                                         'grocerySubmitted' => $grocerySubmitted,
-                                        'groceryRejected' => $groceryRejected
+                                        'groceryRejected' => $groceryRejected,                                        
+                                        'movieSubmitted' => $movieSubmitted,
+                                        'movieRejected' => $movieRejected
                                         ]);
     }  
     

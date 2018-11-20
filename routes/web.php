@@ -122,6 +122,10 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::get('/admin/movie_add/{id?}', 'Admin\MovieController@addMovieView')->name('add_movie_view')->where(['id' => '[0-9]+']);
     Route::post('/admin/movie_add', 'Admin\MovieController@addMovie');
     Route::get('admin/movie/delete/{id}', 'Admin\MovieController@deleteMovie')->where(['id' => '[0-9]+']);
+    Route::post('/admin/movie/rejectMovie', 'Admin\MovieController@rejectMovie');
+    Route::get('/admin/movie/approve/{id?}', 'Admin\MovieController@approveMovie')->where(['id' => '[0-9]+']);
+    Route::get('/admin/movie_tmp/delete/{id}', 'Admin\MovieController@deleteTmpMovie')->where(['id' => '[0-9]+']);    
+
 
     Route::get('/admin/seo', 'Admin\SEOController@index')->name('seo');
     Route::get('/admin/seo_add/{id?}', 'Admin\SEOController@addSeoView')->name('addSeoView')->where(['id' => '[0-9]+']);
@@ -154,6 +158,17 @@ Route::group(['middleware' => ['role:Editor']], function () {
     Route::post('/editor/grocery_add', 'Editor\GroceryController@addGrocery');
     Route::get('/editor/grocery/delete/{id}', 'Editor\GroceryController@deleteGrocery')->where(['id' => '[0-9]+']);
     
+    Route::get('/editor/grocery', 'Editor\GroceryController@index')->name('grocery_listing');
+    Route::get('/editor/grocery_add/{id?}', 'Editor\GroceryController@addGroceryView')->name('grocery_add')->where(['id' => '[0-9]+']);
+    Route::get('/editor/grocery_add_duplicate/{id?}', 'Editor\GroceryController@addGroceryDuplicatetView')->name('grocery_add_duplicate')->where(['id' => '[0-9]+']);
+    Route::post('/editor/grocery_add', 'Editor\GroceryController@addGrocery');
+    Route::get('/editor/grocery/delete/{id}', 'Editor\GroceryController@deleteGrocery')->where(['id' => '[0-9]+']);    
+
+    Route::get('/editor/movies', 'Editor\MovieController@MovieListing')->name('movies_listing');
+    Route::get('/editor/movie_add/{id?}', 'Editor\MovieController@addMovieView')->name('add_movie_view')->where(['id' => '[0-9]+']);
+    Route::get('/editor/movie_add_duplicate/{id?}', 'Editor\MovieController@addMovieDuplicatetView')->name('movie_add_duplicate')->where(['id' => '[0-9]+']);
+    Route::post('/editor/movie_add', 'Editor\MovieController@addMovie');
+    Route::get('/editor/movie/delete/{id}', 'Editor\MovieController@deleteMovie')->where(['id' => '[0-9]+']);    
 
 });
 

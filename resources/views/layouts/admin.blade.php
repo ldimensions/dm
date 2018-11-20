@@ -142,7 +142,18 @@
                             </li> 
                             <li>
                                 <a href="{{ url('/editor/religion') }}"> Religion</a>
-                            </li>                             
+                            </li>   
+                            <li>
+                                <a href="#"> Movies<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ url('/editor/movies') }}">Movies</a>
+                                    </li>                                       
+                                    <li>
+                                        <a href="#">Theatre</a>
+                                    </li>                                
+                                </ul>
+                            </li>                                                      
                             @endhasanyrole                            
                         </ul>
                     </div>

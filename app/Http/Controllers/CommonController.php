@@ -10,6 +10,8 @@ use App\Http\Models\PhotoTmp;
 use App\Http\Models\RestaurantFoodTypeTmp;
 use App\Http\Models\ReligionTmp;
 use App\Http\Models\GroceryTmp;
+use App\Http\Models\MovieTmp;
+use App\Http\Models\MovieTheatreTmp;
 
 use SEOMeta;
 use OpenGraph;
@@ -709,6 +711,100 @@ class CommonController extends Controller
             }else{
                 return redirect()->back();
             }            
+            
+        }else if($type == 'movie'){
+
+            $distance                           =   "";
+            $commonCtrl                         =   new CommonController;
+    
+            $seoUrl                             =   $commonCtrl->seoUrl($request->path(),2);        
+    
+            $siteId                             =   config('app.siteId');
+            $movieRs                            =   MovieTmp::select('movie_tmp.id','movie_tmp.name','movie_tmp.description','movie_tmp.language','movie_tmp.cast',
+                                                                    'movie_tmp.music','movie_tmp.director','movie_tmp.producer','movie_tmp.trailer')
+                                                            ->leftjoin('url','url.movieTempId', '=', 'movie_tmp.id')
+                                                            ->leftjoin('site','site.siteId', '=', 'movie_tmp.siteId')
+                                                            ->where('site.siteId', '=', $siteId)
+                                                            ->where('url.urlName', '=', $url)
+                                                            ->where('movie_tmp.is_deleted', '=', '0')
+                                                            ->where('movie_tmp.is_disabled', '=', '0')
+                                                            ->get()->first();
+    
+            $movie                              =   $movieRs->toArray(); 
+    
+            if($movie){
+                $movieId                        =   $movie['id'];
+    
+    
+                $movieTheatreRs                 =   MovieTheatreTmp::select('theatre.id','theatre.name','theatre.website',
+                                                                            'theatre.phone','url.urlName',
+                                                                            'movie_theatre_tmp.dateTime',
+                                                                            'address.address1','address.address2','city.city',
+                                                                            'address.state','address.zip','address.phone1',
+                                                                            'address.latitude','address.longitude',
+                                                                            'movie_booking_tmp.bookingLink',
+                                                                            'url.urlName'
+                                                                            )
+                                                                    ->leftjoin('theatre','theatre.id', '=', 'movie_theatre_tmp.theatreId')
+                                                                    ->leftjoin('address','address.id', '=', 'theatre.addressId')
+                                                                    ->leftjoin('url','url.theatreId', '=', 'theatre.id')
+                                                                    ->leftjoin('movie_booking_tmp','movie_booking_tmp.theatreId', '=', 'theatre.id')
+                                                                    ->leftjoin('city','city.cityId', '=', 'address.city')     
+                                                                    ->where('movie_booking_tmp.movieId', '=', $movieId)
+                                                                    ->where('movie_theatre_tmp.movieId', '=', $movieId)
+                                                                    ->where('movie_theatre_tmp.dateTime', '>=', date("Y-m-d") )     
+                                                                    ->orderBy('theatre.id', 'asc')
+                                                                    ->orderBy('movie_theatre_tmp.dateTime', 'asc')
+                                                                    ->get();
+    
+                $movieTheatre                   =   $movieTheatreRs->toArray();
+                // echo "<br/>";
+                // print_r($movieTheatre);
+                // exit();
+                $movieTheatreTimeArr            =   array();  
+                if($movieTheatre){
+                    $movieTheatreArr                =   array();  
+                    foreach($movieTheatre as $key => $movieTheatreVal) {   
+                        $movieTheatreArr[$movieTheatreVal['id']][]    =   $movieTheatreVal;
+                    }   
+        
+                    
+                    foreach($movieTheatreArr as $key => $movieTheatreVal1) {   
+                        foreach($movieTheatreVal1 as $key1 => $movieTheatreVal2) {
+                            $movieTheatreVal2['date']       =  date("M d D", strtotime($movieTheatreVal2['dateTime']));   
+                            $movieTheatreVal2['dateTime']   =  date('G:ia', strtotime($movieTheatreVal2['dateTime']));   
+                            $movieTheatreTimeArr[$key]['dateTimeDetails'][$movieTheatreVal2['date']][]   =   $movieTheatreVal2; 
+                            $movieTheatreTimeArr[$key]['details']   =   $movieTheatreVal2;                           
+                            
+                        }
+                    } 
+                }     
+                
+                $photoRs                        =   PhotoTmp::select('photo_tmp.photoId', 'photo_tmp.photoName', 
+                                                        'photo_tmp.is_primary', 'photo_tmp.order')
+                                                            ->where('photo_tmp.is_deleted', '=', '0')
+                                                            ->where('photo_tmp.is_primary', '=', '0')
+                                                            ->where('photo_tmp.is_disabled', '=', '0')
+                                                            ->where('photo_tmp.movieId', '=', $movieId)
+                                                            ->orderBy('photo_tmp.order', 'asc') 
+                                                            ->get();        
+                
+                $photo                          =   $photoRs->toArray();  
+    
+                $commonCtrl->setMeta($request->path(),3,'','tmp');
+    
+                $today =   date("M d D"); 
+    
+                $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($movie['description']));
+                
+                // echo '<pre>';
+                // print_r($movieTheatreTimeArr);
+                // exit();
+                
+                return view('movie_details',['movie' => $movie, 'movieTheatres' => $movieTheatreTimeArr, 'photos' => $photo, 'descriptionHeight' => $descriptionHeight, 'today' => $today]);
+            }else{
+                return redirect()->back();
+            }           
             
         }
 
