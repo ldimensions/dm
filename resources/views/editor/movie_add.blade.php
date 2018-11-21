@@ -335,7 +335,7 @@
                                                 @foreach ($photos as $key => $photo)
                                                     @if($photo['is_primary'] == 1)
                                                         <div class="smallImage">
-                                                            <img src="{{ URL::to('/') }}/image/movie/{{$movie['id']}}/{{$photo['photoName']}}"  style="width:100px;height:100px">
+                                                            <img src="{{ URL::to('/') }}/image/movie/{{$movie['id']}}_tmp/{{$photo['photoName']}}"  style="width:100px;height:100px">
                                                         </div>
                                                     @endif
                                                 @endforeach
@@ -346,7 +346,7 @@
                                                 @foreach ($photos as $key => $photo)
                                                     @if($photo['is_primary'] == 0)
                                                         <div class="smallImage" style="float:left;padding:10px;">
-                                                            <img src="{{ URL::to('/') }}/image/movie/{{$movie['id']}}/{{$photo['photoName']}}"  style="width:100px;height:100px">
+                                                            <img src="{{ URL::to('/') }}/image/movie/{{$movie['id']}}_tmp/{{$photo['photoName']}}"  style="width:100px;height:100px">
                                                         </div>                                                    
                                                     @endif
                                                 @endforeach

@@ -281,13 +281,13 @@ class MovieController extends Controller
                     ]
                 ); 
 
-            if (!file_exists(public_path().'/image/movie/'.$movieVal['id'])) {
-                mkdir(public_path().'/image/movie/'.$movieVal['id'], 0777, true);
+            if (!file_exists(public_path().'/image/movie/'.$movieVal['id'].'_tmp')) {
+                mkdir(public_path().'/image/movie/'.$movieVal['id'].'_tmp', 0777, true);
             }
             if($request->hasFile('photos')){
                 $files                          = $request->file('photos');
                 
-                DB::table('photo')->where('movieId', $movieVal['id'])->where('is_primary', 0)->delete();
+                DB::table('photo_tmp')->where('movieId', $movieVal['id'])->where('is_primary', 0)->delete();
                 
             
                 foreach($files as $key=> $file){
@@ -301,7 +301,7 @@ class MovieController extends Controller
                     // $path                       = public_path('image/movie/'.$movieVal['id'].'/'.$movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
                     // $resizeImage->save($path);   
 
-                    $file->move(public_path().'/image/movie/'.$movieVal['id'], $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);                     
+                    $file->move(public_path().'/image/movie/'.$movieVal['id'].'_tmp', $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);                     
 
                     DB::table('photo_tmp')->insertGetId(
                         [
@@ -328,7 +328,7 @@ class MovieController extends Controller
                     // $path                       = public_path('image/movie/'.$movieVal['id'].'/'.$movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
                     // $resizeImage->save($path);   
                     
-                    $file->move(public_path().'/image/movie/'.$movieVal['id'], $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);                     
+                    $file->move(public_path().'/image/movie/'.$movieVal['id'].'_tmp', $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);                     
                 
                     DB::table('photo_tmp')->insertGetId(
                         [
@@ -441,8 +441,8 @@ class MovieController extends Controller
                                                     ]
                                                 );   
 
-            if (!file_exists(public_path().'/image/movie/'.$movieId)) {
-                mkdir(public_path().'/image/movie/'.$movieId, 0777, true);
+            if (!file_exists(public_path().'/image/movie/'.$movieId.'_tmp')) {
+                mkdir(public_path().'/image/movie/'.$movieId.'_tmp', 0777, true);
             }                                                
             if($request->hasFile('photos')){
                 $files                          = $request->file('photos');
@@ -458,7 +458,7 @@ class MovieController extends Controller
                     // $path                       = public_path('image/movie/'.$movieId.'/'.$movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
                     // $resizeImage->save($path);    
                     
-                    $file->move(public_path().'/image/movie/'.$movieId, $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
+                    $file->move(public_path().'/image/movie/'.$movieId.'_tmp', $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
     
                     DB::table('photo_tmp')->insertGetId(
                         [
@@ -485,7 +485,7 @@ class MovieController extends Controller
                     // $path                       = public_path('image/movie/'.$movieId.'/'.$movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension);
                     // $resizeImage->save($path);      
                     
-                    $file->move(public_path().'/image/movie/'.$movieId, $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
+                    $file->move(public_path().'/image/movie/'.$movieId.'_tmp', $movieVal['urlName'].'-'.$key.'-'.$rand.'.'.$extension); 
     
                     DB::table('photo_tmp')->insertGetId(
                         [

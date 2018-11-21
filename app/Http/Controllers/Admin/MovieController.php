@@ -805,6 +805,7 @@ class MovieController extends Controller
                                                             'movie_tmp.description', 'movie_tmp.cast', 'movie_tmp.language',
                                                             'movie_tmp.music', 'movie_tmp.director', 'movie_tmp.producer',
                                                             'movie_tmp.premium', 'movie_tmp.order','movie_tmp.is_disabled', 
+                                                            'movie_tmp.updated_by', 'movie_tmp.created_at', 
                                                             'url.urlName', 'url.id as urlId', 'movie_tmp.trailer',                                            
                                                             'seo_tmp.seoId', 'seo_tmp.SEOMetaTitle',
                                                             'seo_tmp.SEOMetaDesc', 'seo_tmp.SEOMetaPublishedTime',
@@ -896,11 +897,10 @@ class MovieController extends Controller
             DB::table('photo_tmp')->where('movieId', $id)->delete();    
                                     
         }else{
-        
-            $movieId                      =   DB::table('movie_tmp')->insertGetId(
+
+            $movieId                      =   DB::table('movie')->insertGetId(
                                                     [
                                                         'name'          => $movieTmpArr['name'],
-                                                        'referenceId'   => ($movieTmpArr['ref_id'])?$movieTmpArr['ref_id']:0,
                                                         'description'   => $movieTmpArr['description'],
                                                         'language'      => $movieTmpArr['language'],
                                                         'cast'          => $movieTmpArr['cast'],
