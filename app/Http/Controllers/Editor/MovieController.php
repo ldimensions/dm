@@ -225,6 +225,7 @@ class MovieController extends Controller
                         'order'         => ($movieVal['order'])?$movieVal['order']:0,
                         'premium'       => $movieVal['premium'],
                         'is_disabled'   => $movieVal['is_disabled'],
+                        'status'        => 2,
                         'updated_by'    => Auth::user()->id,
                         'updated_at'    => date("Y-m-d H:i:s")                   
                     ]
