@@ -561,6 +561,7 @@ class ReligionController extends Controller
                     'order'         => ($religionTmpArr['order'])?$religionTmpArr['order']:0,
                     'premium'       => $religionTmpArr['premium'],
                     'is_disabled'   => $religionTmpArr['is_disabled'],
+                    'is_deleted'    => 0,
                     'updated_by'    => $religionTmpArr['updated_by'],
                     'updated_at'    => date("Y-m-d H:i:s")                    
                 ]
@@ -621,7 +622,7 @@ class ReligionController extends Controller
                         'order' => $photoRs[$i]['order'], 
                         'is_deleted' => $photoRs[$i]['is_deleted'], 
                         'is_disabled' => $photoRs[$i]['is_disabled'], 
-                        'religionId' => $religionTmpArr['religionId']]
+                        'religionId' => $religionTmpArr['referenceId']]
                     ]);  
                 }
             }  
@@ -658,6 +659,7 @@ class ReligionController extends Controller
                                                         'order'         => ($religionTmpArr['order'])?$religionTmpArr['order']:0,
                                                         'premium'       => $religionTmpArr['premium'],
                                                         'is_disabled'   => $religionTmpArr['is_disabled'],
+                                                        'is_deleted'    => 0,
                                                         'urlId'         => $religionTmpArr['urlId'],
                                                         'addressId'     => $addressId,
                                                         'updated_by'    => $religionTmpArr['updated_by'],

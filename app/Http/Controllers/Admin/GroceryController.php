@@ -541,6 +541,7 @@ class GroceryController extends Controller
                     'order'         => ($groceryTmpArr['order'])?$groceryTmpArr['order']:0,
                     'premium'       => $groceryTmpArr['premium'],
                     'is_disabled'   => $groceryTmpArr['is_disabled'],
+                    'is_deleted'    => 0,
                     'updated_by'    => $groceryTmpArr['updated_by'],
                     'updated_at'    => date("Y-m-d H:i:s")                    
                 ]
@@ -601,7 +602,7 @@ class GroceryController extends Controller
                         'order' => $photoRs[$i]['order'], 
                         'is_deleted' => $photoRs[$i]['is_deleted'], 
                         'is_disabled' => $photoRs[$i]['is_disabled'], 
-                        'groceryId' => $groceryTmpArr['groceryId']]
+                        'groceryId' => $groceryTmpArr['referenceId']]
                     ]);  
                 }
             }  
@@ -637,6 +638,7 @@ class GroceryController extends Controller
                                                         'order'         => ($groceryTmpArr['order'])?$groceryTmpArr['order']:0,
                                                         'premium'       => $groceryTmpArr['premium'],
                                                         'is_disabled'   => $groceryTmpArr['is_disabled'],
+                                                        'is_deleted'    => 0,
                                                         'urlId'         => $groceryTmpArr['urlId'],
                                                         'addressId'     => $addressId,
                                                         'updated_by'    => $groceryTmpArr['updated_by'],

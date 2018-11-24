@@ -8,7 +8,9 @@ use App\Http\Models\Movie;
 use App\Http\Models\MovieTmp;
 use App\Http\Models\Theatre;
 use App\Http\Models\MovieTheatre;
+use App\Http\Models\MovieTheatreTmp;
 use App\Http\Models\MovieBooking;
+use App\Http\Models\MovieBookingTmp;
 use App\Http\Models\Photo;
 use App\Http\Models\PhotoTmp;
 use App\Http\Models\Url;
@@ -844,6 +846,7 @@ class MovieController extends Controller
                         'order'         => ($movieTmpArr['order'])?$movieTmpArr['order']:0,
                         'premium'       => $movieTmpArr['premium'],
                         'is_disabled'   => $movieTmpArr['is_disabled'],
+                        'is_deleted'    => 0,                       
                         'updated_at'    => date("Y-m-d H:i:s")                   
                     ]
                 );             
@@ -888,10 +891,49 @@ class MovieController extends Controller
                         'order' => $photoRs[$i]['order'], 
                         'is_deleted' => $photoRs[$i]['is_deleted'], 
                         'is_disabled' => $photoRs[$i]['is_disabled'], 
-                        'movieId' => $movieTmpArr['movieId']]
+                        'movieId' => $movieTmpArr['referenceId']]
                     ]);  
                 }
-            }  
+            } 
+            
+            DB::table('movie_theatre')->where('movieId', $movieTmpArr['referenceId'])->delete();
+
+            $movieTheatreTmpRs                  =   MovieTheatreTmp::select('movie_theatre_tmp.theatreId','movie_theatre_tmp.dateTime',
+                                                                        'movie_theatre_tmp.updated_at')                                              
+                                                            ->where('movie_theatre_tmp.movieId', '=', $id)
+                                                            ->get();
+            
+            $movieTheatreTmpArr                 =   $movieTheatreTmpRs->toArray();     
+
+            for($i =0; $i < count($movieTheatreTmpArr); $i++){
+                DB::table('movie_theatre')->insert([
+                        [
+                            'movieId' => $movieTmpArr['referenceId'], 
+                            'theatreId' => $movieTheatreTmpArr[$i]['theatreId'], 
+                            'dateTime' => $movieTheatreTmpArr[$i]['dateTime'],
+                            'updated_at' => $movieTheatreTmpArr[$i]['updated_at']
+                        ],
+                    ]);    
+            }
+
+            DB::table('movie_booking')->where('movieId', $movieTmpArr['referenceId'])->delete();
+
+            $movieTheatreBookingTmpRs       =   MovieBookingTmp::select('movie_booking_tmp.theatreId','movie_booking_tmp.bookingLink')                                              
+                                                            ->where('movie_booking_tmp.movieId', '=', $id)
+                                                            ->get();
+            
+            $movieTheatreBookingTmpArr      =   $movieTheatreBookingTmpRs->toArray();   
+            
+            for($j =0; $j < count($movieTheatreBookingTmpArr); $j++){
+                DB::table('movie_booking')->insert([
+                        [
+                            'movieId' => $movieTmpArr['referenceId'], 
+                            'theatreId' => $movieTheatreBookingTmpArr[$j]['theatreId'], 
+                            'bookingLink' => $movieTheatreBookingTmpArr[$j]['bookingLink']
+                        ],
+                    ]);    
+            }
+
             DB::table('movie_tmp')->where('id', $id)->delete();
             DB::table('seo_tmp')->where('urlId', $movieTmpArr['urlId'])->delete();        
             DB::table('photo_tmp')->where('movieId', $id)->delete();    
@@ -912,6 +954,7 @@ class MovieController extends Controller
                                                         'order'         => ($movieTmpArr['order'])?$movieTmpArr['order']:0,
                                                         'premium'       => $movieTmpArr['premium'],
                                                         'is_disabled'   => $movieTmpArr['is_disabled'],
+                                                        'is_deleted'    => 0,
                                                         'urlId'         => $movieTmpArr['urlId'],
                                                         'updated_by'    => $movieTmpArr['updated_by'],
                                                         'created_at'  => $movieTmpArr['created_at'],
@@ -945,7 +988,41 @@ class MovieController extends Controller
                                                         'created_at'                        => $movieTmpArr['OpenGraph'],
                                                         'updated_at'                        => $movieTmpArr['OpenGraph']
                                                         ]
-                                                );             
+                                                );     
+                                                
+            $movieTheatreTmpRs                  =   MovieTheatreTmp::select('movie_theatre_tmp.theatreId','movie_theatre_tmp.dateTime',
+                                                                        'movie_theatre_tmp.updated_at')                                              
+                                                            ->where('movie_theatre_tmp.movieId', '=', $id)
+                                                            ->get();
+            
+            $movieTheatreTmpArr                 =   $movieTheatreTmpRs->toArray();     
+
+            for($i =0; $i < count($movieTheatreTmpArr); $i++){
+                DB::table('movie_theatre')->insert([
+                        [
+                            'movieId' => $movieId, 
+                            'theatreId' => $movieTheatreTmpArr[$i]['theatreId'], 
+                            'dateTime' => $movieTheatreTmpArr[$i]['dateTime'],
+                            'updated_at' => $movieTheatreTmpArr[$i]['updated_at']
+                        ],
+                    ]);    
+            }
+
+            $movieTheatreBookingTmpRs       =   MovieBookingTmp::select('movie_booking_tmp.theatreId','movie_booking_tmp.bookingLink')                                              
+                                                            ->where('movie_booking_tmp.movieId', '=', $id)
+                                                            ->get();
+            
+            $movieTheatreBookingTmpArr      =   $movieTheatreBookingTmpRs->toArray();   
+            
+            for($j =0; $j < count($movieTheatreBookingTmpArr); $j++){
+                DB::table('movie_booking')->insert([
+                        [
+                            'movieId' => $movieId, 
+                            'theatreId' => $movieTheatreBookingTmpArr[$j]['theatreId'], 
+                            'bookingLink' => $movieTheatreBookingTmpArr[$j]['bookingLink']
+                        ],
+                    ]);    
+            }                                                
 
             $photoTypeRs                     =   PhotoTmp::select('photo_tmp.photoName', 'photo_tmp.is_primary', 'photo_tmp.order')
                                                         ->where('photo_tmp.movieId', '=', $id)

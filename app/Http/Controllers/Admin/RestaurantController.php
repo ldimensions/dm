@@ -548,6 +548,7 @@ class RestaurantController extends Controller
                     'order'         => ($restaurantTmpArr['order'])?$restaurantTmpArr['order']:0,
                     'premium'       => $restaurantTmpArr['premium'],
                     'is_disabled'   => $restaurantTmpArr['is_disabled'],
+                    'is_deleted'    => 0,
                     'updated_by'    => $restaurantTmpArr['updated_by'],
                     'updated_at'    => date("Y-m-d H:i:s")                    
                 ]
@@ -659,6 +660,7 @@ class RestaurantController extends Controller
                                     'order'         => ($restaurantTmpArr['order'])?$restaurantTmpArr['order']:0,
                                     'premium'       => $restaurantTmpArr['premium'],
                                     'is_disabled'   => $restaurantTmpArr['is_disabled'],
+                                    'is_deleted'    => 0,
                                     'urlId'         => $restaurantTmpArr['urlId'],
                                     'addressId'     => $addressId,
                                     'updated_by'    => $restaurantTmpArr['updated_by'],
