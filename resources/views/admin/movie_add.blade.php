@@ -162,7 +162,6 @@
                                                                                                 $("#addDate_btn_"+{{$theatreKey}}).click(function(){
                                                                                                     console.log("#addDate_btn_"+{{$theatreKey}});
                                                                                                     var dateCountVal;
-                                                                                                    //var theatreIdVal                            =   document.getElementById("theatreCount").value;
                                                                                                     dateCountVal                                =   document.getElementById("dateCount_"+{{$index}}).value;
                                                                                                     dateCountId                                 =   parseInt(dateCountVal)+1;
                                                                                                     document.getElementById("dateCount_"+{{$index}}).value     =   dateCountId;
@@ -371,7 +370,6 @@
         var theatreIdVal                    =   parseInt(document.getElementById("theatreCount").value)+1;
         document.getElementById("theatreCount").value = theatreIdVal;
         var now = Date.now();
-console.log(now);
 
         $('#theatreDiv').append(`
                                     <div class="col-lg-12 col-xs-12 col-sm-12" id="theatre_div_`+theatreIdVal+`_`+now+`">  
