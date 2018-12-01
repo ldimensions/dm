@@ -3,1915 +3,427 @@
 	<url>
 	<loc>http://127.0.0.1:8000</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/dallas-indian-restaurant</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
 	<loc>http://127.0.0.1:8000/dallas-indian-religion</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-addison-1</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/patel-brothers-in-frisco</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-addison-1</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/india-bazaar-in-plano</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-addison-1</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/india-bazaar-in-irving</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-addison-1</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/india-bazaar-in-frisco</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-addison-1</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/india-bazaar-in-plano-w-spring-creek-pkwy</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-addison-1</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/india-bazaar-in-lewisville</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-addison-1</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/india-bazaar-richardson</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-addison-1</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/india-bazaar-irving-airport-fwy</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-addison-1</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/patel-brothers-plano</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-balch-springs-2</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/patel-brothers-irving</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-balch-springs-2</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/patel-brothers-Irving2</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-balch-springs-2</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/b-and-p-snacks</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-balch-springs-2</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/east-west-general-store</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-balch-springs-2</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/indian-market</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-balch-springs-2</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/indian-supermarket</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-balch-springs-2</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/subzi-mandi-cash-and-carry</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-balch-springs-2</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/taj-grocers</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-balch-springs-2</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/glorias-indian-kitchen</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-carrollton-3</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/taj-mahal-asian-groceries-and-catering</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-carrollton-3</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/swadeshi-plaza</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-carrollton-3</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/sarigama-indian-cafe-and-supermarket</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-carrollton-3</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/sabus</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-carrollton-3</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/hello-india-groceries</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-carrollton-3</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/apna-bazaar-grill</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-carrollton-3</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/myhomegrocers</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-carrollton-3</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/spice-bazaar-indian-grocery-and-fast-food</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-carrollton-3</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/swadeshi-grocers-and-halal-meat</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-cedar-hill-4</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/triveni-indian-supermarket</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-cedar-hill-4</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/tharkari-indian-grocery</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-cedar-hill-4</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/indo-pak-supermarket</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-cedar-hill-4</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/indio-products</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-cedar-hill-4</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/national-imports</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-cedar-hill-4</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/kea-import-food</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-cedar-hill-4</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/indo-pak-carrollton</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-cedar-hill-4</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/madinah-meat-mart</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-cedar-hill-4</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/indian-superstore</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-cockrell-hill-5</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/g-and-g-asian-super-market</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-cockrell-hill-5</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/royal-blue-grocery</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-cockrell-hill-5</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/india-imports</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-cockrell-hill-5</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/r-and-j-asian-spices</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-cockrell-hill-5</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-grocery-store/shalimar-supermarket-cafe</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-cockrell-hill-5</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-restaurant/spice-in-the-city</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-cockrell-hill-5</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-restaurant/india-101-in-irving</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-cockrell-hill-5</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-restaurant/vindu</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-cockrell-hill-5</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-restaurant/mumbai-grill</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-combine-6</loc>
+	<loc>http://127.0.0.1:8000/dallas-christian-church/st-alphonsa-syro-malabar-catholic</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-combine-6</loc>
+	<loc>http://127.0.0.1:8000/dallas-christian-church/st-thomas-syro-malabar-catholic</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-combine-6</loc>
+	<loc>http://127.0.0.1:8000/dallas-christian-church/csi-church-of-dallas</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-combine-6</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-movies/24-kisses-tollywood</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-combine-6</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-movies/2-0</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-combine-6</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-movies/2-0-Telugu</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-combine-6</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-movies/2-0-Hindi</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-combine-6</loc>
+	<loc>http://127.0.0.1:8000/dallas-indian-movies/oru-kuprasidha-payyan</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-combine-6</loc>
+	<loc>http://127.0.0.1:8000/dallas-theatre/regal-mac-arthur-marketplace-stadium-16</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-coppel-30</loc>
+	<loc>http://127.0.0.1:8000/dallas-theatre/cinemark-17-and-imak-theatre</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-coppel-30</loc>
+	<loc>http://127.0.0.1:8000/dallas-theatre/amc-stonebriar-24</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-coppel-30</loc>
+	<loc>http://127.0.0.1:8000/dallas-theatre/cinemark-hollywood-usa</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-coppel-30</loc>
+	<loc>http://127.0.0.1:8000/dallas-theatre/fun-movie-grill</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-coppel-30</loc>
+	<loc>http://127.0.0.1:8000/dallas-theatre/amc-dine-in-grapevine-mills-30</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-coppel-30</loc>
+	<loc>http://127.0.0.1:8000/dallas-theatre/cinemark-movies-8</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-coppel-30</loc>
+	<loc>http://127.0.0.1:8000/dallas-theatre/funasia-richardson-6</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-coppel-30</loc>
+	<loc>http://127.0.0.1:8000/dallas-theatre/cinemark-legacy-and-xd</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-coppel-30</loc>
+	<loc>http://127.0.0.1:8000/dallas-theatre/cinemark-frisco-square-andxd</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-dallas-7</loc>
+	<loc>http://127.0.0.1:8000/dallas-theatre/studio-movie-grill-northwest-highway</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-dallas-7</loc>
+	<loc>http://127.0.0.1:8000/dallas-theatre/cinemark-west-plano-and-xd</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-dallas-7</loc>
+	<loc>http://127.0.0.1:8000/dallas-theatre/harkins-southlake-town-center-14</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-dallas-7</loc>
+	<loc>http://127.0.0.1:8000/dallas-theatre/amc-firewheel-18</loc>
 		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-dallas-7</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-dallas-7</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-dallas-7</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-dallas-7</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-dallas-7</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-deSoto-8</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-deSoto-8</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-deSoto-8</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-deSoto-8</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-deSoto-8</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-deSoto-8</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-deSoto-8</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-deSoto-8</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-deSoto-8</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-duncanville-9</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-duncanville-9</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-duncanville-9</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-duncanville-9</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-duncanville-9</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-duncanville-9</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-duncanville-9</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-duncanville-9</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-duncanville-9</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-farmers-branch-10</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-farmers-branch-10</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-farmers-branch-10</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-farmers-branch-10</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-farmers-branch-10</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-farmers-branch-10</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-farmers-branch-10</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-farmers-branch-10</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-farmers-branch-10</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-ferris-11</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-ferris-11</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-ferris-11</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-ferris-11</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-ferris-11</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-ferris-11</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-ferris-11</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-ferris-11</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-ferris-11</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-frisco-31</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-frisco-31</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-frisco-31</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-frisco-31</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-frisco-31</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-frisco-31</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-frisco-31</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-frisco-31</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-frisco-31</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-garland-12</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-garland-12</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-garland-12</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-garland-12</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-garland-12</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-garland-12</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-garland-12</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-garland-12</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-garland-12</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-glenn-heights-13</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-glenn-heights-13</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-glenn-heights-13</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-glenn-heights-13</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-glenn-heights-13</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-glenn-heights-13</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-glenn-heights-13</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-glenn-heights-13</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-glenn-heights-13</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-grand-prairie-14</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-grand-prairie-14</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-grand-prairie-14</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-grand-prairie-14</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-grand-prairie-14</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-grand-prairie-14</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-grand-prairie-14</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-grand-prairie-14</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-grand-prairie-14</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-grapevine-15</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-grapevine-15</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-grapevine-15</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-grapevine-15</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-grapevine-15</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-grapevine-15</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-grapevine-15</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-grapevine-15</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-grapevine-15</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-highland-park-16</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-highland-park-16</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-highland-park-16</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-highland-park-16</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-highland-park-16</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-highland-park-16</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-highland-park-16</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-highland-park-16</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-highland-park-16</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-hutchins-17</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-hutchins-17</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-hutchins-17</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-hutchins-17</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-hutchins-17</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-hutchins-17</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-hutchins-17</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-hutchins-17</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-hutchins-17</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-irving-18</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-irving-18</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-irving-18</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-irving-18</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-irving-18</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-irving-18</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-irving-18</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-irving-18</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-irving-18</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-lancaster-19</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-lancaster-19</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-lancaster-19</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-lancaster-19</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-lancaster-19</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-lancaster-19</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-lancaster-19</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-lancaster-19</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-lancaster-19</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-mesquite-20</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-mesquite-20</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-mesquite-20</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-mesquite-20</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-mesquite-20</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-mesquite-20</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-mesquite-20</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-mesquite-20</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-mesquite-20</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-ovilla-21</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-ovilla-21</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-ovilla-21</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-ovilla-21</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-ovilla-21</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-ovilla-21</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-ovilla-21</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-ovilla-21</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-ovilla-21</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-plano-32</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-plano-32</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-plano-32</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-plano-32</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-plano-32</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-plano-32</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-plano-32</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-plano-32</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-plano-32</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-richardson-22</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-richardson-22</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-richardson-22</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-richardson-22</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-richardson-22</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-richardson-22</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-richardson-22</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-richardson-22</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-richardson-22</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-rowlett-23</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-rowlett-23</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-rowlett-23</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-rowlett-23</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-rowlett-23</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-rowlett-23</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-rowlett-23</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-rowlett-23</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-rowlett-23</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-sachse-24</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-sachse-24</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-sachse-24</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-sachse-24</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-sachse-24</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-sachse-24</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-sachse-24</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-sachse-24</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-sachse-24</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-seagoville-25</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-seagoville-25</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-seagoville-25</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-seagoville-25</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-seagoville-25</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-seagoville-25</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-seagoville-25</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-seagoville-25</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-seagoville-25</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-sunnyvale-26</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-sunnyvale-26</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-sunnyvale-26</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-sunnyvale-26</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-sunnyvale-26</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-sunnyvale-26</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-sunnyvale-26</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-sunnyvale-26</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-sunnyvale-26</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-university Park-27</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-university Park-27</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-university Park-27</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-university Park-27</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-university Park-27</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-university Park-27</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-university Park-27</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-university Park-27</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-university Park-27</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-wilmer-28</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-wilmer-28</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-wilmer-28</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-wilmer-28</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-wilmer-28</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-wilmer-28</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-wilmer-28</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-wilmer-28</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-wilmer-28</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-indian-grocery-store-2/indian-grocery-store-in-wylie-29</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-kerala-grocery-store-1/kerala-grocery-store-in-wylie-29</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/grocery-search/dallas-tamil-grocery-store-3/tamil-grocery-in-wylie-29</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-indian-restaurant-2/indian-restaurant-in-wylie-29</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-kerala-restaurant-1/kerala-restaurant-in-wylie-29</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/restaurant-search/dallas-tamil-restaurant-3/tamil-restaurant-in-wylie-29</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-christian-church-1/christian-church-in-wylie-29</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-hindu-temple-2/hindu-temple-in-wylie-29</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/religion-search/dallas-islan-mosque-5/islam-mosque-in-wylie-29</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/national-imports</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/patel-brothers-frisco</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/india-bazaar-frisco</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/india-bazaar-irving-75063</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/east-west-general-store-garland</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/indian-supermarket-irving</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/india-bazaar-richardson</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/india-bazaar-irving</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/patel-brothers-plano</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/taj-grocers-plano</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/patel-brothers-irving</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/patel-brothers-irving-75062</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/glorias-indian-kitchen-garland</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/taj-mahal-asian-groceries-and-catering</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/subzi-mandi-cash-and-carry</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/india-bazaar-plano</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/test</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-grocery-store/test1</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-indian-restaurant/india101</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-indian-restaurant/cosmic-cafe-dallas</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-indian-restaurant/testing</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-indian-restaurant/testng123</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-christian-church/st-alphonsa-syro-malabar-catholic-church</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-christian-church/st-thomas-syro-malabar-catholic-church</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-christian-church/mar-thoma-church-of-dallas-farmers-branch</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-christian-church/test-abc</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>http://127.0.0.1:8000/dallas-christian-church/testing123</loc>
-		<priority>1.0</priority>
-		<lastmod>2018-09-01T16:42:55-05:00</lastmod>
+		<lastmod>2018-12-01T10:49:26-06:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 </urlset>

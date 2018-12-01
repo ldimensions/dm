@@ -237,7 +237,19 @@ Route::group(['middleware' => ['role:Admin']], function () {
             }elseif($religion->religionName == "Islam"){
                 $sitemap->add(URL::to(config('app.defaultBaseURL.dallas-islan-mosque').'/'.$religion->urlName), $date, '1.0', 'daily');
             }
-        }             
+        }  
+        
+        //Movies
+        $movies                               =   DB::select('select url.urlName from movie left join url on url.movieId = movie.id where movie.is_deleted = 0 and movie.is_disabled = 0');
+        foreach ($movies as $movie) {
+            $sitemap->add(URL::to(config('app.defaultBaseURL.indian-movie').'/'.$movie->urlName), $date, '1.0', 'daily');
+        }
+
+        //Theatres
+        $theatres                               =   DB::select('select url.urlName from theatre left join url on url.theatreId = theatre.id where theatre.is_deleted = 0 and theatre.is_disabled = 0');
+        foreach ($theatres as $theatre) {
+            $sitemap->add(URL::to(config('app.defaultBaseURL.indian-theatre').'/'.$theatre->urlName), $date, '1.0', 'daily');
+        }
         
         $sitemap->store('xml', 'sitemap');
         return redirect('/admin/dashboard');
