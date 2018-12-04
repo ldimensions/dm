@@ -12,7 +12,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <a href="#" class="list-group-item">
+                            <a href="{{ url('/admin/grocery') }}" class="list-group-item">
                                 <i class="fa fa-shopping-cart fa-fw"></i> 
                                 @if ($grocerySubmitted > 0)
                                     <span style="color:#337ab;font-weight: bold;">{{$grocerySubmitted}}</span>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <a href="#" class="list-group-item">
+                            <a href="{{ url('/admin/grocery') }}" class="list-group-item">
                                 <i class="fa fa-warning fa-fw"></i>
                                 @if ($groceryRejected > 0)
                                     <span style="color:red;font-weight: bold;">{{$groceryRejected}}</span>

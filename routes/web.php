@@ -158,11 +158,11 @@ Route::group(['middleware' => ['role:Editor']], function () {
     Route::post('/editor/grocery_add', 'Editor\GroceryController@addGrocery');
     Route::get('/editor/grocery/delete/{id}', 'Editor\GroceryController@deleteGrocery')->where(['id' => '[0-9]+']);
     
-    Route::get('/editor/grocery', 'Editor\GroceryController@index')->name('grocery_listing');
-    Route::get('/editor/grocery_add/{id?}', 'Editor\GroceryController@addGroceryView')->name('grocery_add')->where(['id' => '[0-9]+']);
-    Route::get('/editor/grocery_add_duplicate/{id?}', 'Editor\GroceryController@addGroceryDuplicatetView')->name('grocery_add_duplicate')->where(['id' => '[0-9]+']);
-    Route::post('/editor/grocery_add', 'Editor\GroceryController@addGrocery');
-    Route::get('/editor/grocery/delete/{id}', 'Editor\GroceryController@deleteGrocery')->where(['id' => '[0-9]+']);    
+    // Route::get('/editor/grocery', 'Editor\GroceryController@index')->name('grocery_listing');
+    // Route::get('/editor/grocery_add/{id?}', 'Editor\GroceryController@addGroceryView')->name('grocery_add')->where(['id' => '[0-9]+']);
+    // Route::get('/editor/grocery_add_duplicate/{id?}', 'Editor\GroceryController@addGroceryDuplicatetView')->name('grocery_add_duplicate')->where(['id' => '[0-9]+']);
+    // Route::post('/editor/grocery_add', 'Editor\GroceryController@addGrocery');
+    // Route::get('/editor/grocery/delete/{id}', 'Editor\GroceryController@deleteGrocery')->where(['id' => '[0-9]+']);    
 
     Route::get('/editor/movies', 'Editor\MovieController@MovieListing')->name('movies_listing');
     Route::get('/editor/movie_add/{id?}', 'Editor\MovieController@addMovieView')->name('add_movie_view')->where(['id' => '[0-9]+']);

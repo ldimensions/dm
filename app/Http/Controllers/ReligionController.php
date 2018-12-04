@@ -201,8 +201,9 @@ class ReligionController extends Controller
             $photo                          =   $photoRs->toArray();  
 
             $commonCtrl->setMeta($request->path(),2);
-            OpenGraph::addImage('http://'.$_SERVER['SERVER_NAME']."/image/religion/".$religionId."/".$photo[0]['photoName'], ['height' => 300, 'width' => 300]);    
-            
+            if(!empty($photo)){
+                OpenGraph::addImage('http://'.$_SERVER['SERVER_NAME']."/image/religion/".$religionId."/".$photo[0]['photoName'], ['height' => 300, 'width' => 300]);    
+            }
             
             // $now = strtotime("now");
             // $yourTime   =   strtotime('2018-06-22 11:04:00');

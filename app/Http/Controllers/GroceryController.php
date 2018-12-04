@@ -238,8 +238,9 @@ class GroceryController extends Controller
             
             $photo                          =   $photoRs->toArray();  
             $commonCtrl->setMeta($request->path(),2);
-            
-            OpenGraph::addImage('http://'.$_SERVER['SERVER_NAME']."/image/grocery/".$groceryId."/".$photo[0]['photoName'], ['height' => 300, 'width' => 300]);    
+            if(!empty($photo)){
+                OpenGraph::addImage('http://'.$_SERVER['SERVER_NAME']."/image/grocery/".$groceryId."/".$photo[0]['photoName'], ['height' => 300, 'width' => 300]);    
+            }
                
             $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($grocery['description']));
             

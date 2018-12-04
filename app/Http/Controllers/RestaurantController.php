@@ -199,8 +199,9 @@ class RestaurantController extends Controller
             
 
             $commonCtrl->setMeta($request->path(),2);
-            OpenGraph::addImage('http://'.$_SERVER['SERVER_NAME']."/image/restaurant/".$restaurantId."/".$photo[0]['photoName'], ['height' => 300, 'width' => 300]);    
-          
+            if(!empty($photo)){
+                OpenGraph::addImage('http://'.$_SERVER['SERVER_NAME']."/image/restaurant/".$restaurantId."/".$photo[0]['photoName'], ['height' => 300, 'width' => 300]);    
+            }
             $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($restaurant['description']));
             return view('restaurant_details',['restaurant' => $restaurant, 'photos' => $photo, 'distance' => $distance, 'workingTimes' => $workingTimes, 'today' => $todaysDate, 'todaysWorkingTime' => $todaysWorkingTime, 'descriptionHeight' => $descriptionHeight, 'foodTypeStr' => $foodTypeStr]);
         }else{

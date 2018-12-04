@@ -164,7 +164,9 @@ class MovieController extends Controller
             $today =   date("M d D"); 
 
             $descriptionHeight              =   $commonCtrl->descriptionLength(strlen($movie['description']));
-            
+            if(!empty($photo)){
+                OpenGraph::addImage('http://'.$_SERVER['SERVER_NAME']."/image/movie/".$movieId."/".$photo[0]['photoName'], ['height' => 300, 'width' => 300]);    
+            }
             // echo '<pre>';
             // print_r($movieTheatreTimeArr);
             // exit();
