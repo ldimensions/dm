@@ -62,7 +62,7 @@ Route::get('/getSuggessionNotification', 'SuggessionForEditController@getSuggess
 $this->get('/'.config('app.defaultBaseURL.indian-movie'), 'MovieController@index')->name('movies');
 $this->get('/'.config('app.defaultBaseURL.indian-movie').'/{url}', 'MovieController@getDetails')->name('movie_details')->where('url', '[A-Za-z-+0-9]+');
 $this->get('/'.config('app.defaultBaseURL.indian-theatre').'/{url}', 'MovieController@theatreDetails')->name('theatre_details')->where('url', '[A-Za-z-+0-9]+');
-$this->get('/'.config('app.defaultBaseURL.movie-search').'/{type?}/{city?}/{keyword?}', 'MovieController@index')->where(['city' => '[A-Za-z-+0-9]+', 'type' => '[A-Za-z-+0-9]+']);
+$this->get('/'.config('app.defaultBaseURL.movie-search').'/{schedule?}/{type?}/{city?}/{keyword?}', 'MovieController@index')->where(['schedule' => '[1-3]+', 'city' => '[A-Za-z-+0-9]+', 'type' => '[A-Za-z-+0-9]+']);
 $this->get('/movie-related/{language}/{id}', 'MovieController@getRelated')->name('movieRelated')->where(['language' => '[A-Za-z-+0-9]+', 'id' => '[0-9]+']);
 $this->get('/theatre-related/{id}', 'MovieController@getTheatreRelated')->name('theatreRelated')->where(['id' => '[0-9]+']);
 

@@ -6,6 +6,11 @@
     <div class="leftcontainer">
         <div class="col-md-12 searchbar hiddepadding">
             <form>
+                <select name="schedule" class="select" id="schedule">
+                    <option value="1" {{ $schedule == '1' ? 'selected="selected"' : '' }}>All</option>
+                    <option value="2" {{ $schedule == '2' ? 'selected="selected"' : '' }}>Now Running</option>
+                    <option value="3" {{ $schedule == '3' ? 'selected="selected"' : '' }}>Up Comming</option>                    
+                </select>
                 <select name="type" class="select" id="type">
                     <option 
                         value="all">
@@ -86,6 +91,7 @@
             </div>
         @endforeach
 
+        {{ $movies->links() }}
 
     </div>
     <div class="col-md-3 rightcontainer nopadding">
@@ -101,8 +107,9 @@
             var type        =   document.getElementById("type").value;
             var city        =   document.getElementById("city").value;
             var keyword     =   document.getElementById("searchKeyword").value;
+            var schedule    =   document.getElementById("schedule").value;
             var urlParm     =   '';            
-            urlParm = "{{ URL::to('/') }}/{{config('app.defaultBaseURL.movie-search')}}/"+type+"/"+city+"/"+keyword;
+            urlParm = "{{ URL::to('/') }}/{{config('app.defaultBaseURL.movie-search')}}/"+schedule+"/"+type+"/"+city+"/"+keyword;
             window.location.href = urlParm;
         } 
     </script>

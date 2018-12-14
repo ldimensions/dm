@@ -10,12 +10,14 @@ use App\Http\Models\Photo;
 use App\Http\Models\Url;
 use App\Http\Models\City;
 
+use OpenGraph;
+
 class MovieController extends Controller
 {
 
     public function __construct(){}
 
-    public function index(Request $request,$type,$city=null,$keyword=null){
+    public function index(Request $request,$schedule = 2,$type,$city=null,$keyword=null){
 
         $typeVal                        =   "";
         $cityVal                        =   "";
@@ -23,6 +25,12 @@ class MovieController extends Controller
         $setSeo                         =   false;       
         $siteId                         =   config('app.siteId');
         $commonCtrl                     =   new CommonController;
+
+        if($schedule && $schedule != "all"){
+            //$typeArr                        =   explode("-",$type);
+            //$typeVal                        =   $typeArr[count($typeArr)-1];
+            //$scheduleVal                     =   $type;
+        }
 
         if($type && $type != "all"){
             //$typeArr                        =   explode("-",$type);
@@ -40,25 +48,34 @@ class MovieController extends Controller
                 
         $siteId                             =   config('app.siteId');        
 
-        $movieRs                            =   Movie::select('movie.id as movieId', 'movie.name', 
-                                                        'movie.cast', 'movie.language', 'movie.music', 
+        $movieRs                            =   Movie::select('movie.id as movieId', 'movie.name',
+                                                        'movie.cast', 'movie.language', 'movie.music',
                                                         'movie.director', 'movie.producer', 'url.urlName', 'photo.photoName')
                                                         ->leftjoin('url','url.movieId', '=', 'movie.id')
                                                         ->leftjoin('site','site.siteId', '=', 'movie.siteId')
-                                                        ->join('movie_theatre','movie_theatre.movieId', '=', 'movie.id')  
                                                         ->leftJoin('photo', function($join){
                                                             $join->on('photo.movieId', '=', 'movie.id')
                                                                 ->where('photo.is_primary','=',1);
                                                         })  
-                                                        ->leftjoin('theatre','theatre.id', '=', 'movie_theatre.movieId')
-                                                        ->leftjoin('address','address.id', '=', 'theatre.addressId')
-                                                        ->leftjoin('city','city.cityId', '=', 'address.city')                                                                                                    
+
                                                         ->where('movie.is_deleted', '=', '0')
-                                                        ->where('movie_theatre.dateTime', '>=', date("Y-m-d H:i:s") )                                                        
+                                                        //->where('movie_theatre.dateTime', '>=', date("Y-m-d H:i:s") )                                                        
                                                         ->where('site.siteId', '=', $siteId)
                                                         ->groupBy('movie.id','movie.name','movie.cast', 'movie.language', 'movie.music','movie.director', 'movie.producer', 'url.urlName','photo.photoName','movie.created_at','movie.premium')
                                                         ->orderBy('movie.premium', 'DESC')
                                                         ->orderBy('movie.created_at', 'DESC');   
+
+
+        if($schedule == '2'){
+            $movieRs->join('movie_theatre','movie_theatre.movieId', '=', 'movie.id'); 
+            $movieRs->where('movie_theatre.dateTime', '>=', date("Y-m-d H:i:s") );
+        }else if($schedule == '3'){
+            $movieRs->leftjoin('movie_theatre','movie_theatre.movieId', '=', 'movie.id'); 
+            $movieRs->where('movie_theatre.dateTime', null );
+        }else{
+            $movieRs->leftjoin('movie_theatre','movie_theatre.movieId', '=', 'movie.id'); 
+        }
+        
 
         if($cityVal){
             $movieRs->where('city.cityId', '=', $cityVal);
@@ -72,15 +89,20 @@ class MovieController extends Controller
         
         $movies                             =   $movieRs->paginate(16);        
             
-        $movieRs                            =   $movieRs->get();
-        $movies                             =   $movieRs->toArray();
+        // $movieRs                            =   $movieRs->get();
+        // $movies                             =   $movieRs->toArray();
+        // echo "<pre>";
+        // print_r($movies);
+        // exit();
 
         $cityRs                             =   City::select('cityId','city', 'value')
                                                         ->orderBy('city', 'asc')
                                                         ->get();  
-        $cities                             =   $cityRs->toArray();          
+        $cities                             =   $cityRs->toArray();      
+        
+        $schedule                           =   ($schedule) ? $schedule: '2';
 
-        return view('movies',['movies' => $movies, 'cities' => $cities, 'type' => $type, 'cityVal' => $cityVal, 'keyword' => $keyword]);
+        return view('movies',['movies' => $movies, 'cities' => $cities, 'type' => $type, 'cityVal' => $cityVal, 'keyword' => $keyword, 'schedule' => $schedule]);
     }
 
     public function getDetails(Request $request,$url){

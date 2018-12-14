@@ -49,11 +49,11 @@ class GroceryController extends Controller
                                                             'grocery_tmp.updated_at','users.name as updatedBy',
                                                             'grocery_tmp.is_disabled', 'ethnic.ethnicName', 'url.urlName')
                                                         ->leftjoin('url','url.groceryTempId', '=', 'grocery_tmp.id')
-                                                        ->leftjoin('address','address.id', '=', 'grocery_tmp.addressId')
+                                                        ->leftjoin('address_tmp','address_tmp.id', '=', 'grocery_tmp.addressId')
                                                         ->leftjoin('ethnic','ethnic.id', '=', 'grocery_tmp.ethnicId')
                                                         ->leftjoin('users','users.id', '=', 'grocery_tmp.updated_by')              
                                                         ->leftjoin('site','site.siteId', '=', 'grocery_tmp.siteId')                                            
-                                                        ->leftjoin('city','city.cityId', '=', 'address.city')                                           
+                                                        ->leftjoin('city','city.cityId', '=', 'address_tmp.city')                                           
                                                         ->where('grocery_tmp.is_deleted', '=', '0')
                                                         ->where('site.siteId', '=', $siteId)
                                                         ->orderBy('grocery_tmp.premium', 'DESC')

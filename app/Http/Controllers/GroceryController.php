@@ -73,8 +73,7 @@ class GroceryController extends Controller
         return view('grocery',['grocery' => $grocerys, 'cities' => $cities]);
     }
 
-    public function index(Request $request,$type,$city=null,$keyword=null)
-    {
+    public function index(Request $request,$type,$city=null,$keyword=null){
         $typeVal                        =   "";
         $cityVal                        =   "";
         $keywordVal                     =   ""; 
