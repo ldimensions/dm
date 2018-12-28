@@ -891,14 +891,34 @@ class MovieController extends Controller
             }else{
                 DB::table('url')->where('movieTempId', $id)->delete();                
             }
-            
-            if (is_dir(public_path().'/image/movie/'.$id.'_tmp')) {
-                rmdir (public_path().'/image/movie/'.$id.'_tmp');     
-            }
+            $this->deleteDirectory(public_path().'/image/movie/'.$id.'_tmp');
             return redirect('/editor/movies')->with('status', 'Movie deleted!');
         }else{
             return redirect('/editor/movies')->with('status', 'Error!');            
         }
+    }
+
+    public function deleteDirectory($dir) {
+        if (!file_exists($dir)) {
+            return true;
+        }
+    
+        if (!is_dir($dir)) {
+            return unlink($dir);
+        }
+    
+        foreach (scandir($dir) as $item) {
+            if ($item == '.' || $item == '..') {
+                continue;
+            }
+    
+            if (!$this->deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
+                return false;
+            }
+    
+        }
+    
+        return rmdir($dir);
     }
 
     public function deleteTheatre($id){

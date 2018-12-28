@@ -82,6 +82,7 @@ return [
         'movie-search'                          => 'movie-search',
 
         'events'                                => 'dallas-indian-events',
+        'event-search'                          => 'event-search',
 
         'dallas-indian-travels'                 => 'dallas-indian-travels',        
         

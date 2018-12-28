@@ -3,183 +3,142 @@
 <div class="mcontainer">
     <div class="maincontainer">
         <div class="leftcontainer">
-            <div class="paggination"><a href="#" class="subcontent2 h21">Movies</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">Events Name</span></div>
+            <div class="paggination"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.events')}}" class="subcontent2 h21">Events</a>&nbsp;&nbsp;>&nbsp;&nbsp;<span class="title">{{ $event['name'] }}</span></div>
             <div class="block2">
-                <div class="move_title toparea space">
+                <div class="gro_title toparea space">
                     <table class="fullWidth">
-                    <a href="#" title="" class="share"><img src="{{ URL::to('/') }}/image/share_icon.svg" alt=""/></a>
                         <tr>
-                        <td><h1 class="titleblock">Event Name</h1></td>
+                        <td><h1 class="titleblock">{{ $event['name'] }}</h1></td>
                         </tr>
                         <tr>
-                            <td><div class="titleblock white smaextra">Language</div></td>
-                        </tr>                       
+                            <td><div class="titleblock white smaextra">{{ $event['address1'] }} {{ $event['address2'] }}, {{ $event['city'] }}, {{ $event['state'] }}, {{ $event['zip'] }}</div></td>
+                        </tr>
+                        <tr>
+                            <td><a href="tel:{{ $event['phone1'] }}" class="titleblock white smaextra extra">{{ $event['phone1'] }}</a></td>
+                        </tr>
+                        <!-- @if($todaysWorkingTime)
+                            <tr>
+                                <td class="smaextra">Working Time : {{$todaysWorkingTime}}</td>
+                            </tr>                         
+                        @endif -->
                     </table> 
                 </div>
                 <div class="content">
                     <table class="fullWidth">
-                        <tr>
-                            <td colspan="2">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                Description
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Producer</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><h3 class="h21" >Producer Name</h3></td>
-                        </tr> 
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Director</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><h3 class="h21" >Director Name</h3></td>
-                        </tr> 
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Cast</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><h3 class="h21" >Cast Name</h3></td>
-                        </tr> 
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">Music</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><h3 class="h21" >Name</h3></td>
-                        </tr> 
-                        <tr>
-                            <td colspan="2" class="smallfont tdtoppadd1">URL</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><h2><a href="#" target="_blank" class="h21" >www.moviewebsite.com</a></h2></td>
-                        </tr>
-                    </table>  
-                </div>
-                <div class="movie">
-                    <table class="fullWidth">
-                        <tr>
-                            <td style="padding-bottom:15px;">
-                            <div class="theatreBlock">
-                                <table class="fullWidth">
-                                    <a href="#" title="" target="_blank" class="mapicon3"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
-                                    <a href="#" title="" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt=""/></a>
-
-                                    <tr>
-                                    <td colspan="2"><h1 class="space3 space2 titleblock1"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-theatre')}}/hardcoded" alt="" class="colorh11">Theatre Name</a></h1></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" class="space2">3311 Regent Blvd , Irving , TX, 75063</td>
-                                    </tr> 
-                                    <tr>
-                                        <td colspan="2"><h2 class="space2"><a href="#" target="_blank" class="h21" >www.theatrewebsite.com</a></h2></td>
-                                    </tr>
-                                    <tr>
-                                    <td colspan="2" style="padding-bottom:10px;"><a href="#" target="_blank" class="space2 h21">Phone Number</td>
-                                    </tr>  
-                                    
-                                    <tr>
-                                    <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
-                                    <table>
-                                    <tr>
-                                            <td  colspan="5" class="space2 smallfont tdtoppadd2">Oct 20 Sun</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2"><a href="#"target="_blank" class=" inactiveweekdays_moive h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td  colspan="5" class="space2 smallfontMovie tdtoppadd2">Oct 20 Mon</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2 space4"><a href="#"target="_blank" class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-
-                                    </table>  
+                        @if($schedule) 
+                            <tr>
+                                <td colspan="2">Schedule</td>
+                            </tr>
+                            @foreach ($schedule as $key => $time)      
+                                <tr>                                                                
+                                    <td colspan="2">
+                                        <div id="description" style="overflow: hidden;">{{$time['dateTime']}}@if(!$loop->last), @endif</div>                                    
                                     </td>
-                                    </tr>    
-                                    </table> 
-                                </div>
-                                <div class="theatreBlock">
-                                <table class="fullWidth">
-                                    <a href="#" title="" target="_blank" class="mapicon3"><img src="{{ URL::to('/') }}/image/map1.svg" alt=""/></a>
-                                    <a href="#" title="" target="_blank" class="bookingIcon"><img src="{{ URL::to('/') }}/image/calendar.svg" alt=""/></a>
-
-                                    <tr>
-                                    <td colspan="2"><h1 class="space3 space2 titleblock1"><a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-theatre')}}/hardcoded" alt="" class="colorh11">Theatre Name</a></h1></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" class="space2">3311 Regent Blvd , Irving , TX, 75063</td>
-                                    </tr> 
-                                    <tr>
-                                        <td colspan="2"><h2 class="space2"><a href="#" target="_blank" class="h21" >www.theatrewebsite.com</a></h2></td>
-                                    </tr>
-                                    <tr>
-                                    <td colspan="2" style="padding-bottom:10px;"><a href="#" target="_blank" class="space2 h21">Phone Number</td>
-                                    </tr>  
-                                    
-                                    <tr>
-                                    <td style="padding-top:8px; border-top:1px solid #f1f1f1;">
-                                    <table>
-                                    <tr>
-                                            <td  colspan="5" class="space2 smallfont tdtoppadd2">Oct 20 Sun</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2"><a href="#"target="_blank" class=" inactiveweekdays_moive h21">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td  colspan="5" class="space2 smallfontMovie tdtoppadd2">Oct 20 Mon</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="space2 space4"><a href="#"target="_blank" class="activeweekdays_movie">09:00 am,&nbsp;12:00 am,&nbsp;03:00 pm,&nbsp;
-                                            06:00 pm,&nbsp;09:00 pm,&nbsp;12:00 pm&nbsp;</a></td>
-                                        </tr>
-
-                                    </table>  
-                                    </td>
-                                    </tr>    
-                                    </table> 
-                                </div>
-                            </td>
+                                </tr>
+                            @endforeach 
+                        @endif                    
+                        @if($event['description']) 
+                            <tr>
+                                <td colspan="2">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div id="description" style="overflow: hidden;">{!! nl2br($event['description']) !!}</div>                                    
+                                </td>
+                            </tr>
+                        @endif   
+                        @if (isset($event['website']) && $event['website'])
+                            <tr>
+                                <td colspan="2" class="smallfont tdtoppadd1">Website</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><h2><a href="{{ $event['website'] }}" target="_blank" class="h21">{{ $event['website'] }}</a></h2></td>
+                            </tr> 
+                        @endif                                   
+                        <tr>
+                            <td colspan="2" class="smallfont tdtoppadd1">Located In</td>
                         </tr>
-                    </table>    
-                </div>
-                <div class="content">
-                    <table class="fullWidth">
-                    <tr>
-                        <td colspan="2">
-                            <div class="suggestionblock">
-                                <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent22">Suggest an edit</a>   
-                            </div> 
-                        </td>
-                    </tr> 
+                        <tr>
+                            <td colspan="2"><h3>{{ $event['city'] }}</h3></td>
+                        </tr>
+                        @if (isset($distance) && $distance)
+                            <tr>
+                                <td colspan="2" class="smallfont tdtoppadd1">Distance</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">{{ $distance }}</td>
+                            </tr>
+                        @endif
                     </table>
-                </div>
 
+                    <div class="suggestionblock">
+                        <a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="subcontent22">Suggest an edit</a>   
+                    </div>                                         
+                </div>
             </div>
+            @if ($event['organizerName'] || $event['organizerEmail'] || $event['organizerPhone'] )
+                <div class="blockk1">
+                    <div class="block23">
+                        <div class="white_Photo space"><h2 class="titleh2 graycolor">{{$event['name']}} Contact</h2></div>
+                    </div>
+                    <div class="block231">
+                        <table class="fullWidth">                       
+                            @if ($event['organizerName'])
+                                <tr>
+                                    <td colspan="2" class="smallfont tdtoppadd1">Organizer name</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">{{$event['organizerName']}}</td>
+                                </tr>
+                            @endif
+                            @if ($event['organizerEmail'])
+                                <tr>
+                                    <td colspan="2" class="smallfont tdtoppadd1">Organizer Email</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">{{$event['organizerEmail']}}</td>
+                                </tr>
+                            @endif
+                            @if ($event['organizerPhone'])
+                                <tr>
+                                    <td colspan="2" class="smallfont tdtoppadd1">Organizer Phone</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">{{$event['organizerPhone']}}</td>
+                                </tr>
+                            @endif                                                
+                        </table>
+                    </div>
+                </div>            
+            @endif    
             <div class="block22">
-            <div class="white_t1 space">
-                <h2 class="titleh2 graycolor1">Movie Name Trailer</h2></div>
-                <div id="video" class="video"></div>
+            @if ($event['latitude'] && $event['longitude'])
+                <div class="white_t1 space">
+                    <h2 class="titleh2 graycolor1">{{$event['name']}} Location</h2>
+                    <a href="https://www.google.com/maps/dir//{{ $event['name'] }} {{ $event['address1'] }} {{ $event['address2'] }}, {{ $event['city'] }}, {{ $event['state'] }}, {{ $event['zip'] }}/%40{{$event['latitude']}},{{$event['longitude']}},12z" title="{{ $event['name'] }}" target="_blank" class="mapicon12"><img src="{{ URL::to('/') }}/image/map1.svg" alt="{{ $event['name'] }}"/></a>
+                    </div>
+                    <div id="map" class="map"></div>
+                </div>
+            @endif
             </div>
+            @if($photos)
             <div class="blockk1">
                 <div class="block23">
-                    <div class="white_Photo space"><h2 class="titleh2 graycolor">Movie Name Photos</h2></div>
+                    <div class="white_Photo space"><h2 class="titleh2 graycolor">{{$event['name']}} Photos</h2></div>
                 </div>
                 <div class="block231">
                     <div class="topdetail slideshow-container">
                         <ul id="lightSlider">
+                            @foreach ($photos as $key => $photo)
                                 <li data-thumb="{{ URL::to('/') }}/image/shadow_bottom.gif">
-                                    <img src="" alt="" style="width:100%;height:100%" class="bottomarea">
+                                    <img src="{{ URL::to('/') }}/image/event/{{$event['id']}}/{{$photo['photoName']}}" alt="{{$loop->index}}{{ $event['name'] }}" style="width:100%;height:100%" class="bottomarea">
                                 </li>
+                            @endforeach
                         </ul>            
                     </div>        
                 </div>
             </div>    
+            @endif
             <div class="row" id="related"></div>
         </div>
         <div class="col-md-3 rightcontainer nopadding">
@@ -234,7 +193,25 @@
 <script src="{{ asset('js/lightslider.js') }}"></script>
 <script>
 
- 
+    /*---------- Google Map ----------*/
+    
+    function initMap() {
+        var lat = parseFloat("{{ $event['latitude'] }}");
+        var long = parseFloat("{{ $event['longitude'] }}");
+        console.log(lat+'#'+long);
+        var label = "{{ $event['name'] }}";
+        var myLatLng = {lat: lat, lng: long};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11,
+            center: myLatLng
+        });
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: label
+        });
+    }
+    /*---------- Google Map End----------*/
     /*---------- Image Slider ----------*/
     $('#lightSlider').lightSlider({
         gallery: true,
@@ -245,6 +222,13 @@
     });
     
     /*---------- Image Slider End----------*/
+    $( document ).ready(function() {
+        $.get("<?php echo URL::to('/');?>/event-related/<?php echo $event['id'];?>", function(data, status){
+            if(status=="success"){
+                document.getElementById("related").innerHTML = data;
+            }
+        });
+    });
 
     document.querySelector('#readMore').addEventListener('click', function() {
         document.querySelector('#description').style.height= 'auto';

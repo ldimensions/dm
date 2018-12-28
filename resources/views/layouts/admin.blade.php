@@ -30,6 +30,7 @@
         <script src="{{ asset('admin/datetimepicker/bootstrap-datetimepicker.min.js')}}"></script>
         <script src="{{ asset('admin/multiSelect/bootstrap-multiselect.js')}}"></script>
 
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -142,7 +143,18 @@
                             </li> 
                             <li>
                                 <a href="{{ url('/editor/religion') }}"> Religion</a>
-                            </li>   
+                            </li>  
+                            <li>
+                                <a href="#"> Events<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ url('/editor/events') }}">Events</a>
+                                    </li>   
+                                    <li>
+                                        <a href="{{ url('/editor/events_category') }}">Category</a>
+                                    </li>                                                                                                        
+                                </ul>                                
+                            </li>                             
                             <li>
                                 <a href="#"> Movies<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">

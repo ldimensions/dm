@@ -66,10 +66,9 @@ $this->get('/'.config('app.defaultBaseURL.movie-search').'/{schedule?}/{type?}/{
 $this->get('/movie-related/{language}/{id}', 'MovieController@getRelated')->name('movieRelated')->where(['language' => '[A-Za-z-+0-9]+', 'id' => '[0-9]+']);
 $this->get('/theatre-related/{id}', 'MovieController@getTheatreRelated')->name('theatreRelated')->where(['id' => '[0-9]+']);
 
-
 $this->get('/'.config('app.defaultBaseURL.events'), 'EventsController@index')->name('indian-events');
 $this->get('/'.config('app.defaultBaseURL.events').'/{url}', 'EventsController@getDetails')->name('indian-events-details')->where('url', '[A-Za-z-+0-9]+');
-
+$this->get('/'.config('app.defaultBaseURL.event-search').'/{schedule?}/{type?}/{keyword?}', 'EventsController@index')->where(['schedule' => '[1-3]+', 'type' => '[A-Za-z-+0-9]+']);
 
 Route::group(['middleware' => ['role:Admin']], function () {
     
@@ -103,16 +102,24 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::get('/admin/suggession_for_edit/{id}', 'Admin\SuggessionForEditController@suggessionView')->name('suggessionView')->where(['id' => '[0-9]+']);
     Route::get('admin/suggession_for_edit/delete/{id}', 'Admin\SuggessionForEditController@deleteSuggession')->where(['id' => '[0-9]+']);
 
-    Route::get('/admin/events', 'Admin\EventsController@index')->name('events');
+    Route::get('/admin/events', 'Admin\EventsController@index')->name('events_listing');
     Route::get('/admin/event_add/{id?}', 'Admin\EventsController@addEventsView')->name('addEventsView')->where(['id' => '[0-9]+']);
     Route::post('/admin/event_add', 'Admin\EventsController@addEvents');
     Route::get('/admin/event/delete/{id}', 'Admin\EventsController@deleteEvent')->where(['id' => '[0-9]+']);
+    Route::get('/admin/event_tmp/delete/{id}', 'Admin\EventsController@deleteEventTmp')->where(['id' => '[0-9]+']);
+    Route::post('/admin/event/rejectEvent', 'Admin\EventsController@rejectEvent');
+    Route::get('/admin/event/approve/{id?}', 'Admin\EventsController@approveEvent')->where(['id' => '[0-9]+']);
+
+    //Route::get('/admin/event/approve/{id?}', 'Admin\EventsController@approveMovie')->where(['id' => '[0-9]+']);
+    //Route::get('/admin/event/delete/{id}', 'Admin\EventsController@deleteTmpMovie')->where(['id' => '[0-9]+']);    
+
+
 
     Route::get('/admin/events_category', 'Admin\EventsController@eventsCategory')->name('eventsCategory');
     Route::get('/admin/events_category_add/{id?}', 'Admin\EventsController@eventsCategoryView')->name('eventsCategoryView')->where(['id' => '[0-9]+']);
     Route::post('/admin/events_category_add', 'Admin\EventsController@addEventsCategory');
     Route::get('/admin/events_category/delete/{id}', 'Admin\EventsController@deleteCategory')->where(['id' => '[0-9]+']);
-    
+
     Route::get('/admin/theatre', 'Admin\MovieController@theatreListing')->name('theatre_listing');
     Route::get('/admin/theatre_add/{id?}', 'Admin\MovieController@addtheatreView')->name('add_theatre_view')->where(['id' => '[0-9]+']);
     Route::post('/admin/theatre_add', 'Admin\MovieController@addTheatre');
@@ -168,7 +175,20 @@ Route::group(['middleware' => ['role:Editor']], function () {
     Route::get('/editor/movie_add/{id?}', 'Editor\MovieController@addMovieView')->name('add_movie_view')->where(['id' => '[0-9]+']);
     Route::get('/editor/movie_add_duplicate/{id?}', 'Editor\MovieController@addMovieDuplicatetView')->name('movie_add_duplicate')->where(['id' => '[0-9]+']);
     Route::post('/editor/movie_add', 'Editor\MovieController@addMovie');
-    Route::get('/editor/movie/delete/{id}', 'Editor\MovieController@deleteMovie')->where(['id' => '[0-9]+']);    
+    Route::get('/editor/movie/delete/{id}', 'Editor\MovieController@deleteMovie')->where(['id' => '[0-9]+']);   
+    
+    Route::get('/editor/events', 'Editor\EventsController@index')->name('events');
+    Route::get('/editor/events_add/{id?}', 'Editor\EventsController@addEventsView')->name('addEventsView')->where(['id' => '[0-9]+']);
+    Route::get('/editor/event_add_duplicate/{id?}', 'Editor\EventsController@addEventDuplicatetView')->name('event_add_duplicate')->where(['id' => '[0-9]+']);
+    Route::post('/editor/events_add', 'Editor\EventsController@addEvents');
+    Route::get('/editor/event/delete/{id}', 'Editor\EventsController@deleteEvent')->where(['id' => '[0-9]+']);
+
+
+    Route::get('/editor/events_category', 'Editor\EventsController@eventsCategory')->name('eventsCategory');
+    Route::get('/editor/events_category_add/{id?}', 'Editor\EventsController@eventsCategoryView')->name('eventsCategoryView')->where(['id' => '[0-9]+']);
+    Route::post('/editor/events_category_add', 'Editor\EventsController@addEventsCategory');
+    //Route::get('/editor/events_category/delete/{id}', 'Admin\EventsController@deleteCategory')->where(['id' => '[0-9]+']);
+
 
 });
 

@@ -82,11 +82,12 @@
             <div class="col-md-12 block1">
                 <div class="smallImage">
                     @if (isset($rel['photoName']) && $rel['photoName'])
-                        <img src="{{ URL::to('/') }}/image/movie/{{$rel['movieId']}}/{{$rel['photoName']}}" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
+                        <img src="{{ URL::to('/') }}/image/movie/{{$rel['movieId']}}/{{$rel['photoName']}}" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%">
                     @else   
                         <img src="{{ URL::to('/') }}/image/noimage.svg" alt="{{$loop->index}}{{ $rel['name'] }}" style="width:100%;height:100%"></div>
                     @endif                     
                     <a href="{{ URL::to('/') }}/{{config('app.defaultBaseURL.indian-movie')}}/{{ $rel['urlName'] }}" title="{{ $rel['name'] }}" ><h2 class="content11 colorh1">{{ $rel['name'] }}</h2></a>                                                      
+                </div>
                 <div class="content2">{{ CommonController::getLanguage($rel['language']) }}</div>
             </div>
         @endforeach

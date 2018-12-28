@@ -21,18 +21,20 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="panel-body">                                          
+                        <div class="panel-body">                                                                                        
                             <form name="event" action="{{ url('/admin/event_add') }}" method="POST" role="form" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="id" value="{{ $event['id'] }}" id="id">
                                 <input type="hidden" name="addressId" value="{{ $event['addressId'] }}" id="addressId">
                                 <input type="hidden" name="urlId" value="{{ $event['urlId'] }}" id="urlId">
-                                <input type="hidden" name="seoId" value="{{ $event['seoId'] }}" id="urlId">  
+                                <input type="hidden" name="seoId" value="{{ $event['seoId'] }}" id="urlId"> 
                                 
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="#event" data-toggle="tab">Event</a>
                                     </li>
-                                    <li><a href="#address" data-toggle="tab">Address</a>
+                                    <li><a href="#schedule" data-toggle="tab">Schedule</a>
+                                    </li>                                    
+                                    <li><a href="#address" data-toggle="tab">Venue</a>
                                     </li>
                                     <li><a href="#meta" data-toggle="tab">Meta</a>
                                     </li>
@@ -57,15 +59,14 @@
                                             <div class="form-group">
                                                 <label>Website</label>
                                                 <input name="website" value="{{ old('website', $event['website']) }}" id="website" maxlength="50" class="form-control">
-                                            </div>    
-                                           
+                                            </div>                                               
                                             <div class="form-group">
                                                 <label>Premium</label>
                                                 <select name="premium" id="premium" class="form-control">
                                                     <option value="0" @if(old('premium', $event['premium']) == 0) {{ 'selected' }} @endif >No</option>
                                                     <option value="1" @if(old('premium', $event['premium']) == 1) {{ 'selected' }} @endif >Yes</option>
                                                 </select>
-                                            </div>                                          
+                                            </div>  
                                             <div class="form-group">
                                                 <label>Order</label>
                                                 <input type="number" min="0" step="1" name="order" value="{{ old('order', $event['order']) }}" id="order" maxlength="15" class="form-control">
@@ -76,14 +77,72 @@
                                                     <option value="0" @if(old('is_disabled', $event['is_disabled']) == 0) {{ 'selected' }} @endif >No</option>
                                                     <option value="1" @if(old('is_disabled', $event['is_disabled']) == 1) {{ 'selected' }} @endif >Yes</option>
                                                 </select>
-                                            </div>                                                                                    
+                                            </div>                                                                                                                                                                                                                                                                                                   
                                         </div>
-                                        <div class="col-lg-6">  
+                                        <div class="col-lg-6"> 
+                                            <div class="form-group">
+                                                <label>Category</label>
+                                                <select name="categoryId" id="categoryId" value="{{ old('categoryId', $event['categoryId']) }}"  class="form-control">
+                                                    <option value="">Please select</option>
+                                                    @foreach ($eventCategorys as $key => $eventCategory)
+                                                        <option 
+                                                            value="{{$eventCategory['id']}}"
+                                                            @if(old('categoryId', $event['categoryId']) == $eventCategory['id']) {{ 'selected' }} @endif>
+                                                            {{$eventCategory['name']}}
+                                                        </option>
+                                                    @endforeach                                                
+                                                </select>    
+                                            </div>  
+                                            <div class="form-group">
+                                                <label>Organizer Name</label>
+                                                <input name="organizerName" value="{{ old('organizerName', $event['organizerName']) }}" id="organizerName" maxlength="190" class="form-control">
+                                            </div>                                             
+                                            <div class="form-group">
+                                                <label>Organizer Email</label>
+                                                <input name="organizerEmail" value="{{ old('organizerEmail', $event['organizerEmail']) }}" id="organizationEmail" maxlength="50" class="form-control">
+                                            </div> 
+                                            <div class="form-group">
+                                                <label>Organizer Phone</label>
+                                                <input name="organizerPhone" value="{{ old('organizerPhone', $event['organizerPhone']) }}" id="organizationPhone" maxlength="50" class="form-control">
+                                            </div>                                                                                         
+                                        </div>  
+                                        <div class="col-lg-10">
                                             <div class="form-group">
                                                 <label>Description</label>
                                                 <textarea name="description" class="form-control" rows="5">{{ old('description', $event['description']) }}</textarea>
-                                            </div>                                                                                           
-                                        </div>                                     
+                                            </div> 
+                                        </div>                                   
+                                    </div>
+                                    <div class="tab-pane fade" id="schedule" style="position: relative;min-height: 255px;height:255px;height:auto;overflow: auto;" >
+                                        @if($event['id'] && count($eventSchedules) >0) 
+                                            <input type="hidden" name="scheduleCount" id="scheduleCount" value="{{count($eventSchedules)}}"/><br/>
+                                            @foreach ($eventSchedules as $eventScheduleKey => $eventSchedule)  
+                                                @if($eventScheduleKey == 0)
+                                                    <div id="dateDiv">
+                                                        <div class="form-group">
+                                                            <input type="datetime-local" id="" name="dateTime[]" value="{{$eventSchedule['dateTime']}}" /> 
+                                                            <button type="button" class="btn btn-default btn-sm" id="addDate"><i class="fa glyphicon-plus"></i></button>
+                                                        </div>
+                                                    </div>
+                                                @else 
+                                                    <div id="dateDiv_{{$eventScheduleKey}}">
+                                                        <div class="form-group">
+                                                            <input type="datetime-local" id="" name="dateTime[]" value="{{$eventSchedule['dateTime']}}" /> 
+                                                            <button type="button" class="btn btn-default btn-sm" onClick="removeDate('dateDiv_{{$eventScheduleKey}}')"><i class="glyphicon glyphicon-remove"></i></button>
+                                                        </div>
+                                                    </div>
+                                                @endif                                                 
+                                            @endforeach 
+                                        @else 
+                                            <input type="text" name="scheduleCount" id="scheduleCount" value="1"/>
+                                            <div id="dateDiv">
+                                                <div class="form-group">
+                                                    <input type="datetime-local" id="" name="dateTime[]" value="" /> 
+                                                    <button type="button" class="btn btn-default btn-sm" id="addDate"><i class="fa glyphicon-plus"></i></button>
+                                                </div>
+                                            </div>
+                                        @endif 
+                                        
                                     </div>
                                     <div class="tab-pane fade" id="address" style="position: relative;min-height: 455px;" >
                                         <br/><br/>
@@ -206,7 +265,12 @@
                                                 <label>Main Images</label>
                                                 <input type="file" class="form-control" name="photos[]" multiple />
                                                 <small class="text-danger">{{ $errors->first('photos.*') }}</small>                                                
-                                            </div>                                                                                   
+                                            </div>           
+                                            <div class="form-group{{ $errors->has('photos.*') ? ' has-error' : '' }}">
+                                                <label>Image Layout</label>
+                                                <input type="file" class="form-control" name="detailImg[]" />
+                                                <small class="text-danger">{{ $errors->first('detailImg') }}</small>                                                
+                                            </div>                                                                                                                       
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
@@ -225,15 +289,22 @@
                                                 @foreach ($photos as $key => $photo)
                                                     @if($photo['is_primary'] == 0)
                                                         <div class="smallImage" style="float:left;padding:10px;">
-                                                            <img src="{{ URL::to('/') }}/image/event/{{$event['id']}}/{{$photo['photoName']}}"  style="width:100px;height:100px">
-                                                        </div>                                                    
+                                                            <img src="{{ URL::to('/') }}/image/event/{{$event['id']}}/{{$photo['photoName']}}"  style="width:100px;height:100px">                                                        </div>                                                    
                                                     @endif
                                                 @endforeach
-                                            </div>                                                                                                 
+                                            </div> 
+                                            @if($event['img'])      
+                                                <div class="form-group">
+                                                    <div>Layout</div>
+                                                        <div class="smallImage" style="float:left;padding:10px;">
+                                                            <img src="{{ URL::to('/') }}/image/event/{{$event['id']}}/{{$event['img']}}"  style="width:100px;height:100px">
+                                                        </div>                                                    
+                                                </div>  
+                                            @endif                                                                                                                                       
                                         </div>
                                     </div>                             
                                 </div>
-                                <div style="position:relative;widht:100%">                                  
+                                <div class="col-lg-10" style="position:relative;widht:100%">                                  
                                     <button type="submit" class="btn btn-default">Submit</button>
                                     <a href="{{ url('/admin/events') }}"><button type="button" class="btn btn-default">Cancel</button></a>                                                              
                                 </div>
@@ -250,9 +321,35 @@
     </div>
     
   </div>
-  <script>
+  <script src="{{ asset('admin/ckeditor/ckeditor.js')}}"></script>
+
+<script>
    
-    </script>
+    $("#addDate").click(function(){
+        var scheduleCount;
+        scheduleCount                                =   document.getElementById("scheduleCount").value;
+        scheduleCount                                =   parseInt(scheduleCount)+1;
+        var now = Date.now();
+        document.getElementById("scheduleCount").value     =   scheduleCount;
+        
+        $('#dateDiv').append(`
+            <div class="form-group" id="`+now+`">
+                <input type="datetime-local" id="" name="dateTime[]" value="" /> 
+                <button type="button" class="btn btn-default btn-sm" onClick="removeDate('`+now+`')"><i class="glyphicon glyphicon-remove"></i></button>
+            </div>
+        `); 
+
+    });
+
+    function removeDate(id){
+        $('#'+id).remove();
+        var scheduleCount                            =   document.getElementById("scheduleCount").value;
+        scheduleCount                                =   parseInt(scheduleCount)-1;
+        document.getElementById("scheduleCount").value     =   scheduleCount;        
+    }      
+
+    CKEDITOR.replace( 'description' );
+</script>
 @endsection
   
 
