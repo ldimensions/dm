@@ -6,12 +6,12 @@
     <div class="leftcontainer">
         <div class="col-md-12 searchbar hiddepadding">
             <form>
-                <select name="schedule" class="select" id="schedule">
+                <select name="schedule" class="select1 select" id="schedule">
                     <option value="1" {{ $schedule == '1' ? 'selected="selected"' : '' }}>All</option>
                     <option value="2" {{ $schedule == '2' ? 'selected="selected"' : '' }}>Now Running</option>
                     <option value="3" {{ $schedule == '3' ? 'selected="selected"' : '' }}>Up Comming</option>                    
                 </select>
-                <select name="type" class="select" id="type">
+                <select name="type" class="select1 select" id="type">
                     <option 
                         value="all">
                         All
@@ -57,7 +57,7 @@
                         {{ config('app.movieLanguage.10') }}
                     </option>                                                                                                                                                                                                                
                 </select>
-                <select name="city" class="select" id="city">
+                <select name="city" class="select1 select" id="city">
                     <option value="all">All</option>
                     @foreach ($cities as $key => $city)
                         <option 
@@ -67,7 +67,7 @@
                         </option>
                     @endforeach
                 </select>
-                <input type="text" id="searchKeyword" value="{{$keyword}}" name="searchKeyword" placeholder="Keywords" class="text1" maxlength="50" pattern="(1[0-2]|0[1-9])\/(1[5-9]|2\d)">
+                <input type="text" id="searchKeyword" value="{{$keyword}}" name="searchKeyword" placeholder="Keywords" class="text1 text12" maxlength="50" pattern="(1[0-2]|0[1-9])\/(1[5-9]|2\d)">
                 <a href="JavaScript:void(0)" class="search" onclick="movieSearch()">Search</a>
             </form>
         </div>
